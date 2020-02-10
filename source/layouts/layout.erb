@@ -13,7 +13,7 @@ WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
 License for the specific language governing permissions and limitations
 under the License.
 %>
-<% language_tabs = current_page.data.language_tabs || [] %>
+<% language_tabs = current_page.data.language_tabs || ["English","Bahasa Indonesia"] %>
 <% page_content = yield %>
 <%
   if current_page.data.includes
@@ -28,8 +28,8 @@ under the License.
   <head>
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
-    <meta name="author" content="Ionpay Network">
-    <meta name="description" content="NICEPay API Reference Documentation">
+    <meta name="author" content="PT. IONPAY NETWORKS">
+    <meta name="description" content="NICEPAY API Reference Documentation">
     <meta name="keywords" content="nicepay, nicepay API, API nicepay, nicepay API documentation, nicepay API docs, API docs nicepay, API documentation nicepay, nicepay docs, docs nicepay">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title><%= current_page.data.title || "API Documentation" %></title>
@@ -60,11 +60,13 @@ under the License.
       <div class="LogoPos">
         <%= image_tag "nicepay.jpg", class: 'logo' %>
       </div>
+
+      <!--FOR OTHER PAGES-->
       <% if page_classes != 'index' %>
         <div class="menuB">
-          <a href="./index.html">Back to Docs</a><br>
-          <span>API version 1</span> - <a href="./api-v1-ID.html">ID</a>&nbsp;|&nbsp;<a href="./api-v1-EN.html">EN</a><br>
-          <span>API version 2</span> - <a href="./api-v2-ID.html">ID</a>&nbsp;|&nbsp;<a href="./api-v2-EN.html">EN</a>
+          <a href="./index.html">Back to Home</a><br>
+          <span>API Version 1</span> -<br> <a href="./api-v1-ID.html">Bahasa Indonesia</a>&nbsp;|&nbsp;<a href="./api-v1-EN.html">English</a><br>
+          <span>API Version 2</span> -<br> <a href="./api-v2-ID.html">Bahasa Indonesia</a>&nbsp;|&nbsp;<a href="./api-v2-EN.html">English</a>
         </div>
       <% end %>
       <% if language_tabs.any? %>
@@ -99,16 +101,18 @@ under the License.
             <% end %>
           </li>
         <% end %>
+
+        <!--FOR HOMEPAGE-->
         <% if page_classes == 'index' %>
           <li class="side-custom">
-            Docs API V1 <a href="./api-v1-EN.html" class="en">EN</a> - <a href="./api-v1-ID.html" class="id">ID</a>
+            API V1 <a href="./api-v1-EN.html" class="en">English</a> -<br> <a href="./api-v1-ID.html" class="id">Bahasa Indonesia</a>
           </li>
           <li class="side-custom">
-            Docs API V2 <a href="./api-v2-EN.html" class="en">EN</a> - <a href="./api-v2-ID.html" class="id">ID</a>
+            API V2 <a href="./api-v2-EN.html" class="en">English</a> -<br> <a href="./api-v2-ID.html" class="id">Bahasa Indonesia</a>
           </li>
         <% end %>
         <li class="side-custom">
-          <a href="http://template.nicepay.co.id" target="_blank" class="en">VA Instruction Templates</a>
+          <a href="http://template.nicepay.co.id" target="_blank" class="en">Payment Instruction Templates</a>
         </li>
       </div>
       <% if current_page.data.toc_footers %>
