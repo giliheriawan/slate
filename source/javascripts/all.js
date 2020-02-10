@@ -20,7 +20,3 @@ $(document).ready(function() {
     });
 });
 
-document.getElementById('lang-toggle').addEventListener('click', function(e){
-  e.preventDefault();
-  $(this).parent().toggleClass('is-open');
-});

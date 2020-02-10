@@ -1,6 +1,5 @@
 //= require ../lib/_jquery
 //= require ../lib/_imagesloaded.min
-//= require ../lib/_modernizr.min
 ;(function () {
   'use strict';
 

@@ -4,7 +4,8 @@ title: NICEPay - API V2 Reference
 language_tabs: # must be one of https://git.io/vQNgJ
 
 toc_footers:
-  - <a href='http://nicepay.co.id/signup'>Sign Up</a>
+  - <a href='http://nicepay.co.id/'>Sign Up</a>
+  - <a href='api-v2-EN'>English</a>
 
 includes:
   - V2/ID/V2_ID_1_registration
