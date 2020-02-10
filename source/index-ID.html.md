@@ -1,42 +1,30 @@
----
-title: NICEPay - API V2 Reference
+----
+ title: NICEPay Payment - API Documentation
+ 
+ language_tabs: # must be one of https://git.io/vQNgJ
+ 
+ toc_footers:
+   - <a href='http://nicepay.co.id/'>Sign Up</a>
+   - <a href='./index'>English</a>
+ 
+ includes:
+   - docs/EN/library
+   - footer
+ 
+ search: true
+ ---
+ # Introduction
+Selamat datang di Dokumentasi dan Referensi NICEPAY
 
-language_tabs: # must be one of https://git.io/vQNgJ
-
-toc_footers:
-  - <a href='http://nicepay.co.id/'>Sign Up</a>
-
-includes:
-  - V2/ID/V2_ID_1_registration
-  - V2/ID/V2_ID_2_payment
-  - V2/ID/V2_ID_2-1_creditcard
-  - V2/ID/V2_ID_2-2_va
-  - V2/ID/V2_ID_2-3_cvs
-  - V2/ID/V2_ID_2-4_clickpay
-  - V2/ID/V2_ID_2-5_ewallet
-  - V2/ID/V2_ID_3_notification
-  - V2/ID/V2_ID_4_inquiry
-  - V2/ID/V2_ID_5_cancel
-  - nicepaycode
-  - faq_id
-  - changelog/changelog_v2
-
-search: true
----
-# DOKUMENTASI API V2
-# Pengantar
-
-Selamat datang di **Referensi API NICEPay**.
-
-**NICEPay** Payment Solution adalah produk dari PT IONPAY NETWORKS yang menyediakan berbagai pembayaran elektronik melalui Internet dengan aman tanpa perangkat pengaman yang terpisah. NICEPay telah berintegrasi dengan Bank melalui host ke host connection untuk kinerja yang lebih baik dan cepat. Dengan menggunakan teknologi terkini, NICEPay percaya untuk menumbuhkan bisnis Anda bersama.
-
-Kami memiliki beberapa bahasa pemrograman seperti di *java, csharp, php, python,* dan *ruby*.
+**NICEPAY Payment Solution** adalah produk dari PT. IONPAY NETWORKS yang menyediakan berbagai pembayaran elektronik melalui Internet dengan aman tanpa perangkat pengaman yang terpisah. 
+Dengan menggunakan teknologi terkini,NICEPAY telah berintegrasi dengan Bank, E-Wallet dan layanan finansial lainnya melalui host ke host connection yang terenkripsi untuk keamanan dan kinerja yang terbaik. 
+Kami yakin bahwa pengalaman kami dapat membantu untuk menumbuhkan bisnis Anda.
 
 ## Preparation
-API NICEPay dapat diminta melalui HTTPS Request ke endpoint URL NICEPay Base.
+API NICEPAY dapat disambung melalui HTTPS Request ke URL ENDPOINT kami.
 
-Development Environment : **https://qa.nicepay.co.id/**<br>
-Production Environment : **https://api.nicepay.co.id/**
+Development Environment : https://**dev**.nicepay.co.id/<br>
+Production Environment : https://**api**.nicepay.co.id/
 
 ## Integration Process
 <ol type="1">
@@ -57,6 +45,21 @@ Production Environment : **https://api.nicepay.co.id/**
 </ol>
 
 ## API Methods
+NICEPAY API V1 Endpoints
+API Endpoint | Method | Description
+------------ | ------------| ------------------------
+ADD | MORE | URL FOR V1
+
+NICEPAY API V2 Endpoints
+API Endpoint | Method | Description
+------------ | ------------| ------------------------
+/nicepay/direct/v2/registration | POST JSON | Transaction Registration
+/nicepay/direct/v2/payment | POST JSON | Transaction Payment
+/nicepay/direct/v2/inquiry | POST | Transaction Status Inquiry
+/nicepay/direct/v2/cancel | POST | Transaction Cancel
+ADD | MORE | URL
+
+## TESTTTTT Methods
 
 API Endpoint | Method | Description
 ------------ | ------------| ------------------------

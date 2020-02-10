@@ -5,6 +5,7 @@ language_tabs: # must be one of https://git.io/vQNgJ
 
 toc_footers:
   - <a href='http://nicepay.co.id/'>Sign Up</a>
+  - <a href='./index-ID'>Bahasa Indonesia</a>
 
 includes:
   - docs/EN/library
