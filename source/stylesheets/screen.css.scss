@@ -1,7 +1,10 @@
 @charset "utf-8";
+@import 'bootstrap';
 @import 'normalize';
 @import 'variables';
 @import 'icon-font';
+@import 'settings';
+
 // @import 'rtl'; // uncomment to switch to RTL format
 
 /*
@@ -34,6 +37,21 @@ html, body {
   background-color: $main-bg;
   height: 100%;
   -webkit-text-size-adjust: none; /* Never autoresize text */
+}
+
+a {
+  text-decoration: none;
+  color: #000000;
+  font-weight: bold;
+}
+
+a:hover {
+  text-decoration:none;
+  color:#56d1bc;
+}
+
+.tcenter {
+  text-align: center;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -74,8 +92,12 @@ html, body {
   // This is the logo at the top of the ToC
   .logo {
     display: block;
-    max-width: 100%;
-    margin-bottom: $logo-margin;
+    height:100px;
+    width:auto;
+    padding:$logo-margin;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
   }
 
   &>.search {
@@ -88,7 +110,7 @@ html, body {
       padding: 6px 0 6px 20px;
       box-sizing: border-box;
       margin: $nav-v-padding $nav-padding;
-      width: $nav-width - ($nav-padding*2);
+      width: $nav-width - 30;
       outline: none;
       color: $nav-text;
       border-radius: 0; /* ios has a default border radius */
@@ -320,6 +342,14 @@ html, body {
   position: relative;
   z-index: 30;
 
+  .postman-run-button {
+    margin-left: 28px;
+  }
+  ol {
+    margin:0;
+    padding-left:15px;
+  } 
+
   &:after {
     content: '';
     display: block;
@@ -334,9 +364,12 @@ html, body {
 
     @extend %left-col;
   }
+  
 
   &>ul, &>ol {
     padding-left: $main-padding + 15px;
+    margin-top:0;
+    margin-bottom:0;
   }
 
   // the div is the tocify hidden div for placeholding stuff
@@ -367,8 +400,8 @@ html, body {
     margin-top: 4em;
     margin-bottom: 0;
     border-top: 1px solid #ccc;
-    padding-top: 1.2em;
-    padding-bottom: 1.2em;
+    padding-top: 10px;
+    padding-bottom: 10px;
     background-image: linear-gradient(to bottom, rgba(#fff, 0.2), rgba(#fff, 0));
   }
 
@@ -427,7 +460,7 @@ html, body {
     }
 
     tr:nth-child(even)>td {
-      background-color: lighten($main-bg,2.4%);
+      background-color: #ececec;
     }
   }
 
@@ -516,6 +549,7 @@ html, body {
     color: #fff;
 
     margin: 0;
+    padding-bottom:5px;
     width: $examples-width;
 
     float:right;
@@ -546,6 +580,10 @@ html, body {
       background-color: $code-annotation-bg;
       padding: $code-annotation-padding 2em;
       color: #eee;
+    }
+    aside {
+      padding-left:5px;
+      padding-right:5px;
     }
   }
 }
@@ -613,3 +651,27 @@ html, body {
 .highlight, .highlight .w {
   background-color: $code-bg;
 }
+
+// addition
+.inside {
+  margin:0px;
+  -webkit-padding-start:20px;
+}
+
+.menuB {
+  margin:10px;
+  font-size:12px;
+  color:#ffffff;
+}
+.menuB a {
+  color:#f1f1f1;
+}
+
+blockquote td {
+  color:#000000;
+}
+blockquote table {
+  margin-left:5px;
+  width:inherit;
+}
+

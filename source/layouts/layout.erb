@@ -28,9 +28,12 @@ under the License.
   <head>
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="author" content="Ionpay Network">
+    <meta name="description" content="NICEPay API Reference Documentation">
+    <meta name="keywords" content="nicepay, nicepay API, API nicepay, nicepay API documentation, nicepay API docs, API docs nicepay, API documentation nicepay, nicepay docs, docs nicepay">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title><%= current_page.data.title || "API Documentation" %></title>
-
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
     <style>
       <%= Rouge::Themes::MonokaiSublime.render(:scope => '.highlight') %>
     </style>
@@ -44,6 +47,9 @@ under the License.
   </head>
 
   <body class="<%= page_classes %>" data-languages="<%=h language_tabs.map{ |lang| lang.is_a?(Hash) ? lang.keys.first : lang }.to_json %>">
+  <div id="loader-wrapper">
+    <div id="loader"></div>
+  </div>
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -51,7 +57,16 @@ under the License.
       </span>
     </a>
     <div class="toc-wrapper">
-      <%= image_tag "logo.png", class: 'logo' %>
+      <div class="LogoPos">
+        <%= image_tag "nicepay.jpg", class: 'logo' %>
+      </div>
+      <% if page_classes != 'index' %>
+        <div class="menuB">
+          <a href="./index.html">Back to Docs</a><br>
+          <span>API version 1</span> - <a href="./api-v1-ID.html">ID</a>&nbsp;|&nbsp;<a href="./api-v1-EN.html">EN</a><br>
+          <span>API version 2</span> - <a href="./api-v2-ID.html">ID</a>&nbsp;|&nbsp;<a href="./api-v2-EN.html">EN</a>
+        </div>
+      <% end %>
       <% if language_tabs.any? %>
         <div class="lang-selector">
           <% language_tabs.each do |lang| %>
@@ -69,22 +84,33 @@ under the License.
         </div>
         <ul class="search-results"></ul>
       <% end %>
-      <ul id="toc" class="toc-list-h1">
+      <div id="toc" class="toc-list-h1">
         <% toc_data(page_content).each do |h1| %>
           <li>
-            <a href="#<%= h1[:id] %>" class="toc-h1 toc-link" data-title="<%= h1[:title] %>"><%= h1[:content] %></a>
+            <a href="#<%= h1[:id] %>" class="toc-h1 toc-link" data-title="<%= h1[:content].to_s.parameterize %>"><%= h1[:content] %></a>
             <% if h1[:children].length > 0 %>
               <ul class="toc-list-h2">
                 <% h1[:children].each do |h2| %>
                   <li>
-                    <a href="#<%= h2[:id] %>" class="toc-h2 toc-link" data-title="<%= h2[:title] %>"><%= h2[:content] %></a>
+                    <a href="#<%= h2[:id] %>" class="toc-h2 toc-link" data-title="<%= h2[:content].to_s.parameterize %>"><%= h2[:content] %></a>
                   </li>
                 <% end %>
               </ul>
             <% end %>
           </li>
         <% end %>
-      </ul>
+        <% if page_classes == 'index' %>
+          <li class="side-custom">
+            Docs API V1 <a href="./api-v1-EN.html" class="en">EN</a> - <a href="./api-v1-ID.html" class="id">ID</a>
+          </li>
+          <li class="side-custom">
+            Docs API V2 <a href="./api-v2-EN.html" class="en">EN</a> - <a href="./api-v2-ID.html" class="id">ID</a>
+          </li>
+        <% end %>
+        <li class="side-custom">
+          <a href="http://template.nicepay.co.id" target="_blank" class="en">VA Instruction Templates</a>
+        </li>
+      </div>
       <% if current_page.data.toc_footers %>
         <ul class="toc-footer">
           <% current_page.data.toc_footers.each do |footer| %>
@@ -112,5 +138,15 @@ under the License.
         <% end %>
       </div>
     </div>
+
+    <script type="text/javascript">
+      (function (p,o,s,t,m,a,n) {
+        !p[s] && (p[s] = function () { (p[t] || (p[t] = [])).push(arguments); });
+        !o.getElementById(s+t) && o.getElementsByTagName("head")[0].appendChild((
+          (n = o.createElement("script")),
+          (n.id = s+t), (n.async = 1), (n.src = m), n
+        ));
+      }(window, document, "_pm", "PostmanRunObject", "https://run.pstmn.io/button.js"));
+    </script>
   </body>
 </html>
