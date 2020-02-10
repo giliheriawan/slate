@@ -106,50 +106,48 @@ under the License.
 
     <!--FOR HOMEPAGE-->
     <% if page_classes == 'index' %>
-      <% if page_classes == 'EN' %>
-        <div class="lang">
-          <a href="#" id="lang-toggle" class="lang__option lang__option--current">
-            en <span class="lang__chevron">›</span>
-          </a>
-          <ul class="lang__list">
-            <li>
-              <a href="./index-ID.html" class="lang__option">ID</a>
-            </li>
-          </ul>
-        </div>
+      <div class="lang">
+        <a href="#" id="lang-toggle" class="lang__option lang__option--current">
+          en <span class="lang__chevron">›</span>
+        </a>
+        <ul class="lang__list">
+          <li>
+            <a href="./index-ID.html" class="lang__option">ID</a>
+          </li>
+        </ul>
+      </div>
 
-        <li class="side-custom">
-          <a href="./index-ID.html" class="en">Bahasa Indonesia</a>
-        </li>
-        <li class="side-custom">
-          <a href="./api-v1-EN.html" class="en">API V1</a>
-        </li>
-        <li class="side-custom">
-          <a href="./api-v2-EN.html" class="en">API V2</a>
-        </li>
-      <% end %>
-      <% if page_classes == 'ID' %>
-        <div class="lang">
-          <a href="#" id="lang-toggle" class="lang__option lang__option--current">
-            ID <span class="lang__chevron">›</span>
-          </a>
-          <ul class="lang__list">
-            <li>
-              <a href="./index.html" class="lang__option">EN</a>
-            </li>
-          </ul>
-        </div>
+      <li class="side-custom">
+        <a href="./index-ID.html" class="en">Bahasa Indonesia</a>
+      </li>
+      <li class="side-custom">
+        <a href="./api-v1-EN.html" class="en">API V1</a>
+      </li>
+      <li class="side-custom">
+        <a href="./api-v2-EN.html" class="en">API V2</a>
+      </li>
+    <% end %>
+    <% if page_classes == 'index-ID' %>
+      <div class="lang">
+        <a href="#" id="lang-toggle" class="lang__option lang__option--current">
+          ID <span class="lang__chevron">›</span>
+        </a>
+        <ul class="lang__list">
+          <li>
+            <a href="./index.html" class="lang__option">EN</a>
+          </li>
+        </ul>
+      </div>
 
-        <li class="side-custom">
-          <a href="./index.html" class="en">English</a>
-        </li>
-        <li class="side-custom">
-          <a href="./api-v1-ID.html" class="id">API V1</a>
-        </li>
-        <li class="side-custom">
-          <br> <a href="./api-v2-ID.html" class="id">API V2</a>
-        </li>
-      <% end %>
+      <li class="side-custom">
+        <a href="./index.html" class="en">English</a>
+      </li>
+      <li class="side-custom">
+        <a href="./api-v1-ID.html" class="id">API V1</a>
+      </li>
+      <li class="side-custom">
+        <br> <a href="./api-v2-ID.html" class="id">API V2</a>
+      </li>
     <% end %>
     <li class="side-custom">
       <a href="http://template.nicepay.co.id" target="_blank" class="en">Payment Instruction Templates</a>
