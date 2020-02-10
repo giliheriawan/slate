@@ -19,3 +19,8 @@ $(document).ready(function() {
         $('.tabsec #'+dataTarget).show();
     });
 });
+
+document.getElementById('lang-toggle').addEventListener('click', function(e){
+  e.preventDefault();
+  $(this).parent().toggleClass('is-open');
+});

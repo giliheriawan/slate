@@ -13,7 +13,7 @@ WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
 License for the specific language governing permissions and limitations
 under the License.
 %>
-<% language_tabs = current_page.data.language_tabs || ["English","Bahasa Indonesia"] %>
+<% language_tabs = current_page.data.language_tabs || [] %>
 <% page_content = yield %>
 <%
   if current_page.data.includes
@@ -25,132 +25,172 @@ under the License.
 
 <!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
-    <meta name="author" content="PT. IONPAY NETWORKS">
-    <meta name="description" content="NICEPAY API Reference Documentation">
-    <meta name="keywords" content="nicepay, nicepay API, API nicepay, nicepay API documentation, nicepay API docs, API docs nicepay, API documentation nicepay, nicepay docs, docs nicepay">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title><%= current_page.data.title || "API Documentation" %></title>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
-    <style>
-      <%= Rouge::Themes::MonokaiSublime.render(:scope => '.highlight') %>
-    </style>
-    <%= stylesheet_link_tag :screen, media: :screen %>
-    <%= stylesheet_link_tag :print, media: :print %>
-    <% if current_page.data.search %>
-      <%= javascript_include_tag  "all" %>
-    <% else %>
-      <%= javascript_include_tag  "all_nosearch" %>
-    <% end %>
-  </head>
+<head>
+  <meta charset="utf-8">
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+  <meta name="author" content="PT. IONPAY NETWORKS">
+  <meta name="description" content="NICEPAY API Reference Documentation">
+  <meta name="keywords" content="nicepay, nicepay API, API nicepay, nicepay API documentation, nicepay API docs, API docs nicepay, API documentation nicepay, nicepay docs, docs nicepay">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title><%= current_page.data.title || "API Documentation" %></title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
+  <style>
+    <%= Rouge::Themes::MonokaiSublime.render(:scope => '.highlight') %>
+  </style>
+  <%= stylesheet_link_tag :screen, media: :screen %>
+  <%= stylesheet_link_tag :print, media: :print %>
+  <% if current_page.data.search %>
+    <%= javascript_include_tag  "all" %>
+  <% else %>
+    <%= javascript_include_tag  "all_nosearch" %>
+  <% end %>
+</head>
 
-  <body class="<%= page_classes %>" data-languages="<%=h language_tabs.map{ |lang| lang.is_a?(Hash) ? lang.keys.first : lang }.to_json %>">
-  <div id="loader-wrapper">
-    <div id="loader"></div>
-  </div>
-    <a href="#" id="nav-button">
+<body class="<%= page_classes %>" data-languages="<%=h language_tabs.map{ |lang| lang.is_a?(Hash) ? lang.keys.first : lang }.to_json %>">
+<div id="loader-wrapper">
+  <div id="loader"></div>
+</div>
+<a href="#" id="nav-button">
       <span>
         NAV
         <%= image_tag('navbar.png') %>
       </span>
-    </a>
-    <div class="toc-wrapper">
-      <div class="LogoPos">
-        <%= image_tag "nicepay.jpg", class: 'logo' %>
-      </div>
+</a>
+<div class="toc-wrapper">
+  <div class="LogoPos">
+    <%= image_tag "nicepay.jpg", class: 'logo' %>
+  </div>
 
-      <!--FOR OTHER PAGES-->
-      <% if page_classes != 'index' %>
-        <div class="menuB">
-          <a href="./index.html">Back to Home</a><br>
-          <span>API Version 1</span> -<br> <a href="./api-v1-ID.html">Bahasa Indonesia</a>&nbsp;|&nbsp;<a href="./api-v1-EN.html">English</a><br>
-          <span>API Version 2</span> -<br> <a href="./api-v2-ID.html">Bahasa Indonesia</a>&nbsp;|&nbsp;<a href="./api-v2-EN.html">English</a>
-        </div>
-      <% end %>
-      <% if language_tabs.any? %>
-        <div class="lang-selector">
-          <% language_tabs.each do |lang| %>
-            <% if lang.is_a? Hash %>
-              <a href="#" data-language-name="<%= lang.keys.first %>"><%= lang.values.first %></a>
-            <% else %>
-              <a href="#" data-language-name="<%= lang %>"><%= lang %></a>
-            <% end %>
-          <% end %>
-        </div>
-      <% end %>
-      <% if current_page.data.search %>
-        <div class="search">
-          <input type="text" class="search" id="input-search" placeholder="Search">
-        </div>
-        <ul class="search-results"></ul>
-      <% end %>
-      <div id="toc" class="toc-list-h1">
-        <% toc_data(page_content).each do |h1| %>
-          <li>
-            <a href="#<%= h1[:id] %>" class="toc-h1 toc-link" data-title="<%= h1[:content].to_s.parameterize %>"><%= h1[:content] %></a>
-            <% if h1[:children].length > 0 %>
-              <ul class="toc-list-h2">
-                <% h1[:children].each do |h2| %>
-                  <li>
-                    <a href="#<%= h2[:id] %>" class="toc-h2 toc-link" data-title="<%= h2[:content].to_s.parameterize %>"><%= h2[:content] %></a>
-                  </li>
-                <% end %>
-              </ul>
-            <% end %>
-          </li>
+  <!--FOR OTHER PAGES-->
+  <% if page_classes != 'index' %>
+    <div class="menuB">
+      <a href="./index.html">Back to Home</a><br>
+      <span><a href="./api-v1-ID.html">API Version 1</a></span><br>
+      <span><a href="./api-v1-EN.html">API Version 1</a></span><br>
+      <span><a href="./api-v2-ID.html">API Version 2</a></span><br>
+      <span><a href="./api-v2-EN.html">API Version 2</a></span>
+    </div>
+  <% end %>
+  <% if language_tabs.any? %>
+    <div class="lang-selector">
+      <% language_tabs.each do |lang| %>
+        <% if lang.is_a? Hash %>
+          <a href="#" data-language-name="<%= lang.keys.first %>"><%= lang.values.first %></a>
+        <% else %>
+          <a href="#" data-language-name="<%= lang %>"><%= lang %></a>
         <% end %>
+      <% end %>
+    </div>
+  <% end %>
+  <% if current_page.data.search %>
+    <div class="search">
+      <input type="text" class="search" id="input-search" placeholder="Search">
+    </div>
+    <ul class="search-results"></ul>
+  <% end %>
+  <div id="toc" class="toc-list-h1">
+    <% toc_data(page_content).each do |h1| %>
+      <li>
+        <a href="#<%= h1[:id] %>" class="toc-h1 toc-link" data-title="<%= h1[:content].to_s.parameterize %>"><%= h1[:content] %></a>
+        <% if h1[:children].length > 0 %>
+          <ul class="toc-list-h2">
+            <% h1[:children].each do |h2| %>
+              <li>
+                <a href="#<%= h2[:id] %>" class="toc-h2 toc-link" data-title="<%= h2[:content].to_s.parameterize %>"><%= h2[:content] %></a>
+              </li>
+            <% end %>
+          </ul>
+        <% end %>
+      </li>
+    <% end %>
 
-        <!--FOR HOMEPAGE-->
-        <% if page_classes == 'index' %>
-          <li class="side-custom">
-            API V1 <a href="./api-v1-EN.html" class="en">English</a> -<br> <a href="./api-v1-ID.html" class="id">Bahasa Indonesia</a>
-          </li>
-          <li class="side-custom">
-            API V2 <a href="./api-v2-EN.html" class="en">English</a> -<br> <a href="./api-v2-ID.html" class="id">Bahasa Indonesia</a>
-          </li>
-        <% end %>
+    <!--FOR HOMEPAGE-->
+    <% if page_classes == 'index' %>
+      <% if page_classes == 'EN' %>
+        <div class="lang">
+          <a href="#" id="lang-toggle" class="lang__option lang__option--current">
+            en <span class="lang__chevron">›</span>
+          </a>
+          <ul class="lang__list">
+            <li>
+              <a href="./index-ID.html" class="lang__option">ID</a>
+            </li>
+          </ul>
+        </div>
+
         <li class="side-custom">
-          <a href="http://template.nicepay.co.id" target="_blank" class="en">Payment Instruction Templates</a>
+          <a href="./index-ID.html" class="en">Bahasa Indonesia</a>
         </li>
-      </div>
-      <% if current_page.data.toc_footers %>
-        <ul class="toc-footer">
-          <% current_page.data.toc_footers.each do |footer| %>
-            <li><%= footer %></li>
-          <% end %>
-        </ul>
+        <li class="side-custom">
+          <a href="./api-v1-EN.html" class="en">API V1</a>
+        </li>
+        <li class="side-custom">
+          <a href="./api-v2-EN.html" class="en">API V2</a>
+        </li>
       <% end %>
-    </div>
-    <div class="page-wrapper">
-      <div class="dark-box"></div>
-      <div class="content">
-        <%= page_content %>
-      </div>
-      <div class="dark-box">
-        <% if language_tabs.any? %>
-          <div class="lang-selector">
-            <% language_tabs.each do |lang| %>
-              <% if lang.is_a? Hash %>
-                <a href="#" data-language-name="<%= lang.keys.first %>"><%= lang.values.first %></a>
-              <% else %>
-                <a href="#" data-language-name="<%= lang %>"><%= lang %></a>
-              <% end %>
-            <% end %>
-          </div>
+      <% if page_classes == 'ID' %>
+        <div class="lang">
+          <a href="#" id="lang-toggle" class="lang__option lang__option--current">
+            ID <span class="lang__chevron">›</span>
+          </a>
+          <ul class="lang__list">
+            <li>
+              <a href="./index.html" class="lang__option">EN</a>
+            </li>
+          </ul>
+        </div>
+
+        <li class="side-custom">
+          <a href="./index.html" class="en">English</a>
+        </li>
+        <li class="side-custom">
+          <a href="./api-v1-ID.html" class="id">API V1</a>
+        </li>
+        <li class="side-custom">
+          <br> <a href="./api-v2-ID.html" class="id">API V2</a>
+        </li>
+      <% end %>
+    <% end %>
+    <li class="side-custom">
+      <a href="http://template.nicepay.co.id" target="_blank" class="en">Payment Instruction Templates</a>
+    </li>
+  </div>
+  <% if current_page.data.toc_footers %>
+    <ul class="toc-footer">
+      <% current_page.data.toc_footers.each do |footer| %>
+        <li><%= footer %></li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>
+<div class="page-wrapper">
+  <div class="dark-box"></div>
+  <div class="content">
+    <%= page_content %>
+  </div>
+  <div class="dark-box">
+    <% if language_tabs.any? %>
+      <div class="lang-selector">
+        <% language_tabs.each do |lang| %>
+          <% if lang.is_a? Hash %>
+            <a href="#" data-language-name="<%= lang.keys.first %>"><%= lang.values.first %></a>
+          <% else %>
+            <a href="#" data-language-name="<%= lang %>"><%= lang %></a>
+          <% end %>
         <% end %>
       </div>
-    </div>
+    <% end %>
+  </div>
+</div>
 
-    <script type="text/javascript">
-      (function (p,o,s,t,m,a,n) {
-        !p[s] && (p[s] = function () { (p[t] || (p[t] = [])).push(arguments); });
-        !o.getElementById(s+t) && o.getElementsByTagName("head")[0].appendChild((
-          (n = o.createElement("script")),
-          (n.id = s+t), (n.async = 1), (n.src = m), n
-        ));
-      }(window, document, "_pm", "PostmanRunObject", "https://run.pstmn.io/button.js"));
-    </script>
-  </body>
+<script type="text/javascript">
+  (function (p,o,s,t,m,a,n) {
+    !p[s] && (p[s] = function () { (p[t] || (p[t] = [])).push(arguments); });
+    !o.getElementById(s+t) && o.getElementsByTagName("head")[0].appendChild((
+      (n = o.createElement("script")),
+        (n.id = s+t), (n.async = 1), (n.src = m), n
+    ));
+  }(window, document, "_pm", "PostmanRunObject", "https://run.pstmn.io/button.js"));
+</script>
+</body>
 </html>

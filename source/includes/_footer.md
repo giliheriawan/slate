@@ -9,10 +9,10 @@
                     <li class="nav-item">Sign Up</li>
                     <li class="nav-item">Contact Us</li>
                     <li class="nav-item">Report</li>
-                <ul>
+                </ul>
             </div>
             <div class="bottom">
-                Copyright @ 2018 Nicepay. All rights Reserved
+                Copyright @ 2020 Nicepay. All rights Reserved
             </div>
         </div>
         <div class="c-col-6">
