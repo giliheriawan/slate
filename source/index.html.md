@@ -5,7 +5,6 @@ language_tabs: # must be one of https://git.io/vQNgJ
 
 toc_footers:
   - <a href='http://nicepay.co.id/'>Sign Up</a>
-  - <a href='./index-ID'>Bahasa Indonesia</a>
 
 includes:
   - docs/EN/library
@@ -35,12 +34,13 @@ NICEPAY APIs should be requested through HTTPS request to our Endpoint URL.
 Development Environment : https://**dev**.nicepay.co.id/<br>
 Production Environment : https://**api**.nicepay.co.id/
 
-## API Methods
+## API Version 1
 NICEPAY API V1 Endpoints
 API Endpoint | Method | Description
 ------------ | ------------| ------------------------
 ADD | MORE | URL FOR V1
 
+## API Version 2
 NICEPAY API V2 Endpoints
 API Endpoint | Method | Description
 ------------ | ------------| ------------------------
