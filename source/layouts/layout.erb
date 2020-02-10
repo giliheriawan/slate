@@ -107,35 +107,19 @@ under the License.
     <!--FOR HOMEPAGE-->
     <% if page_classes == 'index' %>
       <li class="side-custom">
-        <a href="./index-ID.html" class="en">Bahasa Indonesia</a>
-      </li>
-      <li class="side-custom">
         <a href="./api-v1-EN.html" class="en">API V1</a>
       </li>
       <li class="side-custom">
         <a href="./api-v2-EN.html" class="en">API V2</a>
       </li>
     <% end %>
-    <% if page_classes == 'index-ID' %>
-      <li class="side-custom">
-        <a href="./index.html" class="en">English</a>
-      </li>
-      <li class="side-custom">
-        <a href="./api-v1-ID.html" class="id">API V1</a>
-      </li>
-      <li class="side-custom">
-        <br> <a href="./api-v2-ID.html" class="id">API V2</a>
-      </li>
-    <% end %>
-    <li class="side-custom">
-      <a href="http://template.nicepay.co.id" target="_blank" class="en">Payment Instruction Templates</a>
-    </li>
   </div>
   <% if current_page.data.toc_footers %>
     <ul class="toc-footer">
       <% current_page.data.toc_footers.each do |footer| %>
         <li><%= footer %></li>
       <% end %>
+      <li><a href="http://template.nicepay.co.id" target="_blank" class="en">Payment Instruction Templates</a></li>
     </ul>
   <% end %>
 </div>
