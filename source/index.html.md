@@ -7,7 +7,6 @@ toc_footers:
   - <a href='http://nicepay.co.id/'>Sign Up</a>
 
 includes:
-  - docs/EN/library
   - footer
 
 search: true
@@ -51,14 +50,3 @@ API Endpoint | Method | Description
 /nicepay/direct/v2/inquiry | POST | Transaction Status Inquiry
 /nicepay/direct/v2/cancel | POST | Transaction Cancel
 ADD | MORE | URL
-
-## TESTTTTT Methods
-
-API Endpoint | Method | Description
------------- | ------------| ------------------------
-/nicepay/direct/v2/registration | POST | API untuk pendaftaran transaksi
-/nicepay/direct/v2/payment | POST | API untuk pembayaran transaksi
-/notification (example) | POST | API untuk notifikasi (dbProcessUrl dalam registration API)
-/nicepay/direct/v2/inquiry | POST | API untuk cek status transaksi
-/nicepay/direct/v2/cancel | POST | API untuk membatalkan transaksi
-
