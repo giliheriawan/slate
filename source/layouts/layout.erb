@@ -65,10 +65,10 @@ under the License.
   <% if page_classes != 'index' %>
     <div class="menuB">
       <a href="./index.html">Back to Home</a><br>
-      <span><a href="./api-v1-ID.html">API Version 1</a></span><br>
-      <span><a href="./api-v1-EN.html">API Version 1</a></span><br>
-      <span><a href="./api-v2-ID.html">API Version 2</a></span><br>
-      <span><a href="./api-v2-EN.html">API Version 2</a></span>
+      <span><a class="toc-h1 toc-link" href="./api-v1-ID.html">API Version 1</a></span><br>
+      <span><a class="toc-h1 toc-link" href="./api-v1-EN.html">API Version 1</a></span><br>
+      <span><a class="toc-h1 toc-link" href="./api-v2-ID.html">API Version 2</a></span><br>
+      <span><a class="toc-h1 toc-link" href="./api-v2-EN.html">API Version 2</a></span>
     </div>
   <% end %>
   <% if language_tabs.any? %>
@@ -105,11 +105,11 @@ under the License.
     <% end %>
     <!--FOR HOMEPAGE-->
     <% if page_classes == 'index' %>
-      <li class="toc-h1 toc-link">
-        <a href="./api-v1-EN.html" class="en">API V1</a>
+      <li>
+        <a class="toc-h1 toc-link" href="./api-v1-EN.html" class="en">API V1</a>
       </li>
-      <li class="toc-h1 toc-link">
-        <a href="./api-v2-EN.html" class="en">API V2</a>
+      <li>
+        <a class="toc-h1 toc-link" href="./api-v2-EN.html" class="en">API V2</a>
       </li>
     <% end %>
   </div>
