@@ -15,6 +15,8 @@ includes:
 
 search: true
 ---
+# NICEPAY API References and Documentation
+
 # Introduction
 ```java
     _   __________________   ____  _____  __
@@ -24,9 +26,11 @@ search: true
 /_/ |_/___/\____/_____/  /_/   /_/  |_/_/   
 
 ```
-Welcome to NICEPAY API Documentation and References.
+**Welcome to NICEPAY API Documentation and References.**
+
 **NICEPAY Payment Solution** is a product of PT. IONPAY NETWORKS that provide various electronic payment over the Internet safely without separate security device. 
-Using our latest technology, we are integrated with Banks, E-wallets and other financial services via encrypted host to host connection to provide a secure and fast transaction. 
+Using our latest technology, we are integrated with Banks, E-wallets and other financial services via encrypted host to host connection to provide a secure and fast transaction.
+ 
 Give us a shot because we are confident that we can provide you with the best Payment Solution to grow your business.
 
 ## Prerequisites
