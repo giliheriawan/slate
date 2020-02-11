@@ -36,12 +36,14 @@ Production Environment : https://**api**.nicepay.co.id/
 
 ## API Version 1
 NICEPAY API V1 Endpoints
+
 API Endpoint | Method | Description
 ------------ | ------------| ------------------------
 ADD | MORE | URL FOR V1
 
 ## API Version 2
 NICEPAY API V2 Endpoints
+
 API Endpoint | Method | Description
 ------------ | ------------| ------------------------
 /nicepay/direct/v2/registration | POST JSON | Transaction Registration
@@ -50,5 +52,13 @@ API Endpoint | Method | Description
 /nicepay/direct/v2/cancel | POST | Transaction Cancel
 ADD | MORE | URL
 
+## TESTTTTT Methods
 
+API Endpoint | Method | Description
+------------ | ------------| ------------------------
+/nicepay/direct/v2/registration | POST | API untuk pendaftaran transaksi
+/nicepay/direct/v2/payment | POST | API untuk pembayaran transaksi
+/notification (example) | POST | API untuk notifikasi (dbProcessUrl dalam registration API)
+/nicepay/direct/v2/inquiry | POST | API untuk cek status transaksi
+/nicepay/direct/v2/cancel | POST | API untuk membatalkan transaksi
 
