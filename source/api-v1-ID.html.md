@@ -1,5 +1,5 @@
 ---
-title: NICEPay - API V1 Reference
+title: NICEPAY API Documentation - V1
 
 language_tabs: # must be one of https://git.io/vQNgJ
   - java

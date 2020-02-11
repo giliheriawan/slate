@@ -1,10 +1,9 @@
 ---
-title: NICEPay Payment - API Documentation
+title: NICEPAY API Documentation
 
 language_tabs: # must be one of https://git.io/vQNgJ
   - java
   - php
-  - ruby
 
 toc_footers:
   - <a href='http://nicepay.co.id/'>Sign Up</a>
@@ -23,6 +22,12 @@ class HelloWorld
         System.out.println("Hello World, Have a Nice Pay!"); 
     } 
 } 
+```
+```php
+<?php
+  $string = 'Hello World, Have a Nice Pay!<br>';
+  echo $string;
+?>
 ```
 Welcome to NICEPAY API Documentation and References.
 **NICEPAY Payment Solution** is a product of PT. IONPAY NETWORKS that provide various electronic payment over the Internet safely without separate security device. 
