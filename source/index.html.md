@@ -43,9 +43,10 @@ Give us a shot because we are confident that we can provide you with the best Pa
   <li>Read NICEPAY API Documentation
 </ol>
 
-## Endpoint URLs
+## NICEPAY URLs
 NICEPAY APIs should be requested through HTTPS request to our Endpoint URL.
 
+**NICEPAY BASE URLs**
 Development Environment : https://**dev**.nicepay.co.id/<br>
 Production Environment : https://**api**.nicepay.co.id/
 
