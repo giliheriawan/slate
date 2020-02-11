@@ -9,7 +9,6 @@ toc_footers:
   - <a href='http://nicepay.co.id/'>Sign Up</a>
 
 includes:
-  - footer
 
 search: true
 ---
@@ -22,12 +21,6 @@ class HelloWorld
         System.out.println("Hello World, Have a Nice Pay!"); 
     } 
 } 
-```
-```php
-<?php
-  $string = 'Hello World, Have a Nice Pay!<br>';
-  echo $string;
-?>
 ```
 Welcome to NICEPAY API Documentation and References.
 **NICEPAY Payment Solution** is a product of PT. IONPAY NETWORKS that provide various electronic payment over the Internet safely without separate security device. 
@@ -46,9 +39,11 @@ Give us a shot because we are confident that we can provide you with the best Pa
 ## NICEPAY URLs
 NICEPAY APIs should be requested through HTTPS request to our Endpoint URL.
 
-**NICEPAY BASE URLs**
-Development Environment : https://**dev**.nicepay.co.id/<br>
-Production Environment : https://**api**.nicepay.co.id/
+Environment | Protocol | Base URL
+------------ | ------------| ------------------------
+Development | https | https://**dev**.nicepay.co.id/
+Staging | https | https://**staging**.nicepay.co.id/
+Production | https | https://**www**.nicepay.co.id/
 
 ### NICEPAY API V1 Endpoints
 API Endpoint | Method | Description

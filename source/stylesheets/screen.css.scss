@@ -1,10 +1,8 @@
 @charset "utf-8";
-@import 'bootstrap';
 @import 'normalize';
 @import 'variables';
 @import 'icon-font';
-@import 'settings';
-
+@import 'font';
 // @import 'rtl'; // uncomment to switch to RTL format
 
 /*
@@ -39,21 +37,6 @@ html, body {
   -webkit-text-size-adjust: none; /* Never autoresize text */
 }
 
-a {
-  text-decoration: none;
-  color: #000000;
-  font-weight: bold;
-}
-
-a:hover {
-  text-decoration:none;
-  color:#56d1bc;
-}
-
-.tcenter {
-  text-align: center;
-}
-
 ////////////////////////////////////////////////////////////////////////////////
 // TABLE OF CONTENTS
 ////////////////////////////////////////////////////////////////////////////////
@@ -66,6 +49,7 @@ a:hover {
 }
 
 .toc-wrapper {
+  @extend %menu-font;
   transition: left 0.3s ease-in-out;
 
   overflow-y: auto;
@@ -77,27 +61,21 @@ a:hover {
   bottom: 0;
   width: $nav-width;
   background-color: $nav-bg;
-  font-size: 13px;
-  font-weight: bold;
 
   // language selector for mobile devices
   .lang-selector {
     display: none;
     a {
-      padding-top: 0.5em;
-      padding-bottom: 0.5em;
+      padding-top: 16px;
+      padding-bottom: 16px;
     }
   }
 
   // This is the logo at the top of the ToC
   .logo {
     display: block;
-    height:100px;
-    width:auto;
-    padding:$logo-margin;
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
+    max-width: 100%;
+    margin: 40px 16px;
   }
 
   &>.search {
@@ -110,7 +88,7 @@ a:hover {
       padding: 6px 0 6px 20px;
       box-sizing: border-box;
       margin: $nav-v-padding $nav-padding;
-      width: $nav-width - 30;
+      width: $nav-width - ($nav-padding*2);
       outline: none;
       color: $nav-text;
       border-radius: 0; /* ios has a default border radius */
@@ -118,7 +96,7 @@ a:hover {
 
     &:before {
       position: absolute;
-      top: 17px;
+      top: 23px;
       left: $nav-padding;
       color: $nav-text;
       @extend %icon-search;
@@ -163,7 +141,7 @@ a:hover {
     list-style: none;
     margin: 0;
     padding: 0;
-    line-height: 28px;
+    line-height: 40px;
   }
 
   li {
@@ -171,6 +149,15 @@ a:hover {
     transition-property: background;
     transition-timing-function: linear;
     transition-duration: 200ms;
+  }
+
+  .toc-title {
+    display: block;
+    padding-left: $nav-padding;
+    text-transform: uppercase;
+    font-size: 11px;
+    color: $nav-title-text;
+    margin-top: 32px;
   }
 
   // This is the currently selected ToC entry
@@ -196,6 +183,17 @@ a:hover {
     font-size: 12px;
   }
 
+  .toc-list-h3 {
+    display: none;
+    background-color: $nav-subitem-bg;
+    font-weight: 500;
+  }
+
+  .toc-h3 {
+    padding-left: $nav-padding + $nav-indent + $nav-indent;
+    font-size: 12px;
+  }
+
   .toc-footer {
     padding: 1em 0;
     margin-top: 1em;
@@ -211,7 +209,7 @@ a:hover {
     }
 
     li {
-      font-size: 1em;
+      font-size: 0.8em;
       line-height: 1.7;
       text-decoration: none;
     }
@@ -229,6 +227,10 @@ a:hover {
   transition-property: background;
   transition-timing-function: linear;
   transition-duration: 130ms;
+}
+
+.toc-link:hover {
+  color: $nav-hover-text;
 }
 
 // button to show navigation on mobile devices
@@ -250,7 +252,6 @@ a:hover {
   z-index: 100;
   color: #000;
   text-decoration: none;
-  font-weight: bold;
   opacity: 0.7;
   line-height: 16px;
   img {
@@ -295,22 +296,25 @@ a:hover {
   .lang-selector {
     position: fixed;
     z-index: 50;
-    border-bottom: 5px solid $lang-select-active-bg;
   }
 }
 
 .lang-selector {
   background-color: $lang-select-bg;
   width: 100%;
-  font-weight: bold;
+  padding: 16px 2%;
+
   a {
     display: block;
     float:left;
     color: $lang-select-text;
+    text-transform: uppercase;
+    font-size: 11px;
     text-decoration: none;
-    padding: 0 10px;
+    padding: 0 16px;
     line-height: 30px;
     outline: 0;
+    border-radius: 8px;
 
     &:active, &:focus {
       background-color: $lang-select-pressed-bg;
@@ -342,14 +346,6 @@ a:hover {
   position: relative;
   z-index: 30;
 
-  .postman-run-button {
-    margin-left: 28px;
-  }
-  ol {
-    margin:0;
-    padding-left:15px;
-  }
-
   &:after {
     content: '';
     display: block;
@@ -365,44 +361,43 @@ a:hover {
     @extend %left-col;
   }
 
-
   &>ul, &>ol {
     padding-left: $main-padding + 15px;
-    margin-top:0;
-    margin-bottom:0;
   }
 
   // the div is the tocify hidden div for placeholding stuff
-  &>h1, &>h2, &>div {
+  &>h1, &>h2, &>h3, &>div {
     clear:both;
   }
 
   h1 {
     @extend %header-font;
-    font-size: 25px;
-    padding-top: 0.5em;
-    padding-bottom: 0.5em;
+    font-size: 27px;
+    padding-top: 47px;
+    padding-bottom: 8px;
     margin-bottom: $h1-margin-bottom;
-    margin-top: 2em;
-    border-top: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
-    background-color: #fdfdfd;
+    margin-top: 48px;
+    border-top: 1px solid $h1-border-color;
+    letter-spacing: -0.5px;
+    font-kerning: normal;
   }
 
   h1:first-child, div:first-child + h1 {
+    padding-top: 48px;
     border-top-width: 0;
     margin-top: 0;
   }
 
   h2 {
     @extend %header-font;
-    font-size: 19px;
-    margin-top: 4em;
+    font-size: 23px;
+    margin-top: 48px;
     margin-bottom: 0;
-    border-top: 1px solid #ccc;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    background-image: linear-gradient(to bottom, rgba(#fff, 0.2), rgba(#fff, 0));
+    border-top: 1px solid $h2-border-color;
+    padding-top: 47px;
+    padding-bottom: 24px;
+    letter-spacing: -0.5px;
+    font-kerning: normal;
   }
 
   // h2s right after h1s should bump right up
@@ -414,13 +409,24 @@ a:hover {
 
   h3, h4, h5, h6 {
     @extend %header-font;
-    font-size: 15px;
+    @extend %bold-font;
+    font-size: 18px;
     margin-top: 2.5em;
     margin-bottom: 0.8em;
   }
 
   h4, h5, h6 {
-    font-size: 10px;
+    @extend %bold-font;
+    text-transform: uppercase;
+    font-size: 12px;
+  }
+
+  a {
+    color: $link-color;
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
   }
 
   hr {
@@ -435,37 +441,70 @@ a:hover {
     th,td {
       text-align: left;
       vertical-align: top;
-      line-height: 1.6;
+      line-height: 24px;
       code {
         white-space: nowrap;
+      }
+
+      strong {
+        @extend %bold-font;
+        line-height: 16px;
+        width: 100px;
+        display: block;
+        text-align: right;
+        color: $method-item-label-text;
+        font-weight: 400;
+        & + strong {
+          @extend %regular-font;
+          line-height: 16px;
+          display: block;
+          text-align: right;
+          font-style: normal;
+          color: $validation-required-text;
+          font-size: 11px;
+        }
+      }
+      em {
+        line-height: 16px;
+        display: block;
+        text-align: right;
+        font-style: normal;
+        color: $validation-text;
+        font-size: 11px;
       }
     }
 
     th {
-      padding: 5px 10px;
-      border-bottom: 1px solid #ccc;
+      @extend %bold-font;
+      font-weight: 400;
+      padding: 8px 16px;
       vertical-align: bottom;
+
+      strong {
+        @extend %bold-font;
+        line-height: inherit;
+        width: auto;
+        color: inherit;
+      }
+    }
+    th:first-child {
+      padding-left: 0;
+    }
+    th:last-child {
+      padding-right: 0;
     }
 
     td {
-      padding: 10px;
+      border-top: 1px solid $table-border-color;
+      padding: 16px;
     }
-
-    tr:last-child {
-      border-bottom: 1px solid #ccc;
-    }
-
-    tr:nth-child(odd)>td {
-      background-color: lighten($main-bg,4.2%);
-    }
-
-    tr:nth-child(even)>td {
-      background-color: #ececec;
+    td:first-child {
+      padding-left: 0;
     }
   }
 
   dt {
-    font-weight: bold;
+    @extend %bold-font;
   }
 
   dd {
@@ -482,16 +521,25 @@ a:hover {
   }
 
   code {
-    background-color: rgba(0,0,0,0.05);
-    padding: 3px;
+    display: inline-block;
+    background-color: $inline-code-bg;
+    color: $inline-code-dark-text;
+    padding: 2px 4px;
     border-radius: 3px;
     @extend %break-words;
     @extend %code-font;
+    font-weight: 400;
   }
 
   pre>code {
-    background-color: transparent;
     padding: 0;
+    color: inherit;
+    background-color: transparent;
+  }
+
+  blockquote > p > code {
+    color: $inline-code-text;
+    background-color: transparent;
   }
 
   aside {
@@ -513,8 +561,10 @@ a:hover {
 
   aside:before {
     vertical-align: middle;
-    padding-right: 0.5em;
-    font-size: 14px;
+    padding-right: 2px;
+    font-size: 13px;
+    position: relative;
+    bottom: 1px;
   }
 
   aside.notice:before {
@@ -532,7 +582,7 @@ a:hover {
   .search-highlight {
     padding: 2px;
     margin: -3px;
-    border-radius: 4px;
+    border-radius: 3px;
     border: 1px solid #F7E633;
     background: linear-gradient(to top left, #F7E633 0%, #F1D32F 100%);
   }
@@ -548,9 +598,10 @@ a:hover {
     background-color: $code-bg;
     color: #fff;
 
+    border-radius: 3px;
     margin: 0;
-    padding-bottom:5px;
-    width: $examples-width;
+    width: 54%;
+    margin-right: 3%;
 
     float:right;
     clear:right;
@@ -570,20 +621,17 @@ a:hover {
 
   pre {
     @extend %code-font;
+    border-radius: 3px;
     padding-top: 2em;
     padding-bottom: 2em;
-    padding: 2em $main-padding;
+    padding: 2em 2em;
+    margin-bottom: 24px
   }
 
   blockquote {
     &>p {
       background-color: $code-annotation-bg;
-      padding: $code-annotation-padding 2em;
-      color: #eee;
-    }
-    aside {
-      padding-left:5px;
-      padding-right:5px;
+      padding: 0 0 24px 0;
     }
   }
 }
@@ -650,27 +698,4 @@ a:hover {
 
 .highlight, .highlight .w {
   background-color: $code-bg;
-}
-
-// addition
-.inside {
-  margin:0px;
-  -webkit-padding-start:20px;
-}
-
-.menuB {
-  margin:10px;
-  font-size:12px;
-  color:#ffffff;
-}
-.menuB a {
-  color:#f1f1f1;
-}
-
-blockquote td {
-  color:#000000;
-}
-blockquote table {
-  margin-left:5px;
-  width:inherit;
 }
