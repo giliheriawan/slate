@@ -41,9 +41,9 @@ NICEPAY APIs should be requested through HTTPS request to our Endpoint URL.
 
 Environment | Protocol | Base URL
 ------------ | ------------| ------------------------
-Development | https | https://**dev**.nicepay.co.id/
-Staging | https | https://**staging**.nicepay.co.id/
-Production | https | https://**www**.nicepay.co.id/
+Development | https | https://dev.nicepay.co.id/
+Staging | https | https://staging.nicepay.co.id/
+Production | https | https://www.nicepay.co.id/
 
 ### NICEPAY API V1 Endpoints
 API Endpoint | Method | Description
