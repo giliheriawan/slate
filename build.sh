@@ -1,2 +1,3 @@
 bundle exec middleman build --clean
-mv /slate/build/* /var/www/html
+cp -R "build"/* /var/www/html
+rm -r build
