@@ -15,8 +15,6 @@ includes:
 
 search: true
 ---
-# Home
-
 # Introduction
 ```java
     _   __________________   ____  _____  __
@@ -68,5 +66,9 @@ API Endpoint | Method | Description
 ADD | MORE | URL
 
 # Test Postman
-Try our POSTMAN Collection!<br>
-<div class="postman-run-button" data-postman-action="collection/import" data-postman-var-1="c99e333264e2df40bc6b"></div>
+Try our POSTMAN Collection!
+
+Enterprise | Professional
+---------- | ------------
+<div class="postman-run-button" data-postman-action="collection/import" data-postman-var-1="4e6690cd6c51963cf691"></div> | <div class="postman-run-button" data-postman-action="collection/import" data-postman-var-1="ea2fa74dab4e0b686e34"></div>
+
