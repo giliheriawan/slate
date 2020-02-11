@@ -15,7 +15,7 @@ includes:
 
 search: true
 ---
-# NICEPAY API References and Documentation
+# Home
 
 # Introduction
 ```java
@@ -32,6 +32,8 @@ search: true
 Using our latest technology, we are integrated with Banks, E-wallets and other financial services via encrypted host to host connection to provide a secure and fast transaction.
  
 Give us a shot because we are confident that we can provide you with the best Payment Solution to grow your business.
+
+Have any inquiry ?<br>Feel free contact us : [it@nicepay.co.id](mailto:it@nicepay.co.id).
 
 ## Prerequisites
 <ol type="1">
@@ -64,3 +66,7 @@ API Endpoint | Method | Description
 /nicepay/direct/v2/inquiry | POST | Transaction Status Inquiry
 /nicepay/direct/v2/cancel | POST | Transaction Cancel
 ADD | MORE | URL
+
+# Test Postman
+Try our POSTMAN Collection!<br>
+<div class="postman-run-button" data-postman-action="collection/import" data-postman-var-1="c99e333264e2df40bc6b"></div>

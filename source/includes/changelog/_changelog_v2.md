@@ -1,7 +1,3 @@
-# Test Postman
-
-<div class="postman-run-button" data-postman-action="collection/import" data-postman-var-1="c99e333264e2df40bc6b"></div>
-
 #Changelog
 
 ##API Changelog Info
