@@ -33,16 +33,12 @@ NICEPAY APIs should be requested through HTTPS request to our Endpoint URL.
 Development Environment : https://**dev**.nicepay.co.id/<br>
 Production Environment : https://**api**.nicepay.co.id/
 
-## API Version 1
-NICEPAY API V1 Endpoints
-
+### NICEPAY API V1 Endpoints
 API Endpoint | Method | Description
 ------------ | ------------| ------------------------
 ADD | MORE | URL FOR V1
 
-## API Version 2
-NICEPAY API V2 Endpoints
-
+### NICEPAY API V2 Endpoints
 API Endpoint | Method | Description
 ------------ | ------------| ------------------------
 /nicepay/direct/v2/registration | POST JSON | Transaction Registration
