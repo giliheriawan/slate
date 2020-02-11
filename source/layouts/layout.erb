@@ -62,13 +62,28 @@ under the License.
   </div>
 
   <!--FOR OTHER PAGES-->
-  <% if page_classes != 'index' %>
+  <% if page_classes.include? 'v1-EN' %>
     <div class="menuB">
-      <a href="./index.html">Back to Home</a><br>
-      <span><a class="toc-h1 toc-link" href="./api-v1-ID.html">API Version 1</a></span><br>
-      <span><a class="toc-h1 toc-link" href="./api-v1-EN.html">API Version 1</a></span><br>
-      <span><a class="toc-h1 toc-link" href="./api-v2-ID.html">API Version 2</a></span><br>
+      <a class="toc-h1 toc-link" href="./index.html">Back to Home</a><br>
       <span><a class="toc-h1 toc-link" href="./api-v2-EN.html">API Version 2</a></span>
+    </div>
+  <% end %>
+  <% if page_classes.include? 'v2-EN' %>
+    <div class="menuB">
+      <a class="toc-h1 toc-link" href="./index.html">Back to Home</a><br>
+      <span><a class="toc-h1 toc-link" href="./api-v1-EN.html">API Version 1</a></span>
+    </div>
+  <% end %>
+  <% if page_classes.include? 'v1-ID' %>
+    <div class="menuB">
+      <a class="toc-h1 toc-link" href="./index.html">Back to Home</a><br>
+      <span><a class="toc-h1 toc-link" href="./api-v2-ID.html">API Version 2</a></span>
+    </div>
+  <% end %>
+  <% if page_classes.include? 'v2-ID' %>
+    <div class="menuB">
+      <a class="toc-h1 toc-link" href="./index.html">Back to Home</a><br>
+      <span><a class="toc-h1 toc-link" href="./api-v1-ID.html">API Version 1</a></span>
     </div>
   <% end %>
   <% if language_tabs.any? %>
