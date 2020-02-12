@@ -136,9 +136,9 @@ For Notifications, please add NICEPAY to your whitelist if you have firewalls:<b
 `103.117.8.0/24  # NICEPAY - Server 3` <br>
 `103.20.51.39    # NICEPAY - Server Dev` <br>
 `User Agent: NICEPAY`
-`
 
-# Test Postman
+
+# Postman Collections
 Try our POSTMAN Collection!
 
 | Enterprise | Professional |
