@@ -3,10 +3,8 @@ title: NICEPAY API Documentation
 
 language_tabs: # must be one of https://git.io/vQNgJ
   - java
-  - csharp
   - php
   - python
-  - ruby
   
 toc_footers:
   - <a href='http://nicepay.co.id/'>Sign Up</a>
@@ -134,7 +132,7 @@ To Allow Push Notifications from NICEPAY Server, please add these details to you
 
 | **Method** | Merchant Token | IP | Description |
 | --- | --- | --- | --- |
-| **POST** *application/x-www-form-urlencoded* | `iMid`<br>`tXid`<br>`amt`<br>`merchantKey` | `103.117.8.33 # NICEPAY-1`<br>`103.117.8.34 # NICEPAY-2`<br>`103.117.8.0/24 # NICEPAY-3`<br>`103.20.51.39 # NICEPAY-Dev` | Notification from `User Agent: NICEPAY` |
+| **POST**  *application/x-www-form-urlencoded* | `iMid`<br>`tXid`<br>`amt`<br>`merchantKey` | `103.117.8.33 # NICEPAY-1`<br>`103.117.8.34 # NICEPAY-2`<br>`103.117.8.0/24 # NICEPAY-3`<br>`103.20.51.39 # NICEPAY-Dev` | Notification from `User Agent: NICEPAY` |
 
 <aside class="notice">
 Merchant Token received by your Notification Endpoint should be compared internally to prevent fake Notifications.
