@@ -61,8 +61,8 @@ API Endpoint | Method | Description
 ------------ | ------------| ------------------------
 /nicepay/direct/v2/registration | POST JSON | Transaction Registration
 /nicepay/direct/v2/payment | POST JSON | Transaction Payment
-/nicepay/direct/v2/inquiry | POST | Transaction Status Inquiry
-/nicepay/direct/v2/cancel | POST | Transaction Cancel
+/nicepay/direct/v2/inquiry | POST JSON | Transaction Status Inquiry
+/nicepay/direct/v2/cancel | POST JSON | Transaction Cancel
 ADD | MORE | URL
 
 # Test Postman
