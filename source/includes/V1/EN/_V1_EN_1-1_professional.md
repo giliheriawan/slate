@@ -10,8 +10,7 @@ NICEPay Professional Step:
 </ol>
 
 ## Transaction Registration
-
-This API is for **Transaction Registration** for :
+This API creates and register a new Transaction
 <ol type="1">
   <li>Credit Card
   <li>Virtual Account
@@ -22,17 +21,68 @@ This API is for **Transaction Registration** for :
 
 &nbsp; | Transaction Registration
 ---------- | -------
-**API url** | **/nicepay/api/orderRegist.do**
-Method | POST
-Description | Perform transaction registration for Credit Card, Virtual Account, Clickpay, Ewallet
-Merchant Token | SHA256 (Merchant ID + Reference Number + Amount + Merchant Key)
+**API url** | `/nicepay/api/orderRegist.do`
+**Method** *application/x-www-form-urlencoded*| `POST` 
+**Description** | Perform transaction registration.
+**Merchant Token** | SHA256(`iMid``referenceNo``amt``merchantKey`)
 
-<br>**Request Json Object**
-
-| **Parameter** | Mandatory | Type | Size | Description | Example Value| 
-| --- | --- | --- | --- | --- | --- |
-| **``iMid``** | Y | AN | 10 | Merchant ID | IONPAYTEST |
-| ``**merchantToken**`` | Y | N | 255 | Merchant Token | 6cfccfc0046773c1b589d8e98f8b596c284f3c70a4ecf86eba14c18944b74bcd |
+| **Description**                       	      | Parameter       | Type        | Size | Example Value                                                                                  |
+|-------------------------------------------------|-----------------|-------------|------|------------------------------------------------------------------------------------------------|
+| **Merchant ID** **Required**                    | iMid            | AN          | 10   | IONPAYTEST                                                                                     |
+| **Merchant Token** **Required**                 | merchantToken   | N           | 255  | 6cfccfc0046773c1b589d8e98f8b596c284f3c70a4ecf86eba14c18944b74bcd                               |
+| **Payment Method** **Required**                 | payMethod       | AN          | 2    | 01: Credit Card<br>02: Virtual Account<br>03:Convenience Store<br>04: ClickPay<br>05: E-Wallet |
+| **Currency** **Required**                       | currency        | N           | 3    | IDR                                                                                            |
+| **Transaction Amount** **Required**             | amt             | N           | 12   | 10000                                                                                          |
+| **Installment Type** **Required for CC**        | instmntType     | N           | 2    | 1: Customer charge<br>2: Merchant charge                                                       |
+| **Installment Month** **Required for CC**       | instmntMon      | N           | 2    | 1                                                                                              |
+| **Merchant Order Number** **Required**          | referenceNo     | ANS         | 40   | MerchantReferenceNumber1                                                                       |
+| **Goods Name** **Required**                     | goodsNm         | AN          | 100  | Merchant Goods 1                                                                               |
+| **Billing Name** **Required**                   | billingNm       | A           | 30   | Buyer Name                                                                                     |
+| **Billing Phone Number** **Required**           | billingPhone    | N           | 15   | 2123456789                                                                                     |
+| **Billing Email** **Required**                  | billingEmail    | AN          | 40   | buyer@merchant.com                                                                             |
+| **Billing Address**                         	  | billingAddr     | AN          | 100  | Billing Address                                                                                |
+| **Billing City** **Required for CC**            | billingCity     | A           | 50   | Jakarta Utara                                                                                  |
+| **Billing State** **Required for CC**           | billingState    | A           | 50   | DKI Jakarta                                                                                    |
+| **Billing Postcode** **Required for CC**        | billingPostCd   | A           | 10   | 10160                                                                                          |
+| **Billing Country** **Required for CC**         | billingCountry  | A           | 10   | Indonesia                                                                                      |
+| **Delivery Name**                          	  | deliveryNm      | A           | 30   | Delivery name                                                                                  |
+| **Delivery Phone Number**                  	  | deliveryPhone   | N           | 15   | 2123456789                                                                                     |
+| **Delivery Address**                       	  | deliveryAddr    | AN          | 100  | Delivery Address                                                                               |
+| **Delivery City**                           	  | deliveryCity    | A           | 50   | Jakarta Utara                                                                                  |
+| **Delivery State**                         	  | deliveryState   | A           | 50   | DKI Jakarta                                                                                    |
+| **Delivery Postcode **                     	  | deliveryPostCd  | N           | 10   | 10160                                                                                          |
+| **Delivery Country**                       	  | deliveryCountry | A           | 10   | indonesia                                                                                      |
+| **Payment Result Page URL**  **Required**       | callBackUrl     | AN          | 255  | https://merchant.com/callBackUrl                                                               |
+| **Push Notification URL**  **Required**         | dbProcessUrl    | AN          | 255  | https://merchant.com/dbProcessUrl                                                              |
+| **Vat Number**                            	  | vat             | N           | 12   | 0                                                                                              |
+| **Service Fee**                            	  | fee             | N           | 12   | 0                                                                                              |
+| **Tax Free Amount**                        	  | notaxAmt        | N           | 12   | 0                                                                                              |
+| **Transaction Description**  **Required**       | description     | AN          | 100  | this is test order                                                                             |
+| **Request Date**                            	  | reqDt           | N           | 8    | 20180303                                                                                       |
+| **Request Time**                            	  | reqTm           | N           | 6    | 135959                                                                                         |
+| **Request domain**                          	  | reqDomain       | AN          | 100  | merchant.com                                                                                   |
+| **Request Server IP Address**               	  | reqServerIP     | AN          | 15   | 127.0.0.1                                                                                      |
+| **Request Client Version**                  	  | reqClientVer    | AN          | 50   | 1                                                                                              |
+| **User IP address **                        	  | userIP          | AN          | 15   | 127.0.0.1                                                                                      |
+| **User Session ID **                        	  | userSessionID   | AN          | 100  | userSessionID                                                                                  |
+| **User Agent Information**                  	  | userAgent       | AN          | 100  | Mozilla                                                                                        |
+| **User Language**                           	  | userLanguage    | A           | 2    | en-US                                                                                          |
+| **Recurring Option**                        	  | recurrOpt       | N           | 2    | 0: Automatic Cancel<br>1: Do not cancel<br>2: Do not make token                                |
+| **Transaction Cart Data**                   	  | cartData        |`JSON OBJECT`| 4000 | (JSON Format)                                                                                  |
+| **Installment Type**  					  	  | instmntType     | N           | 2    | 1                                                                                              |
+| **Worker**                                 	  | worker          | AN          | 10   | worker                                                                                         |
+| **Merchant Fix VA Number**  				  	  | merFixAcctId    | N           | 40   | 14015824                                                                                       |
+| **Virtual Account Valid Date**     	      	  | vacctValidDt    | N           | 8    | 20180404                                                                                       |
+| **Virtual Account Valid Time**              	  | vacctValidTm    | N           | 6    | 235959                                                                                         |
+| **Payment Expired Date**                    	  | paymentExpDt    | N           | 8    | 20180404                                                                                       |
+| **Payment Expired Time**                    	  | paymentExpTm    | N           | 6    | 235959                                                                                         |
+| **CVS Valid Date**                          	  | payValidDt      | N           | 8    | 20180404                                                                                       |
+| **CVS Valid Time**                         	  | payValidTm      | N           | 6    | 235959                                                                                         |
+| **Transaction ID**            			  	  | tXid            | AN          | 30   | IONPAYTEST1251831956130431                                                                     |
+| **Mitra Code**					          	  | mitraCd         | AN          | 4    | ALMA                                                                                           |
+| **Bank Reference No.**                      	  | mRefNo          | N           | 18   | bankcd123456789                                                                                |
+| **Timestamp**                               	  | timeStamp       | N           | 14   | 20180404165639                                                                                 |
+| **SDK Version**                             	  | version         | AN          |      | D2                                                                                             |
 
 ##- Credit Card
 
