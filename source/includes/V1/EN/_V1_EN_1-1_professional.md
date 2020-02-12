@@ -10,12 +10,12 @@ NICEPAY Professional Step:
 
 ## Transaction Registration
 This API creates and register a new Transaction
-|          &nbsp;                                   | Transaction Registration                    |
-|---------------------------------------------------|---------------------------------------------|
-| **API url**                                       | `/nicepay/api/orderRegist.do`               |
-| **Method** *application/x-www-form-urlencoded*    | `POST`                                      |
-| **Description**                                   | Perform transaction registration.           |
-| **Merchant Token**                                | SHA256(`iMid``referenceNo``amt``merchantKey`)|
+|                                                   | Transaction Registration                      |
+|---------------------------------------------------|-----------------------------------------------|
+| **API url**                                       | `/nicepay/api/orderRegist.do`                 |
+| **Method** *application/x-www-form-urlencoded*    | `POST`                                        |
+| **Description**                                   | Perform transaction registration.             |
+| **Merchant Token**                                | SHA256(`iMid``referenceNo``amt``merchantKey`) |
 
 <ol type="1">
   <li>Credit Card
@@ -49,7 +49,7 @@ This API creates and register a new Transaction
 | **Delivery Address**                       	  | deliveryAddr    | AN          | 100  | Delivery Address                                                                               |
 | **Delivery City**                           	  | deliveryCity    | A           | 50   | Jakarta Utara                                                                                  |
 | **Delivery State**                         	  | deliveryState   | A           | 50   | DKI Jakarta                                                                                    |
-| **Delivery Postcode **                     	  | deliveryPostCd  | N           | 10   | 10160                                                                                          |
+| **Delivery Postcode**                     	  | deliveryPostCd  | N           | 10   | 10160                                                                                          |
 | **Delivery Country**                       	  | deliveryCountry | A           | 10   | indonesia                                                                                      |
 | **Payment Result Page URL**  **Required**       | callBackUrl     | AN          | 255  | https://merchant.com/callBackUrl                                                               |
 | **Push Notification URL**  **Required**         | dbProcessUrl    | AN          | 255  | https://merchant.com/dbProcessUrl                                                              |
@@ -62,8 +62,8 @@ This API creates and register a new Transaction
 | **Request domain**                          	  | reqDomain       | AN          | 100  | merchant.com                                                                                   |
 | **Request Server IP Address**               	  | reqServerIP     | AN          | 15   | 127.0.0.1                                                                                      |
 | **Request Client Version**                  	  | reqClientVer    | AN          | 50   | 1                                                                                              |
-| **User IP address **                        	  | userIP          | AN          | 15   | 127.0.0.1                                                                                      |
-| **User Session ID **                        	  | userSessionID   | AN          | 100  | userSessionID                                                                                  |
+| **User IP address**                        	  | userIP          | AN          | 15   | 127.0.0.1                                                                                      |
+| **User Session ID**                        	  | userSessionID   | AN          | 100  | userSessionID                                                                                  |
 | **User Agent Information**                  	  | userAgent       | AN          | 100  | Mozilla                                                                                        |
 | **User Language**                           	  | userLanguage    | A           | 2    | en-US                                                                                          |
 | **Recurring Option**                        	  | recurrOpt       | N           | 2    | 0: Automatic Cancel<br>1: Do not cancel<br>2: Do not make token                                |
