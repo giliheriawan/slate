@@ -10,6 +10,7 @@ NICEPAY Professional Step:
 
 ## Transaction Registration
 This API creates and register a new Transaction
+
 |                                                   | Transaction Registration                      |
 |---------------------------------------------------|-----------------------------------------------|
 | **API url**                                       | `/nicepay/api/orderRegist.do`                 |
