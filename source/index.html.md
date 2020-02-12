@@ -54,9 +54,9 @@ NICEPAY APIs should be requested through HTTPS request to our Endpoint URL.
 
 | **Environment** | **Protocol** | **Base URL** |
 | --- | --- | --- |
-| Development | **https** | https://dev.nicepay.co.id/ |
-| Staging | **https** | https://staging.nicepay.co.id/ |
-| Production | **https** | https://www.nicepay.co.id/ |
+| **Development** | **https** | https://dev.nicepay.co.id/ |
+| **Staging** | **https** | https://staging.nicepay.co.id/ |
+| **Production** | **https** | https://www.nicepay.co.id/ |
 
 ## NICEPAY API Authentication
 To connect to our APIs, `merchantToken` is **required** to be sent along with other parameters.
@@ -66,7 +66,7 @@ This token is generated using `SHA-256` hashing which includes secret keys such 
 
 | **API** | **Merchant Token** | **Method** | **End Point** | **Description** |
 | --- | --- | --- | --- | --- |
-| **V1**  **Professional** | SHA256 (`iMid`+`referenceNo`+`amt`+`merchantKey`) | **POST** *application/x-www-form-urlencoded* | `/nicepay/api/orderRegist.do` | Transaction Registration |
+| **V1**  **Professional** | `iMid``referenceNo``amt``merchantKey` | **POST** *application/x-www-form-urlencoded* | `/nicepay/api/orderRegist.do` | Transaction Registration |
 | **V1**  **Enterprise** | SHA256 (`iMid`+`referenceNo`+`amt`+`merchantKey`) | **POST** *application/x-www-form-urlencoded* | `/nicepay/api/onePassToken.do` | Request Credit Card Token |
 | **V1**  **Enterprise** | n/a | **Pop-up** | `/nicepay/api/secureVeRequest.do` | Request 3DS Pages |
 | **V1**  **Enterprise** | n/a | **Pop-up** | `/nicepay/api/migsRequest.do` | Request MIGS Pages |
