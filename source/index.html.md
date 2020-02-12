@@ -52,29 +52,67 @@ Have any inquiry ?<br>Feel free contact us : [it@nicepay.co.id](mailto:it@nicepa
 # NICEPAY URLs
 NICEPAY APIs should be requested through HTTPS request to our Endpoint URL.
 
-| **Environment** | **Protocol** | **Base URL** |
+| **Environment** | **Protocol** | Base URL |
 | --- | --- | --- |
 | **Development** | **https** | https://dev.nicepay.co.id/ |
 | **Staging** | **https** | https://staging.nicepay.co.id/ |
 | **Production** | **https** | https://www.nicepay.co.id/ |
 
 ## NICEPAY API Authentication
+```java
+public String makeTokenV1(String amount, String ReferenceNo) throws Exception {
+		MessageDigest md = MessageDigest.getInstance("SHA-256");
+		String textToken = merchantID + ReferenceNo + amount + merchantKey;
+
+		md.update(textToken.getBytes("UTF-8"));
+		merchantToken = String.format("%064x", new java.math.BigInteger(1, md.digest()));
+
+		return merchantToken;
+	}
+```
+
+```php
+public function merchantToken() {
+        return hash('sha256',   $this->get('iMid').
+                                $this->get('referenceNo').
+                                $this->get('amt').
+                                $this->merchantKey
+        );
+    }
+```
+
+```python
+def getMerchantToken():
+    if not iMid:
+        sys.exit("Cannot set Merchant Token, please set param iMid using NICEPay.iMid = iMid values")
+    elif not referenceNo:
+        sys.exit("Cannot set Merchant Token, please set param referenceNo using NICEPay.referenceNo = referenceNo values")
+    elif not amt:
+        sys.exit("Cannot set Merchant Token, please set param amt using NICEPay.amt = amt values")
+    elif not merchantKey:
+        sys.exit("Cannot set Merchant Token, please set param merchantKey using NICEPay.merchantKey = merchantKey values")
+    else:
+        mercToken = iMid + referenceNo + amt + merchantKey
+        token = hashlib.sha256(mercToken.encode('ascii')).hexdigest()
+        return token
+```
+
 To connect to our APIs, `merchantToken` is **required** to be sent along with other parameters.
 This token is generated using `SHA-256` hashing which includes secret keys such as `iMid` and `merchantKey`.
 
 ### API V1 Endpoints
 
-| **API** | **Merchant Token** | **Method** | **End Point** | **Description** |
+| **API** | Merchant Token | **Method** | End Point | Description |
 | --- | --- | --- | --- | --- |
-| **V1**  **Professional** | `iMid``referenceNo``amt``merchantKey` | **POST** *application/x-www-form-urlencoded* | `/nicepay/api/orderRegist.do` | Transaction Registration |
-| **V1**  **Enterprise** | SHA256 (`iMid`+`referenceNo`+`amt`+`merchantKey`) | **POST** *application/x-www-form-urlencoded* | `/nicepay/api/onePassToken.do` | Request Credit Card Token |
-| **V1**  **Enterprise** | n/a | **Pop-up** | `/nicepay/api/secureVeRequest.do` | Request 3DS Pages |
-| **V1**  **Enterprise** | n/a | **Pop-up** | `/nicepay/api/migsRequest.do` | Request MIGS Pages |
-| **V1**  **Enterprise** | SHA256 (`iMid`+`referenceNo`+`amt`+`merchantKey`) | **POST** *application/x-www-form-urlencoded* | `/nicepay/api/onePass.do` | Transaction Payment (Credit Card) and Registration for other payment methods. |
-| **V1**  **Enterprise** | SHA256 (`iMid`+`referenceNo`+`amt`+`merchantKey`) | **POST** *application/x-www-form-urlencoded* | `/nicepay/api/ewalletTrans.do` | E-Wallet Trans? |
-| **V1** | SHA256 (`iMid`+`referenceNo`+`amt`+`merchantKey`) | **POST** *application/x-www-form-urlencoded* | `/nicepay/api/onePassStatus.do` | Status Inquiry |
-| **V1** | SHA256 (`iMid`+`tXid`+`amt`+`merchantKey`) | **POST** *application/x-www-form-urlencoded* | `/nicepay/api/onePassAllCancel.do` | Cancel Transaction |
-| **V1**  *Notification* | SHA256 (`iMid`+`tXid`+`amt`+`merchantKey`) | **POST** *application/x-www-form-urlencoded* | NICEPAY | Notification from NICEPAY |
+| **V1**  **Professional** | `iMid`<br>`referenceNo`<br>`amt`<br>`merchantKey` | **POST** *application/x-www-form-urlencoded* | `/nicepay/api/orderRegist.do` | Transaction Registration |
+| **V1**  **Enterprise** | `iMid`<br>`referenceNo`<br>`amt`<br>`merchantKey` | **POST** *application/x-www-form-urlencoded* | `/nicepay/api/onePassToken.do` | Request Credit Card Token |
+| **V1**  **Enterprise** | `n/a` | **Pop-up** | `/nicepay/api/secureVeRequest.do` | Request 3DS Pages |
+| **V1**  **Enterprise** | `n/a` | **Pop-up** | `/nicepay/api/migsRequest.do` | Request MIGS Pages |
+| **V1**  **Enterprise** |`iMid`<br>`referenceNo`<br>`amt`<br>`merchantKey` | **POST** *application/x-www-form-urlencoded* | `/nicepay/api/onePass.do` | Transaction Payment (Credit Card) and Registration for other payment methods. |
+| **V1**  **Enterprise** | `iMid`<br>`referenceNo`<br>`amt`<br>`merchantKey` | **POST** *application/x-www-form-urlencoded* | `/nicepay/api/ewalletTrans.do` | E-Wallet Trans? |
+| **V1** | `iMid`<br>`referenceNo`<br>`amt`<br>`merchantKey` | **POST** *application/x-www-form-urlencoded* | `/nicepay/api/onePassStatus.do` | Status Inquiry |
+| **V1** | `iMid`<br>`tXid`<br>`amt`<br>`merchantKey` | **POST** *application/x-www-form-urlencoded* | `/nicepay/api/onePassAllCancel.do` | Cancel Transaction |
+| **V1**  *Notification* | `iMid`<br>`tXid`<br>amt`<br>`merchantKey` | **POST** *application/x-www-form-urlencoded* | NICEPAY | Notification from NICEPAY |
 
 <aside class="notice">
 Concatenation of the keys to generate `merchantToken` should not include spaces or '+' symbol.
