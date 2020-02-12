@@ -65,7 +65,7 @@ This token is generated using <code>SHA-256</code> hashing which includes secret
 ### API V1 Endpoints
 
 API | Merchant Token | End Point | Description
------------- | ------------| ------------------------
+------------ | ------------ | ------------| ------------------------
 V1 <strong>Professional</strong> | SHA256 (<code>iMid</code>+<code>referenceNo</code>+<code>amt</code>+<code>merchantKey</code>) | <code><strong>POST</strong></code> <code></code>/nicepay/api/orderRegist.do</code> | Transaction Registration
 V1 <strong>Enterprise</strong> | SHA256 (<code>iMid</code>+<code>referenceNo</code>+<code>amt</code>+<code>merchantKey</code>) | <code><strong>POST</strong></code> <code>/nicepay/api/onePassToken.do</code> | Request Credit Card Token
 V1 <strong>Enterprise</strong> | n/a | <code><strong>Pop-up / Redirect</strong></code> <code>/nicepay/api/secureVeRequest.do</code> | Request 3DS Pages
@@ -83,7 +83,7 @@ Concatenation of the keys to generate <code>merchantToken</code> should not incl
 ### API V2 Endpoints
 
 API | Merchant Token | End Point | Description
------------- | ------------| ------------------------
+------------ | ------------ | ------------| ------------------------
 V2 <strong>Professional</strong> | SHA256 (<code>iMid</code>+<code>referenceNo</code>+<code>amt</code>+<code>merchantKey</code>) | <code><strong>POST</strong></code> <code></code>/nicepay/api/orderRegist.do</code> | Transaction Registration
 V2 | SHA256 (<code>iMid</code>+<code>referenceNo</code>+<code>amt</code>+<code>merchantKey</code>) | <code><strong>POST</strong></code> <code>/nicepay/api/onePassStatus.do</code> | Status Inquiry
 V2 | SHA256 (<code>iMid</code>+<code>tXid</code>+<code>amt</code>+<code>merchantKey</code>) | <code><strong>POST</strong></code> <code>/nicepay/api/onePassAllCancel.do</code> | Cancel Transaction
@@ -97,11 +97,11 @@ Concatenation of the keys to generate <code>merchantToken</code> should not incl
 
 For Notifications, please add NICEPAY to your whitelist if you have firewalls:<br>
 <code>
-103.117.8.33 # NICEPAY-Server 1 <br>
-103.117.8.34 # NICEPAY-Server 2 <br>
-103.117.8.0/24 # NICEPAY-Server 3 <br>
-103.20.51.39 # NICEPAY-Server Dev <br>
-User Agent: NICEPAY
+103.117.8.33    # NICEPAY - Server 1 <br>
+103.117.8.34    # NICEPAY - Server 2 <br>
+103.117.8.0/24  # NICEPAY - Server 3 <br>
+103.20.51.39    # NICEPAY - Server Dev <br>
+User Agent: NICEPAY 
 </code>
 
 # Test Postman
