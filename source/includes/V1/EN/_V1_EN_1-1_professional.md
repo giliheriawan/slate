@@ -9,14 +9,7 @@ NICEPAY Professional Step:
 </ol>
 
 ## Transaction Registration
-This API creates and register a new Transaction
-
-|                                                   | Transaction Registration                      |
-|---------------------------------------------------|-----------------------------------------------|
-| **API url**                                       | `/nicepay/api/orderRegist.do`                 |
-| **Method** *application/x-www-form-urlencoded*    | `POST`                                        |
-| **Description**                                   | Perform transaction registration.             |
-| **Merchant Token**                                | SHA256(`iMid``referenceNo``amt``merchantKey`) |
+This API creates and register a new Transaction for:
 
 <ol type="1">
   <li>Credit Card
@@ -25,6 +18,14 @@ This API creates and register a new Transaction
   <li>ClickPay
   <li>E-Wallet
 </ol>
+
+|                                                   |                                               |
+|---------------------------------------------------|-----------------------------------------------|
+| **API url**                                       | `/nicepay/api/orderRegist.do`                 |
+| **Method** *application/x-www-form-urlencoded*    | `POST`                                        |
+| **Description**                                   | Perform transaction registration.             |
+| **Merchant Token**                                | SHA256(`iMid``referenceNo``amt``merchantKey`) |
+
 
 | **Description**                       	      | Parameter       | Type        | Size | Example Value                                                                                  |
 |-------------------------------------------------|-----------------|-------------|------|------------------------------------------------------------------------------------------------|
