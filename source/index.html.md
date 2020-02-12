@@ -65,7 +65,7 @@ NICEPAY APIs should be requested through HTTPS request to our Endpoint URL.
 ```java
 public String makeTokenV1(String amount, String ReferenceNo) throws Exception {
 		MessageDigest md = MessageDigest.getInstance("SHA-256");
-		String textToken = merchantID + ReferenceNo + amount + merchantKey;
+		String textToken = iMid + referenceNo + amt + merchantKey;
 
 		md.update(textToken.getBytes("UTF-8"));
 		merchantToken = String.format("%064x", new java.math.BigInteger(1, md.digest()));
@@ -130,18 +130,18 @@ TBA
 ## Notifications
 
 For Notifications, please add NICEPAY to your whitelist if you have firewalls:<br>
-`
-103.117.8.33    # NICEPAY - Server 1 <br>
-103.117.8.34    # NICEPAY - Server 2 <br>
-103.117.8.0/24  # NICEPAY - Server 3 <br>
-103.20.51.39    # NICEPAY - Server Dev <br>
-User Agent: NICEPAY 
+
+`103.117.8.33    # NICEPAY - Server 1` <br>
+`103.117.8.34    # NICEPAY - Server 2` <br>
+`103.117.8.0/24  # NICEPAY - Server 3` <br>
+`103.20.51.39    # NICEPAY - Server Dev` <br>
+`User Agent: NICEPAY`
 `
 
 # Test Postman
 Try our POSTMAN Collection!
 
-Enterprise | Professional
----------- | ------------
-<div class="postman-run-button" data-postman-action="collection/import" data-postman-var-1="4e6690cd6c51963cf691"></div> | <div class="postman-run-button" data-postman-action="collection/import" data-postman-var-1="ea2fa74dab4e0b686e34"></div>
+| Enterprise | Professional |
+| --- | --- |
+| <div class="postman-run-button" data-postman-action="collection/import" data-postman-var-1="4e6690cd6c51963cf691"></div> | <div class="postman-run-button" data-postman-action="collection/import" data-postman-var-1="ea2fa74dab4e0b686e34"></div> |
 
