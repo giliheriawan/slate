@@ -124,22 +124,21 @@ Do not share your secret keys.
 | **V1**  **Enterprise** | `iMid`<br>`referenceNo`<br>`amt`<br>`merchantKey` | **POST** *application/x-www-form-urlencoded* | `/nicepay/api/ewalletTrans.do` | E-Wallet Trans? |
 | **V1** | `iMid`<br>`referenceNo`<br>`amt`<br>`merchantKey` | **POST** *application/x-www-form-urlencoded* | `/nicepay/api/onePassStatus.do` | Status Inquiry |
 | **V1** | `iMid`<br>`tXid`<br>`amt`<br>`merchantKey` | **POST** *application/x-www-form-urlencoded* | `/nicepay/api/onePassAllCancel.do` | Cancel Transaction |
-| **V1**  *Notification* | `iMid`<br>`tXid`<br>amt`<br>`merchantKey` | **POST** *application/x-www-form-urlencoded* | NICEPAY | Notification from NICEPAY |
 
 
 ### API V2 Endpoints
 TBA
 
 ## Notifications
+To Allow Push Notifications from NICEPAY Server, please add these details to your firewall whitelist:
 
-For Notifications, please add NICEPAY to your whitelist if you have firewalls:<br>
+| **Method** | Merchant Token | IP | Description |
+| --- | --- | --- | --- |
+| **POST** *application/x-www-form-urlencoded* | `iMid`<br>`tXid`<br>`amt`<br>`merchantKey` | `103.117.8.33 # NICEPAY-1`<br>`103.117.8.34 # NICEPAY-2`<br>`103.117.8.0/24 # NICEPAY-3`<br>`103.20.51.39 # NICEPAY-Dev` | Notification from `User Agent: NICEPAY` |
 
-`103.117.8.33    # NICEPAY - Server 1` <br>
-`103.117.8.34    # NICEPAY - Server 2` <br>
-`103.117.8.0/24  # NICEPAY - Server 3` <br>
-`103.20.51.39    # NICEPAY - Server Dev` <br>
-`User Agent: NICEPAY`
-
+<aside class="notice">
+Merchant Token received by your Notification Endpoint should be compared internally to prevent fake Notifications.
+</aside>
 
 # Postman Collections
 Try our POSTMAN Collection!
