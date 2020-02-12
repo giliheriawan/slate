@@ -29,63 +29,10 @@ Merchant Token | SHA256 (Merchant ID + Reference Number + Amount + Merchant Key)
 
 <br>**Request Json Object**
 
-Parameter | Mandatory | Type | Size | Description | Example Value
----------- | ---------- | ---------- | ---------- | ---------- | ----------
-iMid | Y | AN | 10 | Merchant ID | IONPAYTEST
-merchantToken | Y | N | 255 | Merchant Token | 6cfccfc0046773c1b589d8e98f8b596c284f3c70a4ecf86eba14c18944b74bcd
-payMethod | Y | AN | 2 | Payment Method | 01: Credit Card<br>02: Virtual Account<br>03:Convenience Store<br>04: ClickPay<br>05: E-Wallet
-currency | Y | N | 3 | Currency | IDR
-amt | Y | N | 12 | Transaction Amount | 10000
-instmntType | CC Only | N | 2 | Installment Type, refer Code at [Here](#installment-type) | 1: Customer charge<br>2: Merchant charge
-instmntMon | CC Only | N | 2 | Installment Month | 1
-referenceNo | Y | ANS | 40 | Merchant Order Number | MerchantReferenceNumber1
-goodsNm | Y | AN | 100 | Goods Name | Merchant Goods 1
-billingNm | Y | A | 30 | Billing Name | Buyer Name
-billingPhone | Y | N | 15 | Billing phone number | 02123456789
-billingEmail | Y | AN | 40 | Billing email | buyer@merchant.com
-billingAddr  | N | AN | 100 | Billing address | Billing Address
-billingCity | Only CC | A | 50 | Billing city | Jakarta Utara
-billingState | Only CC | A | 50 | Billing state | DKI Jakarta
-billingPostCd | Only CC | A | 10 | Billing postcode | 10160
-billingCountry | Only CC | A | 10 | Billing country | Indonesia
-deliveryNm | N | A | 30 | Delivery name | Delivery name
-deliveryPhone | N | N | 15 | Delivery phone number | 02123456789
-deliveryAddr | N | AN | 100 | Delivery address | Delivery Address
-deliveryCity | N | A | 50 | Delivery city | Jakarta Utara
-deliveryState | N | A | 50 | Delivery state | DKI Jakarta
-deliveryPostCd | N | N | 10 | Delivery postcode | 10160
-deliveryCountry | N | A | 10 | Delivery Country | indonesia
-callBackUrl | Y | AN | 255 | Payment result forward url | https://merchant.com/callBackUrl
-dbProcessUrl | Y | AN | 255 | Payment notification | https://merchant.com/dbProcessUrl
-vat | N | N | 12 | Vat Number | 0
-fee | N | N | 12 | Service fee | 0
-notaxAmt | N | N | 12 | Tax free amount | 0
-description | Y | AN | 100 | Transaction description | this is test order
-reqDt  | N | N | 8 | Request date | 20180303
-reqTm | N | N | 6 | Request time | 135959
-reqDomain | N | AN | 100 | Request domain | merchant.com
-reqServerIP | N | AN | 15 | Request Server IP address | 127.0.0.1
-reqClientVer | N | AN | 50 | Request client version |  1.0
-userIP | N | AN | 15 | User IP address |  127.0.0.1
-userSessionID | N | AN | 100 | User session ID | userSessionID
-userAgent | N | AN | 100 | User agent information | Mozilla
-userLanguage | N | A | 2 | User language | en-US
-recurrOpt | N | N | 2 | Recurring option | 0: Automatic Cancel<br>1: Do not cancel<br>2: Do not make token
-cartData | N | JSON OBJECT | 4000 | JSON Format | (JSON Format)
-instmntType | N | N | 2 | Installment type, refer Code at [Here](#installment-type) | 1
-worker | N | AN | 10 | worker | worker
-merFixAcctId | N | N | 40 | Merchant fix virtual account sign value | 14015824
-vacctValidDt | N | N | 8 | Virtual account valid date | 20180404
-vacctValidTm | N | N | 6 | Virtual account valid time | 235959
-paymentExpDt | N | N | 8 | Permit time check date | 20180404
-paymentExpTm | N | N | 6 | Permit time check time | 235959
-payValidDt | N | N | 8 | CVS valid date | 20180404
-payValidTm | N | N | 6 | CVS valid time | 235959
-tXid | N | AN | 30 | Direct migs 3rd party add. |  BM...315
-mitraCd | N | AN | 4 | Mitra Code, refer Code at [Here](#mitra-code) |  ALMA
-mRefNo | N | N | 18 | Bank Reference No. | bankcd123456789
-timeStamp | N | N | 14 | Timestamp | 20180404165639
-version | N | AN | &nbsp; | &nbsp; | D2
+| **Parameter** | Mandatory | Type | Size | Description | Example Value| 
+| --- | --- | --- | --- | --- | --- |
+| **``iMid``** | Y | AN | 10 | Merchant ID | IONPAYTEST |
+| ``**merchantToken**`` | Y | N | 255 | Merchant Token | 6cfccfc0046773c1b589d8e98f8b596c284f3c70a4ecf86eba14c18944b74bcd |
 
 ##- Credit Card
 

@@ -103,14 +103,14 @@ To connect to our APIs, `merchantToken` is **required** to be sent along with ot
 This token is generated using `SHA-256` hashing which includes secret keys such as `iMid` and `merchantKey`.
 
 <aside class="notice">
-Concatenation of the keys to generate <code>merchantToken</code> should not include spaces or '+' symbol.
+Concatenation of the keys to generate <code>merchantToken</code> should not include spaces.
 </aside>
 
 <aside class="warning">
 Do not share your secret keys.
 </aside>
 
-### API V1 Endpoints
+## API V1 Endpoints
 
 | **API** | Merchant Token | **Method** | End Point | Description |
 | --- | --- | --- | --- | --- |
@@ -124,7 +124,7 @@ Do not share your secret keys.
 | **V1** | `iMid`<br>`tXid`<br>`amt`<br>`merchantKey` | **POST** *application/x-www-form-urlencoded* | `/nicepay/api/onePassAllCancel.do` | Cancel Transaction |
 
 
-### API V2 Endpoints
+## API V2 Endpoints
 TBA
 
 ## Notifications
