@@ -1,16 +1,22 @@
 # NICEPay Professional
-
-All Transaction will be redirect to NICEPay Secure Payment Page for process transaction.<br>
-NICEPay Professional Step:
+All Transaction with NICEPAY API V1 Professional will `redirect` to **NICEPay Secure Payment Page** for payment process.<br>
+NICEPAY Professional Step:
 <ol type="1">
   <li>Transaction Registration.
   <li>Redirect to NICEPay Secure Payment Page.
-  <li>Finish payment in NICEPay Secure Payment Page.
-  <li>NICEPay redirect to Merchant callbackUrl to give the information payment.
+  <li>Finish Payment in NICEPay Secure Payment Page.
+  <li>NICEPay will redirect end-user to Merchant `callbackUrl` to give the payment information.
 </ol>
 
 ## Transaction Registration
 This API creates and register a new Transaction
+|          &nbsp;                                   | Transaction Registration                    |
+|---------------------------------------------------|---------------------------------------------|
+| **API url**                                       | `/nicepay/api/orderRegist.do`               |
+| **Method** *application/x-www-form-urlencoded*    | `POST`                                      |
+| **Description**                                   | Perform transaction registration.           |
+| **Merchant Token**                                | SHA256(`iMid``referenceNo``amt``merchantKey`)|
+
 <ol type="1">
   <li>Credit Card
   <li>Virtual Account
@@ -18,13 +24,6 @@ This API creates and register a new Transaction
   <li>ClickPay
   <li>E-Wallet
 </ol>
-
-&nbsp; | Transaction Registration
----------- | -------
-**API url** | `/nicepay/api/orderRegist.do`
-**Method** *application/x-www-form-urlencoded*| `POST` 
-**Description** | Perform transaction registration.
-**Merchant Token** | SHA256(`iMid``referenceNo``amt``merchantKey`)
 
 | **Description**                       	      | Parameter       | Type        | Size | Example Value                                                                                  |
 |-------------------------------------------------|-----------------|-------------|------|------------------------------------------------------------------------------------------------|
