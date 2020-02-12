@@ -64,35 +64,24 @@ This token is generated using `SHA-256` hashing which includes secret keys such 
 
 ### API V1 Endpoints
 
-| **API** | **Merchant Token** | **End Point** | **Description** |
-| --- | --- | --- | --- |
-| V1  **Professional** | SHA256 (`iMid`+`referenceNo`+`amt`+`merchantKey`) | **POST** `/nicepay/api/orderRegist.do` | Transaction Registration |
-| V1  **Enterprise** | SHA256 (`iMid`+`referenceNo`+`amt`+`merchantKey`) | **POST** `/nicepay/api/onePassToken.do` | Request Credit Card Token |
-| V1  **Enterprise** | n/a | **Pop-up / Redirect** `/nicepay/api/secureVeRequest.do` | Request 3DS Pages |
-| V1  **Enterprise** | n/a | **Pop-up / Redirect** `/nicepay/api/migsRequest.do` | Request MIGS Pages |
-| V1  **Enterprise** | SHA256 (`iMid`+`referenceNo`+`amt`+`merchantKey`) | **POST** `/nicepay/api/onePass.do` | Transaction Payment (Credit Card) and Registration for other payment methods. |
-| V1  **Enterprise** | SHA256 (`iMid`+`referenceNo`+`amt`+`merchantKey`) | **POST** `/nicepay/api/ewalletTrans.do` | E-Wallet Trans? |
-| V1 | SHA256 (`iMid`+`referenceNo`+`amt`+`merchantKey`) | **POST** `/nicepay/api/onePassStatus.do` | Status Inquiry |
-| V1 | SHA256 (`iMid`+`tXid`+`amt`+`merchantKey`) | **POST** `/nicepay/api/onePassAllCancel.do` | Cancel Transaction |
-| V1  *Notification* | SHA256 (`iMid`+`tXid`+`amt`+`merchantKey`) | **POST** from NICEPAY | Notification from NICEPAY |
+| **API** | **Merchant Token** | **Method** | **End Point** | **Description** |
+| --- | --- | --- | --- | --- |
+| **V1**  **Professional** | SHA256 (`iMid`+`referenceNo`+`amt`+`merchantKey`) | **POST** *application/x-www-form-urlencoded* | `/nicepay/api/orderRegist.do` | Transaction Registration |
+| **V1**  **Enterprise** | SHA256 (`iMid`+`referenceNo`+`amt`+`merchantKey`) | **POST** *application/x-www-form-urlencoded* | `/nicepay/api/onePassToken.do` | Request Credit Card Token |
+| **V1**  **Enterprise** | n/a | **Pop-up** | `/nicepay/api/secureVeRequest.do` | Request 3DS Pages |
+| **V1**  **Enterprise** | n/a | **Pop-up** | `/nicepay/api/migsRequest.do` | Request MIGS Pages |
+| **V1**  **Enterprise** | SHA256 (`iMid`+`referenceNo`+`amt`+`merchantKey`) | **POST** *application/x-www-form-urlencoded* | `/nicepay/api/onePass.do` | Transaction Payment (Credit Card) and Registration for other payment methods. |
+| **V1**  **Enterprise** | SHA256 (`iMid`+`referenceNo`+`amt`+`merchantKey`) | **POST** *application/x-www-form-urlencoded* | `/nicepay/api/ewalletTrans.do` | E-Wallet Trans? |
+| **V1** | SHA256 (`iMid`+`referenceNo`+`amt`+`merchantKey`) | **POST** *application/x-www-form-urlencoded* | `/nicepay/api/onePassStatus.do` | Status Inquiry |
+| **V1** | SHA256 (`iMid`+`tXid`+`amt`+`merchantKey`) | **POST** *application/x-www-form-urlencoded* | `/nicepay/api/onePassAllCancel.do` | Cancel Transaction |
+| **V1**  *Notification* | SHA256 (`iMid`+`tXid`+`amt`+`merchantKey`) | **POST** *application/x-www-form-urlencoded* | NICEPAY | Notification from NICEPAY |
 
 <aside class="notice">
 Concatenation of the keys to generate `merchantToken` should not include spaces or '+' symbol.
 </aside>
 
 ### API V2 Endpoints
-
-| API | Merchant Token | End Point | Description |
-| --- | --- | --- | --- |
-V1 *Professional* | SHA256 (`iMid`+`referenceNo`+`amt`+`merchantKey`) | *POST* ``/nicepay/api/orderRegist.do` | Transaction Registration
-V1 *Enterprise* | SHA256 (`iMid`+`referenceNo`+`amt`+`merchantKey`) | *POST* `/nicepay/api/onePassToken.do` | Request Credit Card Token
-V1 *Enterprise* | n/a | *Pop-up / Redirect* `/nicepay/api/secureVeRequest.do` | Request 3DS Pages
-V1 *Enterprise* | n/a | *Pop-up / Redirect* `/nicepay/api/migsRequest.do` | Request MIGS Pages
-V1 *Enterprise* | SHA256 (`iMid`+`referenceNo`+`amt`+`merchantKey`) | *POST* `/nicepay/api/onePass.do` | Transaction Payment (Credit Card) and Registration for other payment methods.
-V1 *Enterprise* | SHA256 (`iMid`+`referenceNo`+`amt`+`merchantKey`) | *POST* `/nicepay/api/ewalletTrans.do` | E-Wallet Trans?
-V1 | SHA256 (`iMid`+`referenceNo`+`amt`+`merchantKey`) | *POST* `/nicepay/api/onePassStatus.do` | Status Inquiry
-V1 | SHA256 (`iMid`+`tXid`+`amt`+`merchantKey`) | *POST* `/nicepay/api/onePassAllCancel.do` | Cancel Transaction
-V1 *Notification* | SHA256 (`iMid`+`tXid`+`amt`+`merchantKey`) | *POST* from NICEPAY | Notification from NICEPAY
+TBA
 
 <aside class="notice">
 Concatenation of the keys to generate `merchantToken` should not include spaces or '+' symbol.
