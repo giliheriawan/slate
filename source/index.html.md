@@ -44,7 +44,6 @@ Have any inquiry ?<br>Feel free contact us : [it@nicepay.co.id](mailto:it@nicepa
   <li>Contact our Merchant Acquisition Staff
   <li>Get Test MID (Merchant ID)
   <li>Get Test API Key (Merchant Key)
-  
   <li>NICEPAY SDK if necessary (Java,PHP,and other)
   <li>Read NICEPAY API Documentation
 </ol>
@@ -107,6 +106,10 @@ This token is generated using `SHA-256` hashing which includes secret keys such 
 
 <aside class="notice">
 Concatenation of the keys to generate <code>merchantToken</code> should not include spaces or '+' symbol.
+</aside>
+
+<aside class="warning">
+Do not share your secret keys.
 </aside>
 
 ### API V1 Endpoints
