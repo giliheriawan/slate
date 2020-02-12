@@ -63,6 +63,7 @@ To connect to our APIs, <code>merchantToken</code> is **required** to be sent al
 This token is generated using <code>SHA-256</code> hashing which includes secret keys such as <code>iMid</code> and <code>merchantKey</code>.
 
 ### API V1 Endpoints
+
 API | Merchant Token | End Point | Description
 ------------ | ------------| ------------------------
 V1 <strong>Professional</strong> | SHA256 (<code>iMid</code>+<code>referenceNo</code>+<code>amt</code>+<code>merchantKey</code>) | <code><strong>POST</strong></code> <code></code>/nicepay/api/orderRegist.do</code> | Transaction Registration
@@ -80,6 +81,7 @@ Concatenation of the keys to generate <code>merchantToken</code> should not incl
 </aside>
 
 ### API V2 Endpoints
+
 API | Merchant Token | End Point | Description
 ------------ | ------------| ------------------------
 V2 <strong>Professional</strong> | SHA256 (<code>iMid</code>+<code>referenceNo</code>+<code>amt</code>+<code>merchantKey</code>) | <code><strong>POST</strong></code> <code></code>/nicepay/api/orderRegist.do</code> | Transaction Registration
