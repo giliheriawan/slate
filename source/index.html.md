@@ -72,6 +72,7 @@ public String makeTokenV1(String amount, String ReferenceNo) throws Exception {
 ```
 
 ```php
+<?php
 public function merchantToken() {
         return hash('sha256',   $this->get('iMid').
                                 $this->get('referenceNo').
@@ -79,6 +80,7 @@ public function merchantToken() {
                                 $this->merchantKey
         );
     }
+?>
 ```
 
 ```python
@@ -100,6 +102,10 @@ def getMerchantToken():
 To connect to our APIs, `merchantToken` is **required** to be sent along with other parameters.
 This token is generated using `SHA-256` hashing which includes secret keys such as `iMid` and `merchantKey`.
 
+<aside class="notice">
+Concatenation of the keys to generate <code>merchantToken</code>> should not include spaces or '+' symbol.
+</aside>
+
 ### API V1 Endpoints
 
 | **API** | Merchant Token | **Method** | End Point | Description |
@@ -114,16 +120,9 @@ This token is generated using `SHA-256` hashing which includes secret keys such 
 | **V1** | `iMid`<br>`tXid`<br>`amt`<br>`merchantKey` | **POST** *application/x-www-form-urlencoded* | `/nicepay/api/onePassAllCancel.do` | Cancel Transaction |
 | **V1**  *Notification* | `iMid`<br>`tXid`<br>amt`<br>`merchantKey` | **POST** *application/x-www-form-urlencoded* | NICEPAY | Notification from NICEPAY |
 
-<aside class="notice">
-Concatenation of the keys to generate `merchantToken` should not include spaces or '+' symbol.
-</aside>
 
 ### API V2 Endpoints
 TBA
-
-<aside class="notice">
-Concatenation of the keys to generate `merchantToken` should not include spaces or '+' symbol.
-</aside>
 
 ## Notifications
 
