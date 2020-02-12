@@ -64,8 +64,8 @@ This token is generated using `SHA-256` hashing which includes secret keys such 
 
 ### API V1 Endpoints
 
-API | Merchant Token | End Point | Description
------------- | ------------ | ------------| ------------------------
+| API | Merchant Token | End Point | Description |
+| --- | --- | --- | --- |
 V1 *Professional* | SHA256 (`iMid`+`referenceNo`+`amt`+`merchantKey`) | *POST* ``/nicepay/api/orderRegist.do` | Transaction Registration
 V1 *Enterprise* | SHA256 (`iMid`+`referenceNo`+`amt`+`merchantKey`) | *POST* `/nicepay/api/onePassToken.do` | Request Credit Card Token
 V1 *Enterprise* | n/a | *Pop-up / Redirect* `/nicepay/api/secureVeRequest.do` | Request 3DS Pages
@@ -82,8 +82,8 @@ Concatenation of the keys to generate `merchantToken` should not include spaces 
 
 ### API V2 Endpoints
 
-API | Merchant Token | End Point | Description
------------- | ------------ | ------------| ------------------------
+| API | Merchant Token | End Point | Description |
+| --- | --- | --- | --- |
 V1 *Professional* | SHA256 (`iMid`+`referenceNo`+`amt`+`merchantKey`) | *POST* ``/nicepay/api/orderRegist.do` | Transaction Registration
 V1 *Enterprise* | SHA256 (`iMid`+`referenceNo`+`amt`+`merchantKey`) | *POST* `/nicepay/api/onePassToken.do` | Request Credit Card Token
 V1 *Enterprise* | n/a | *Pop-up / Redirect* `/nicepay/api/secureVeRequest.do` | Request 3DS Pages
