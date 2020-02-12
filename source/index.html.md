@@ -46,9 +46,20 @@ Have any inquiry ?<br>Feel free contact us : [it@nicepay.co.id](mailto:it@nicepa
 </ol>
 
 ## NICEPAY API Authentication
-To connect to our APIs, <code>merchantToken</code> is <strong>required</required> to be sent along with other parameters.
+To connect to our APIs, <code>merchantToken</code> is **required** to be sent along with other parameters.
 This token is generated using <code>SHA-256</code> hashing which includes secret keys such as <code>iMid</code> and <code>merchantKey</code>.
+
+API Version | Content | Usage
+------------ | ------------| ------------------------
+V1 | SHA256 (<code>iMid</code> + <code>referenceNo</code> + <code>amt</code> + <code>merchantKey</code> | Registration, Payment, Inquiry, Cancel, Request Credit Card Token
+
+<aside class="notice">
+Concatenation of the keys to generate <code>merchantToken</code> should not include spaces.
+</aside>
+
+<aside class="warning">
 These secret keys should never be shared.
+</aside>
 
 ## NICEPAY URLs
 NICEPAY APIs should be requested through HTTPS request to our Endpoint URL.
@@ -60,11 +71,13 @@ Staging | https | https://staging.nicepay.co.id/
 Production | https | https://www.nicepay.co.id/
 
 ### NICEPAY API V1 Endpoints
+
 API Endpoint | Method | Description
 ------------ | ------------| ------------------------
 ADD | MORE | URL FOR V1
 
 ### NICEPAY API V2 Endpoints
+
 API Endpoint | Method | Description
 ------------ | ------------| ------------------------
 /nicepay/direct/v2/registration | POST JSON | Transaction Registration
