@@ -22,7 +22,7 @@ This API creates and register a new Transaction for:
 |                                                   |                                               |
 |---------------------------------------------------|-----------------------------------------------|
 | **API url**                                       | `/nicepay/api/orderRegist.do`                 |
-| **Method** *application/x-www-form-urlencoded*    | `POST`                                        |
+| **Method**<br>*application/x-www-form-urlencoded*    | `POST`                                        |
 | **Description**                                   | Perform transaction registration.             |
 | **Merchant Token**                                | SHA256(`iMid``referenceNo``amt``merchantKey`) |
 
