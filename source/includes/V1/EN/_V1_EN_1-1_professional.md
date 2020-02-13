@@ -11,6 +11,7 @@ NICEPAY Professional Step:
 ## Transaction Registration
 > Sample API Response <strong>After Registration</strong> 
 > Take notes that <code>tXid</code> will be needed for payment.
+
 ```json
 {
     "apiType": "M0",
@@ -112,6 +113,7 @@ For more specific parameters requirement for each payment method, read their own
 >Type              : `URL Redirect`<br>
 >Example           : `https://www.nicepay.co.id/nicepay/api/orderInquiry.do?tXid=IONPAYTEST
                       01201608291733081257&optDisplayCB=0&optDisplayBL=0`
+
 ```java
 if (nicePay.Get("resultCd").equals("0000")) {   
     String site = nicePay.Get("requestURL") + "&optDisplayCB=0" + "&optDisplayBL=0"; 
@@ -414,6 +416,7 @@ GAMBAR PAYMENT CC
 
 ## Virtual Account
 >Sample API Request
+
 ```java
 // Payment Mandatory Field
 nicePay.setPayMethod("02");
@@ -563,6 +566,7 @@ print("tXid : " + result['data']['tXid'])
 ```
 
 > Sample API Response
+
 ```json
 {
   "apiType": "M0",
