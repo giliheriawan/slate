@@ -27,6 +27,7 @@ NICEPAY Professional Step:
     }
 }
 ```
+### API Specifications
 
 |                                                   |                                               |
 |---------------------------------------------------|-----------------------------------------------|
@@ -108,6 +109,16 @@ For more specific parameters requirement for each payment method, read their own
 </aside>
 
 ## NICEPay Payment Page
+### API Specifications
+
+|                                                   |                                                                                                                           |
+|---------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------|
+| **API url**                                       | `/nicepay/api/orderInquiry.do`                                                                                            |
+| **Method** **application/x-www-form-urlencoded**  | `REDIRECT`                                                                                                                |
+| **Description**                                   | URL Redirect to NICEPAY Payment Page                                                                                      |
+| **Example**                                       | `https://www.nicepay.co.id/nicepay/api/orderInquiry.do?tXid=IONPAYTEST01201608291733081257&optDisplayCB=0&optDisplayBL=0` |
+
+
 ### Payment Parameters
 > Sample API Request
 
@@ -118,17 +129,6 @@ if (nicePay.Get("resultCd").equals("0000")) {
              response.setHeader("Location", site);   
          } 
 ```
-
->Endpoint          : `/nicepay/api/orderInquiry.do`<br>
->Method            : `REDIRECT`<br>
->Type              : `URL Redirect`<br>
->Example           : `https://www.nicepay.co.id/nicepay/api/orderInquiry.do?tXid=IONPAYTEST
-                      01201608291733081257&optDisplayCB=0&optDisplayBL=0`
-                      
-| **Endpoint**          | `/nicepay/api/orderRegist.do`                                                                                                |
-| **Method**            | `REDIRECT`                                                                                                                   |
-| **Type**              | `URL Redirect`                                                                                                               |
-| **Example**           | `https://www.nicepay.co.id/nicepay/api/orderInquiry.do?tXid=IONPAYTEST01201608291733081257&optDisplayCB=0&optDisplayBL=0`    |
 
 | **Description**                       	      | Parameter       | Type        | Size | Example Value                     |
 |-------------------------------------------------|-----------------|-------------|------|-----------------------------------|
@@ -375,10 +375,14 @@ print("tXid : " + result['data']['tXid'])
 }
 ```
 
-| **Endpoint**          | `/nicepay/api/orderRegist.do`                 |
-| **Method**            | `POST`                                        |
-| **Type**              | `application/x-www-form-urlencoded`           |
-| **Merchant Token**    | `SHA256(iMid+referenceNo+amt+merchantKey)`    |
+### API Specifications
+
+|                                                   |                                               |
+|---------------------------------------------------|-----------------------------------------------|
+| **API url**                                       | `/nicepay/api/orderRegist.do`                 |
+| **Method** **application/x-www-form-urlencoded**  | `POST`                                        |
+| **Description**                                   | Perform transaction registration.             |
+| **Merchant Token**                                | SHA256(`iMid``referenceNo``amt``merchantKey`) |
 
 | **Description**                       	      | Parameter       | Type        | Size | Example Value                                                                                  |
 |-------------------------------------------------|-----------------|-------------|------|------------------------------------------------------------------------------------------------|
