@@ -10,7 +10,7 @@ NICEPAY Professional Step:
 </ol>
 
 ## Transaction Registration
-> Sample API Response <strong>After Registration</strong> 
+> Sample API Response <strong>After Registration</strong><br> 
 > Take notes that <code>tXid</code> will be needed for payment.
 
 ```json
@@ -109,7 +109,7 @@ For more specific parameters requirement for each payment method, read their own
 
 ## NICEPay Payment Page
 ### Payment Parameters
-> Sample API Request 
+> Sample API Request<br>
 >Endpoint          : `/nicepay/api/orderInquiry.do`<br>
 >Method            : `REDIRECT`<br>
 >Type              : `URL Redirect`<br>
@@ -134,11 +134,19 @@ GAMBAR Contoh Opsi displayCB di sini
 
 ## Credit Card
 ### Registration Parameters
-> Sample API Request 
+> Sample API Request<br>
 >Endpoint          : `/nicepay/api/orderRegist.do`<br>
 >Method            : `POST`<br>
 >Type              : `application/x-www-form-urlencoded`<br>
 >Merchant Token    : `SHA256(iMid+referenceNo+amt+merchantKey)`<br>
+
+```conf
+Sample API Request
+Endpoint          : `/nicepay/api/orderRegist.do`
+Method            : `POST`
+Type              : `application/x-www-form-urlencoded`
+Merchant Token    : `SHA256(iMid+referenceNo+amt+merchantKey)`
+```
 
 ```java
 // Payment Mandatory Field
