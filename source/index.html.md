@@ -139,7 +139,8 @@ Merchant Token received by your Notification Endpoint should be compared interna
 </aside>
 
 # Postman Collections
-Try our POSTMAN Collection!
+Try our POSTMAN Collection!<br>
+**NEEDS EDITING**
 
 | Enterprise | Professional |
 | --- | --- |
