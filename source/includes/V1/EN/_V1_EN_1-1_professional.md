@@ -136,7 +136,8 @@ if (nicePay.Get("resultCd").equals("0000")) {
 | **Display change button**                       | optDisplayCB    | N           | 2    | `show = 0` `hide = 1`             |
 | **Display back link**                           | optDisplayBL    | N           | 2    | `show = 0` `hide = 1`             |
 
-GAMBAR Contoh Opsi displayCB di sini
+### NICEPAY Secure Payment Page
+![alt text](/images/payment-page-with-options.jpg "Payment Page with Options")
 
 ## Credit Card
 ### API Specifications
