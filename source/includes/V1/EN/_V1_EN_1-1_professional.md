@@ -9,6 +9,22 @@ NICEPAY Professional Step:
 </ol>
 
 ## Transaction Registration
+> Sample API Response <strong>After Registration</strong> 
+> Take notes that <code>tXid</code> will be needed for payment.
+```json
+{
+    "apiType": "M0",
+    "tXid": "IONPAYTEST01202002130920175001",
+    "requestDate": "20200213092017",
+    "responseDate": "20200213092017",
+    "data": {
+        "tXid": "IONPAYTEST01202002130920175001",
+        "resultCd": "0000",
+        "resultMsg": "SUCCESS",
+        "requestURL": "https://dev.nicepay.co.id/nicepay/api/orderInquiry.do"
+    }
+}
+```
 
 |                                                   |                                               |
 |---------------------------------------------------|-----------------------------------------------|
@@ -84,13 +100,39 @@ NICEPAY Professional Step:
 | **Bank Reference No.**                      	  | mRefNo          | N           | 18   | bankcd123456789                                                                                |
 | **Timestamp**                               	  | timeStamp       | N           | 14   | 20180404165639                                                                                 |
 | **SDK Version**                             	  | version         | AN          |      | D2                                                                                             |
-## Payment Page
+
+<aside class="success">
+For more specific parameters requirement for each payment method, read their own respective sections.
+</aside>
+
+## NICEPay Payment Page
+> Sample API Request 
+>Endpoint          : `/nicepay/api/orderInquiry.do`<br>
+>Method            : `REDIRECT`<br>
+>Type              : `URL Redirect`<br>
+>Example           : `https://www.nicepay.co.id/nicepay/api/orderInquiry.do?tXid=IONPAYTEST
+                      01201608291733081257&optDisplayCB=0&optDisplayBL=0`
+```java
+if (nicePay.Get("resultCd").equals("0000")) {   
+    String site = nicePay.Get("requestURL") + "&optDisplayCB=0" + "&optDisplayBL=0"; 
+             response.setStatus(response.SC_MOVED_TEMPORARILY);   
+             response.setHeader("Location", site);   
+         } 
+```
+
+### Payment Parameters
+
+| **Description**                       	      | Parameter       | Type        | Size | Example Value                     |
+|-------------------------------------------------|-----------------|-------------|------|-----------------------------------|
+| **Transaction ID** **Required**                 | tXid            | AN          | 30   | IONPAYTEST02201607291027025291    |
+| **Display change button**                       | optDisplayCB    | N           | 2    | `show = 0` `hide = 1`             |
+| **Display back link**                           | optDisplayBL    | N           | 2    | `show = 0` `hide = 1`             |
+
+GAMBAR Contoh Opsi displayCB di sini
 
 ## Credit Card
 ### Registration Parameters
-
 > Sample API Request 
-
 >Endpoint          : `/nicepay/api/orderRegist.do`<br>
 >Method            : `POST`<br>
 >Type              : `application/x-www-form-urlencoded`<br>
@@ -313,7 +355,6 @@ print("tXid : " + result['data']['tXid'])
 ```
 
 > Sample API Response 
-
 ```json
 {
     "apiType": "M0",
@@ -368,12 +409,11 @@ print("tXid : " + result['data']['tXid'])
 | **User Agent Information**                  	  | userAgent       | AN          | 100  | Mozilla                                                                                        |
 | **User Language**                           	  | userLanguage    | A           | 2    | en-US                                                                                          |
 
-### Registration Parameters
-balbalblablabl
+### Payment Page
+GAMBAR PAYMENT CC
 
-
-##- Virtual Account
-
+## Virtual Account
+>Sample API Request
 ```java
 // Payment Mandatory Field
 nicePay.setPayMethod("02");
@@ -523,7 +563,6 @@ print("tXid : " + result['data']['tXid'])
 ```
 
 > Sample API Response
-
 ```json
 {
   "apiType": "M0",
@@ -1270,25 +1309,20 @@ userSessionID | AN | 100 | User Session ID | userSessionID
 userAgent | AN | 100 | User Agent Information | Mozilla
 userLanguage | AN | 2 | User Language | en-US
 
-## NICEPay Payment Page
-After Transaction Registration, kindly please redirect to our payment page.
 
 
-&nbsp; | &nbsp;
----------- | -------
-**API url** | **/nicepay/api/orderInquiry.do**
-Method | URL POST
-Description | Perform Payment Page for processing Transaction
 
-<br>**Request Parameter**
 
-Parameter | Mandatory | Type | Size | Description | Sample Data
----------- | ---------- | ---------- | ---------- | ---------- | ----------
-tXid | Y | AN | 30 | Transaction ID | IONPAYTEST02201607291027025291
-optDisplayCB | N | N | 2 | Option display change button | 0
-optDisplayBL | N | N | 2 | Option display back URL link | 0
-mitraCd | N | AN | 4 | Mitra Code, refer Code at [Here](#mitra-code) | ALMA
-isCheckPaymentExptDt | N | N | &nbsp; | Check Payment Expiry Date | 1
+
+
+
+
+
+
+
+
+
+
 
 ## - Credit Card
 below sample **Credit Card** for **NICEPay Payment Page**<br><br>
@@ -1308,7 +1342,6 @@ amount | N | 12 | Transaction Amount
 transDt | N | 8 | Registration date
 transTm | N | 6 | Registration time
 description | AN | 100 | Transaction Description
-
 
 ## - Virtual Account
 below sample **Virtual Account** for **NICEPay Payment Page**<br><br>
