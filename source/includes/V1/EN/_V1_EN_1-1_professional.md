@@ -8,16 +8,6 @@ NICEPAY Professional Step:
   <li>NICEPay will redirect end-user to Merchant `callbackUrl` to give the payment information.
 </ol>
 
-## Integration Process
-<ol type="1">
-  <li>Understanding SDK, Parameters and Payment Flow
-  <li>Explore API Operation Calls
-  <li>Integration
-  <li>Implementation Test (Development Environment)
-  <li>Request Production MID and API Key
-  <li>Go Live
-</ol>
-
 ## Transaction Registration
 
 |                                                   |                                               |
@@ -26,8 +16,8 @@ NICEPAY Professional Step:
 | **Method** **application/x-www-form-urlencoded**  | `POST`                                        |
 | **Description**                                   | Perform transaction registration.             |
 | **Merchant Token**                                | SHA256(`iMid``referenceNo``amt``merchantKey`) |
-This API creates and register a new Transaction for:
 
+### This API creates and register a new Transaction for:
 <ol type="1">
   <li>Credit Card
   <li>Virtual Account
@@ -99,10 +89,13 @@ This API creates and register a new Transaction for:
 ## Credit Card
 
 > Sample API Request 
->[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/3f18b456452959cfcedb)
-> Endpoint: `/nicepay/api/orderRegist.do`   
-> Method: `POST`
-> Type: `application/x-www-form-urlencoded`
+<div class="postman-run-button"
+ data-postman-action="collection/import"
+ data-postman-var-1="3f18b456452959cfcedb"></div><br>
+ 
+> Endpoint: `/nicepay/api/orderRegist.do`<br>   
+> Method: `POST`<br>
+> Type: `application/x-www-form-urlencoded`<br>
 > Merchant Token: SHA256(`iMid``referenceNo``amt``merchantKey`)
 
 ```java
