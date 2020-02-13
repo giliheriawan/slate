@@ -109,12 +109,7 @@ For more specific parameters requirement for each payment method, read their own
 
 ## NICEPay Payment Page
 ### Payment Parameters
-> Sample API Request<br>
->Endpoint          : `/nicepay/api/orderInquiry.do`<br>
->Method            : `REDIRECT`<br>
->Type              : `URL Redirect`<br>
->Example           : `https://www.nicepay.co.id/nicepay/api/orderInquiry.do?tXid=IONPAYTEST
-                      01201608291733081257&optDisplayCB=0&optDisplayBL=0`
+> Sample API Request
 
 ```java
 if (nicePay.Get("resultCd").equals("0000")) {   
@@ -123,6 +118,17 @@ if (nicePay.Get("resultCd").equals("0000")) {
              response.setHeader("Location", site);   
          } 
 ```
+
+>Endpoint          : `/nicepay/api/orderInquiry.do`<br>
+>Method            : `REDIRECT`<br>
+>Type              : `URL Redirect`<br>
+>Example           : `https://www.nicepay.co.id/nicepay/api/orderInquiry.do?tXid=IONPAYTEST
+                      01201608291733081257&optDisplayCB=0&optDisplayBL=0`
+                      
+| **Endpoint**          | `/nicepay/api/orderRegist.do`                                                                                                |
+| **Method**            | `REDIRECT`                                                                                                                   |
+| **Type**              | `URL Redirect`                                                                                                               |
+| **Example**           | `https://www.nicepay.co.id/nicepay/api/orderInquiry.do?tXid=IONPAYTEST01201608291733081257&optDisplayCB=0&optDisplayBL=0`    |
 
 | **Description**                       	      | Parameter       | Type        | Size | Example Value                     |
 |-------------------------------------------------|-----------------|-------------|------|-----------------------------------|
@@ -134,19 +140,7 @@ GAMBAR Contoh Opsi displayCB di sini
 
 ## Credit Card
 ### Registration Parameters
-> Sample API Request<br>
->Endpoint          : `/nicepay/api/orderRegist.do`<br>
->Method            : `POST`<br>
->Type              : `application/x-www-form-urlencoded`<br>
->Merchant Token    : `SHA256(iMid+referenceNo+amt+merchantKey)`<br>
-
-```conf
-Sample API Request
-Endpoint          : `/nicepay/api/orderRegist.do`
-Method            : `POST`
-Type              : `application/x-www-form-urlencoded`
-Merchant Token    : `SHA256(iMid+referenceNo+amt+merchantKey)`
-```
+> Sample API Request
 
 ```java
 // Payment Mandatory Field
@@ -365,6 +359,7 @@ print("tXid : " + result['data']['tXid'])
 ```
 
 > Sample API Response 
+
 ```json
 {
     "apiType": "M0",
@@ -379,6 +374,11 @@ print("tXid : " + result['data']['tXid'])
     }
 }
 ```
+
+| **Endpoint**          | `/nicepay/api/orderRegist.do`                 |
+| **Method**            | `POST`                                        |
+| **Type**              | `application/x-www-form-urlencoded`           |
+| **Merchant Token**    | `SHA256(iMid+referenceNo+amt+merchantKey)`    |
 
 | **Description**                       	      | Parameter       | Type        | Size | Example Value                                                                                  |
 |-------------------------------------------------|-----------------|-------------|------|------------------------------------------------------------------------------------------------|
