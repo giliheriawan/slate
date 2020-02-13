@@ -84,11 +84,10 @@ NICEPAY Professional Step:
 | **Bank Reference No.**                      	  | mRefNo          | N           | 18   | bankcd123456789                                                                                |
 | **Timestamp**                               	  | timeStamp       | N           | 14   | 20180404165639                                                                                 |
 | **SDK Version**                             	  | version         | AN          |      | D2                                                                                             |
-
+## Payment Page
 
 ## Credit Card
-
-### Parameters for Credit Card
+### Registration Parameters
 
 > Sample API Request 
 
@@ -368,6 +367,9 @@ print("tXid : " + result['data']['tXid'])
 | **User Session ID**                        	  | userSessionID   | AN          | 100  | userSessionID                                                                                  |
 | **User Agent Information**                  	  | userAgent       | AN          | 100  | Mozilla                                                                                        |
 | **User Language**                           	  | userLanguage    | A           | 2    | en-US                                                                                          |
+
+### Registration Parameters
+balbalblablabl
 
 
 ##- Virtual Account
