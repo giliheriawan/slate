@@ -92,11 +92,10 @@ NICEPAY Professional Step:
 
 > Sample API Request 
 
-Endpoint          : `/nicepay/api/orderRegist.do`<br>
-Method            : `POST`<br>
-Type              : `application/x-www-form-urlencoded`<br>
-Merchant Token    : `SHA256(iMid+referenceNo+amt+merchantKey)`<br>
-<div class="postman-run-button" data-postman-action="collection/import" data-postman-var-1="3f18b456452959cfcedb"></div>
+>Endpoint          : `/nicepay/api/orderRegist.do`<br>
+>Method            : `POST`<br>
+>Type              : `application/x-www-form-urlencoded`<br>
+>Merchant Token    : `SHA256(iMid+referenceNo+amt+merchantKey)`<br>
 
 ```java
 // Payment Mandatory Field

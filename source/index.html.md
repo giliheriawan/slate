@@ -147,12 +147,3 @@ To Allow Push Notifications from NICEPAY Server, please add these details to you
 <aside class="notice">
 Merchant Token received by your Notification Endpoint should be compared internally to prevent fake Notifications.
 </aside>
-
-# Postman Collections
-Try our POSTMAN Collection!<br>
-**NEEDS EDITING**
-
-| Enterprise | Professional |
-| --- | --- |
-| <div class="postman-run-button" data-postman-action="collection/import" data-postman-var-1="4e6690cd6c51963cf691"></div> | <div class="postman-run-button" data-postman-action="collection/import" data-postman-var-1="ea2fa74dab4e0b686e34"></div> |
-
