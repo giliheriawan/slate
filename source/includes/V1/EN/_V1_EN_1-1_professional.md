@@ -10,6 +10,7 @@ NICEPAY Professional Step:
 </ol>
 
 ## Transaction Registration
+### API Specifications
 > Sample API Response <strong>After Registration</strong><br> 
 > Take notes that <code>tXid</code> will be needed for payment.
 
@@ -27,7 +28,6 @@ NICEPAY Professional Step:
     }
 }
 ```
-### API Specifications
 
 |                                                   |                                               |
 |---------------------------------------------------|-----------------------------------------------|
@@ -139,6 +139,15 @@ if (nicePay.Get("resultCd").equals("0000")) {
 GAMBAR Contoh Opsi displayCB di sini
 
 ## Credit Card
+### API Specifications
+
+|                                                   |                                               |
+|---------------------------------------------------|-----------------------------------------------|
+| **API url**                                       | `/nicepay/api/orderRegist.do`                 |
+| **Method** **application/x-www-form-urlencoded**  | `POST`                                        |
+| **Description**                                   | Perform transaction registration.             |
+| **Merchant Token**                                | SHA256(`iMid``referenceNo``amt``merchantKey`) |
+
 ### Registration Parameters
 > Sample API Request
 
@@ -374,15 +383,6 @@ print("tXid : " + result['data']['tXid'])
     }
 }
 ```
-
-### API Specifications
-
-|                                                   |                                               |
-|---------------------------------------------------|-----------------------------------------------|
-| **API url**                                       | `/nicepay/api/orderRegist.do`                 |
-| **Method** **application/x-www-form-urlencoded**  | `POST`                                        |
-| **Description**                                   | Perform transaction registration.             |
-| **Merchant Token**                                | SHA256(`iMid``referenceNo``amt``merchantKey`) |
 
 | **Description**                       	      | Parameter       | Type        | Size | Example Value                                                                                  |
 |-------------------------------------------------|-----------------|-------------|------|------------------------------------------------------------------------------------------------|
