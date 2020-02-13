@@ -8,6 +8,16 @@ NICEPAY Professional Step:
   <li>NICEPay will redirect end-user to Merchant `callbackUrl` to give the payment information.
 </ol>
 
+## Integration Process
+<ol type="1">
+  <li>Understanding SDK, Parameters and Payment Flow
+  <li>Explore API Operation Calls
+  <li>Integration
+  <li>Implementation Test (Development Environment)
+  <li>Request Production MID and API Key
+  <li>Go Live
+</ol>
+
 ## Transaction Registration
 
 |                                                   |                                               |
@@ -31,7 +41,7 @@ This API creates and register a new Transaction for:
 | **Description**                       	      | Parameter       | Type        | Size | Example Value                                                                                  |
 |-------------------------------------------------|-----------------|-------------|------|------------------------------------------------------------------------------------------------|
 | **Merchant ID** **Required**                    | iMid            | AN          | 10   | IONPAYTEST                                                                                     |
-| **Merchant Token** **Required**                 | merchantToken   | AN          | 255  | 6cfccfc0046773c1b589d8e98f8b596c284f3c70a4ecf86eba14c18944b74bcd                               |
+| **Merchant Token** **Required**                 | merchantToken   | AN          | 255  | 6cfccfc0046773c1b589d8e98f8b<br>596c284f3c70a4ecf86eba14c18944b74bcd                           |
 | **Payment Method** **Required**                 | payMethod       | AN          | 2    | 01: Credit Card<br>02: Virtual Account<br>03:Convenience Store<br>04: ClickPay<br>05: E-Wallet |
 | **Currency** **Required**                       | currency        | A           | 3    | IDR                                                                                            |
 | **Transaction Amount** **Required**             | amt             | N           | 12   | 10000                                                                                          |
@@ -88,14 +98,12 @@ This API creates and register a new Transaction for:
 
 ## Credit Card
 
-> Sample API Request [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/3f18b456452959cfcedb)
->
->|                                                   |                                               |
- |---------------------------------------------------|-----------------------------------------------|
- | **API url**                                       | `/nicepay/api/orderRegist.do`                 |
- | **Method** **application/x-www-form-urlencoded**  | `POST`                                        |
- | **Description**                                   | Perform transaction registration.             |
- | **Merchant Token**                                | SHA256(`iMid``referenceNo``amt``merchantKey`) |
+> Sample API Request 
+>[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/3f18b456452959cfcedb)
+> Endpoint: `/nicepay/api/orderRegist.do`   
+> Method: `POST`
+> Type: `application/x-www-form-urlencoded`
+> Merchant Token: SHA256(`iMid``referenceNo``amt``merchantKey`)
 
 ```java
 // Payment Mandatory Field
@@ -330,7 +338,7 @@ print("tXid : " + result['data']['tXid'])
 }
 ```
 
-### Parameters for Credit Card
+<h3> Parameters for Credit Card </h3>
 
 <aside class="notice">
 <code>payMethod = 1</code>

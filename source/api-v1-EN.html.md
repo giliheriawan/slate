@@ -27,14 +27,3 @@ includes:
 
 search: true
 ---
-# API V1 DOCUMENTATION
-
-## Integration Process
-<ol type="1">
-  <li>Understanding SDK, Parameters and Payment Flow
-  <li>Explore API Operation Calls
-  <li>Integration
-  <li>Implementation Test (Development Environment)
-  <li>Request Production MID and API Key
-  <li>Go Live
-</ol>
