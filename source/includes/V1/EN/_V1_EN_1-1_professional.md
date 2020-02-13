@@ -107,6 +107,7 @@ For more specific parameters requirement for each payment method, read their own
 </aside>
 
 ## NICEPay Payment Page
+### Payment Parameters
 > Sample API Request 
 >Endpoint          : `/nicepay/api/orderInquiry.do`<br>
 >Method            : `REDIRECT`<br>
@@ -121,8 +122,6 @@ if (nicePay.Get("resultCd").equals("0000")) {
              response.setHeader("Location", site);   
          } 
 ```
-
-### Payment Parameters
 
 | **Description**                       	      | Parameter       | Type        | Size | Example Value                     |
 |-------------------------------------------------|-----------------|-------------|------|-----------------------------------|
