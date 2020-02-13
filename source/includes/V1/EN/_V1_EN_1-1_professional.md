@@ -1,5 +1,6 @@
 # NICEPay Professional
-All Transaction with NICEPAY API V1 Professional will `redirect` to **NICEPay Secure Payment Page** for payment process.<br>
+All Transaction with NICEPAY API V1 Professional will `redirect` to **NICEPay Secure Payment Page** for payment process.
+
 NICEPAY Professional Step:
 <ol type="1">
   <li>Transaction Registration.
@@ -371,14 +372,10 @@ print("tXid : " + result['data']['tXid'])
 }
 ```
 
-<aside class="notice">
-<code>payMethod = 01</code>
-</aside>
-
 | **Description**                       	      | Parameter       | Type        | Size | Example Value                                                                                  |
 |-------------------------------------------------|-----------------|-------------|------|------------------------------------------------------------------------------------------------|
 | **Merchant ID** **Required**                    | iMid            | AN          | 10   | IONPAYTEST                                                                                     |
-| **Merchant Token** **Required**                 | merchantToken   | AN          | 255  | 6cfccfc0046773c1b589d8e98f8b596c284f3c70a4ecf86eba14c18944b74bcd                               |
+| **Merchant Token** **Required**                 | merchantToken   | AN          | 255  | 6cfccfc0046773c1b589d8e98f8b596c284f<br>3c70a4ecf86eba14c18944b74bcd                               |
 | **Payment Method** **Required**                 | payMethod       | AN          | 2    | 01: Credit Card<br>02: Virtual Account<br>03:Convenience Store<br>04: ClickPay<br>05: E-Wallet |
 | **Currency** **Required**                       | currency        | A           | 3    | IDR                                                                                            |
 | **Transaction Amount** **Required**             | amt             | N           | 12   | 10000                                                                                          |
@@ -410,7 +407,7 @@ print("tXid : " + result['data']['tXid'])
 | **User Agent Information**                  	  | userAgent       | AN          | 100  | Mozilla                                                                                        |
 | **User Language**                           	  | userLanguage    | A           | 2    | en-US                                                                                          |
 
-### Payment Page
+### Credit Card Payment Page
 GAMBAR PAYMENT CC
 
 ## Virtual Account
