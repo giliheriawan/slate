@@ -421,6 +421,9 @@ print("tXid : " + result['data']['tXid'])
 | **User Language**                           	  | userLanguage    | A           | 2    | en-US                                                                                          |
 
 ### Credit Card Payment Page
+><iframe src="https://www.nicepay.co.id/nicepay/api/orderInquiry.do?tXid=IONPAYTEST01202002131534338207" frameborder="0" height="732" widht="412"></iframe>
+
+
 GAMBAR PAYMENT CC
 
 ## Virtual Account
