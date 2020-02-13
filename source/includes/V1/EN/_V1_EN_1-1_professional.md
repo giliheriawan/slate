@@ -88,6 +88,8 @@ NICEPAY Professional Step:
 
 ## Credit Card
 
+### Parameters for Credit Card
+
 > Sample API Request 
 ><div class="postman-run-button" data-postman-action="collection/import" data-postman-var-1="3f18b456452959cfcedb"></div>
 
@@ -328,8 +330,6 @@ print("tXid : " + result['data']['tXid'])
     }
 }
 ```
-
-<h3> Parameters for Credit Card </h3>
 
 <aside class="notice">
 <code>payMethod = 1</code>
