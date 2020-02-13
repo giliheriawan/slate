@@ -91,12 +91,12 @@ NICEPAY Professional Step:
 ### Parameters for Credit Card
 
 > Sample API Request 
-><div class="postman-run-button" data-postman-action="collection/import" data-postman-var-1="3f18b456452959cfcedb"></div>
 
-> Endpoint          : `/nicepay/api/orderRegist.do`<br>
-> Method            : `POST`<br>
-> Type              : `application/x-www-form-urlencoded`<br>
-> Merchant Token    : `SHA256(iMid+referenceNo+amt+merchantKey)`
+Endpoint          : `/nicepay/api/orderRegist.do`<br>
+Method            : `POST`<br>
+Type              : `application/x-www-form-urlencoded`<br>
+Merchant Token    : `SHA256(iMid+referenceNo+amt+merchantKey)`<br>
+<div class="postman-run-button" data-postman-action="collection/import" data-postman-var-1="3f18b456452959cfcedb"></div>
 
 ```java
 // Payment Mandatory Field
@@ -332,7 +332,7 @@ print("tXid : " + result['data']['tXid'])
 ```
 
 <aside class="notice">
-<code>payMethod = 1</code>
+<code>payMethod = 01</code>
 </aside>
 
 | **Description**                       	      | Parameter       | Type        | Size | Example Value                                                                                  |
