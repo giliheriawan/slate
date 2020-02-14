@@ -29,7 +29,8 @@ search: true
 **Welcome to NICEPAY API Documentation and References.**
 
 **NICEPAY Payment Solution** is a product of PT. IONPAY NETWORKS that provide various electronic payment over the Internet safely without separate security device. 
-Using our latest technology, we are integrated with Banks, E-wallets and other financial services via encrypted host to host connection to provide a secure and fast transaction.<br>
+Using our latest technology, we are integrated with Banks, E-wallets and other financial services via encrypted host to host connection to provide a secure and fast transaction.
+
 There are two Versions of our API, allowing you to interact securely with our API using different approach. **JSON is used by API V2 for requests and responses**, including errors.
 On the other hand, **application/x-www-form-urlencoded is used for request to API V1**. API V1 Professional allows you to quickly setup a payment system by `redirecting` your buyers to our `Secure Payment Page`. 
 API V1 Enterprise gives you more flexibility to build your own payment page.
