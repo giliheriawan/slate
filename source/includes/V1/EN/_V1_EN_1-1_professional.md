@@ -360,10 +360,10 @@ After your transaction has been Registered, don't forget to redirect your client
 | **API url**                                       | `/nicepay/api/orderInquiry.do`                                                                                            |
 | **Method** **application/x-www-form-urlencoded**  | `REDIRECT`                                                                                                                |
 | **Description**                                   | URL Redirect to NICEPAY Payment Page                                                                                      |
-| **Example**                                       | `https://www.nicepay.co.id/nicepay/api/orderInquiry.do?tXid=IONPAYTEST01201608291733081257&optDisplayCB=0&optDisplayBL=0` |
 
 ### Payment Parameters
 > Sample API Request
+> `https://www.nicepay.co.id/nicepay/api/orderInquiry.do?tXid=IONPAYTEST01201608291733081257&optDisplayCB=0&optDisplayBL=0`
 
 ```java
 if (nicePay.Get("resultCd").equals("0000")) {   
