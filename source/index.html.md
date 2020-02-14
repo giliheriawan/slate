@@ -32,14 +32,15 @@ search: true
 Using our latest technology, we are integrated with Banks, E-wallets and other financial services via encrypted host to host connection to provide a secure and fast transaction.
 
 There are two Versions of our API, allowing you to interact securely with our API using different approach. `JSON` is used by **API V2 for requests and responses**, including errors.
-On the other hand, `application/x-www-form-urlencoded` is used for request to **API V1**. API V1 Professional allows you to quickly setup a payment system by `redirecting` your buyers to our `Secure Payment Page`. 
+On the other hand, `application/x-www-form-urlencoded` is used for request to **API V1**.<br>
+API V1 Professional allows you to quickly setup a payment system by `redirecting` your buyers to our `Secure Payment Page`. 
 API V1 Enterprise gives you more flexibility to build your own payment page.
 
 Give us a shot because we are confident that we can provide you with the best Payment Solution to grow your business.
 
 Have any inquiry ?<br>Feel free contact us : [it@nicepay.co.id](mailto:it@nicepay.co.id).
 
-# Prerequisites
+### Prerequisites
 <ol type="1">
   <li>Contact our Merchant Acquisition Staff
   <li>Get Test MID (Merchant ID)
@@ -48,7 +49,7 @@ Have any inquiry ?<br>Feel free contact us : [it@nicepay.co.id](mailto:it@nicepa
   <li>Read NICEPAY API Documentation
 </ol>
 
-## Integration Process
+### Integration Process
 <ol type="1">
   <li>Understanding SDK, Parameters and Payment Flow
   <li>Explore API Operation Calls
@@ -137,14 +138,22 @@ Do not share your secret keys.
 
 
 ## API V2 Endpoints
-TBA
+
+| **API** | Merchant Token | **Method** | End Point | Description |
+| --- | --- | --- | --- | --- |
+| **V2** | `timeStamp`<br>`iMid`<br>`referenceNo`<br>`amt`<br>`merchantKey` | **POST** *application/json* | `/nicepay/direct/v2/registration` | Transaction Registration |
+| **V2** | `timeStamp`<br>`iMid`<br>`referenceNo`<br>`amt`<br>`merchantKey` | **POST** *application/x-www-form-urlencoded* | `/nicepay/direct/v2/payment` | Transaction Payment |
+| **V2** | `timeStamp`<br>`iMid`<br>`referenceNo`<br>`amt`<br>`merchantKey` | **POST** *application/json* | `/nicepay/direct/v2/inquiry` | Transaction Status Inquiry |
+| **V2** | `timeStamp`<br>`iMid`<br>`referenceNo`<br>`amt`<br>`merchantKey` | **POST** *application/json* | `/nicepay/direct/v2/cancel` | Transaction Cancel |
+| **V2** | `timeStamp`<br>`iMid`<br>`msgRefno`<br>`merchantKey` 			| **POST** *application/json* | `/nicepay/direct/v2/sms-transmit` | SMS Transmit |
+
 
 ## Notifications
 To Allow Push Notifications from NICEPAY Server, please add these details to your firewall whitelist:
 
 | **Method** | Merchant Token | IP | Description |
 | --- | --- | --- | --- |
-| **POST** *application/x-www-form-urlencoded* | `iMid`+`tXid`+`amt`+`merchantKey` | `103.20.51.0/24` <br> `103.117.8.0/24` | Notification from `User-Agent: Jakarta Commons-HttpClient/3.1` |
+| **POST** *application/x-www-form-urlencoded* | `iMid`<br>`tXid`<br>`amt`<br>`merchantKey` | `103.20.51.0/24` <br> `103.117.8.0/24` | Notification from `User-Agent: Jakarta Commons-HttpClient/3.1` |
 
 <aside class="notice">
 Merchant Token received by your Notification Endpoint should be compared internally to prevent fake Notifications.
