@@ -371,12 +371,6 @@ if (nicePay.Get("resultCd").equals("0000")) {
          } 
 ```
 
-> Credit Card Payment Page 
-> <img src="/images/credit-card.png" alt="Payment Page for Credit Card"> 
-
-> Credit Card Payment Page 
-> <img src="/images/virtual-account.png" alt="Payment Page for Virtual Account"> 
-
 | **Description**                       	      | Parameter       | Type        | Size | Example Value                     |
 |-------------------------------------------------|-----------------|-------------|------|-----------------------------------|
 | **Transaction ID** **Required**                 | tXid            | AN          | 30   | IONPAYTEST02201607291027025291    |
@@ -391,17 +385,9 @@ To prevent your client from changing the payment method, set <code>optDisplayCB 
 
 ![alt text](/images/payment-page-with-options.jpg "Payment Page with Options")
 
-### Credit Card Payment Page
-![alt text](/images/credit-card.png "Payment Page for Credit Card")
+### Payment Method Selection
+When your buyer decided to click on the `Change` button, they will be able to see the page below and change their preferred payment method.
 
-### Virtual Account Payment Page
-![alt text](/images/virtual-account.png "Payment Page for Credit Card")
+![alt text](/images/payment-page-change.jpg "Payment Page on Change Button Click")
 
-### Convenience Store Payment Page
-![alt text](/images/cvs.png "Payment Page for Credit Card")
 
-### Click Pay Payment Page
-![alt text](/images/clickpay.png "Payment Page for Credit Card")
-
-### E-Wallet Payment Page
-![alt text](/images/ewallet.png "Payment Page for Credit Card")
