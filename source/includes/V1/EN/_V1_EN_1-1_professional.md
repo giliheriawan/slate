@@ -387,18 +387,17 @@ To prevent your client from changing the payment method, set <code>optDisplayCB 
 
 ![alt text](/images/payment-page-with-options.jpg "Payment Page with Options")
 
-<details>
-  <summary>Credit Card Payment Page</summary>
 
-![alt text](/images/credit-card.png "Payment Page for Credit Card")
+<details><summary>CLICK ME</summary>
+<p>
 
-</details>
+#### yes, even hidden code blocks!
 
-<details>
-  <summary>Virtual Account</summary>
+```python
+print("hello world!")
+```
 
-![alt text](/images/virtual-account.png "Payment Page for Credit Card")
-
+</p>
 </details>
 
 
