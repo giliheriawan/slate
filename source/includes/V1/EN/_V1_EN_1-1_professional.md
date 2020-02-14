@@ -262,7 +262,7 @@ print("tXid : " + result['data']['tXid'])
 |-------------------------------------------------|-----------------|-------------|------|------------------------------------------------------------------------------------------------|
 | **Merchant ID** **Required**                    | iMid            | AN          | 10   | IONPAYTEST                                                                                     |
 | **Merchant Token** **Required**                 | merchantToken   | AN          | 255  | 6cfccfc0046773c1b589d8e98f8b<br>596c284f3c70a4ecf86eba14c18944b74bcd                           |
-| **Payment Method** **Required**                 | payMethod       | AN          | 2    | 01: Credit Card<br>02: Virtual Account<br>03:Convenience Store<br>04: ClickPay<br>05: E-Wallet |
+| **Payment Method** **Required**                 | payMethod       | AN          | 2    | `01` Credit Card <br> `02` Virtual Account <br> `03` Convenience Store <br> `04` ClickPay <br> `05 E-Wallet |
 | **Currency** **Required**                       | currency        | A           | 3    | IDR                                                                                            |
 | **Transaction Amount** **Required**             | amt             | N           | 12   | 10000                                                                                          |
 | **Installment Type** **Required for CC**        | instmntType     | N           | 2    | 1: Customer charge<br>2: Merchant charge                                                       |
@@ -300,7 +300,7 @@ print("tXid : " + result['data']['tXid'])
 | **User Agent Information**                  	  | userAgent       | AN          | 100  | Mozilla                                                                                        |
 | **User Language**                           	  | userLanguage    | A           | 2    | en-US                                                                                          |
 | **Recurring Option**                        	  | recurrOpt       | N           | 2    | 0: Automatic Cancel<br>1: Do not cancel<br>2: Do not make token                                |
-| **Transaction Cart Data**                   	  | cartData        |`JSON OBJECT`| 4000 | (JSON Format)                                                                                  |
+| **Transaction Cart Data**                   	  | cartData        |`JSON OBJECT`| 4000 | [cartData](#cart-data) JSON                                                                    |
 | **Worker**                                 	  | worker          | AN          | 10   | worker                                                                                         |
 | **Merchant Fix VA Number**  				  	  | merFixAcctId    | N           | 40   | 14015824                                                                                       |
 | **Virtual Account Valid Date**     	      	  | vacctValidDt    | N           | 8    | 20180404                                                                                       |
@@ -314,6 +314,30 @@ print("tXid : " + result['data']['tXid'])
 | **Bank Reference No.**                      	  | mRefNo          | N           | 18   | bankcd123456789                                                                                |
 | **Timestamp**                               	  | timeStamp       | N           | 14   | 20180404165639                                                                                 |
 | **SDK Version**                             	  | version         | AN          |      | D2                                                                                             |
+
+<h3 id="cart-data">Cart Data</h3>
+balbalblablal jelasin
+
+<div class="center-column"></div>
+```json
+{
+    "count": "2",
+    "item": [
+        {
+            "goods_id": "BB12345678",
+            "goods_name": "iPhone 5S",
+            "goods_amt": "500000",
+            "img_url": "http://merchant.com/cellphones/iphone5s_64g"
+        },
+        {
+            "goods_id": "AZ14565678",
+            "goods_name": "Hailee Sneakers Blink Silver",
+            "goods_amt": "250000",
+            "goods_url": "http://merchant.com/fashion/shoes/sneakers-blink-shoes"
+        }
+    ]
+}
+```
 
 <aside class="success">
 After your transaction has been Registered, don't forget to redirect your client to our Payment Page.
