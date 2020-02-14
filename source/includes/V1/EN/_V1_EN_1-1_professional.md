@@ -11,8 +11,6 @@ NICEPAY Professional Step:
 
 ## Transaction Registration
 ### API Specifications
-> Sample API Response <strong>After Registration</strong><br> 
-> Take notes that <code>tXid</code> will be needed for payment.
 
 |                                                   |                                                                                                               |
 |---------------------------------------------------|---------------------------------------------------------------------------------------------------------------|
