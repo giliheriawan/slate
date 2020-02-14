@@ -108,7 +108,7 @@ NICEPAY Professional Step:
 For more specific parameters requirement for each payment method, read their own respective sections.
 </aside>
 
-## NICEPay Payment Page
+## Transaction Payment
 ### API Specifications
 
 |                                                   |                                                                                                                           |
@@ -420,8 +420,12 @@ print("tXid : " + result['data']['tXid'])
 | **User Agent Information**                  	  | userAgent       | AN          | 100  | Mozilla                                                                                        |
 | **User Language**                           	  | userLanguage    | A           | 2    | en-US                                                                                          |
 
+<aside class="success">
+After your transaction has been Registered, don't forget to redirect your client to our Payment Page [internal link](#nicepay-payment-page)
+</aside>
+
 ### Credit Card Payment Page
-GAMBAR PAYMENT CC
+![alt text](/images/credit-card.png "Payment Page for Credit Card")
 
 ## Virtual Account
 >Sample API Request
