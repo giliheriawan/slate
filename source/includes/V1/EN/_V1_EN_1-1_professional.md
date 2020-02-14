@@ -388,6 +388,6 @@ To prevent your client from changing the payment method, set <code>optDisplayCB 
 ### Payment Method Selection
 When your buyer decided to click on the `Change` button, they will be able to see the page below and change their preferred payment method.
 
-![alt text](/images/payment-page-change.jpg "Payment Page on Change Button Click")
+![alt text](/images/payment-page-change.png "Payment Page on Change Button Click")
 
 
