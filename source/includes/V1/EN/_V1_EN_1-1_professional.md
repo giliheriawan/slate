@@ -384,7 +384,24 @@ To prevent your client from changing the payment method, set <code>optDisplayCB 
 </aside>
 
 ## NICEPAY Secure Payment Page
+
 ![alt text](/images/payment-page-with-options.jpg "Payment Page with Options")
+
+<details>
+  <summary>Credit Card Payment Page</summary>
+
+![alt text](/images/credit-card.png "Payment Page for Credit Card")
+
+</details>
+
+<details>
+  <summary>Virtual Account</summary>
+
+![alt text](/images/virtual-account.png "Payment Page for Credit Card")
+
+</details>
+
+
 
 ### Credit Card Payment Page
 ![alt text](/images/credit-card.png "Payment Page for Credit Card")
