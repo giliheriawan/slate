@@ -371,6 +371,12 @@ if (nicePay.Get("resultCd").equals("0000")) {
          } 
 ```
 
+> Credit Card Payment Page 
+> <img src="/images/credit-card.png" alt="Payment Page for Credit Card"> 
+
+> Credit Card Payment Page 
+> <img src="/images/virtual-account.png" alt="Payment Page for Virtual Account"> 
+
 | **Description**                       	      | Parameter       | Type        | Size | Example Value                     |
 |-------------------------------------------------|-----------------|-------------|------|-----------------------------------|
 | **Transaction ID** **Required**                 | tXid            | AN          | 30   | IONPAYTEST02201607291027025291    |
@@ -384,15 +390,6 @@ To prevent your client from changing the payment method, set <code>optDisplayCB 
 ## NICEPAY Secure Payment Page
 
 ![alt text](/images/payment-page-with-options.jpg "Payment Page with Options")
-
-### Credit Card Payment Page'
-
- <details>
-  <summary>Credit Card Payment Page</summary>
-  <p> - by Refsnes Data. All Rights Reserved.</p>
-  <p>All content and graphics on this web site are the property of the company Refsnes Data.</p>
-  <img src="/images/credit-card.png" alt="Payment Page for Credit Card"> 
-</details> 
 
 ### Credit Card Payment Page
 ![alt text](/images/credit-card.png "Payment Page for Credit Card")
