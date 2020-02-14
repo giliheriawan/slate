@@ -12,7 +12,6 @@ toc_footers:
   - <a href='./api-V1-ID.html'>Bahasa Indonesia</a>
 
 includes:
-  - V1/EN/V1_EN_1-1_professional
   - V1/EN/V1_EN_1-2_ent_creditcard
   - V1/EN/V1_EN_1-3_ent_va
   - V1/EN/V1_EN_1-4_ent_cvs

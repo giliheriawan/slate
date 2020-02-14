@@ -12,7 +12,6 @@ toc_footers:
   - <a href='./api-v1-EN.html'>English</a>
 
 includes:
-  - V1/ID/V1_ID_1-1_professional
   - V1/ID/V1_ID_1-2_ent_creditcard
   - V1/ID/V1_ID_1-3_ent_va
   - V1/ID/V1_ID_1-4_ent_cvs
