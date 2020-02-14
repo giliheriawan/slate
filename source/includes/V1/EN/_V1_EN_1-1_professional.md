@@ -318,14 +318,14 @@ print("tXid : " + result['data']['tXid'])
 ### Cart Data API V1
 <h3 id="cart-data"></h3>
 
-| **Parameter**             |  Description                   |
-|---------------------------|--------------------------------|
-|**count**                  | Total cart data count          |
-|**item**                   |                                |
-|**item -> img_url**        | Good's image URL (50x50 size)  |
-|**item -> goods_name**     | Good's name                    |
-|**item -> goods_detail**   | Good's description             |
-|**item -> goods_amt**      | Good's amount                  |
+| **Parameter**                 |  Description                   |
+|-------------------------------|--------------------------------|
+|**count**                      | Total cart data count          |
+|**item**                       |                                |
+|**item ->** **img_url**        | Good's image URL (50x50 size)  |
+|**item ->** **goods_name**     | Good's name                    |
+|**item ->** **goods_detail**   | Good's description             |
+|**item ->** **goods_amt**      | Good's amount                  |
 
 <div class="center-column"></div>
 ```json
