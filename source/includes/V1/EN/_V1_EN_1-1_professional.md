@@ -14,22 +14,13 @@ NICEPAY Professional Step:
 > Sample API Response <strong>After Registration</strong><br> 
 > Take notes that <code>tXid</code> will be needed for payment.
 
-|                                                   |                                               |
-|---------------------------------------------------|-----------------------------------------------|
-| **API url**                                       | `/nicepay/api/orderRegist.do`                 |
-| **Method** **application/x-www-form-urlencoded**  | `POST`                                        |
-| **Description**                                   | Perform transaction registration.             |
-| **Merchant Token**                                | SHA256(`iMid``referenceNo``amt``merchantKey`) |
-
-### This API creates and register a new Transaction for:
-CREATE TABLE HERE
-<ol type="1">
-  <li>Credit Card
-  <li>Virtual Account
-  <li>Convenience Store
-  <li>ClickPay
-  <li>E-Wallet
-</ol>
+|                                                   |                                                                                                               |
+|---------------------------------------------------|---------------------------------------------------------------------------------------------------------------|
+| **API url**                                       | `/nicepay/api/orderRegist.do`                                                                                 |
+| **Method** **application/x-www-form-urlencoded**  | `POST`                                                                                                        |
+| **Description**                                   | Perform transaction registration.                                                                             |
+| **Merchant Token**                                | SHA256(`iMid``referenceNo``amt``merchantKey`)                                                                 |
+| **Payment Methods**                               | `01` Credit Card <br> `02` Virtual Account <br> `03` Convenience Store <br> `04` Click Pay <br> `05` E-Wallet |
 
 ### All Parameters for Registration
 > Sample API Request
