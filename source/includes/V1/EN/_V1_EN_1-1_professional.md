@@ -18,7 +18,7 @@ NICEPAY Professional Step:
 | **Method** **application/x-www-form-urlencoded**  | `POST`                                                                                                        |
 | **Description**                                   | Perform transaction registration.                                                                             |
 | **Merchant Token**                                | SHA256(`iMid``referenceNo``amt``merchantKey`)                                                                 |
-| **Payment Methods**                               | `01` Credit Card <br> `02` Virtual Account <br> `03` Convenience Store <br> `04` Click Pay <br> `05` E-Wallet |
+| **Payment Methods**                               | `01`Credit Card<br>`02`Virtual Account<br>`03`Convenience Store<br>`04`Click Pay<br>`05`E-Wallet              |
 
 ### All Parameters for Registration
 > Sample API Request
