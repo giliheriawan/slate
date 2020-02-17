@@ -35,7 +35,7 @@ To Allow Push Notifications from NICEPAY Server, please add these details to you
 Merchant Token received by your Notification Endpoint should be compared internally to prevent fake Notifications.
 </aside>
 
-## Common Parameter for Notification
+## Notification Parameter
 
 | **Parameter**    		   | **Size and Type** | Description																		    |
 |--------------------------| ----------------- | ---------------------------------------------------------------------------------------|
@@ -74,24 +74,24 @@ Merchant Token received by your Notification Endpoint should be compared interna
  
 ### Additional Parameter for Virtual Account Notification
 
-Parameter | Type | Size | Description
----------- | ---------- | ---------- | ----------
-bankCd  | N | 4 | Bank Code. Refer Code at [Here](#bank-code)
-vacctNo | N | 16 | Bank Virtual Account number
-vacctValidDt  | N | 8 | VA expiry date
-vacctValidTm | N | 6 | VA expiry time
-depositDt | N | &nbsp; | Deposit date
-depositTm | N | &nbsp; | Deposit time
+| **Parameter**    			| **Size and Type** | Description		                            |
+|---------------------------| ------------------| ----------------------------------------------|
+| **bankCd**         		| **4**   **N**     | Bank Code							            |
+| **vacctNo**    			| **16**  **N**     | Bank VA Number				                |
+| **vacctValidDt**    		| **8**	  **N**     | VA Expiry Date 					            |
+| **vacctValidTm**     		| **6**   **N**     | VA Expiry Time		                        |
+| **depositDt**     		|    	  **N**     | Deposit Date							        |
+| **depositTm**     		|    	  **N**     | Deposit TIme							        |
 
 ### Additional Parameter for Others Payment Method Notification
 
-Parameter | Type | Size | Description
----------- | ---------- | ---------- | ----------
-mitraCd | A | 4 |  Mitra Code. Refer Code at [Here](#mitra-code)
-payNo | N | 12 | Pay number to mitra
-payValidDt | N | 8 | CVS expiry date
-payValidTm | N | 6 | CVS expiry time
-receiptCode | ANS | 20 | Authorization number
-mRefNo | AN | 18 | Bank reference No
-depositDt | N | &nbsp; | Deposit date
-depositTm | N | &nbsp; | Deposit time
+| **Parameter**    			| **Size and Type** | Description																			   |
+|---------------------------| ------------------| -----------------------------------------------------------------------------------------|
+| **mitraCd**         		| **4**   **A**     | Mitra Code																		       |
+| **payNo**    				| **1**   **N**     | Payment Number 								   										   |
+| **payValidDt**    		| **8**	  **N**     | Expiry Date																		       |
+| **payValidTm**     		| **6**   **N**     | Expiry Time									   										   |
+| **receiptCode**     		| **20**  **ANS**   | Authorization number																	   |
+| **mRefNo**    			| **18**  **AN**    | Reference No.																	           |
+| **depositDt**     		|         **N**     | Deposit Date									   										   |
+| **depositTm**     		|    	  **N**     | Deposit Time																	           |
