@@ -18,7 +18,7 @@ NICEPAY Professional Step:
 | **Method** **application/x-www-form-urlencoded**  | `POST`                                                                                                        |
 | **Description**                                   | Perform transaction registration.                                                                             |
 | **Merchant Token**                                | SHA256(`iMid``referenceNo``amt``merchantKey`)                                                                 |
-| **Payment Methods**                               | `01`Credit Card<br>`02`Virtual Account<br>`03`Convenience Store<br>`04`Click Pay<br>`05`E-Wallet              |
+| **Payment Methods**                               | `01` Credit Card <br> `02` Virtual Account <br> `03` Convenience Store <br> `04` Click Pay <br> `05` E-Wallet |
 
 ### All Parameters for Registration
 > Sample API Request
@@ -260,10 +260,10 @@ print("tXid : " + result['data']['tXid'])
 |-------------------------------------------------------------------|-----------------|-------------|------|------------------------------------------------------------------------------------------------|
 | **Merchant ID** **Required**                    					| iMid            | AN          | 10   | IONPAYTEST                                                                                     |
 | **Merchant Token** **Required**                 					| merchantToken   | AN          | 255  | 6cfccfc0046773c1b589d8e98f8b<br>596c284f3c70a4ecf86eba14c18944b74bcd                           |
-| **Payment Method** **Required**                 					| payMethod       | AN          | 2    | `01` Credit Card <br> `02` Virtual Account <br> `03` Convenience Store <br> `04` ClickPay <br> `05 E-Wallet |
+| **Payment Method** **Required**                 					| payMethod       | AN          | 2    | `01` Credit Card <br> `02` Virtual Account <br> `03` Convenience Store <br> `04` ClickPay <br> `05` E-Wallet |
 | **Currency** **Required**                       					| currency        | A           | 3    | IDR                                                                                            |
 | **Transaction Amount** **Required**             					| amt             | N           | 12   | 10000                                                                                          |
-| **Installment Type** **Required for CC**        					| instmntType     | N           | 2    | 1: Customer charge<br>2: Merchant charge                                                       |
+| **Installment Type** **Required for CC**        					| instmntType     | N           | 2    | `1` Customer charge<br>`2` Merchant charge                                                       |
 | **Installment Month** **Required for CC**       					| instmntMon      | N           | 2    | 1                                                                                              |
 | **Merchant Order Number** **Required**          					| referenceNo     | ANS         | 40   | MerchantReferenceNumber1                                                                       |
 | **Goods Name** **Required**                     					| goodsNm         | AN          | 100  | Merchant Goods 1                                                                               |
@@ -297,7 +297,6 @@ print("tXid : " + result['data']['tXid'])
 | **User Session ID**                        	  					| userSessionID   | AN          | 100  | userSessionID                                                                                  |
 | **User Agent Information**                  	  					| userAgent       | AN          | 100  | Mozilla                                                                                        |
 | **User Language**                           	  					| userLanguage    | A           | 2    | en-US                                                                                          |
-| **Recurring Option**                        	  					| recurrOpt       | N           | 2    | 0: Automatic Cancel<br>1: Do not cancel<br>2: Do not make token                                |
 | **Transaction Cart Data**                   	  					| cartData        |`JSON OBJECT`| 4000 | [cartData](#cart-data) JSON                                                                    |
 | **Worker**                                 	  					| worker          | AN          | 10   | worker                                                                                         |
 | **Merchant Fix VA Number** **Required for Fix-Type VA**			| merFixAcctId    | N           | 40   | 14015824                                                                                       |

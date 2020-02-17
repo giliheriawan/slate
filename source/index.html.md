@@ -146,15 +146,3 @@ Do not share your secret keys.
 | **V2** | `timeStamp`<br>`iMid`<br>`referenceNo`<br>`amt`<br>`merchantKey` | **POST** *application/json* | `/nicepay/direct/v2/inquiry` | Transaction Status Inquiry |
 | **V2** | `timeStamp`<br>`iMid`<br>`referenceNo`<br>`amt`<br>`merchantKey` | **POST** *application/json* | `/nicepay/direct/v2/cancel` | Transaction Cancel |
 | **V2** | `timeStamp`<br>`iMid`<br>`msgRefno`<br>`merchantKey` 			| **POST** *application/json* | `/nicepay/direct/v2/sms-transmit` | SMS Transmit |
-
-
-## Notifications
-To Allow Push Notifications from NICEPAY Server, please add these details to your firewall whitelist:
-
-| **Method** | Merchant Token | IP | Description |
-| --- | --- | --- | --- |
-| **POST** *application/x-www-form-urlencoded* | `iMid`<br>`tXid`<br>`amt`<br>`merchantKey` | `103.20.51.0/24` <br> `103.117.8.0/24` | Notification from `User-Agent: Jakarta Commons-HttpClient/3.1` |
-
-<aside class="notice">
-Merchant Token received by your Notification Endpoint should be compared internally to prevent fake Notifications.
-</aside>
