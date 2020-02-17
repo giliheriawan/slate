@@ -56,42 +56,42 @@ Merchant Token received by your Notification Endpoint should be compared interna
 
 | **Parameter**    			| **Type and Size** | Description																			   |
 |---------------------------| ------------------| -----------------------------------------------------------------------------------------|
-| **authNo**         		| **10**  **N**     | Approval number																		   |
-| **IssueBankCd**    		| **4**   **A**     | Issue bank code. Refer Code at [Here](#bank-code)										   |
-| **IssueBankNm**    		|    	  **A**     | Issue bank name. 																		   |
-| **acquBankCd**     		|     	  **A**     | Acquire bank code. Refer Code at [Here](#bank-code)									   |
-| **acquBankNm**     		|    	  **A**     | Acquire bank name.																	   |
-| **cardNo**         		| **20**  **AN**    | Card no with masking																	   |
-| **cardExpYymm**    		|     	  **N**     | Card expiry (YYMM)																	   |
-| **instmntMon**     		| **2**   **N**     | Installment month																		   |
-| **instmntType**    		| **2**   **N**     | Installment Type. Refer Code at [Here](#installment-type)							       |
-| **preauthToken**   		| **255** **AN**    | Preauth Token																			   |
-| **recurringToken** 		| **255** **AN**    | Recurring token 																		   |
-| **ccTransType**    		| **2**   **AN**    | Credit card transaction type<br>1: Normal<br>2: Recurring<br>3: Pre-auth<br>4: Captured  |
-| **vat**            		| **12**  **N**     | Vat number																			   |
-| **fee**            		| **12**  **N**     | Service fee																			   | 
-| **notaxAmt**       		| **12**  **N**     | Tax free amount																		   |
+| **authNo**         		| **N**  **10**     | Approval number																		   |
+| **IssueBankCd**    		| **A**  **4**      | Issue bank code. Refer Code at [Here](#bank-code)										   |
+| **IssueBankNm**    		| **A**     	    | Issue bank name. 																		   |
+| **acquBankCd**     		| **A**      	    | Acquire bank code. Refer Code at [Here](#bank-code)									   |
+| **acquBankNm**     		| **A**     	    | Acquire bank name.																	   |
+| **cardNo**         		| **AN** **20**     | Card no with masking																	   |
+| **cardExpYymm**    		| **N**      	    | Card expiry (YYMM)																	   |
+| **instmntMon**     		| **N**  **2**      | Installment month																		   |
+| **instmntType**    		| **N**  **2**      | Installment Type. Refer Code at [Here](#installment-type)							       |
+| **preauthToken**   		| **AN** **255**    | Preauth Token																			   |
+| **recurringToken** 		| **AN** **255**    | Recurring token 																		   |
+| **ccTransType**    		| **AN** **2**      | Credit card transaction type<br>1: Normal<br>2: Recurring<br>3: Pre-auth<br>4: Captured  |
+| **vat**            		| **N**  **12**     | Vat number																			   |
+| **fee**            		| **N**  **12**     | Service fee																			   | 
+| **notaxAmt**       		| **N**  **12**     | Tax free amount																		   |
  
 ### Additional Parameter for Virtual Account Notification
 
 | **Parameter**    			| **Type and Size** | Description		                            |
 |---------------------------| ------------------| ----------------------------------------------|
-| **bankCd**         		| **4**   **N**     | Bank Code							            |
-| **vacctNo**    			| **16**  **N**     | Bank VA Number				                |
-| **vacctValidDt**    		| **8**	  **N**     | VA Expiry Date 					            |
-| **vacctValidTm**     		| **6**   **N**     | VA Expiry Time		                        |
-| **depositDt**     		|    	  **N**     | Deposit Date							        |
-| **depositTm**     		|    	  **N**     | Deposit TIme							        |
+| **bankCd**         		| **N** **4**       | Bank Code							            |
+| **vacctNo**    			| **N** **16**      | Bank VA Number				                |
+| **vacctValidDt**    		| **N** **8**	    | VA Expiry Date 					            |
+| **vacctValidTm**     		| **N** **6**       | VA Expiry Time		                        |
+| **depositDt**     		| **N**    	        | Deposit Date							        |
+| **depositTm**     		| **N**    	        | Deposit TIme							        |
 
 ### Additional Parameter for Others Payment Method Notification
 
 | **Parameter**    			| **Type and Size** | Description																			   |
 |---------------------------| ------------------| -----------------------------------------------------------------------------------------|
-| **mitraCd**         		| **4**   **A**     | Mitra Code																		       |
-| **payNo**    				| **1**   **N**     | Payment Number 								   										   |
-| **payValidDt**    		| **8**	  **N**     | Expiry Date																		       |
-| **payValidTm**     		| **6**   **N**     | Expiry Time									   										   |
-| **receiptCode**     		| **20**  **ANS**   | Authorization number																	   |
-| **mRefNo**    			| **18**  **AN**    | Reference No.																	           |
-| **depositDt**     		|         **N**     | Deposit Date									   										   |
-| **depositTm**     		|    	  **N**     | Deposit Time																	           |
+| **mitraCd**         		| **A**   **4**     | Mitra Code																		       |
+| **payNo**    				| **N**   **1**     | Payment Number 								   										   |
+| **payValidDt**    		| **N**   **8**	    | Expiry Date																		       |
+| **payValidTm**     		| **N**   **6**     | Expiry Time									   										   |
+| **receiptCode**     		| **ANS** **20**    | Authorization number																	   |
+| **mRefNo**    			| **AN**  **18**    | Reference No.																	           |
+| **depositDt**     		| **N**             | Deposit Date									   										   |
+| **depositTm**     		| **N**      	    | Deposit Time																	           |
