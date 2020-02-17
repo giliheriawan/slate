@@ -37,7 +37,7 @@ Merchant Token received by your Notification Endpoint should be compared interna
 
 ## Notification Parameter
 
-| **Parameter**    		   | **Size and Type** | Description																		    |
+| **Parameter**    		   | **Type and Size** | Description																		    |
 |--------------------------| ----------------- | ---------------------------------------------------------------------------------------|
 | **tXid**         		   | **N**  **30**     | Transaction ID																			|
 | **merchantToken**		   | **AN** **255**    | Merchant Token																			|
@@ -54,7 +54,7 @@ Merchant Token received by your Notification Endpoint should be compared interna
 
 ### Additional Parameter for Credit Card Notification
 
-| **Parameter**    			| **Size and Type** | Description																			   |
+| **Parameter**    			| **Type and Size** | Description																			   |
 |---------------------------| ------------------| -----------------------------------------------------------------------------------------|
 | **authNo**         		| **10**  **N**     | Approval number																		   |
 | **IssueBankCd**    		| **4**   **A**     | Issue bank code. Refer Code at [Here](#bank-code)										   |
@@ -74,7 +74,7 @@ Merchant Token received by your Notification Endpoint should be compared interna
  
 ### Additional Parameter for Virtual Account Notification
 
-| **Parameter**    			| **Size and Type** | Description		                            |
+| **Parameter**    			| **Type and Size** | Description		                            |
 |---------------------------| ------------------| ----------------------------------------------|
 | **bankCd**         		| **4**   **N**     | Bank Code							            |
 | **vacctNo**    			| **16**  **N**     | Bank VA Number				                |
@@ -85,7 +85,7 @@ Merchant Token received by your Notification Endpoint should be compared interna
 
 ### Additional Parameter for Others Payment Method Notification
 
-| **Parameter**    			| **Size and Type** | Description																			   |
+| **Parameter**    			| **Type and Size** | Description																			   |
 |---------------------------| ------------------| -----------------------------------------------------------------------------------------|
 | **mitraCd**         		| **4**   **A**     | Mitra Code																		       |
 | **payNo**    				| **1**   **N**     | Payment Number 								   										   |
