@@ -39,18 +39,18 @@ Merchant Token received by your Notification Endpoint should be compared interna
 
 | **Description**																		    | Parameter    		  	   | **Type and Size** |
 | ------------------------------------------------------------------------------------------|--------------------------| ----------------- |
-| **Transaction ID**																		| `tXid`         		   | **N**  **30**     |
-| **Merchant Token**																		| `merchantToken`		   | **AN** **255**    |
-| **Merchant Order No**																		| `referenceNo`  		   | **N**  **40**     |
-| **Payment method**																		| `payMethod`    		   | **N**  **2**      |
-| **Payment amount**																		| `amt`          		   | **N**  **12**     |
-| **Transaction date**																		| `transDt`      		   | **N**  **8**      |
-| **Transaction time**																		| `transTm`      		   | **N**  **6**      |
-| **Currency**																			    | `currency`     		   | **N**  **3**      |
-| **Goods name**																			| `goodsNm`      		   | **N**  **100**    |
-| **Billing name**																			| `billingNm`    		   | **N**  **30**     |
-| **Payment amount match flag**																| `matchCl`      		   | **N**  **1**      |
-| **Deposit Status**										                                | `status`       		   | **AN** **1**      |
+| **Transaction ID**																		| `tXid`         		   | **N**  30         |
+| **Merchant Token**																		| `merchantToken`		   | **AN** 255        |
+| **Merchant Order No**																		| `referenceNo`  		   | **N**  40         |
+| **Payment method**																		| `payMethod`    		   | **N**  2          |
+| **Payment amount**																		| `amt`          		   | **N**  12         |
+| **Transaction date**																		| `transDt`      		   | **N**  8          |
+| **Transaction time**																		| `transTm`      		   | **N**  6          |
+| **Currency**																			    | `currency`     		   | **N**  3          |
+| **Goods name**																			| `goodsNm`      		   | **N**  100        |
+| **Billing name**																			| `billingNm`    		   | **N**  30         |
+| **Payment amount match flag**																| `matchCl`      		   | **N**  1          |
+| **Deposit Status**										                                | `status`       		   | **AN** 1          |
 
 ### Additional Parameter for Credit Card Notification
 
