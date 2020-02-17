@@ -16,9 +16,9 @@ includes:
   - V2/EN/V2_EN_2-4_clickpay
   - V2/EN/V2_EN_2-5_ewallet
   - V2/EN/V2_EN_2-6_payloan
-  - V2/EN/V2_EN_3_notification
   - V2/EN/V2_EN_4_inquiry
   - V2/EN/V2_EN_5_cancel
+  - notifications_EN
   - nicepaycode
   - faq_en
   - changelog/changelog_v2

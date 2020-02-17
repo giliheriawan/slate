@@ -129,7 +129,7 @@ print("reqTm : " + result['reqTm'])
 print("status : " + result['status'])
 ```
 
-> Sample response JSON structured (when success) :
+> Sample response:
 
 ```json
 {
@@ -158,27 +158,28 @@ print("status : " + result['status'])
 }
 ```
 
-This API is for request to check status of transaction.<br>
+This API is intended for merchant to check the status of the transaction.
 
- &nbsp; | &nbsp;
----------- | -------
-**API url** | **/nicepay/api/onePassStatus.do**
-Method | POST
-Description | Order Status Inquiry
-Merchant Token | SHA256 (Merchant ID + Reference Number + amt + Merchant Key)
+## API Specifications
 
-**Request POST Parameter**
+|                                                           |                                                                                                               |
+|-----------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|
+| **API url**                                               | `/nicepay/api/onePassStatus.do`                                                                               |
+| **Request Method** **application/x-www-form-urlencoded**  | `POST`                                                                                                        |
+| **Description**                                           | Inquires transaction status to NICEPAY server.                                                                |
+| **Merchant Token**                                        | SHA256(`iMid``referenceNo``amt``merchantKey`)                                                                 |
 
-Parameter | Mandatory | Type | Size | Description
----------- | ---------- | ---------- | ---------- | ----------
-iMid | Y | AN | 10 | Merchant ID
-merchantToken | Y | AN | 255 | generate SHA256 (Merchant ID + Reference Number + amt + Merchant Key)
-tXid | Y | AN | 30 | Transaction ID
-amt | Y | N | 12 | Transaction amount
-referenceNo | Y | ANS | 40 | Merchant order No
+## Request Parameters
 
+| **Description**                       	      					| Parameter       | Type        | Size |
+|-------------------------------------------------------------------|-----------------|-------------|------|
+| **Merchant ID** **Required**                    					| `iMid`          | AN          | 10   |
+| **Merchant Token** **Required**                 					| `merchantToken` | AN          | 255  |
+| **Transaction ID** **Required**                 					| `tXid`   		  | AN          | 30   |
+| **Amount** **Required**                 							| `amt`   		  | N           | 12   |
+| **referenceNo** **Required**                 						| `referenceNo`   | ANS         | 40   |
 
-**Response Json Object**
+## Response Object
 
 Parameter | Type | Size | Description
 ---------- | ---------- | ---------- | ----------
@@ -214,7 +215,7 @@ vat | N | 12 | Vat number
 fee | N | 12 | service fee
 notaxAmt | N | 12 | tax free amount
 
-**Additional Response Json Object for Virtual Account**
+### Additional Response for Virtual Account
 
 Parameter | Type | Size | Description
 ---------- | ---------- | ---------- | ----------
@@ -223,7 +224,7 @@ vacctNo | N | 16 | Bank Virtual Account number
 vacctValidDt  | N | 8 | VA expiry date
 vacctValidTm | N | 6 | VA expiry time
 
-**Additional Response Json Object for Others Payment Method**
+## Additional Response for Others Payment Method
 
 Parameter | Type | Size | Description
 ---------- | ---------- | ---------- | ----------

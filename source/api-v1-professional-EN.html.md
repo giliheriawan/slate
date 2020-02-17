@@ -13,9 +13,9 @@ toc_footers:
 
 includes:
   - V1/EN/V1_EN_1-1_professional
-  - V1/EN/V1_EN_2_Notification
   - V1/EN/V1_EN_3_order_status
   - V1/EN/V1_EN_4_Cancel
+  - notifications_EN
   - nicepaycode
   - faq_en
   - changelog/changelog_v1

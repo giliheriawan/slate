@@ -17,9 +17,9 @@ includes:
   - V1/EN/V1_EN_1-4_ent_cvs
   - V1/EN/V1_EN_1-5_ent_clickpay
   - V1/EN/V1_EN_1-6_ent_ewallet
-  - V1/EN/V1_EN_2_Notification
   - V1/EN/V1_EN_3_order_status
   - V1/EN/V1_EN_4_Cancel
+  - notifications_EN
   - nicepaycode
   - faq_en
   - changelog/changelog_v1
