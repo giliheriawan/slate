@@ -1,104 +1,106 @@
 # Nicepay Code
 ## Field Type
 
-Value Code | Meaning
----------- | ----------
-A | Alphabet
-AN | Alphabet Numeric
-N | Numeric
-ANS | Alphabet Numeric Symbol
-AOO | Array of Object
+| **Value Code** | Meaning                 |
+| -------------- | ----------------------- |
+| **A**          | Alphabet                |
+| **AN**         | Alphabet Numeric        |
+| **N**          | Numeric                 |
+| **ANS**        | Alphabet Numeric Symbol |
+| **AOO**        | Array of Object         |
 
 
 ## Installment Type
 
-Value Code | Meaning
----------- | ----------
-1 | Customer charge
-2 | Merchant charge
+| **Value Code** | Meaning         |
+| -------------- | --------------- |
+| **`1`**        | Customer charge |
+| **`2`**        | Merchant charge |
 
 ## Payment Method
 
-Value Code | Meaning
----------- | ----------
-01 | Credit Card
-02 | Virtual Account
-03 | CVS (Convenience Store)
-04 | ClickPay
-05 | E-Wallet
-06 | Payloan
+| **Value Code** | Meaning                 |
+| -------------- | ----------------------- |
+| **`01`**       | Credit Card             |
+| **`02`**       | Virtual Account         |
+| **`03`**       | CVS (Convenience Store) |
+| **`04`**       | ClickPay                |
+| **`05`**       | E-Wallet                |
+| **`06`**       | Payloan                 |
 
 ## Payment Status Code
 
-Value Code | Meaning
----------- | ----------
-**Credit Card** | &nbsp;
-0 | Success
-1 | Failed
-2 | Void/Refund
-9 | Initialization / Reversal
-**Virtual Account** | &nbsp;
-0 | Paid
-3 | Unpaid
-4 | Expired
-**CVS** | &nbsp;
-0 | Paid
-3 | Unpaid
-4 | Expired
-5 | Ready to Paid (for Alfamart)
+| **Credit Card** |                           |
+| --------------- | ------------------------- |
+| **`0`**         | Success                   |
+| **`1`**         | Failed                    |
+| **`2`**         | Void/Refund               |
+| **`9`**         | Initialization / Reversal |
+
+| **Virtual Account**   |          |
+| --------------------- | -------- |
+| **`0`**               | Paid     |
+| **`3`**               | Unpaid   |
+| **`4`**               | Expired  |
+
+| **CVS**  	 |                              |
+| ---------- | ---------------------------- |
+| **`0`**    | Paid                         |
+| **`3`**    | Unpaid                       |
+| **`4`**    | Expired                      |
+| **`5`**    | Ready to Paid (for Alfamart) |
 
 ## Notification Status Code
 
-Value Code | Meaning
----------- | ----------
-0 | Deposit
-1 | Reversal
+| **Value Code**   | Meaning  |
+| ---------------- | -------- |
+| **`0`**          | Deposit  |
+| **`1`**          | Reversal |
 
 ## Notification Match Amount Indicator
 
-Value Code | Meaning
----------- | ----------
-1 | Match
-2 | Over
-3 | Under
+| **Value Code**   | Meaning |
+| ---------------- | ------- |
+| **`1`**          | Match   |
+| **`2`**          | Over    |
+| **`3`**          | Under   |
 
 ## Cancel Type
 
-Value Code | Meaning
----------- | ----------
-1 | Full Cancellation
-2 | Partial Cancellation
+| **Value Code**   | Meaning              |
+| ---------------- | -------------------- |
+| **`1`**          | Full Cancellation    |
+| **`2`**          | Partial Cancellation |
 
 ## Bank Code
 
-Value Code | Meaning
----------- | ----------
-BMRI | Bank Mandiri
-IBBK | Bank International Indonesia Maybank
-BBBA | Bank Permata
-CENA | Bank Central Asia
-BNIN | Bank Negara Indonesia 46
-HNBN | Bank KEB Hana Indonesia
-BRIN | Bank Rakyat Indonesia
-BNIA | Bank PT. BANK CIMB NIAGA, TBK.
-BDIN | Bank PT. BANK DANAMON INDONESIA, TBK
-OTHR | etc, unknown
-
+| **Value Code**   | Meaning                              |
+| ---------------- | ------------------------------------ |
+| **`BMRI`**       | Bank Mandiri                         |
+| **`IBBK`**       | Bank International Indonesia Maybank |
+| **`BBBA`**       | Bank Permata                         |
+| **`CENA`**       | Bank Central Asia                    |
+| **`BNIN`**       | Bank Negara Indonesia 46             |
+| **`HNBN`**       | Bank KEB Hana Indonesia              |
+| **`BRIN`**       | Bank Rakyat Indonesia                |
+| **`BNIA`**       | Bank PT. BANK CIMB NIAGA, TBK.       |
+| **`BDIN`**       | Bank PT. BANK DANAMON INDONESIA, TBK |
+| **`OTHR`**       | etc, unknown                         |
 
 ## Mitra Code
 
-Value Code | Meaning
----------- | ----------
-ALMA | CVS Alfamart
-INDO | CVS Indomaret
-MDRC | ClickPay Mandiri
-BCAC | ClickPay BCA
-CIMC | ClickPay CIMB
-MDRE | E-Wallet Mandiri
-BCAE | E-Wallet BCA(Sakuku)
-AKLP | Akulaku
-KDVI | Kredivo
-OVOE | OVO
+| **Value Code**   | Meaning              |
+| ---------------- | -------------------- |
+| **`ALMA`**       | CVS Alfamart         |
+| **`INDO`**       | CVS Indomaret        |
+| **`MDRC`**       | ClickPay Mandiri     |
+| **`BCAC`**       | ClickPay BCA         |
+| **`CIMC`**       | ClickPay CIMB        |
+| **`MDRE`**       | E-Wallet Mandiri     |
+| **`BCAE`**       | E-Wallet BCA(Sakuku) |
+| **`AKLP`**       | Akulaku              |
+| **`KDVI`**       | Kredivo              |
+| **`OVOE`**       | OVO                  |
 
 ## Error Code
 
