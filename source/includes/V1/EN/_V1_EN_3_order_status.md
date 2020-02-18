@@ -158,9 +158,8 @@ print("status : " + result['status'])
 }
 ```
 
-This API is intended for merchant to check the status of the transaction.
-
 ## API Specifications
+This API is intended for merchant to check the status of the transaction.
 
 |                                                           |                                                                                                               |
 |-----------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|
@@ -171,66 +170,49 @@ This API is intended for merchant to check the status of the transaction.
 
 ## Request Parameters
 
-| **Description**                       	      					| Parameter       | Type        | Size |
-|-------------------------------------------------------------------|-----------------|-------------|------|
-| **Merchant ID** **Required**                    					| `iMid`          | AN          | 10   |
-| **Merchant Token** **Required**                 					| `merchantToken` | AN          | 255  |
-| **Transaction ID** **Required**                 					| `tXid`   		  | AN          | 30   |
-| **Amount** **Required**                 							| `amt`   		  | N           | 12   |
-| **referenceNo** **Required**                 						| `referenceNo`   | ANS         | 40   |
+| Parameter       | **Type**    | **Size** | **Description**                       | Example Value                       										|
+|-----------------|-------------|----------|---------------------------------------|----------------------------------------------------------------------------|
+| `iMid`          | **AN**      | **10**   | **Merchant ID** **Required**          | IONPAYTEST           														|
+| `merchantToken` | **AN**      | **255**  | **Merchant Token** **Required**       | 6cfccfc0046773c1b89d8e98f8b596c<br>284f3c70a4ecf86eba14c18944b74bcd        |
+| `tXid`   		  | **AN**      | **30**   | **Transaction ID** **Required**       | IONPAYTEST02201607291027025291       										|
+| `amt`   		  | **N**       | **12**   | **Amount** **Required**               | 15000               														|
+| `referenceNo`   | **ANS**     | **40**   | **referenceNo** **Required**          | OrdNo20160525000          													|
 
 ## Response Object
 
-Parameter | Type | Size | Description
----------- | ---------- | ---------- | ----------
-resultCd | N | 4 | Result Code
-resultMsg | N | 255 | Result Message
-tXid | N | 30 | Transaction ID
-iMid | N | 10 | Merchant ID
-referenceNo | N | 40 | Merchant Order No
-payMethod | N | 2 | Payment method. Refer Code at [Here](#payment-method)
-amt | N | 12 | Payment amount
-cancelAmt | N | 12 | Cancel amount
-reqDt | N | 8 | Transaction request date
-reqTm | N | 6 | Transaction request time
-transDt | N | 8 | Transaction date
-transTm | N | 6 | Transaction time
-depositDt | N | &nbsp | Transaction deposit date
-depositTm | N | &nbsp | Transaction deposit time
-currency | N | 3 | Currency
-goodsNm | N | 100 | Goods name
-billingNm | N | 30 | Billing name
-status | N | 1 | Transaction status<. Refer Code at [Here](#payment-status-code)
-authNo | N | 10 | Approval number
-issueBankCd | A | 4 | Issue bank code. Refer Code at [Here](#bank-code)
-acquBankCd | A | 4 | Acquire bank code. Refer Code at [Here](#bank-code)
-cardNo | AN | 20 | Card no with masking
-instmntMon | N | 2 | Installment month
-instmntType | N | 2 | Installment Type. Refer Code at [Here](#installment-type)
-preauthToken | AN | 255 | Preauth Token
-recurringToken | AN | 255 | Recurring token 
-ccTransType | AN | 2 | Credit card transaction type<br>1: Normal<br>2: Recurring<br>3: Pre-auth<br>4: Captured
-acquStatus | AN | 2 | Purchase status<br>00: not purchase<br>01: later cancel not purchase<br>10: finish purchase<br>99: etc
-vat | N | 12 | Vat number
-fee | N | 12 | service fee
-notaxAmt | N | 12 | tax free amount
+| Parameter   	 | **Type** 	| **Size** 	   | **Description**                   	   		| Example Value                       |
+| ------------	 | -------- 	| -------- 	   | --------------------------------- 	   		| ----------------------------------- |
+| `resultCd`  	 | **N**        | **4**        | **Result Code**                       		| [0000](#error-code)                 |
+| `resultMsg`    | **AN**       | **255**      | **Result Message**                    		| [SUCCESS]                           |
+| `tXid`         | **AN**       | **30**       | **Transaction ID**                    		| IONPAYTEST02201607291027025291      |
+| `iMid`         | **AN**       | **10**       | **Merchant ID**                       		| IONPAYTEST                          |
+| `referenceNo`  | **ANS**      | **40**       | **Merchant Order No**                 		| OrderNo. 1231531513                 |
+| `payMethod`    | **N**        | **2**        | **Payment method**                    		| [01](#payment-method)               |
+| `amt`          | **N**        | **12**       | **Payment amount**                    		| 15000                               |
+| `reqDt`        | **N**        | **8**        | **Transaction request date** *YYYYMMDD* 	| 20201204                            |
+| `reqTm`        | **N**        | **6**        | **Transaction request time** *HH24MISS* 	| 135959                              |
+| `currency`     | **N**        | **3**        | *Currency*                          		| IDR                                 |
+| `goodsNm`      | **AN**       | **100**      | **Goods name**                        		| Sepatu Merah                        |
+| `billingNm`    | **AN**       | **30**       | **Billing name**                      		| John Doe                            |
+| `status`       | **N**        | **1**        | **Transaction status**                		| [0](#payment-status-code) (paid)    |
+| `instmntMon`   | **N**        | **2**        | **Installment month**                 		| Default 1                           |
+| `instmntType`  | **N**        | **2**        | **Installment Type**                  	 	| Default [Type](#installment-type) 1 |
 
 ### Additional Response for Virtual Account
 
-Parameter | Type | Size | Description
----------- | ---------- | ---------- | ----------
-bankCd  | N | 4 | Bank Code. Refer Code at [Here](#bank-code)
-vacctNo | N | 16 | Bank Virtual Account number
-vacctValidDt  | N | 8 | VA expiry date
-vacctValidTm | N | 6 | VA expiry time
+| Parameter    	 | **Type** | Size | Description             		| Example Value      |
+| ------------ 	 | ---- 	| ---- | ----------------------- 		| ------------------ |
+| `vacctValidDt` | **N**    | 8    | **VA Expiry Date** *YYYYMMDD* 	| 20201201           |
+| `vacctValidTm` | **N**    | 6    | **VA Expiry Time** *HH24MISS* 	| 135959             |
+| `vacctNo`      | **N**    | 16   | **VA Number**               	| 1234567891011101   |
+| `bankCd`       | **AN**   | 4    | **Bank Code**               	| [CENA](#bank-code) |
 
 ## Additional Response for Others Payment Method
 
-Parameter | Type | Size | Description
----------- | ---------- | ---------- | ----------
-mitraCd | A | 4 |  Mitra Code. Refer Code at [Here](#mitra-code)
-payNo | N | 12 | CVS number
-payValidDt | N | 8 | CVS expiry date
-payValidTm | N | 6 | CVS expiry time
-receiptCode | ANS | 18 | Authorization number
-mRefNo | AN | 20 | Bank reference No
+| Parameter     | **Type** | Size   | Description                        | Example Value       |
+| ------------- | -------- | ------ | ---------------------------------- | ------------------- |
+| `mitraCd`     | **A**    | **4**  | **Mitra Code**                     | [ALFA](#mitra-code) |
+| `payNo`       | **N**    | **12** | **Payment Number**                 | 123456789101        |
+| `payValidDt`  | **N**    | **8**  | **Payment Expiry Date** *YYYYMMDD* | 20201201            |
+| `payValidTm`  | **N**    | **6**  | **Payment Expiry Time** *HH24MISS* | 135959              |
+| `receiptCode` | **ANS**  | **18** | **Auth Number**                    |                     |

@@ -259,7 +259,7 @@ print("tXid : " + result['data']['tXid'])
 | Parameter         | **Type**      	| **Size** | **Description**                       	      					| Example Value                                                                                  			|
 |-------------------|-------------------|----------|----------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------|
 | `iMid`            | **AN**          	| **10**   | **Merchant ID** **Required**                    				| IONPAYTEST                                                                                     			|
-| `merchantToken`   | **AN**          	| **255**  | **Merchant Token** **Required**                 				| 6cfccfc0046773c1b589d8e98f8b<br>596c284f3c70a4ecf86eba14c18944b74bcd                           			|
+| `merchantToken`   | **AN**          	| **255**  | **Merchant Token** **Required**                 				| 6cfccfc0046773c1b589d8e98f8b596c<br>284f3c70a4ecf86eba14c18944b74bcd                           			|
 | `payMethod`       | **AN**          	| **2**    | **Payment Method** **Required**                 				| [Payment Method](#payment-method)																			|
 | `currency`        | **A**           	| **3**    | **Currency** **Required**                       				| IDR                                                                                            			|
 | `amt`             | **N**           	| **12**   | **Transaction Amount** **Required**             				| 10000                                                                                          			|
@@ -368,11 +368,11 @@ if (nicePay.Get("resultCd").equals("0000")) {
          } 
 ```
 
-| **Description**                       	      | Parameter         | Type        | Size | Example Value                     |
-|-------------------------------------------------|-------------------|-------------|------|-----------------------------------|
-| **Transaction ID** **Required**                 | `tXid`            | AN          | 30   | IONPAYTEST02201607291027025291    |
-| **Display change button**                       | `optDisplayCB`    | N           | 2    | `show = 0` `hide = 1`             |
-| **Display back link**                           | `optDisplayBL`    | N           | 2    | `show = 0` `hide = 1`             |
+| Parameter         | **Type**   | **Size** | **Description**                       	      | Example Value                     |
+|-------------------|------------|----------|-------------------------------------------------|-----------------------------------|
+| `tXid`            | **AN**     | **30**   | **Transaction ID** **Required**                 | IONPAYTEST02201607291027025291    |
+| `optDisplayCB`    | **N**      | **2**    | **Display change button**                       | `show = 0` `hide = 1`             |
+| `optDisplayBL`    | **N**      | **2**    | **Display back link**                           | `show = 0` `hide = 1`             |
 
 <aside class="notice">
 To prevent your client from changing the payment method, set <code>optDisplayCB = 1</code>
