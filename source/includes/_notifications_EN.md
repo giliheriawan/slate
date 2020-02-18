@@ -37,20 +37,20 @@ Merchant Token received by your Notification Endpoint should be compared interna
 
 ## Notification Parameter
 
-| **Description**																		    | Parameter    		  	   | Type and Size |
-| ------------------------------------------------------------------------------------------|--------------------------| ------------- |
-| **Transaction ID**																		| `tXid`         		   | `N`  30         |
-| **Merchant Token**																		| `merchantToken`		   | `AN` 255        |
-| **Merchant Order No**																		| `referenceNo`  		   | `N`  40         |
-| **Payment method**																		| `payMethod`    		   | `N`  2          |
-| **Payment amount**																		| `amt`          		   | `N`  12         |
-| **Transaction date**																		| `transDt`      		   | `N`  8          |
-| **Transaction time**																		| `transTm`      		   | `N`  6          |
-| **Currency**																			    | `currency`     		   | `N`  3          |
-| **Goods name**																			| `goodsNm`      		   | `N`  100        |
-| **Billing name**																			| `billingNm`    		   | `N`  30         |
-| **Payment amount match flag**																| `matchCl`      		   | `N`  1          |
-| **Deposit Status**										                                | `status`       		   | `AN` 1          |
+| Parameter    		  	   | **Type** 	| **Size**   	 |  Description  																		    |
+|--------------------------| -----------|----------------|------------------------------------------------------------------------------------------|
+| `tXid`         		   | **N** 		| **30**         |  Transaction ID  																		|
+| `merchantToken`		   | **AN**		| **255**        |  Merchant Token  																		|
+| `referenceNo`  		   | **N** 		| **40**         |  Merchant Order No  																		|
+| `payMethod`    		   | **N** 		| **2**          |  Payment method  																		|
+| `amt`          		   | **N** 		| **12**         |  Payment amount  																		|
+| `transDt`      		   | **N** 		| **8**          |  Transaction date  																		|
+| `transTm`      		   | **N** 		| **6**          |  Transaction time  																		|
+| `currency`     		   | **N** 		| **3**          |  Currency  																			    |
+| `goodsNm`      		   | **N** 		| **100**        |  Goods name  																			|
+| `billingNm`    		   | **N** 		| **30**         |  Billing name  																			|
+| `matchCl`      		   | **N** 		| **1**          |  Payment amount match flag  																|
+| `status`       		   | **AN**		| **1**          |  Deposit Status:<br>`0` Deposit<br>`1` Reversal										    |
 
 ### Additional Parameter for Credit Card Notification
 
