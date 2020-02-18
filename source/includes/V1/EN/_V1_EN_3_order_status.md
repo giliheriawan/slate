@@ -1,4 +1,5 @@
 # Check Transaction Status 
+## API Specifications
 
 ```java
 // Order Status Mandatory Field    
@@ -158,7 +159,6 @@ print("status : " + result['status'])
 }
 ```
 
-## API Specifications
 This API is intended for merchant to check the status of the transaction.
 
 |                                                           |                                                                                                               |
