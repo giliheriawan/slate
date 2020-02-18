@@ -130,6 +130,27 @@ print("reqTm : " + result['reqTm'])
 print("status : " + result['status'])
 ```
 
+This API is intended for merchant to check the status of the transaction.
+
+|                                                           |                                                                                                               |
+|-----------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|
+| **API url**                                               | `/nicepay/api/onePassStatus.do`                                                                               |
+| **Request Method** **application/x-www-form-urlencoded**  | `POST`                                                                                                        |
+| **Description**                                           | Inquires transaction status to NICEPAY server.                                                                |
+| **Merchant Token**                                        | SHA256(`iMid``referenceNo``amt``merchantKey`)                                                                 |
+
+## Request Parameters
+
+| Parameter       | **Type**    | **Size** | **Description**                       | Example Value                       										|
+|-----------------|-------------|----------|---------------------------------------|----------------------------------------------------------------------------|
+| `iMid`          | **AN**      | **10**   | **Merchant ID** **Required**          | IONPAYTEST           														|
+| `merchantToken` | **AN**      | **255**  | **Merchant Token** **Required**       | 6cfccfc0046773c1b89d8e98f8b596c<br>284f3c70a4ecf86eba14c18944b74bcd        |
+| `tXid`   		  | **AN**      | **30**   | **Transaction ID** **Required**       | IONPAYTEST02201607291027025291       										|
+| `amt`   		  | **N**       | **12**   | **Amount** **Required**               | 15000               														|
+| `referenceNo`   | **ANS**     | **40**   | **referenceNo** **Required**          | OrdNo20160525000          													|
+
+## Response Object
+
 > Sample response:
 
 ```json
@@ -159,31 +180,10 @@ print("status : " + result['status'])
 }
 ```
 
-This API is intended for merchant to check the status of the transaction.
-
-|                                                           |                                                                                                               |
-|-----------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|
-| **API url**                                               | `/nicepay/api/onePassStatus.do`                                                                               |
-| **Request Method** **application/x-www-form-urlencoded**  | `POST`                                                                                                        |
-| **Description**                                           | Inquires transaction status to NICEPAY server.                                                                |
-| **Merchant Token**                                        | SHA256(`iMid``referenceNo``amt``merchantKey`)                                                                 |
-
-## Request Parameters
-
-| Parameter       | **Type**    | **Size** | **Description**                       | Example Value                       										|
-|-----------------|-------------|----------|---------------------------------------|----------------------------------------------------------------------------|
-| `iMid`          | **AN**      | **10**   | **Merchant ID** **Required**          | IONPAYTEST           														|
-| `merchantToken` | **AN**      | **255**  | **Merchant Token** **Required**       | 6cfccfc0046773c1b89d8e98f8b596c<br>284f3c70a4ecf86eba14c18944b74bcd        |
-| `tXid`   		  | **AN**      | **30**   | **Transaction ID** **Required**       | IONPAYTEST02201607291027025291       										|
-| `amt`   		  | **N**       | **12**   | **Amount** **Required**               | 15000               														|
-| `referenceNo`   | **ANS**     | **40**   | **referenceNo** **Required**          | OrdNo20160525000          													|
-
-## Response Object
-
 | Parameter   	 | **Type** 	| **Size** 	   | **Description**                   	   		| Example Value                       |
 | ------------	 | -------- 	| -------- 	   | --------------------------------- 	   		| ----------------------------------- |
 | `resultCd`  	 | **N**        | **4**        | **Result Code**                       		| [0000](#error-code)                 |
-| `resultMsg`    | **AN**       | **255**      | **Result Message**                    		| [SUCCESS]                           |
+| `resultMsg`    | **AN**       | **255**      | **Result Message**                    		| [SUCCESS](#error-code)              |
 | `tXid`         | **AN**       | **30**       | **Transaction ID**                    		| IONPAYTEST02201607291027025291      |
 | `iMid`         | **AN**       | **10**       | **Merchant ID**                       		| IONPAYTEST                          |
 | `referenceNo`  | **ANS**      | **40**       | **Merchant Order No**                 		| OrderNo. 1231531513                 |
@@ -194,7 +194,7 @@ This API is intended for merchant to check the status of the transaction.
 | `currency`     | **N**        | **3**        | *Currency*                          		| IDR                                 |
 | `goodsNm`      | **AN**       | **100**      | **Goods name**                        		| Sepatu Merah                        |
 | `billingNm`    | **AN**       | **30**       | **Billing name**                      		| John Doe                            |
-| `status`       | **N**        | **1**        | **Transaction status**                		| [0](#payment-status-code) (paid)    |
+| `status`       | **N**        | **1**        | **Transaction status**                		| 0 ([paid](#payment-status-code))    |
 | `instmntMon`   | **N**        | **2**        | **Installment month**                 		| Default 1                           |
 | `instmntType`  | **N**        | **2**        | **Installment Type**                  	 	| Default [Type](#installment-type) 1 |
 
