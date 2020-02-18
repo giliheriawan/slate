@@ -1,7 +1,6 @@
 # Nicepay Code
-
-
 ## Field Type
+
 Value Code | Meaning
 ---------- | ----------
 A | Alphabet
@@ -12,6 +11,7 @@ AOO | Array of Object
 
 
 ## Installment Type
+
 Value Code | Meaning
 ---------- | ----------
 1 | Customer charge
@@ -101,6 +101,7 @@ KDVI | Kredivo
 OVOE | OVO
 
 ## Error Code
+
 Value | Description
 --------- | ---------
 &nbsp;| **Common**
