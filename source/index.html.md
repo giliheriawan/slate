@@ -33,11 +33,11 @@ Using our latest technology, we are integrated with Banks, E-wallets and other f
 
 There are two Versions of our API, allowing you to interact securely with our API using different approach.
 
-| **API**               | **Request Data**                      | **Response**         | Payment Page                 |
-| --------------------- | ------------------------------------- | -------------------- | ---------------------------- |
-| **V1 Professional**   | **application/x-www-form-urlencoded** | **application/json** | NICEPAY Secure Payment Page  |
-| **V1 Enterprise**     | **application/x-www-form-urlencoded** | **application/json** | Merchant-hosted payment page |
-| **V2**                | **application/json**                  | **application/json** | Merchant-hosted payment page |
+| **API**                   | **Request Data**                      | **Response**         | Payment Page                 |
+| ------------------------- | ------------------------------------- | -------------------- | ---------------------------- |
+| **V1** **Professional**   | **application/x-www-form-urlencoded** | **application/json** | NICEPAY Secure Payment Page  |
+| **V1** **Enterprise**     | **application/x-www-form-urlencoded** | **application/json** | Merchant-hosted payment page |
+| **V2**                    | **application/json**                  | **application/json** | Merchant-hosted payment page |
 
 Have any inquiry ?<br>Feel free contact us : [it@nicepay.co.id](mailto:it@nicepay.co.id).
 
