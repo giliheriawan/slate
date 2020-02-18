@@ -22,7 +22,6 @@ includes:
   - notifications_ID
   - nicepaycode
   - faq_id
-  - changelog/changelog_v1
 
 search: true
 ---

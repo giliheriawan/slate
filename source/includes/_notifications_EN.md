@@ -38,14 +38,14 @@ To Allow Push Notifications from NICEPAY Server, please add these details to you
 | `tXid`         		   | **N** 		| **30**         |  Transaction ID  																		|
 | `merchantToken`		   | **AN**		| **255**        |  Merchant Token  																		|
 | `referenceNo`  		   | **N** 		| **40**         |  Merchant Order No  																		|
-| `payMethod`    		   | **N** 		| **2**          |  Payment method  																		|
+| `payMethod`    		   | **N** 		| **2**          |  [Payment method](#payment-method)  														|
 | `amt`          		   | **N** 		| **12**         |  Payment amount  																		|
 | `transDt`      		   | **N** 		| **8**          |  Transaction date  																		|
 | `transTm`      		   | **N** 		| **6**          |  Transaction time  																		|
 | `currency`     		   | **N** 		| **3**          |  Currency  																			    |
 | `goodsNm`      		   | **N** 		| **100**        |  Goods name  																			|
 | `billingNm`    		   | **N** 		| **30**         |  Billing name  																			|
-| `matchCl`      		   | **N** 		| **1**          |  Payment amount match flag  																|
+| `matchCl`      		   | **N** 		| **1**          |  Payment [Flag](#notification-match-amount-indicator)  									|
 | `status`       		   | **AN**		| **1**          |  Deposit Status:<br>`0` Deposit<br>`1` Reversal										    |
 
 ### Additional Parameter for Credit Card Notification
@@ -73,10 +73,10 @@ To Allow Push Notifications from NICEPAY Server, please add these details to you
 |-----------------------| ----------| ---------| -----------------------------------------------|
 | `bankCd`         		| **N** 	| **4**    | [Bank Code](#bank-code)						|
 | `vacctNo`    			| **N** 	| **16**   | Bank VA Number				                	|
-| `vacctValidDt`    	| **N** 	| **8**	   | VA Expiry Date 					            |
-| `vacctValidTm`     	| **N** 	| **6**    | VA Expiry Time		                        	|
-| `depositDt`     		| **N** 	|          | Deposit Date							        |
-| `depositTm`     		| **N** 	|          | Deposit TIme							        |
+| `vacctValidDt`    	| **N** 	| **8**	   | VA Expiry Date (YYYYMMDD) 					    |
+| `vacctValidTm`     	| **N** 	| **6**    | VA Expiry Time	(HH24MISS)	                    |
+| `depositDt`     		| **N** 	|          | Deposit Date (YYYYMMDD)						|
+| `depositTm`     		| **N** 	|          | Deposit TIme (HH24MISS)						|
 
 ### Additional Parameter for Others Payment Method Notification
 
@@ -84,12 +84,12 @@ To Allow Push Notifications from NICEPAY Server, please add these details to you
 |-----------------------| ----------| ---------| ------------------------------------------------------------------------------------------|
 | `mitraCd`         	| **A**   	| **4**    | [Mitra Code](#mitra-code)											  					   |
 | `payNo`    			| **N**   	| **1**    | Payment Number 								   										   |
-| `payValidDt`    		| **N**   	| **8**	   | Expiry Date																		       |
-| `payValidTm`     		| **N**   	| **6**    | Expiry Time									   										   |
+| `payValidDt`    		| **N**   	| **8**	   | Expiry Date (YYYYMMDD)																	   |
+| `payValidTm`     		| **N**   	| **6**    | Expiry Time (HH24MISS)									   								   |
 | `receiptCode`     	| **ANS** 	| **20**   | Authorization number																	   |
 | `mRefNo`    			| **AN**  	| **18**   | Reference No.																	           |
-| `depositDt`     		| **N**   	|          | Deposit Date									   										   |
-| `depositTm`     		| **N**   	|    	   | Deposit Time																	           |
+| `depositDt`     		| **N**   	|          | Deposit Date (YYYYMMDD)									   							   |
+| `depositTm`     		| **N**   	|    	   | Deposit Time (HH24MISS)																   |
 
 <aside class="notice">
 Merchant Token received by your Notification Endpoint should be compared internally to prevent fake Notifications.

@@ -1,5 +1,17 @@
 # Check Transaction Status 
 ## API Specifications
+This API is intended for merchant to check the status of the transaction.
+
+|                                                           |                                                                                                               |
+|-----------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|
+| **API url**                                               | `/nicepay/api/onePassStatus.do`                                                                               |
+| **Request Method** **application/x-www-form-urlencoded**  | `POST`                                                                                                        |
+| **Description**                                           | Inquires transaction status to NICEPAY server.                                                                |
+| **Merchant Token**                                        | SHA256(`iMid``referenceNo``amt``merchantKey`)                                                                 |
+
+## Request Parameters
+
+> Sample API Request
 
 ```java
 // Order Status Mandatory Field    
@@ -130,17 +142,6 @@ print("reqTm : " + result['reqTm'])
 print("status : " + result['status'])
 ```
 
-This API is intended for merchant to check the status of the transaction.
-
-|                                                           |                                                                                                               |
-|-----------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|
-| **API url**                                               | `/nicepay/api/onePassStatus.do`                                                                               |
-| **Request Method** **application/x-www-form-urlencoded**  | `POST`                                                                                                        |
-| **Description**                                           | Inquires transaction status to NICEPAY server.                                                                |
-| **Merchant Token**                                        | SHA256(`iMid``referenceNo``amt``merchantKey`)                                                                 |
-
-## Request Parameters
-
 | Parameter       | **Type**    | **Size** | **Description**                       | Example Value                       										|
 |-----------------|-------------|----------|---------------------------------------|----------------------------------------------------------------------------|
 | `iMid`          | **AN**      | **10**   | **Merchant ID** **Required**          | IONPAYTEST           														|
@@ -155,64 +156,83 @@ This API is intended for merchant to check the status of the transaction.
 
 ```json
 {
-    "reqTm": "151024",
-    "resultCd": "0000",
-    "goodsNm": "Test Transaction Nicepay",
-    "referenceNo": "99999",
-    "transTm": "151024",
-    "tXid": "IONPAYTEST02201706131510248946",
-    "amt": "10000",
-    "cancelAmt": null,
-    "depositTm": "175005",
-    "vacctNo": "1510248946",
-    "resultMsg": "paid",
-    "iMid": "IONPAYTEST",
-    "billingNm": "Customer Name",
-    "vacctValidDt": "20170620",
-    "depositDt": "20170613",
-    "payMethod": "02",
-    "reqDt": "20170613",
-    "bankCd": "BNIA",
+    "tXid": "NORMALTEST01202002031344071337",
+    "iMid": "NORMALTEST",
     "currency": "IDR",
-    "transDt": "20170613",
-    "vacctValidTm": "235959",
-    "status": "0"
+    "amt": "12000",
+    "instmntMon": "1",
+    "instmntType": "1",
+    "referenceNo": "ord20200203130299",
+    "goodsNm": "Testing Normal FULL PAYMENT CC Va",
+    "payMethod": "01",
+    "billingNm": "Customer Name",
+    "reqDt": "20200203",
+    "reqTm": "134407",
+    "status": "9",
+    "resultCd": "0000",
+    "resultMsg": "init",
+    "cardNo": null,
+    "preauthToken": null,
+    "acquBankCd": null,
+    "issuBankCd": null,
+    "vacctValidDt": null,
+    "vacctValidTm": null,
+    "vacctNo": null,
+    "bankCd": null,
+    "payNo": null,
+    "mitraCd": null,
+    "receiptCode": null,
+    "cancelAmt": null,
+    "transDt": null,
+    "transTm": null,
+    "recurringToken": null,
+    "ccTransType": null,
+    "payValidDt": null,
+    "payValidTm": null,
+    "mRefNo": null,
+    "acquStatus": null,
+    "cardExpYymm": null,
+    "acquBankNm": null,
+    "issuBankNm": null,
+    "depositDt": null,
+    "depositTm": null
 }
 ```
 
-| Parameter   	 | **Type** 	| **Size** 	   | **Description**                   	   		| Example Value                       |
-| ------------	 | -------- 	| -------- 	   | --------------------------------- 	   		| ----------------------------------- |
-| `resultCd`  	 | **N**        | **4**        | **Result Code**                       		| [0000](#error-code)                 |
-| `resultMsg`    | **AN**       | **255**      | **Result Message**                    		| [SUCCESS](#error-code)              |
-| `tXid`         | **AN**       | **30**       | **Transaction ID**                    		| IONPAYTEST02201607291027025291      |
-| `iMid`         | **AN**       | **10**       | **Merchant ID**                       		| IONPAYTEST                          |
-| `referenceNo`  | **ANS**      | **40**       | **Merchant Order No**                 		| OrderNo. 1231531513                 |
-| `payMethod`    | **N**        | **2**        | **Payment method**                    		| [01](#payment-method)               |
-| `amt`          | **N**        | **12**       | **Payment amount**                    		| 15000                               |
-| `reqDt`        | **N**        | **8**        | **Transaction request date** *YYYYMMDD* 	| 20201204                            |
-| `reqTm`        | **N**        | **6**        | **Transaction request time** *HH24MISS* 	| 135959                              |
-| `currency`     | **N**        | **3**        | *Currency*                          		| IDR                                 |
-| `goodsNm`      | **AN**       | **100**      | **Goods name**                        		| Sepatu Merah                        |
-| `billingNm`    | **AN**       | **30**       | **Billing name**                      		| John Doe                            |
-| `status`       | **N**        | **1**        | **Transaction status**                		| 0 ([paid](#payment-status-code))    |
-| `instmntMon`   | **N**        | **2**        | **Installment month**                 		| Default 1                           |
-| `instmntType`  | **N**        | **2**        | **Installment Type**                  	 	| Default [Type](#installment-type) 1 |
-
+| Parameter   	 | **Type** 	| **Size** 	   | Description                   	   				|
+| ------------	 | -------- 	| -------- 	   | --------------------------------- 	   			|
+| `resultCd`  	 | **N**        | **4**        | [Result Code](#error-code)             		| 
+| `resultMsg`    | **AN**       | **255**      | [Result Message](#error-code)          		|
+| `tXid`         | **AN**       | **30**       | Transaction ID                    				|
+| `iMid`         | **AN**       | **10**       | Merchant ID                       				|
+| `referenceNo`  | **ANS**      | **40**       | Merchant Order No                 				|
+| `payMethod`    | **N**        | **2**        | [Payment method](#payment-method)      		|
+| `amt`          | **N**        | **12**       | Payment amount                    				|
+| `reqDt`        | **N**        | **8**        | Transaction request date (YYYYMMDD) 			|
+| `reqTm`        | **N**        | **6**        | Transaction request time (HH24MISS) 			|
+| `currency`     | **N**        | **3**        | Currency                          				|
+| `goodsNm`      | **AN**       | **100**      | Goods name                        				|
+| `billingNm`    | **AN**       | **30**       | Billing name                      				|
+| `status`       | **N**        | **1**        | [Transaction status](#payment-status-code)		|
+| `instmntMon`   | **N**        | **2**        | Installment month                 				|
+| `instmntType`  | **N**        | **2**        | [Installment Type](#installment-type)  		|
 ### Additional Response for Virtual Account
 
-| Parameter    	 | **Type** | Size | Description             		| Example Value      |
-| ------------ 	 | ---- 	| ---- | ----------------------- 		| ------------------ |
-| `vacctValidDt` | **N**    | 8    | **VA Expiry Date** *YYYYMMDD* 	| 20201201           |
-| `vacctValidTm` | **N**    | 6    | **VA Expiry Time** *HH24MISS* 	| 135959             |
-| `vacctNo`      | **N**    | 16   | **VA Number**               	| 1234567891011101   |
-| `bankCd`       | **AN**   | 4    | **Bank Code**               	| [CENA](#bank-code) |
+| Parameter    	 | **Type** | **Size** | Description             	|
+| ------------ 	 | ---- 	| -------- | ----------------------- 	|
+| `vacctValidDt` | **N**    | **8**    | VA Expiry Date (YYYYMMDD) 	|
+| `vacctValidTm` | **N**    | **6**    | VA Expiry Time (HH24MISS) 	|
+| `vacctNo`      | **N**    | **16**   | VA Number               	|
+| `bankCd`       | **AN**   | **4**    | Bank Code](#bank-code)     |
 
-## Additional Response for Others Payment Method
+### Additional Response for Others Payment Method
 
-| Parameter     | **Type** | Size   | Description                        | Example Value       |
-| ------------- | -------- | ------ | ---------------------------------- | ------------------- |
-| `mitraCd`     | **A**    | **4**  | **Mitra Code**                     | [ALFA](#mitra-code) |
-| `payNo`       | **N**    | **12** | **Payment Number**                 | 123456789101        |
-| `payValidDt`  | **N**    | **8**  | **Payment Expiry Date** *YYYYMMDD* | 20201201            |
-| `payValidTm`  | **N**    | **6**  | **Payment Expiry Time** *HH24MISS* | 135959              |
-| `receiptCode` | **ANS**  | **18** | **Auth Number**                    |                     |
+| Parameter     | **Type** | **Size**   | Description                        |
+| ------------- | -------- | ------     | ---------------------------------- |
+| `mitraCd`     | **A**    | **4**      | [Mitra Code](#mitra-code)          |
+| `payNo`       | **N**    | **12**     | Payment Number                 	 |
+| `payValidDt`  | **N**    | **8**      | Payment Expiry Date (YYYYMMDD) 	 |
+| `payValidTm`  | **N**    | **6**      | Payment Expiry Time (HH24MISS) 	 |
+| `receiptCode` | **ANS**  | **18**     | Auth Number                    	 |
+
+### Additional Responses Coming Soon

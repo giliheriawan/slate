@@ -1,4 +1,18 @@
 # Cancel Transaction
+## API Specifications
+This API is intended to cancel a registered transaction.
+
+|                                                          |                                             |
+| -------------------------------------------------------- | ------------------------------------------- |
+| **API url**                                              | `/nicepay/api/onePassAllCancel.do`          |
+| **Request Method** **application/x-www-form-urlencoded** | `POST`                                      |
+| **Description**                                          | Request Transaction Cancellation to NICEPAY |
+| **Merchant Token**                                       | SHA256(`iMid``tXid``amt``merchantKey`)      |
+
+
+## Request Parameters
+
+> Sample API Request
 
 ```java
 nicePay.setCancelMsg("Cancel Message");    
@@ -133,8 +147,27 @@ print("description : " + result['description'])
 print("amount : " + result['amount'])
 ```
 
+| Parameter        | **Type** | **Size** | **Description**                 	   | Example Value                                                		 |
+| --------------   | -------- | -------- | ----------------------------------- | ------------------------------------------------------------ 		 |
+| `iMid`           | **AN**   | **10**   | **Merchant ID** **Required**        | IONPAYTEST                                                   		 |
+| `merchantToken`  | **AN**   | **255**  | **Merchant Token** **Required**     | 6cfccfc0046773c1b89d8e98f8b596c<br>284f3c70a4ecf86eba14c18944b74bcd |
+| `tXid`           | **AN**   | **30**   | **Transaction ID** **Required**     | IONPAYTEST02201607291027025291                                		 |
+| `payMethod`      | **N**    | **2**    | **Payment method** **Required**     | `01`[CC](#payment-method)                                     		 |
+| `cancelType`     | **N**    | **2**    | **Cancelation type** **Required**   | `1` [Full](#cancel-type)                                      		 |
+| `amt`            | **N**    | **12**   | **Cancelation amount** **Required** | 15000                                                         		 |
+| `cancelMsg`      | **AN**   | **255**  | **Cancelation message**         	   | Cancel                                                        		 |
+| `fee`            | **N**    | **12**   | **Service fee**                 	   | 0                                                             		 |
+| `vat`            | **N**    | **12**   | **Vat number**                  	   | 0                                                             		 |
+| `cancelServerIp` | **AN**   | **15**   | **Server IP address**           	   | 127.0.0.1                                                     		 |
+| `cancelUserId`   | **AN**   | **30**   | **User ID**                     	   | Admin                                                         		 |
+| `cancelUserIp`   | **AN**   | **15**   | **User IP address**             	   | 127.0.0.1                                                     		 |
+| `cancelUserInfo` | **AN**   | **100**  | **User Information**            	   | New customer                                                  		 |
+| `cancelRetryCnt` | **N**    | **2**    | **Retry count for cancel**      	   | 2                                                             		 |
+| `worker`         | **N**    | **10**   | **Worker**                      	   | Worker                                                        		 |
 
-> Sample response JSON structured (when success) :
+## Response Parameter
+
+> Sample Response
 
 ```json
 {
@@ -150,55 +183,14 @@ print("amount : " + result['amount'])
 }
 ```
 
-This API is for request to cancel of transaction.<br>
-type of transaction can be requested :
-
-Code | Description
----------- | ----------
-01 | Credit Card
-02 | Virtual Account
-03 | CVS (Convenience Store)
-
- &nbsp; | &nbsp;
----------- | -------
-**API url** | **/nicepay/api/onePassAllCancel.do**
-Method | POST
-Description | Perform cancel API for Credit Card, Virtual Account, and CVS
-Merchant Token | SHA256 (Merchant ID + NICEPay Transaction ID + Amount + Merchant Key)
-
-**Request POST Parameter**
-
-Parameter | Mandatory | Type | Size | Description
----------- | ---------- | ---------- | ---------- | ----------
-iMid | Y | AN | 10 | Merchant ID
-merchantToken | Y | AN | 255 | generate SHA256 (Merchant ID + NICEPay Transaction ID + Amount + Merchant Key)
-tXid | Y | AN | 30 | Transaction ID
-payMethod | Y | AN | 2 | Payment method. Refer Code at [Here](#payment-method)
-cancelType | Y | N | 2 | Cancelation type
-amt | Y | N | 12 | Cancelation amount
-cancelMsg | N | AN | 255 | Cancelation message
-preauthToken | N | AN | 100 | Preauth Token
-fee | N | AN | 12 | service fee
-vat | N | N | 12 | Vat number
-notaxAmt | N | N | 12 | Number Tax Amount
-cancelServerIp | N | AN | 15 | Server IP address
-cancelUserId | N | AN | 30 | User ID
-cancelUserIp | N | AN | 15 | User IP address
-cancelUserInfo | N | AN | 100 | User Information for cancel reason
-cancelRetryCnt | N | N | 2 | Retry count for cancel
-worker | N | N | 10 | Worker
-
-
-**Response Json Object**
-
-Parameter | Type | Size | Description 
----------- | ---------- | ---------- | ---------- 
-tXid | AN | 30 | Transaction ID
-referenceNo | ANS | 30 | Merchant order No
-resultCd | N | 4 | Result code
-resultMsg | AN | 255 | Result message
-transDt | N | 40 | Transaction date
-transTm | N | 12 | Transaction time
-description | AN | 255 | Description
-amount | N | 8 | Amount
-canceltXid | AN | 6 | Cancel transaction ID
+| Parameter   	| **Type** | **Size** | Description           |
+| ----------- 	| -------- | -------- | --------------------- |
+| `tXid`        | **AN**   | **30**   | Transaction ID        |
+| `referenceNo` | **ANS**  | **30**   | Merchant order No     |
+| `resultCd`    | **N**    | **4**    | Result code           |
+| `resultMsg`   | **AN**   | **255**  | Result message        |
+| `transDt`     | **N**    | **8**    | Transaction date      |
+| `transTm`     | **N**    | **6**    | Transaction time      |
+| `description` | **AN**   | **255**  | Description           |
+| `amount`      | **N**    | **8**    | Amount                |
+| `canceltXid`  | **AN**   | **6**    | Cancel transaction ID |
