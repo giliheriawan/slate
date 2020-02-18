@@ -3,11 +3,11 @@
 
 | **Value Code** | Meaning                 |
 | -------------- | ----------------------- |
-| **A**          | Alphabet                |
-| **AN**         | Alphabet Numeric        |
-| **N**          | Numeric                 |
-| **ANS**        | Alphabet Numeric Symbol |
-| **AOO**        | Array of Object         |
+| **`A`**          | Alphabet                |
+| **`AN`**         | Alphabet Numeric        |
+| **`N`**          | Numeric                 |
+| **`ANS`**        | Alphabet Numeric Symbol |
+| **`AOO`**        | Array of Object         |
 
 
 ## Installment Type
