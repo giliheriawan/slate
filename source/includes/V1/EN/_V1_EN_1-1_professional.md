@@ -260,10 +260,10 @@ print("tXid : " + result['data']['tXid'])
 |-------------------|-------------------|----------|----------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------|
 | `iMid`            | **AN**          	| **10**   | **Merchant ID** **Required**                    				| IONPAYTEST                                                                                     			|
 | `merchantToken`   | **AN**          	| **255**  | **Merchant Token** **Required**                 				| 6cfccfc0046773c1b589d8e98f8b596c<br>284f3c70a4ecf86eba14c18944b74bcd                           			|
-| `payMethod`       | **AN**          	| **2**    | **Payment Method** **Required**                 				| [Payment Method](#payment-method)																			|
+| `payMethod`       | **AN**          	| **2**    | **[Payment Method](#payment-method)** **Required**             | 01												                               							|
 | `currency`        | **A**           	| **3**    | **Currency** **Required**                       				| IDR                                                                                            			|
 | `amt`             | **N**           	| **12**   | **Transaction Amount** **Required**             				| 10000                                                                                          			|
-| `instmntType`     | **N**           	| **2**    | **Installment Type** **Required for CC**        				| [Installment Type](#installment-type)                                                    					|
+| `instmntType`     | **N**           	| **2**    | **[Installment Type](#installment-type)** **Required for CC**  | 1                                                    					                                    |
 | `instmntMon`      | **N**           	| **2**    | **Installment Month** **Required for CC**       				| 1                                                                                              			|
 | `referenceNo`     | **ANS**         	| **40**   | **Merchant Order Number** **Required**          				| MerchantReferenceNumber1                                                                       			|
 | `goodsNm`         | **AN**          	| **100**  | **Goods Name** **Required**                     				| Merchant Goods 1                                                                               			|

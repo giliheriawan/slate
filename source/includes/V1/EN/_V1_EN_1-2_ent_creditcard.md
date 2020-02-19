@@ -14,12 +14,15 @@ Transaction Flow:
 ## Request Token
 Merchant need to request `onePassToken` for each `Credit Card` transaction using NICEPay Enterprise.
 
-&nbsp; | &nbsp;
----------- | -------
-**API url** | **/nicepay/api/onePassToken.do**
-Method | POST
-Description | Request Credit Card Token
-Merchant Token | SHA256 (Merchant ID + Reference Number + Amount + Merchant Key)
+### API Specifications
+
+|                                                           |                                                                                                               |
+|-----------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|
+| **API url**                                               | `/nicepay/api/onePassToken.do`                                                                                |
+| **Request Method** **application/json**                   | `POST`                                                                                                        |
+| **Description**                                           | Request `onePassToken` for Credit Card Transaction.                                                           |
+| **Merchant Token**                                        | SHA256(`iMid``referenceNo``amt``merchantKey`)                                                                 |
+| **Payment Methods**                                       | `01` Credit Card                                                                                              |
 
 ### Parameter Request Object
 
@@ -46,17 +49,17 @@ String cardToken= nicePay.Get("cardToken");
 String paymentType= nicePay.Get("paymentType");
 ```
 
-Parameter | Mandatory | Type | Size | Description | Sample Data
----------- | ---------- | ---------- | ---------- | ---------- | ----------
-iMid | Y | AN | 10 | Merchant ID | IONPAYTEST
-merchantToken | Y | AN | 255 | Merchant Token | c69fd0a2e36fb9d97fc8418f6b22699143a1177e570769dac2cf4d2008558946
-cardNo | Y | N | &nbsp; | Card number | 5409123456789123
-cardExpYYmm | Y | N | 4 | Card expiry (YYMM) | 2012
-cardHolderNm | Y (CIMB) | AN | 50 | Card holder name
-amt | Y | N | 12 | Payment amount | 10000
-referenceNo | Y | ANS | 40 | Merchant Order Number | ABC123
-instmntType | N | N | 2 | Installment Type. Refer Code at [Here](#installment-type) | 1
-instmntMon | N | N | 2 | Installment month | 1
+| Parameter            	    | **Type**	   | **Size** | **Description**                                           | Example Value                                                |
+| ------------------------- | ------------ | -------- | --------------------------------------------------------- | ------------------------------------------------------------ |
+| `iMid`                    | **AN**       | 10       | Merchant ID Required                                      | IONPAYTEST                                                   |
+| `merchantToken`           | **AN**       | 255      | Merchant Token Required                                   | c69fd0a2e36fb9d97fc8418f6b22699143a1177e570769dac2cf4d2008558946 |
+| `cardNo`                  | **N**        | 16		  | Card number Required                                      | 5409123456789123                                             |
+| `cardExpYYmm`             | **N**        | 4        | Card expiry (YYMM) Required                               | 2012                                                         |
+| `cardHolderNm` 			| **AN**       | 50       | Card holder name Required CIMB                            | asdasdas                                                     |
+| `amt`                     | **N**        | 12       | Payment amount Required                                   | 10000                                                        |
+| `referenceNo`             | **ANS**      | 40       | Merchant Order Number Required                            | ABC123                                                       |
+| `instmntType`             | **N**        | 2        | [Installment Type](#installment-type)                     | 1                                                            |
+| `instmntMon`              | **N**        | 2        | Installment month                                         | 1                                                            |
 
 ### Response JSON Object
 
@@ -71,21 +74,21 @@ instmntMon | N | N | 2 | Installment month | 1
 }
 ```
 
-Parameter | Type | Size | Description
----------- | ---------- | ---------- | ----------
-resultCd | N | 4 | result code
-resultMsg | AN | 255 | result message
-cardToken | AN | 64 | one time use transaction token
-paymentType | N | 1 | CC Authorization type
+| Parameter     | **Type** | **Size** | Description                    |
+| ------------- | -------- | -------- | ------------------------------ |
+| `resultCd`    | **N**    | **4**    | result code                    |
+| `resultMsg`   | **AN**   | **255**  | result message                 |
+| `cardToken`   | **AN**   | **64**   | one time use transaction token |
+| `paymentType` | **N**    | **1**    | CC Authorization type          |
 
 <aside class="success">Kindly check the <code>paymentType</code> value from `onePassToken.do` response.
 This will be needed for the next step to determine whether to use <code>3DS</code> or <code>MIGS</code>.</aside>
 
-Code | Description
--------- | ---------
-1 | 3D Secure
-2 | KeyIn (Proceed to Registration without 3DS/MIGS)
-3 | MIGS
+| Code 	 | Description                                      |
+| ------ | ------------------------------------------------ |
+| `1`    | 3D Secure                                        |
+| `2`    | KeyIn (Proceed to Registration without 3DS/MIGS) |
+| `3`    | MIGS                                             |
 
 ## 3DS Request
 Proceed with this API when you get `paymentType = 1` from `onePassToken.do` response.
@@ -98,11 +101,15 @@ Proceed with this API when you get `paymentType = 1` from `onePassToken.do` resp
   <li>NICEPay will send response parameter to <code>callbackUrl</code>.
 </ol>
 
-&nbsp; | &nbsp;
----------- | -------
-**API url** | **/nicepay/api/secureVeRequest.do**
-Method | Popup Page
-Description | Next process for onePassToken.do while get response paymentType='1'
+### API Specifications
+
+|                                                           |                                                                                                               |
+|-----------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|
+| **API url**                                               | `/nicepay/api/secureVeRequest.do`                                                                             |
+| **Request Method** **application/json**                   | `POPUP` or `Redirect`                                                                                         |
+| **Description**                                           | Request `3DS` page for `paymentType = 1`                                                                      |
+| **Merchant Token**                                        | SHA256(`iMid``referenceNo``amt``merchantKey`)                                                                 |
+| **Payment Methods**                                       | `01` Credit Card                                                                                              |
 
 ### Request Parameter URL
 
@@ -112,11 +119,11 @@ Description | Next process for onePassToken.do while get response paymentType='1
 https://www.nicepay.co.id/nicepay/api/secureVeRequest.do?country=360&callbackUrl={callbackUrl}&onePassToken={onePassToken}
 ```
 
-Parameter | Mandatory | Type | Size | Description | Sample Data
----------- | ---------- | ---------- | ---------- | ---------- | ----------
-country | Y | N | 3 | Currency code | 360
-callbackUrl | Y | AN | 200 | Callback Url for result | http://merchant.com/callback
-onePassToken | Y | AN | 64 | one time use transaction token | c5bd0b91bcc3d21358cd004c60e54579441c23aa8e7553b41ce3402db1113fff
+| Parameter      | Type | Size | Description                    			  | Sample Data                                                  |
+| ------------ 	 | ---- | ---- | -------------------------------------------- | ------------------------------------------------------------ |
+| `country`      | N    | 3    | Currency **Required**                   	  | 360                                                          |
+| `callbackUrl`  | AN   | 200  | Callback Url **Required**         			  | http://merchant.com/callback                                 |
+| `onePassToken` | AN   | 64   | One time use transaction token **Required**  | c5bd0b91bcc3d21358cd004c60e54<br>579441c23aa8e7553b41ce3402db1113fff |
 
 ### Response Parameter
 
@@ -126,17 +133,17 @@ onePassToken | Y | AN | 64 | one time use transaction token | c5bd0b91bcc3d21358
 http://merchant.com/callbackUrl?resultCd={resultCd}&resultMsg={resultMsg}&referenceNo={referenceNo}&merchantToken={merchantToken}
 ```
 
-Parameter | Type | Size | Description
----------- | ---------- | ---------- | ----------
-resultCd | N | 4 | Result code
-resultMsg | AN | 255 | Result message
-referenceNo | ANS | 40 | Merchant Order Number
-merchantToken | AN | 255 | Merchant Token
+| Parameter     | **Type** | **Size** | Description                   |
+| ------------- | -------- | -------- | ----------------------        |
+| resultCd      | **N**    | **4**    | [Result Code](#eror-code)     |
+| resultMsg     | **AN**   | **255**  | [Result Message](#error-code) |
+| referenceNo   | **ANS**  | **40**   | Merchant Order Number         |
+| merchantToken | **AN**   | **255**  | Merchant Token                |
 
 ## MIGS Request
 Proceed with this API when you get `paymentType = 3` from `onePassToken.do` response.
 
-3DS Steps:
+MIGS Steps:
 <ol type="1">
   <li>Send parameters to MIGS Request API.
   <li>Popup to Bank MIGS Page.
@@ -144,11 +151,15 @@ Proceed with this API when you get `paymentType = 3` from `onePassToken.do` resp
   <li>NICEPay will send response parameter to <code>callbackUrl</code>.
 </ol>
 
-&nbsp; | &nbsp;
----------- | -------
-**API url** | **/nicepay/api/migsRequest.do**
-Method | Popup Page
-Description | Next process for onePassToken.do while get response paymentType='3'
+### API Specifications
+
+|                                                           |                                                                                                               |
+|-----------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|
+| **API url**                                               | `/nicepay/api/migsRequest.do`                                                                             |
+| **Request Method** **application/json**                   | `POPUP` or `Redirect`                                                                                         |
+| **Description**                                           | Request `MIGS` page for `paymentType = 3`                                                                      |
+| **Merchant Token**                                        | SHA256(`iMid``referenceNo``amt``merchantKey`)                                                                 |
+| **Payment Methods**                                       | `01` Credit Card                                                                                              |
 
 ### Request Parameter URL
 
@@ -158,15 +169,14 @@ Description | Next process for onePassToken.do while get response paymentType='3
 https://www.nicepay.co.id/nicepay/api/migsRequest.do?instmntType=1&instmntMon=1&referenceNo={referenceNo}&cardCvv={cardCvv}&callbackUrl={callbackUrl}&onePassToken={onePassToken}
 ```
 
-Parameter | Mandatory | Type | Size | Description
----------- | ---------- | ---------- | ---------- | ----------
-instmntType | N | N | 2 | Installment Type . Refer Code at [Here](#installment-type) | 1
-instmntMon | N | N | 2 | Installment Month | 12
-referenceNo | Y | ANS | 40 | Merchant Order Number | ref12345
-cardCvv | N | N | 3 | Card CVV | 123
-callbackUrl | Y | AN | 200 | Callback Url for result | http://merchant.com
-onePassToken | Y | AN | 64 | one time use transaction token | c5bd0b91bcc3d21358cd004c60e54579441c23aa8e7553b41ce3402db1113fff
-
+| Parameter      | Mandatory | Type | Size | Description                           | Example Value                   |
+| -------------- | --------- | ---- | ---- | ------------------------------------- | ------------------------------- |
+| `instmntType`  | N         | N    | 2    | [Installment Type](#installment-type) | 1                               |
+| `instmntMon`   | N         | N    | 2    | Installment Month                     | 1                               |
+| `referenceNo`  | Y         | ANS  | 40   | Merchant Order Number                 | OrdNo-125315314                 |
+| `cardCvv`      | N         | N    | 3    | Card CVV                              | 123                             |
+| `callbackUrl`  | Y         | AN   | 200  | Callback Url for result               | http://merchant.com/callbackUrl |
+| `onePassToken` | Y         | AN   | 64   | one time use transaction token        | 92869482578275828fdvf432        |
 ### Response Parameter URL
 
 > Sample URL Parameter 3DS Response
@@ -175,19 +185,21 @@ onePassToken | Y | AN | 64 | one time use transaction token | c5bd0b91bcc3d21358
 http://merchant.com/callbackUrl?resultCd={resultCd}&resultMsg={resultMsg}&referenceNo={referenceNo}&merchantToken={merchantToken}
 ```
 
-Parameter | Type | Size | Description
----------- | ---------- | ---------- | ----------
-resultCd | N | 4 | Result code
-resultMsg | AN | 255 | Result message
+| Parameter   | **Type** | **Size** | Description                   |
+| ----------- | -------- | -------- | ----------------------------- |
+| `resultCd`  | **N**    | **4**    | [Result code](#error-code)    |
+| `resultMsg` | **AN**   | **255**  | [Result message](#error-code) |
 
 ## Credit Card Registration
+### API Specifications
 
-&nbsp; | &nbsp;
----------- | -------
-**API url** | **/nicepay/api/onePass.do**
-Method | POST
-Description | Credit Card Transaction
-Merchant Token | SHA256 (Merchant ID + Reference Number + Amount + Merchant Key)
+|                                                           |                                                                                                               |
+|-----------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|
+| **API url**                                               | `/nicepay/api/onePass.do`                                                                                     |
+| **Request Method** **application/json**                   | `POST`                                                                                                        |
+| **Description**                                           | Register Transaction and Charge Credit Card using onePassToken                                                |
+| **Merchant Token**                                        | SHA256(`iMid``referenceNo``amt``merchantKey`)                                                                 |
+| **Payment Methods**                                       | `01` Credit Card                                                                                              |
 
 ### Request parameter
 
@@ -495,54 +507,54 @@ else:
         print("resultMsg : " + result['resultMsg'])
 ```
 
-Parameter | Mandatory | Type | Size | Description | Sample Data
----------- | ---------- | ---------- | ---------- | ---------- | ----------
-iMid | Y  | AN | 10 | Merchant ID | IONPAYTEST
-payMethod | Y  | AN | 2 | Pay Method | 01
-currency | Y  | AN | 3 | Currency | IDR
-amt | Y  | N | 12 | Goods Amount | 1000
-referenceNo | Y  | ANS | 40 | Merchant Order No | MerchantReferenceNumber001
-goodsNm | Y  | AN | 100 | Goods Name | Merchant Goods 1
-billingNm | Y  | A | 30 | Billing Name | Buyer Name
-billingPhone | Y  | N | 15 | Billing Phone Number | 02112345678
-billingEmail | Y  | AN | 40 | Billing Email | buyer@merchant.com
-billingCity | Y  | A | 50 | Billing City | Jakarta
-billingState | Y  | A | 50 | Billing State | Jakarta
-billingPostCd | Y  | N | 10 | Billing Post Number | 12345
-billingCountry | Y  | A | 10 | Billing Country | Indonesia
-callBackUrl | Y  | AN | 255 | Payment Result Forward Url (On Browser) | www.merchant.com/callback
-dbProcessUrl | Y  | AN | 255 | Payment Result Receive Url (Server Side) | www.merchant.com/dbprocess
-description | Y  | AN | 100 | Description | Description
-merchantToken | Y  | AN | 255 | Merchant Token | 6cfccfc0046773c1b589d8e98f8b596c284f3c70a4ecf86eba14c18944b74bcd
-userIP | Y  | AN | 15 | User IP (Customer) | 127.0.0.1
-cartData | Y  | AN | 4000 | Cart Data (Json Format) | {}
-instmntType | Y  | N | 2 | Installment Type. Refer Code at [Here](#installment-type) | 1
-instmntMon | Y  | N | 2 | Installment Month | 1
-cardCvv | Y  | N | 3 | Card CVV | 123
-onePassToken | Y  | AN | &nbsp; | One time use transaction token(Created by onePassToken.do) | 9338d54573688ae18e175240b0257de48d89c6ef1c9c7b5c094dc4beed9e435f
-recurrOpt | Y | N | 2 | Recurring option<br> 0: Automatic Cancel<br>1: Do not cancel<br>2: Do not make token | 1
-billingAddr | N | AN | AN | Billing Address | Billing Address
-deliveryNm | N | A | 30 | Delivery Name | Buyer Name
-deliveryPhone | N | N | 15 | Delivery Phone | 02112345678
-deliveryAddr | N | AN | 100 | Delivery Address | Billing Address
-deliveryEmail | N | AN  &nbsp; | Delivery Email | buyer@merchant.com
-deliveryCity | N | A | 50 | Delivery City | Jakarta
-deliveryState | N | A | 50 | Delivery State | Jakarta
-deliveryPostCd | N | N | 10 | Delivery Post Number | 12345
-deliveryCountry | N | A | 10 | Delivery Country | Indonesia
-vat | N | N | 12 | Vat | 0
-fee | N | N | 12 | Service Tax | 0
-notaxAmt | N | N | 12 | Tax Free Amount | 0
-reqDt | N | N | 8 | Request Date(YYYYMMDD) | 20160301
-reqTm | N | N | 6 | Request Time(HH24MISS) | 135959
-reqDomain | N | AN | 100 | Request Domain | merchant.com
-reqServerIP | N | AN | 15 | Request Server IP | 127.0.0.1
-reqClientVer | N | AN | 50 | equest Client Version | 1.0
-userSessionID | N | AN | 100 | User Session ID | userSessionID
-userAgent | N | AN | 100 | User Agent Information | Mozilla
-userLanguage | N | AN | 2 | User Language | en-US
+| Parameter         | **Type** | **Size** | **Description**                                              | Sample Data                                                  |
+| ----------------- | -------- | -------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `iMid`            | **AN**   | **10**   | **Merchant ID** **Required**                                 | IONPAYTEST                                                   |
+| `payMethod`       | **AN**   | **2**    | **[Pay Method](#payment-method)** **Required**               | 01                                                           |
+| `currency`        | **AN**   | **3**    | **Currency** **Required**                                    | IDR                                                          |
+| `amt`             | **N**    | **12**   | **Goods Amount** **Required**                                | 1000                                                         |
+| `referenceNo`     | **ANS**  | **40**   | **Merchant Order No** **Required**                           | MerchantReferenceNumber001                                   |
+| `goodsNm`         | **AN**   | **100**  | **Goods Name** **Required**                                  | Merchant Goods 1                                             |
+| `billingNm`       | **A**    | **30**   | **Billing Name** **Required**                                | Buyer Name                                                   |
+| `billingPhone`    | **N**    | **15**   | **Billing Phone Number** **Required**                        | 02112345678                                                  |
+| `billingEmail`    | **AN**   | **40**   | **Billing Email** **Required**                               | buyer@merchant.com                                           |
+| `billingCity`     | **A**    | **50**   | **Billing City** **Required**                                | Jakarta                                                      |
+| `billingState`    | **A**    | **50**   | **Billing State** **Required**                               | Jakarta                                                      |
+| `billingPostCd`   | **N**    | **10**   | **Billing Post Number** **Required**                         | 12345                                                        |
+| `billingCountry`  | **A**    | **10**   | **Billing Country** **Required**                             | Indonesia                                                    |
+| `callBackUrl`     | **AN**   | **255**  | **Payment Result Forward Url (On Browser)** **Required**     | www.merchant.com/callback                                    |
+| `dbProcessUrl`    | **AN**   | **255**  | **Payment Result Receive Url (Server Side)** **Required**    | www.merchant.com/dbprocess                                   |
+| `description`     | **AN**   | **100**  | **Description** **Required**                                 | Description                                                  |
+| `merchantToken`   | **AN**   | **255**  | **Merchant Token** **Required**                              | 6cfccfc0046773c1b589d8e98f8b596c284f3c70a4ecf86eba14c18944b74bcd |
+| `userIP`          | **AN**   | **15**   | **User IP** **Required**                                     | 127.0.0.1                                                    |
+| `cartData`        | **AN**   | **4000** | **Cart Data (Json Format)** **Required**                     | {}                                                           |
+| `instmntType`     | **N**    | **2**    | **[Installment Type](#installment-type)** **Required**       | 1                                                            |
+| `instmntMon`      | **N**    | **2**    | **Installment Month** **Required**                           | 1                                                            |
+| `cardCvv`         | **N**    | **3**    | **Card CVV**                                                 | 123                                                          |
+| `onePassToken`    | **AN**   |          | **One time use transaction token (Created by onePassToken.do)** **Required** | 9338d54573688ae18e175240b0257de48d89c6ef1c9c7b5c094dc4beed9e435f |
+| `recurrOpt`       | **N**    | **2**    | **Recurring option** `0` Automatic Cancel<br>`1` Do not cancel<br>`2` Do not make token | 1                                                            |
+| `billingAddr`     | **AN**   |          | **Billing Address**                                          | Billing Address                                              |
+| `deliveryNm`      | **A**    | **30**   | **Delivery Name**                                            | Buyer Name                                                   |
+| `deliveryPhone`   | **N**    | **15**   | **Delivery Phone**                                           | 02112345678                                                  |
+| `deliveryAddr`    | **AN**   | **100**  | **Delivery Address**                                         | Billing Address                                              |
+| `deliveryEmail`   | **AN**   |          | **Delivery Email**                                           | buyer@merchant.com                                           |
+| `deliveryCity`    | **A**    | **50**   | **Delivery City**                                            | Jakarta                                                      |
+| `deliveryState`   | **A**    | **50**   | **Delivery State**                                           | Jakarta                                                      |
+| `deliveryPostCd`  | **N**    | **10**   | **Delivery Post Number**                                     | 12345                                                        |
+| `deliveryCountry` | **A**    | **10**   | **Delivery Country**                                         | Indonesia                                                    |
+| `vat`             | **N**    | **12**   | **Vat**                                                      | 0                                                            |
+| `fee`             | **N**    | **12**   | **Service Tax**                                              | 0                                                            |
+| `notaxAmt`        | **N**    | **12**   | **Tax Free Amount**                                          | 0                                                            |
+| `reqDt`           | **N**    | **8**    | **Request Date **(YYYYMMDD)**                                | 20160301                                                     |
+| `reqTm`           | **N**    | **6**    | **Request Time** **(HH24MISS)**                              | 135959                                                       |
+| `reqDomain`       | **AN**   | **100**  | **Request Domain**                                           | merchant.com                                                 |
+| `reqServerIP`     | **AN**   | **15**   | **Request Server IP**                                        | 127.0.0.1                                                    |
+| `reqClientVer`    | **AN**   | **50**   | **Request Client Version**                                   | 1.0                                                          |
+| `userSessionID`   | **AN**   | **100**  | **User Session ID**                                          | userSessionID                                                |
+| `userAgent`       | **AN**   | **100**  | **User Agent Information**                                   | Mozilla                                                      |
+| `userLanguage`    | **AN**   | **2**    | **User Language**                                            | en-US                                                        |
 
-### Response JSON Object
+### Response Parameter
 
 > Sample JSON Response
 

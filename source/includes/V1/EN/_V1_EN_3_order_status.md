@@ -223,7 +223,7 @@ print("status : " + result['status'])
 | `vacctValidDt` | **N**    | **8**    | VA Expiry Date (YYYYMMDD) 	|
 | `vacctValidTm` | **N**    | **6**    | VA Expiry Time (HH24MISS) 	|
 | `vacctNo`      | **N**    | **16**   | VA Number               	|
-| `bankCd`       | **AN**   | **4**    | Bank Code](#bank-code)     |
+| `bankCd`       | **AN**   | **4**    | [Bank Code](#bank-code)    |
 
 ### Additional Response for Others Payment Method
 
