@@ -8,13 +8,11 @@ Transaction Flow:
   <li>NICEPay Send Notification
 </ol>
 
+## Credit Card Flow
+<img src="/images/ent-cc-flow.png">
+
 ## Request Token
-
-> Flow for Enterprise - Credit Card
-> <img src="/images/ent-cc-flow.png">
-
-Merchant need to request `onePassToken` for `Credit Card` transaction using NICEPay Enterprise.<br>
-Each transaction needs one token.
+Merchant need to request `onePassToken` for each `Credit Card` transaction using NICEPay Enterprise.
 
 &nbsp; | &nbsp;
 ---------- | -------
