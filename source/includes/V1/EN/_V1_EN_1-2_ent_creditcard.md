@@ -1,20 +1,31 @@
-# Enterprise - Credit Card
-Integration Step :
+# Credit Card
+Transaction Flow:
 <ol type="1">
-  <li>Merchant Request Token
-  <li>Merchant Request 3DS Secure / MIGS Secure
-  <li>Customer input OTP
-  <li>Merchant Request OnePass (Registration)
-  <li>NICEPay send notification
-  <li>Merchant handle notification
+  <li>Request `onePassToken`.
+  <li>Redirect to 3DS / MIGS page.
+  <li>**Customer** input `OTP` on 3DS page.
+  <li>Merchant Register Transaction.
+  <li>NICEPay Send Notification
 </ol>
 
-## Credit Card Flow
-
-Flow for Enterprise - Credit Card
-<img src="/images/ent-cc-flow.png">
-
 ## Request Token
+
+> Flow for Enterprise - Credit Card
+> <img src="/images/ent-cc-flow.png">
+
+Merchant need to request `onePassToken` for `Credit Card` transaction using NICEPay Enterprise.<br>
+Each transaction needs one token.
+
+&nbsp; | &nbsp;
+---------- | -------
+**API url** | **/nicepay/api/onePassToken.do**
+Method | POST
+Description | Request Credit Card Token
+Merchant Token | SHA256 (Merchant ID + Reference Number + Amount + Merchant Key)
+
+### Parameter Request Object
+
+> Sample API Request
 
 ```java
 // Payment Mandatory Field
@@ -36,41 +47,6 @@ String resultMsg = nicePay.Get("resultMsg");
 String cardToken= nicePay.Get("cardToken");
 String paymentType= nicePay.Get("paymentType");
 ```
-> Sample POST
-
-```
-api/onePassToken.do?jsonData={"iMid":"IONPAYTEST","referenceNo":"OrdNo20160525000-52104","amt":"1000","cardNo":"1234567890123456","cardExpYymm":"1612","merchantToken":"141fd2368aa80ea0e600b1b4d7a42c1e731e74a27a03521e8e28150cc00bc05b"}
-```
-
-> Sample JSON response
-
-```json
-{
-    "resultCd": "0000",
-    "cardToken": "ed5ce66bf69926c52cfa237c56fb38601f7c08985d385e615971a268b510db75",
-    "resultMsg": "SUCCESS",
-    "paymentType": "3"
-}
-```
-
-> <aside class="success">Kindly check <strong>paymentType</strong> value from <strong>Response JSON</strong>, it's for next step whether to use <strong>3DS Request</strong> or <strong>MIGS Request</strong> or <strong>Credit Card Registration</strong>.</aside>
-> Code | Description
-> -------- | ---------
-> 1 | 3D Secure
-> 2 | KeyIn (process to CC Registration)
-> 3 | MIGS Request
-
-Merchant need to request token for **Credit Card** transaction using NICEPay Enterprise.<br>
-every one transaction, need one token.
-
-&nbsp; | &nbsp;
----------- | -------
-**API url** | **/nicepay/api/onePassToken.do**
-Method | POST
-Description | Request Credit Card Token
-Merchant Token | SHA256 (Merchant ID + Reference Number + Amount + Merchant Key)
-
-<br>**Parameter Request Object**
 
 Parameter | Mandatory | Type | Size | Description | Sample Data
 ---------- | ---------- | ---------- | ---------- | ---------- | ----------
@@ -84,7 +60,18 @@ referenceNo | Y | ANS | 40 | Merchant Order Number | ABC123
 instmntType | N | N | 2 | Installment Type. Refer Code at [Here](#installment-type) | 1
 instmntMon | N | N | 2 | Installment month | 1
 
-<br>**Response JSON Object**
+### Response JSON Object
+
+> Sample JSON response
+
+```json
+{
+    "resultCd": "0000",
+    "cardToken": "ed5ce66bf69926c52cfa237c56fb38601f7c08985d385e615971a268b510db75",
+    "resultMsg": "SUCCESS",
+    "paymentType": "3"
+}
+```
 
 Parameter | Type | Size | Description
 ---------- | ---------- | ---------- | ----------
@@ -93,27 +80,24 @@ resultMsg | AN | 255 | result message
 cardToken | AN | 64 | one time use transaction token
 paymentType | N | 1 | CC Authorization type
 
+<aside class="success">Kindly check the <code>paymentType</code> value from `onePassToken.do` response.
+This will be needed for the next step to determine whether to use <code>3DS</code> or <code>MIGS</code>.</aside>
+
+Code | Description
+-------- | ---------
+1 | 3D Secure
+2 | KeyIn (Proceed to Registration without 3DS/MIGS)
+3 | MIGS
+
 ## 3DS Request
+Proceed with this API when you get `paymentType = 1` from `onePassToken.do` response.
 
-> Sample URL Parameter 3DS Request
-
-```
-https://www.nicepay.co.id/nicepay/api/secureVeRequest.do?country=360&callbackUrl={callbackUrl}&onePassToken={onePassToken}
-```
-
-> Sample URL Parameter 3DS Response
-
-```
-http://merchant.com/callbackUrl?resultCd={resultCd}&resultMsg={resultMsg}&referenceNo={referenceNo}&merchantToken={merchantToken}
-```
-
-Using this API when you get response **paymentType='1'** after process for **Request Token**
-integration Step:
+3DS Steps:
 <ol type="1">
-  <li>send parameter including URL
-  <li>Popup page will redirect to Bank 3D Secure Page
-  <li>Customer will input OTP
-  <li>NICEPay will send response parameter to callbackUrl
+  <li>Send parameters to 3DS Request API.
+  <li>Popup to Bank 3D Secure Page.
+  <li>Customer input OTP.
+  <li>NICEPay will send response parameter to <code>callbackUrl</code>.
 </ol>
 
 &nbsp; | &nbsp;
@@ -122,7 +106,13 @@ integration Step:
 Method | Popup Page
 Description | Next process for onePassToken.do while get response paymentType='1'
 
-<br>**Request Parameter URL**
+### Request Parameter URL
+
+> Sample Request
+
+```
+https://www.nicepay.co.id/nicepay/api/secureVeRequest.do?country=360&callbackUrl={callbackUrl}&onePassToken={onePassToken}
+```
 
 Parameter | Mandatory | Type | Size | Description | Sample Data
 ---------- | ---------- | ---------- | ---------- | ---------- | ----------
@@ -130,7 +120,13 @@ country | Y | N | 3 | Currency code | 360
 callbackUrl | Y | AN | 200 | Callback Url for result | http://merchant.com/callback
 onePassToken | Y | AN | 64 | one time use transaction token | c5bd0b91bcc3d21358cd004c60e54579441c23aa8e7553b41ce3402db1113fff
 
-<br>**Response Parameter URL**
+### Response Parameter
+
+> Sample URL Parameter 3DS Response
+
+```
+http://merchant.com/callbackUrl?resultCd={resultCd}&resultMsg={resultMsg}&referenceNo={referenceNo}&merchantToken={merchantToken}
+```
 
 Parameter | Type | Size | Description
 ---------- | ---------- | ---------- | ----------
@@ -140,26 +136,14 @@ referenceNo | ANS | 40 | Merchant Order Number
 merchantToken | AN | 255 | Merchant Token
 
 ## MIGS Request
+Proceed with this API when you get `paymentType = 3` from `onePassToken.do` response.
 
-> Sample URL Parameter 3DS Request
-
-```
-https://www.nicepay.co.id/nicepay/api/migsRequest.do?instmntType=1&instmntMon=1&referenceNo={referenceNo}&cardCvv={cardCvv}&callbackUrl={callbackUrl}&onePassToken={onePassToken}
-```
-
-> Sample URL Parameter 3DS Response
-
-```
-http://merchant.com/callbackUrl?resultCd={resultCd}&resultMsg={resultMsg}&referenceNo={referenceNo}&merchantToken={merchantToken}
-```
-
-Using this API when you get response **paymentType='3'** after process for **Request Token**
-integration Step:
+3DS Steps:
 <ol type="1">
-  <li>send parameter including URL
-  <li>Popup page will redirect to Bank MIGS Request Page
-  <li>Customer will input OTP
-  <li>NICEPay will send response parameter to callbackUrl
+  <li>Send parameters to MIGS Request API.
+  <li>Popup to Bank MIGS Page.
+  <li>Customer input OTP.
+  <li>NICEPay will send response parameter to <code>callbackUrl</code>.
 </ol>
 
 &nbsp; | &nbsp;
@@ -168,7 +152,13 @@ integration Step:
 Method | Popup Page
 Description | Next process for onePassToken.do while get response paymentType='3'
 
-<br>**Request Parameter URL**
+### Request Parameter URL
+
+> Sample URL Parameter 3DS Request
+
+```
+https://www.nicepay.co.id/nicepay/api/migsRequest.do?instmntType=1&instmntMon=1&referenceNo={referenceNo}&cardCvv={cardCvv}&callbackUrl={callbackUrl}&onePassToken={onePassToken}
+```
 
 Parameter | Mandatory | Type | Size | Description
 ---------- | ---------- | ---------- | ---------- | ----------
@@ -179,7 +169,13 @@ cardCvv | N | N | 3 | Card CVV | 123
 callbackUrl | Y | AN | 200 | Callback Url for result | http://merchant.com
 onePassToken | Y | AN | 64 | one time use transaction token | c5bd0b91bcc3d21358cd004c60e54579441c23aa8e7553b41ce3402db1113fff
 
-<br>**Response Parameter URL**
+### Response Parameter URL
+
+> Sample URL Parameter 3DS Response
+
+```
+http://merchant.com/callbackUrl?resultCd={resultCd}&resultMsg={resultMsg}&referenceNo={referenceNo}&merchantToken={merchantToken}
+```
 
 Parameter | Type | Size | Description
 ---------- | ---------- | ---------- | ----------
@@ -187,6 +183,17 @@ resultCd | N | 4 | Result code
 resultMsg | AN | 255 | Result message
 
 ## Credit Card Registration
+
+&nbsp; | &nbsp;
+---------- | -------
+**API url** | **/nicepay/api/onePass.do**
+Method | POST
+Description | Credit Card Transaction
+Merchant Token | SHA256 (Merchant ID + Reference Number + Amount + Merchant Key)
+
+### Request parameter
+
+>Sample API Request
 
 ```java
 // Payment Mandatory Field
@@ -490,40 +497,6 @@ else:
         print("resultMsg : " + result['resultMsg'])
 ```
 
-> Sample JSON Response
-
-```json
-{
-  "resultCd": "0000",
-  "amount": "1000",
-  "authNo": "005911",
-  "referenceNo": "Ref20170526111736065300000988",
-  "transTm": "112041",
-  "recurringToken": "",
-  "tXid": "BMRITEST0101201705261120395118",
-  "description": "Payment Of Ref No.Ref20170526111736065300000988",
-  "cardNo": "123456******3456",
-  "resultMsg": "SUCCESS",
-  "payMethod": "01",
-  "callbackUrl": "http://www.merchant.com/ExampleCallback",
-  "transDt": "20170526",
-  "issuBankCd": "CENA",
-  "issuBankNm": "PT Bank Central Asia, TBK",
-  "acquBankCd": "BMRI",
-  "acquBankNm": "PT Bank Mandiri (Persero)"
-}
-}
-```
-
-&nbsp; | &nbsp;
----------- | -------
-**API url** | **/nicepay/api/onePass.do**
-Method | POST
-Description | Credit Card Transaction
-Merchant Token | SHA256 (Merchant ID + Reference Number + Amount + Merchant Key)
-
-**Request POST parameter**
-
 Parameter | Mandatory | Type | Size | Description | Sample Data
 ---------- | ---------- | ---------- | ---------- | ---------- | ----------
 iMid | Y  | AN | 10 | Merchant ID | IONPAYTEST
@@ -571,7 +544,31 @@ userSessionID | N | AN | 100 | User Session ID | userSessionID
 userAgent | N | AN | 100 | User Agent Information | Mozilla
 userLanguage | N | AN | 2 | User Language | en-US
 
-<br>**Response JSON Object**
+### Response JSON Object
+
+> Sample JSON Response
+
+```json
+{
+  "resultCd": "0000",
+  "amount": "1000",
+  "authNo": "005911",
+  "referenceNo": "Ref20170526111736065300000988",
+  "transTm": "112041",
+  "recurringToken": "",
+  "tXid": "BMRITEST0101201705261120395118",
+  "description": "Payment Of Ref No.Ref20170526111736065300000988",
+  "cardNo": "123456******3456",
+  "resultMsg": "SUCCESS",
+  "payMethod": "01",
+  "callbackUrl": "http://www.merchant.com/ExampleCallback",
+  "transDt": "20170526",
+  "issuBankCd": "CENA",
+  "issuBankNm": "PT Bank Central Asia, TBK",
+  "acquBankCd": "BMRI",
+  "acquBankNm": "PT Bank Mandiri (Persero)"
+}
+```
 
 Parameter | Type | Size | Description
 ---------- | ---------- | ---------- | ----------
