@@ -24,7 +24,7 @@ Merchant need to request `onePassToken` for each `Credit Card` transaction using
 | **Merchant Token**                                        | SHA256(`iMid``referenceNo``amt``merchantKey`)                                                                 |
 | **Payment Methods**                                       | `01` Credit Card                                                                                              |
 
-### Parameter Request Object
+### Request Token Request Parameter
 
 > Sample API Request
 
@@ -49,19 +49,18 @@ String cardToken= nicePay.Get("cardToken");
 String paymentType= nicePay.Get("paymentType");
 ```
 
-| Parameter            	    | **Type**	   | **Size** | **Description**                                           | Example Value                                                |
-| ------------------------- | ------------ | -------- | --------------------------------------------------------- | ------------------------------------------------------------ |
-| `iMid`                    | **AN**       | 10       | Merchant ID Required                                      | IONPAYTEST                                                   |
-| `merchantToken`           | **AN**       | 255      | Merchant Token Required                                   | c69fd0a2e36fb9d97fc8418f6b22699143a1177e570769dac2cf4d2008558946 |
-| `cardNo`                  | **N**        | 16		  | Card number Required                                      | 5409123456789123                                             |
-| `cardExpYYmm`             | **N**        | 4        | Card expiry (YYMM) Required                               | 2012                                                         |
-| `cardHolderNm` 			| **AN**       | 50       | Card holder name Required CIMB                            | asdasdas                                                     |
-| `amt`                     | **N**        | 12       | Payment amount Required                                   | 10000                                                        |
-| `referenceNo`             | **ANS**      | 40       | Merchant Order Number Required                            | ABC123                                                       |
-| `instmntType`             | **N**        | 2        | [Installment Type](#installment-type)                     | 1                                                            |
-| `instmntMon`              | **N**        | 2        | Installment month                                         | 1                                                            |
-
-### Response JSON Object
+| Parameter       | **Type** | **Size** | **Description**                           | Example Value                                                |
+| --------------- | -------- | -------- | ----------------------------------------- | ------------------------------------------------------------ |
+| `iMid`          | **AN**   | 10       | **Merchant ID** **Required**              | IONPAYTEST                                                   |
+| `merchantToken` | **AN**   | 255      | **Merchant Token** **Required**           | c69fd0a2e36fb9d97fc8418f6b22699143a1177e570769dac2cf4d2008558946 |
+| `cardNo`        | **N**    | 16       | **Card number** **Required**              | 5409123456789123                                             |
+| `cardExpYYmm`   | **N**    | 4        | **Card expiry** **(YYMM) Required**       | 2012                                                         |
+| `cardHolderNm`  | **AN**   | 50       | **Card holder name** **Required CIMB**    | asdasdas                                                     |
+| `amt`           | **N**    | 12       | **Payment amount** **Required**           | 10000                                                        |
+| `referenceNo`   | **ANS**  | 40       | **Merchant Order Number** **Required**    | ABC123                                                       |
+| `instmntType`   | **N**    | 2        | **[Installment Type](#installment-type)** | 1                                                            |
+| `instmntMon`    | **N**    | 2        | **Installment month**                     | 1                                                            |
+### Request Token Response
 
 > Sample JSON response
 
