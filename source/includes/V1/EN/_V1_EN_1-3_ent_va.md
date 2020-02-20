@@ -410,22 +410,22 @@ else:
 }
 ```
 
-| Parameter    | Type | Size | Description                                           |
-| ------------ | ---- | ---- | ----------------------------------------------------- |
-| resultCd     | N    | 4    | Result Code                                           |
-| resultMsg    | AN   | 255  | Result Message                                        |
-| tXid         | AN   | 30   | Transaction ID                                        |
-| referenceNo  | ANS  | 40   | Merchant Order No                                     |
-| payMethod    | N    | 2    | Payment Method. Refer Code at [Here](#payment-method) |
-| amount       | N    | 12   | Transaction Amount                                    |
-| currency     | AN   | 3    | Currency                                              |
-| goodsNm      | N    | 100  | Goods Name                                            |
-| billingNm    | N    | 30   | Buyer Name                                            |
-| transDt      | N    | 8    | Transaction date (YYYYMMDD)                           |
-| transTm      | N    | 6    | Transaction time (HH24MISS)                           |
-| description  | N    | 100  | Transaction description                               |
-| callbackUrl  | N    | 100  | Callback Url                                          |
-| bankCd       | AN   | 4    | Bank Code, refer to [Link](#bank-code)                |
-| bankVacctNo  | N    | 20   | Bank Virtual Account Number                           |
-| vacctValidDt | N    | 8    | VA expiry date                                        |
-| vacctValidTm | N    | 6    | Va expiry time                                        |
+| Parameter      | **Type** | **Size** | Description                       |
+| -------------- | -------- | -------- | --------------------------------- |
+| `resultCd`     | **N**    | **4**    | [Result Code](#error-code)        |
+| `resultMsg`    | **AN**   | **255**  | [Result Message](#error-code)     |
+| `tXid`         | **AN**   | **30**   | Transaction ID                    |
+| `referenceNo`  | **ANS**  | **40**   | Merchant Order No                 |
+| `payMethod`    | **N**    | **2**    | [Payment Method](#payment-method) |
+| `amount`       | **N**    | **12**   | Transaction Amount                |
+| `currency`     | **AN**   | **3**    | Currency                          |
+| `goodsNm`      | **N**    | **100**  | Goods Name                        |
+| `billingNm`    | **N**    | **30**   | Buyer Name                        |
+| `transDt`      | **N**    | **8**    | Transaction date (YYYYMMDD)       |
+| `transTm`      | **N**    | **6**    | Transaction time (HH24MISS)       |
+| `description`  | **N**    | **100**  | Transaction description           |
+| `callbackUrl`  | **N**    | **100**  | Callback Url                      |
+| `bankCd`       | **AN**   | **4**    | [Bank Code](#bank-code)           |
+| `bankVacctNo`  | **N**    | **20**   | Bank Virtual Account Number       |
+| `vacctValidDt` | **N**    | **8**    | VA expiry date                    |
+| `vacctValidTm` | **N**    | **6**    | VA expiry time                    |
