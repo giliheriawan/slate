@@ -81,14 +81,14 @@ String paymentType= nicePay.Get("paymentType");
 | `cardToken`   | **AN**   | **64**   | one time use transaction token |
 | `paymentType` | **N**    | **1**    | CC Authorization type          |
 
-<aside class="success">Kindly check the <code>paymentType</code> value from `onePassToken.do` response.
+<aside class="warn">Kindly check the <code>paymentType</code> value from <code>onePassToken.do</code> response.
 This will be needed for the next step to determine whether to use <code>3DS</code> or <code>MIGS</code>.</aside>
 
-| Code 	 | Description                                      |
-| ------ | ------------------------------------------------ |
-| `1`    | 3D Secure                                        |
-| `2`    | KeyIn (Proceed to Registration without 3DS/MIGS) |
-| `3`    | MIGS                                             |
+| `paymentType` 	 | Description                                      |
+| ------------------ | ------------------------------------------------ |
+| `1`                | 3D Secure                                        |
+| `2`                | KeyIn (Proceed to Registration without 3DS/MIGS) |
+| `3`                | MIGS                                             |
 
 ## 3DS Request
 Proceed with this API when you get `paymentType = 1` from `onePassToken.do` response.
