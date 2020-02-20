@@ -10,7 +10,7 @@ NICEPAY Professional Step:
 </ol>
 
 ## Transaction Registration
-### API Specifications
+**API Specifications**
 
 |                                                           |                                                                                                               |
 |-----------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|
@@ -348,7 +348,7 @@ After your transaction has been Registered, don't forget to redirect your client
 </aside>
 
 ## Transaction Payment
-### API Specifications
+**API Specifications**
 
 |                                                           |                                                                                                                           |
 |-----------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------|

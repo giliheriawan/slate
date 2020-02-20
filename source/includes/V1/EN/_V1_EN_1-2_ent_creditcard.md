@@ -14,7 +14,7 @@ Transaction Flow:
 ## Request Token
 Merchant need to request `onePassToken` for each `Credit Card` transaction using NICEPay Enterprise.
 
-### API Specifications
+**API Specifications**
 
 |                                                           |                                                                                                               |
 |-----------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|
@@ -81,7 +81,7 @@ String paymentType= nicePay.Get("paymentType");
 | `cardToken`   | **AN**   | **64**   | one time use transaction token |
 | `paymentType` | **N**    | **1**    | CC Authorization type          |
 
-<aside class="warn">Kindly check the <code>paymentType</code> value from <code>onePassToken.do</code> response.
+<aside class="notice">Kindly check the <code>paymentType</code> value from <code>onePassToken.do</code> response.
 This will be needed for the next step to determine whether to use <code>3DS</code> or <code>MIGS</code>.</aside>
 
 | `paymentType` 	 | Description                                      |
@@ -101,7 +101,7 @@ Proceed with this API when you get `paymentType = 1` from `onePassToken.do` resp
   <li>NICEPay will send response parameter to <code>callbackUrl</code>.
 </ol>
 
-### API Specifications
+**API Specifications**
 
 |                                                           |                                                                                                               |
 |-----------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|
@@ -151,7 +151,7 @@ MIGS Steps:
   <li>NICEPay will send response parameter to <code>callbackUrl</code>.
 </ol>
 
-### API Specifications
+**API Specifications**
 
 |                                                           |                                                                                                               |
 |-----------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|
@@ -191,7 +191,7 @@ http://merchant.com/callbackUrl?resultCd={resultCd}&resultMsg={resultMsg}&refere
 | `resultMsg` | **AN**   | **255**  | [Result message](#error-code) |
 
 ## Credit Card Registration
-### API Specifications
+**API Specifications**
 
 |                                                           |                                                                                                               |
 |-----------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|

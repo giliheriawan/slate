@@ -1,5 +1,5 @@
 # Check Transaction Status 
-### API Specifications
+**API Specifications**
 This API is intended for merchant to check the status of the transaction.
 
 |                                                           |                                                                                                               |
