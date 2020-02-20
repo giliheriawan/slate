@@ -119,11 +119,11 @@ Proceed with this API when you get `paymentType = 1` from `onePassToken.do` resp
 https://www.nicepay.co.id/nicepay/api/secureVeRequest.do?country=360&callbackUrl={callbackUrl}&onePassToken={onePassToken}
 ```
 
-| Parameter      | Type | Size | Description                    			  | Sample Data                                                  |
-| ------------ 	 | ---- | ---- | -------------------------------------------- | ------------------------------------------------------------ |
-| `country`      | N    | 3    | Currency **Required**                   	  | 360                                                          |
-| `callbackUrl`  | AN   | 200  | Callback Url **Required**         			  | http://merchant.com/callback                                 |
-| `onePassToken` | AN   | 64   | One time use transaction token **Required**  | c5bd0b91bcc3d21358cd004c60e54<br>579441c23aa8e7553b41ce3402db1113fff |
+| Parameter      | **Type** | **Size** | **Description**                    			  | Sample Data                                                  |
+| ------------ 	 | -------- | -------- | ------------------------------------------------ | ------------------------------------------------------------ |
+| `country`      | **N**    | **3**    | **Currency** **Required**                   	  | 360                                                          |
+| `callbackUrl`  | **AN**   | **200**  | **Callback Url** **Required**         			  | http://merchant.com/callback                                 |
+| `onePassToken` | **AN**   | **64**   |** One time use transaction token** **Required**  | c5bd0b91bcc3d21358cd004c60e54<br>579441c23aa8e7553b41ce3402db1113fff |
 
 ### 3DS Response Parameter
 
@@ -169,14 +169,14 @@ MIGS Steps:
 https://www.nicepay.co.id/nicepay/api/migsRequest.do?instmntType=1&instmntMon=1&referenceNo={referenceNo}&cardCvv={cardCvv}&callbackUrl={callbackUrl}&onePassToken={onePassToken}
 ```
 
-| Parameter      | Mandatory | Type | Size | Description                           | Example Value                   |
-| -------------- | --------- | ---- | ---- | ------------------------------------- | ------------------------------- |
-| `instmntType`  | N         | N    | 2    | [Installment Type](#installment-type) | 1                               |
-| `instmntMon`   | N         | N    | 2    | Installment Month                     | 1                               |
-| `referenceNo`  | Y         | ANS  | 40   | Merchant Order Number                 | OrdNo-125315314                 |
-| `cardCvv`      | N         | N    | 3    | Card CVV                              | 123                             |
-| `callbackUrl`  | Y         | AN   | 200  | Callback Url for result               | http://merchant.com/callbackUrl |
-| `onePassToken` | Y         | AN   | 64   | one time use transaction token        | 92869482578275828fdvf432        |
+| Parameter      | **Type** | **Size** | **Description**                           | Example Value                   |
+| -------------- | -------- | -------- | ----------------------------------------- | ------------------------------- |
+| `instmntType`  | **N**    | **2**    | **[Installment Type](#installment-type)** | 1                               |
+| `instmntMon`   | **N**    | **2**    | **Installment Month**                     | 1                               |
+| `referenceNo`  | **ANS**  | **40**   | **Merchant Order Number** **Required**    | OrdNo-125315314                 |
+| `cardCvv`      | **N**    | **3**    | **Card CVV**                              | 123                             |
+| `callbackUrl`  | **AN**   | **200**  | **Callback Url for result** **Required**  | http://merchant.com/callbackUrl |
+| `onePassToken` | **AN**   | **64**   | **One time use token** **Required**       | 92869482578275828fdvf432        |
 
 ### MIGS Response Parameter URL
 
@@ -526,13 +526,13 @@ else:
 | `callBackUrl`     | **AN**   | **255**  | **Payment Result Forward Url (On Browser)** **Required**     | www.merchant.com/callback                                    |
 | `dbProcessUrl`    | **AN**   | **255**  | **Payment Result Receive Url (Server Side)** **Required**    | www.merchant.com/dbprocess                                   |
 | `description`     | **AN**   | **100**  | **Description** **Required**                                 | Description                                                  |
-| `merchantToken`   | **AN**   | **255**  | **Merchant Token** **Required**                              | 6cfccfc0046773c1b589d8e98f8b596c284f3c70a4ecf86eba14c18944b74bcd |
+| `merchantToken`   | **AN**   | **255**  | **Merchant Token** **Required**                              | 6cfccfc0046773c1b589d8e98f8b596<br>c284f3c70a4ecf86eba14c18944b74bcd |
 | `userIP`          | **AN**   | **15**   | **User IP** **Required**                                     | 127.0.0.1                                                    |
 | `cartData`        | **AN**   | **4000** | **Cart Data (Json Format)** **Required**                     | {}                                                           |
 | `instmntType`     | **N**    | **2**    | **[Installment Type](#installment-type)** **Required**       | 1                                                            |
 | `instmntMon`      | **N**    | **2**    | **Installment Month** **Required**                           | 1                                                            |
 | `cardCvv`         | **N**    | **3**    | **Card CVV**                                                 | 123                                                          |
-| `onePassToken`    | **AN**   |          | **One time use Token** **Required**                          | 9338d54573688ae18e175240b0257de48d89c6ef1c9c7b5c094dc4beed9e435f |
+| `onePassToken`    | **AN**   |          | **One time use Token** **Required**                          | 9338d54573688ae18e175240b0257<br>de48d89c6ef1c9c7b5c094dc4beed9e435f |
 | `recurrOpt`       | **N**    | **2**    | `0` Automatic Cancel<br>`1` Do not cancel<br>`2` Do not make token | 1                                                            |
 | `billingAddr`     | **AN**   |          | **Billing Address**                                          | Billing Address                                              |
 | `deliveryNm`      | **A**    | **30**   | **Delivery Name**                                            | Buyer Name                                                   |
