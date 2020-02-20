@@ -1,5 +1,5 @@
 # Cancel Transaction
-## API Specifications
+### API Specifications
 This API is intended to cancel a registered transaction.
 
 |                                                          |                                             |
