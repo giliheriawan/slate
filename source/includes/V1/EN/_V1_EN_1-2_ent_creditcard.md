@@ -60,6 +60,7 @@ String paymentType= nicePay.Get("paymentType");
 | `referenceNo`   | **ANS**  | 40       | **Merchant Order Number** **Required**    | ABC123                                                       |
 | `instmntType`   | **N**    | 2        | **[Installment Type](#installment-type)** | 1                                                            |
 | `instmntMon`    | **N**    | 2        | **Installment month**                     | 1                                                            |
+
 ### Request Token Response
 
 > Sample JSON response
