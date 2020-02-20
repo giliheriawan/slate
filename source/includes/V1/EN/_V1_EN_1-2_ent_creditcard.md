@@ -123,7 +123,7 @@ https://www.nicepay.co.id/nicepay/api/secureVeRequest.do?country=360&callbackUrl
 | ------------ 	 | -------- | -------- | ------------------------------------------------ | ------------------------------------------------------------ |
 | `country`      | **N**    | **3**    | **Currency** **Required**                   	  | 360                                                          |
 | `callbackUrl`  | **AN**   | **200**  | **Callback Url** **Required**         			  | http://merchant.com/callback                                 |
-| `onePassToken` | **AN**   | **64**   |** One time use transaction token** **Required**  | c5bd0b91bcc3d21358cd004c60e54<br>579441c23aa8e7553b41ce3402db1113fff |
+| `onePassToken` | **AN**   | **64**   | **One time use transaction token** **Required**  | c5bd0b91bcc3d21358cd004c60e54<br>579441c23aa8e7553b41ce3402db1113fff |
 
 ### 3DS Response Parameter
 
@@ -581,32 +581,32 @@ else:
 }
 ```
 
-Parameter | Type | Size | Description
----------- | ---------- | ---------- | ----------
-resultCd | N | 4 | Result Code
-resultMsg | AN | 255 | Result Message
-tXid | AN | 30 | Transaction ID
-referenceNo | ANS | 40 | Merchant Order No
-payMethod | N | 2 | Payment Method. Refer Code at [Here](#payment-method)
-amount | N | 12 | Transaction Amount
-currency | AN | 3 | Currency
-goodsNm | N | 100 | Goods Name
-billingNm | N | 30 | Buyer Name
-transDt | N | 8 | Transaction date (YYYYMMDD)
-transTm | N | 6 | Transaction time (HH24MISS)
-description | N | 100 | Transaction description
-callbackUrl | N | 100 | Callback Url
-authNo | N | 10 | Authorization Number
-issuBankCd | N | 4 | Issue Bank Code. Refer Code at [Here](#bank-code)
-issuBankNm | A | &nbsp; | Issue Bank Name.
-acquBankCd | N | 4 | Acquire Bank Code. Refer Code at [Here](#bank-code)
-acquBankNm | A | &nbsp; | Acquire Bank Name.
-cardNo | N | 20 | Card Number (Masked)
-instmntMon | N | 2 | Installment month
-istmntType | N | 2 | Installment type. Refer Code at [Here](#installment-type)
-recurringToken | N | 64 | Token for Recurring Payment
-preauthToken | N | 64 | Token for Preauth Payment
-ccTransType | N | 2 | Credit Card Transaction Type
-vat | N | 12 | Vat number
-fee | N | 12 | Service fee
-notaxAmt | N | 12 | Tax free amount
+| Parameter        | **Type** | **Size**             | Description                           |
+| ---------------- | -------- | -------------------- | ------------------------------------- |
+| `resultCd`       | **N**    | **4**                | [Result Code](#error-code)            |
+| `resultMsg`      | **AN**   | **255**              | [Result Message](#error-code)         |
+| `tXid`           | **AN**   | **30**               | Transaction ID                        |
+| `referenceNo`    | **ANS**  | **40**               | Merchant Order No                     |
+| `payMethod`      | **N**    | **2**                | [Payment Method](#payment-method)     |
+| `amount`         | **N**    | **12**               | Transaction Amount                    |
+| `currency`       | **AN**   | **3**                | Currency                              |
+| `goodsNm`        | **N**    | **100**              | Goods Name                            |
+| `billingNm`      | **N**    | **30**               | Buyer Name                            |
+| `transDt`        | **N**    | **8** **(YYYYMMDD)** | Transaction date                      |
+| `transTm`        | **N**    | **6** **(HH24MISS)** | Transaction time                      |
+| `description`    | **N**    | **100**              | Transaction description               |
+| `callbackUrl`    | **N**    | **100**              | Callback Url                          |
+| `authNo`         | **N**    | **10**               | Authorization Number                  |
+| `issuBankCd`     | **N**    | **4**                | [Issue Bank Code](#bank-code)         |
+| `issuBankNm`     | **A**    |                      | Issue Bank Name.                      |
+| `acquBankCd`     | **N**    | **4**                | [Acquire Bank Code](#bank-code)       |
+| `acquBankNm`     | **A**    |                      | Acquire Bank Name.                    |
+| `cardNo`         | **AN**   | **20**               | Card Number (Masked)                  |
+| `instmntMon`     | **N**    | **2**                | Installment month                     |
+| `instmntType`    | **N**    | **2**                | [Installment type](#installment-type) |
+| `recurringToken` | **AN**   | **64**               | Token for Recurring Payment           |
+| `preauthToken`   | **AN**   | **64**               | Token for Preauth Payment             |
+| `ccTransType`    | **AN**   | **2**                | Credit Card Transaction Type          |
+| `vat`            | **N**    | **12**               | Vat number                            |
+| `fee`            | **N**    | **12**               | Service fee                           |
+| `notaxAmt`       | **N**    | **12**               | Tax free amount                       |
