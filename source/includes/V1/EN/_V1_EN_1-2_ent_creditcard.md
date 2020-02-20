@@ -14,7 +14,7 @@ Transaction Flow:
 ## Request Token
 Merchant need to request `onePassToken` for each `Credit Card` transaction using NICEPay Enterprise.
 
-**API Specifications**
+### Request Token API Specifications
 
 |                                                           |                                                                                                               |
 |-----------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|
@@ -101,7 +101,7 @@ Proceed with this API when you get `paymentType = 1` from `onePassToken.do` resp
   <li>NICEPay will send response parameter to <code>callbackUrl</code>.
 </ol>
 
-**API Specifications**
+### 3DS API Specifications
 
 |                                                           |                                                                                                               |
 |-----------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|
@@ -111,7 +111,7 @@ Proceed with this API when you get `paymentType = 1` from `onePassToken.do` resp
 | **Merchant Token**                                        | SHA256(`iMid``referenceNo``amt``merchantKey`)                                                                 |
 | **Payment Methods**                                       | `01` Credit Card                                                                                              |
 
-### Request Parameter URL
+### 3DS Request Parameter
 
 > Sample Request
 
@@ -125,7 +125,7 @@ https://www.nicepay.co.id/nicepay/api/secureVeRequest.do?country=360&callbackUrl
 | `callbackUrl`  | AN   | 200  | Callback Url **Required**         			  | http://merchant.com/callback                                 |
 | `onePassToken` | AN   | 64   | One time use transaction token **Required**  | c5bd0b91bcc3d21358cd004c60e54<br>579441c23aa8e7553b41ce3402db1113fff |
 
-### Response Parameter
+### 3DS Response Parameter
 
 > Sample URL Parameter 3DS Response
 
@@ -151,7 +151,7 @@ MIGS Steps:
   <li>NICEPay will send response parameter to <code>callbackUrl</code>.
 </ol>
 
-**API Specifications**
+### MIGS API Specifications
 
 |                                                           |                                                                                                               |
 |-----------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|
@@ -161,7 +161,7 @@ MIGS Steps:
 | **Merchant Token**                                        | SHA256(`iMid``referenceNo``amt``merchantKey`)                                                                 |
 | **Payment Methods**                                       | `01` Credit Card                                                                                              |
 
-### Request Parameter URL
+### MIGS Request Parameter
 
 > Sample URL Parameter 3DS Request
 
@@ -177,7 +177,8 @@ https://www.nicepay.co.id/nicepay/api/migsRequest.do?instmntType=1&instmntMon=1&
 | `cardCvv`      | N         | N    | 3    | Card CVV                              | 123                             |
 | `callbackUrl`  | Y         | AN   | 200  | Callback Url for result               | http://merchant.com/callbackUrl |
 | `onePassToken` | Y         | AN   | 64   | one time use transaction token        | 92869482578275828fdvf432        |
-### Response Parameter URL
+
+### MIGS Response Parameter URL
 
 > Sample URL Parameter 3DS Response
 
@@ -191,7 +192,7 @@ http://merchant.com/callbackUrl?resultCd={resultCd}&resultMsg={resultMsg}&refere
 | `resultMsg` | **AN**   | **255**  | [Result message](#error-code) |
 
 ## Credit Card Registration
-**API Specifications**
+### CC Registration API Specifications
 
 |                                                           |                                                                                                               |
 |-----------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|
@@ -201,7 +202,7 @@ http://merchant.com/callbackUrl?resultCd={resultCd}&resultMsg={resultMsg}&refere
 | **Merchant Token**                                        | SHA256(`iMid``referenceNo``amt``merchantKey`)                                                                 |
 | **Payment Methods**                                       | `01` Credit Card                                                                                              |
 
-### Request parameter
+### CC Registration Request parameter
 
 >Sample API Request
 
@@ -531,8 +532,8 @@ else:
 | `instmntType`     | **N**    | **2**    | **[Installment Type](#installment-type)** **Required**       | 1                                                            |
 | `instmntMon`      | **N**    | **2**    | **Installment Month** **Required**                           | 1                                                            |
 | `cardCvv`         | **N**    | **3**    | **Card CVV**                                                 | 123                                                          |
-| `onePassToken`    | **AN**   |          | **One time use transaction token (Created by onePassToken.do)** **Required** | 9338d54573688ae18e175240b0257de48d89c6ef1c9c7b5c094dc4beed9e435f |
-| `recurrOpt`       | **N**    | **2**    | **Recurring option** `0` Automatic Cancel<br>`1` Do not cancel<br>`2` Do not make token | 1                                                            |
+| `onePassToken`    | **AN**   |          | **One time use Token** **Required**                          | 9338d54573688ae18e175240b0257de48d89c6ef1c9c7b5c094dc4beed9e435f |
+| `recurrOpt`       | **N**    | **2**    | `0` Automatic Cancel<br>`1` Do not cancel<br>`2` Do not make token | 1                                                            |
 | `billingAddr`     | **AN**   |          | **Billing Address**                                          | Billing Address                                              |
 | `deliveryNm`      | **A**    | **30**   | **Delivery Name**                                            | Buyer Name                                                   |
 | `deliveryPhone`   | **N**    | **15**   | **Delivery Phone**                                           | 02112345678                                                  |
@@ -545,7 +546,7 @@ else:
 | `vat`             | **N**    | **12**   | **Vat**                                                      | 0                                                            |
 | `fee`             | **N**    | **12**   | **Service Tax**                                              | 0                                                            |
 | `notaxAmt`        | **N**    | **12**   | **Tax Free Amount**                                          | 0                                                            |
-| `reqDt`           | **N**    | **8**    | **Request Date **(YYYYMMDD)**                                | 20160301                                                     |
+| `reqDt`           | **N**    | **8**    | **Request Date** **(YYYYMMDD)**                              | 20160301                                                     |
 | `reqTm`           | **N**    | **6**    | **Request Time** **(HH24MISS)**                              | 135959                                                       |
 | `reqDomain`       | **AN**   | **100**  | **Request Domain**                                           | merchant.com                                                 |
 | `reqServerIP`     | **AN**   | **15**   | **Request Server IP**                                        | 127.0.0.1                                                    |
@@ -554,7 +555,7 @@ else:
 | `userAgent`       | **AN**   | **100**  | **User Agent Information**                                   | Mozilla                                                      |
 | `userLanguage`    | **AN**   | **2**    | **User Language**                                            | en-US                                                        |
 
-### Response Parameter
+### CC Registration Response Parameter
 
 > Sample JSON Response
 

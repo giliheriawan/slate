@@ -1,5 +1,5 @@
 # Check Transaction Status 
-**API Specifications**
+### Trans Check API Specifications
 This API is intended for merchant to check the status of the transaction.
 
 |                                                           |                                                                                                               |
@@ -9,7 +9,7 @@ This API is intended for merchant to check the status of the transaction.
 | **Description**                                           | Inquires transaction status to NICEPAY server.                                                                |
 | **Merchant Token**                                        | SHA256(`iMid``referenceNo``amt``merchantKey`)                                                                 |
 
-## Request Parameters
+## Trans Check Request Parameters
 
 > Sample API Request
 
@@ -150,7 +150,7 @@ print("status : " + result['status'])
 | `amt`   		  | **N**       | **12**   | **Amount** **Required**               | 15000               														|
 | `referenceNo`   | **ANS**     | **40**   | **referenceNo** **Required**          | OrdNo20160525000          													|
 
-## Response Object
+## Trans Check Response Object
 
 > Sample response:
 
