@@ -351,7 +351,7 @@ else:
 | `billingCity`     | **A**  | **50**   | **Billing City** **Required**                  | Jakarta                                                      |
 | `billingState`    | **A**  | **50**   | **Billing State** **Required**                 | DKI Jakarta                                                  |
 | `billingPostCd`   | **N**  | **10**   | **Billing Post Number** **Required**           | 14350                                                        |
-| `billingCountry`  | **A**  | **10**   | **Billing Countr**y **Required**               | Indonesia                                                    |
+| `billingCountry`  | **A**  | **10**   | **Billing Country** **Required**               | Indonesia                                                    |
 | `callBackUrl`     | **AN** | **255**  | **Payment Result Page** **Required**           | https://merchant.com/callBackUrl                             |
 | `dbProcessUrl`    | **AN** | **255**  | **Payment Notif Url** **Required**             | https://merchant.com/dbProcessUrl                            |
 | `description`     | **AN** | **100**  | **Description** **Required**                   | test item                                                    |

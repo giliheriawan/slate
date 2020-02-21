@@ -9,7 +9,18 @@ Transaction Flow:
 </ol>
 
 ## Credit Card Flow
-<img src="/images/ent-cc-flow.png">
+
+<div class="wrapper">
+<ul>
+  <li>
+    <input type="checkbox" id="list-item-1">
+    <label for="list-item-1" class="first">Credit Card Flow</label>
+    <ul>
+      <img src="/images/ent-cc-flow.png">
+    </ul>
+  </li>
+</ul>
+</div>
 
 ## Request Token
 Merchant need to request `onePassToken` for each `Credit Card` transaction using NICEPay Enterprise.

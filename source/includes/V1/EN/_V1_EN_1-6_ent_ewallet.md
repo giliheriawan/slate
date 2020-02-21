@@ -89,7 +89,7 @@ Merchant Token | SHA256 (Merchant ID + Reference Number + Amount + Merchant Key)
 | Parameter         | Type   | Size     | Description                                    | Example Value                                                |
 | ----------------- | ------ | -------- | ------------------------------------------     | ------------------------------------------------------------ |
 | `iMid`            | **AN** | **10**   | **Merchant ID** **Required**                   | IONPAYTEST                                                   |
-| `payMethod`       | **AN** | **2**    | [Pay Method](#payment-method) **Required**     | 05                                                           |
+| `payMethod`       | **AN** | **2**    | **[Pay Method](#payment-method)** **Required** | 05                                                           |
 | `currency`        | **AN** | **3**    | **Currency** **Required**                      | IDR                                                          |
 | `amt`             | **N**  | **12**   | **Goods Amount** **Required**                  | 15000                                                        |
 | `referenceNo`     | **AN** | **40**   | **Merchant Order No** **Required**             | ordNo123124                                                  |
@@ -100,7 +100,7 @@ Merchant Token | SHA256 (Merchant ID + Reference Number + Amount + Merchant Key)
 | `billingCity`     | **A**  | **50**   | **Billing City** **Required**                  | Jakarta                                                      |
 | `billingState`    | **A**  | **50**   | **Billing State** **Required**                 | DKI Jakarta                                                  |
 | `billingPostCd`   | **N**  | **10**   | **Billing Post Number** **Required**           | 14350                                                        |
-| `billingCountry`  | **A**  | **10**   | **Billing Countr**y **Required**               | Indonesia                                                    |
+| `billingCountry`  | **A**  | **10**   | **Billing Countr*y* **Required**               | Indonesia                                                    |
 | `callBackUrl`     | **AN** | **255**  | **Payment Result Page** **Required**           | https://merchant.com/callBackUrl                             |
 | `dbProcessUrl`    | **AN** | **255**  | **Payment Notif Url** **Required**             | https://merchant.com/dbProcessUrl                            |
 | `description`     | **AN** | **100**  | **Description** **Required**                   | test item                                                    |
