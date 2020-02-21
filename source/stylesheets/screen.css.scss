@@ -756,5 +756,6 @@ input[type="checkbox"]:checked ~ ul{
 }
 
 input[type="checkbox"]:checked + label{
-  rgba(38, 194, 129, 0.5);
+  background: rgba(38, 194, 129, 0.5);
+  border-bottom: 1px solid #00B5AD;
 }
