@@ -23,14 +23,13 @@ We support Virtual Account payments for other Banks via ATM BERSAMA, ALTO, LINK,
 <ol type="1">
   <li>Merchant Request VA Registration to NICEPay.
   <li>Merchant Display VA Details and How-To Pay Details.
-  <li>Customer Make Payment with Preffered Method (m-Banking, Atm, etc).
+  <li>Customer Make Payment with Preferred Method (m-Banking, Atm, etc).
   <li>NICEPay Send Notification to Merchant.
   <li>Merchant Handle Notification.
 </ol>
 
 ## Virtual Account Flow
 
-Flow for Enterprise - Virtual Account<br>
 <img src="/images/ent-va-flow.png">
 
 ## VA Registration
@@ -369,7 +368,7 @@ else:
 | `deliveryEmail`   | **AN**         | **Delivery Email** | **buyer@merhcant.com**                         | test@merchant.com                                            |
 | `deliveryCity`    | **A**          | **50**             | **Delivery City**                              | Jakarta                                                      |
 | `deliveryState`   | **A**          | **50**             | **Delivery State**                             | DKI Jakarta                                                  |
-| `deliveryPostCd`  | **N**          | **10**             | **Delivery Post Number**                       | 14350                                                        |
+| `deliveryPostCd`  | **N**          | **10**             | **Delivery Post Code**                         | 14350                                                        |
 | `deliveryCountry` | **A**          | **10**             | **Delivery Country**                           | Indonesia                                                    |
 | `vat`             | **N**          | **12**             | **Vat**                                        | 0                                                            |
 | `fee`             | **N**          | **12**             | **Service Tax**                                | 0                                                            |
@@ -380,7 +379,7 @@ else:
 | `reqServerIP`     | **AN**         | **15**             | **Request Server IP**                          | 127.0.0.1                                                    |
 | `reqClientVer`    | **AN**         | **50**             | **Request Client Version**                     | 1.0                                                          |
 | `userSessionID`   | **AN**         | **100**            | **User Session ID**                            | userSessionID                                                |
-| `userAgent`       | **AN**         | **100**            | **User Agent Information**                     | Mozilla                                                      |
+| `userAgent`       | **AN**         | **100**            | **User Agent**                                 | Mozilla                                                      |
 | `userLanguage`    | **AN**         | **2**              | **User Language**                              | en-US                                                        |
 | `vacctValidDt`    | **N**          | **8**              | **VA expiry date** **(YYYYMMDD)**              | 20200303                                                     |
 | `vacctValidTm`    | **N**          | **6**              | **VA expiry time** **(HH24MISS)**              | 135959                                                       |
