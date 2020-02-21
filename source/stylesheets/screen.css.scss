@@ -713,7 +713,7 @@ html, body {
 //COLLAPSIBLE HERE
 .wrapper{
   margin: auto;
-  width: auto;
+  width: 50%;
 }
 
 ul{
@@ -726,15 +726,26 @@ label{
   display: block;
   cursor: pointer;
   padding: 10px;
+  border: 1px solid #00B5AD;
+  border-bottom: none;
 }
 
 label:hover{
-  background: #00B5AD;
+  background: #26C281;
+}
+
+label.last{
+  border-bottom: 1px solid #00B5AD;
 }
 
 ul ul li{
   padding: 10px;
-  background: #59ABE3;
+  background: #FA8072;
+}
+
+input[type="checkbox"]{
+  position: absolute;
+  left: -9999px;
 }
 
 input[type="checkbox"] ~ ul{
@@ -750,5 +761,6 @@ input[type="checkbox"]:checked ~ ul{
 }
 
 input[type="checkbox"]:checked + label{
-  background: #26C281;
+  background: #FA8072;
+  border-bottom: 1px solid #00B5AD;
 }
