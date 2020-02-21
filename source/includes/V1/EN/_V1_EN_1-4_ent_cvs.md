@@ -23,9 +23,17 @@ Real time Notification will be sent when customer has completed the payment.
   <li>Merchant Handle Notification.
 </ol>
 
-## CVS Flow
-
-<img src="/images/ent-cvs-flow.png">
+<div class="wrapper">
+<ul>
+  <li>
+    <input type="checkbox" id="list-item-1">
+    <label for="list-item-1" class="first">CVS Flow</label>
+    <ul>
+      <img src="/images/ent-cvs-flow.png">
+    </ul>
+  </li>
+</ul>
+</div>
 
 ## CVS Registration
 ### CVS Registration API Specifications

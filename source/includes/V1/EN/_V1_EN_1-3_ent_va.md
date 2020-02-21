@@ -28,9 +28,17 @@ We support Virtual Account payments for other Banks via ATM BERSAMA, ALTO, LINK,
   <li>Merchant Handle Notification.
 </ol>
 
-## Virtual Account Flow
-
-<img src="/images/ent-va-flow.png">
+<div class="wrapper">
+<ul>
+  <li>
+    <input type="checkbox" id="list-item-1">
+    <label for="list-item-1" class="first">Virtual Account Flow</label>
+    <ul>
+      <img src="/images/ent-va-flow.png">
+    </ul>
+  </li>
+</ul>
+</div>
 
 ## VA Registration
 ### VA Registration API Specifications

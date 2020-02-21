@@ -21,9 +21,17 @@ Real time Notification will be sent when customer completed the payment.
   <li>Merchant Handle notification.
 </ol>
 
-## ClickPay Flow
-
-<img src="/images/ent-clickpay-flow.png">
+<div class="wrapper">
+<ul>
+  <li>
+    <input type="checkbox" id="list-item-1">
+    <label for="list-item-1" class="first">ClickPay Flow</label>
+    <ul>
+      <img src="/images/ent-clickpay-flow.png">
+    </ul>
+  </li>
+</ul>
+</div>
 
 ## ClickPay Registration
 ### ClickPay Registration API Specifications

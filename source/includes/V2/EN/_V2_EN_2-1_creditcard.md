@@ -1,5 +1,5 @@
 # Credit Card
-<img src="/images/va-normal-v2-flow.png">
+
 Integration Step :
 <ol type="1">
   <li>Merchant Request Credit Card Registration to NICEPay.
@@ -9,6 +9,18 @@ Integration Step :
   <li>NICEPay send notification
   <li>Merchant Handle notification
 </ol>
+
+<div class="wrapper">
+<ul>
+  <li>
+    <input type="checkbox" id="list-item-1">
+    <label for="list-item-1" class="first">Credit Card V2 Flow</label>
+    <ul>
+      <img src="/images/va-normal-v2-flow.png">
+    </ul>
+  </li>
+</ul>
+</div>
 
 ## CC Registration
 

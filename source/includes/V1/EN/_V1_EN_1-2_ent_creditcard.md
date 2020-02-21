@@ -8,8 +8,6 @@ Transaction Flow:
   <li>NICEPay Send Notification
 </ol>
 
-## Credit Card Flow
-
 <div class="wrapper">
 <ul>
   <li>
