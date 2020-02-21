@@ -1,26 +1,44 @@
-# Enterprise - ClickPay
-NICEPay offer **ClickPay** as Payment Method. Real time Notification will be send when customer completed the payment.<br>
-Supported ClickPay by NICEPay:
+# ClickPay
+
+NICEPay offers ClickPay as Payment Method. This method allows customer to use ClickPay channel from various banks.
+Real time Notification will be sent when customer completed the payment.
+
+**Supported ClickPay by NICEPay:**
+
 <ol type="1">
   <li>Mandiri Clickpay
   <li>CIMB Clicks
   <li>BCA KlikPay
 </ol>
 
-Integration Step :
+**Transaction Flow:**
+
 <ol type="1">
-  <li>Merchant request ClickPay Registration to NICEPay.
-  <li>NICEPay will be redirect to Bank Page.
-  <li>Customer pay ClickPay in prefered payment channel.
-  <li>NICEPay send notification
-  <li>Merchant handle notification.
+  <li>Merchant Request ClickPay Registration to NICEPay.
+  <li>NICEPay will Redirect to Bank Page.
+  <li>Customer input payment details on the Bank Page.
+  <li>NICEPay Send notification
+  <li>Merchant Handle notification.
 </ol>
 
 ## ClickPay Flow
-Flow for Enterprise - ClickPay<br>
+
 <img src="/images/ent-clickpay-flow.png">
 
 ## ClickPay Registration
+### ClickPay Registration API Specifications
+
+|                                                           |                                                                                                               |
+|-----------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|
+| **API url**                                               | `/nicepay/api/onePass.do`                                                                                     |
+| **Request Method** **application/json**                   | `POST`                                                                                                        |
+| **Description**                                           | Request ClickPay Transaction on Bank Page                                                                     |
+| **Merchant Token**                                        | SHA256(`iMid``referenceNo``amt``merchantKey`)                                                                 |
+| **Payment Methods**                                       | `04` ClickPay                                                                                        |
+
+### ClickPay Request Parameter
+
+> Sample Request
 
 ```java
 // Payment Mandatory Field
@@ -321,6 +339,54 @@ else:
         print("resultMsg : " + result['resultMsg'])
 ```
 
+| Parameter         | Type   | Size     | Description                                    | Example Value                                                |
+| ----------------- | ------ | -------- | ------------------------------------------     | ------------------------------------------------------------ |
+| `iMid`            | **AN** | **10**   | **Merchant ID** **Required**                   | IONPAYTEST                                                   |
+| `payMethod`       | **AN** | **2**    | [Pay Method](#payment-method) **Required**     | 04                                                           |
+| `currency`        | **AN** | **3**    | **Currency** **Required**                      | IDR                                                          |
+| `amt`             | **N**  | **12**   | **Goods Amount** **Required**                  | 15000                                                        |
+| `referenceNo`     | **AN** | **40**   | **Merchant Order No** **Required**             | ordNo123124                                                  |
+| `goodsNm`         | **AN** | **100**  | **Goods Name** **Required**                    | Test Goods                                                   |
+| `billingNm`       | **A**  | **30**   | **Billing Name** **Required**                  | John Doe                                                     |
+| `billingPhone`    | **N**  | **15**   | **Billing Phone Number** **Required**          | 081249195                                                    |
+| `billingEmail`    | **AN** | **40**   | **Billing Email** **Required**                 | test@merchant.com                                            |
+| `billingCity`     | **A**  | **50**   | **Billing City** **Required**                  | Jakarta                                                      |
+| `billingState`    | **A**  | **50**   | **Billing State** **Required**                 | DKI Jakarta                                                  |
+| `billingPostCd`   | **N**  | **10**   | **Billing Post Number** **Required**           | 14350                                                        |
+| `billingCountry`  | **A**  | **10**   | **Billing Countr**y **Required**               | Indonesia                                                    |
+| `callBackUrl`     | **AN** | **255**  | **Payment Result Page** **Required**           | https://merchant.com/callBackUrl                             |
+| `dbProcessUrl`    | **AN** | **255**  | **Payment Notif Url** **Required**             | https://merchant.com/dbProcessUrl                            |
+| `description`     | **AN** | **100**  | **Description** **Required**                   | test item                                                    |
+| `merchantToken`   | **AN** | **255**  | **Merchant Token** **Required**                | 6cfccfc0046773c1b589d8e<br>98f8b596c284f3c70a4ecf8<br>6eba14c18944b74bcd |
+| `userIP`          | **AN** | **15**   | **User IP (Customer)** **Required**            | 127.0.0.1                                                    |
+| `cartData`        | **AN** | **4000** | **Cart Data (Json Format)** **Required**       | {}                                                           |
+| `mitraCd`         | **AN** | **4**    | **[Mitra Code](#mitra-code)** **Required**     | JENC                                                         |
+| `clickPayNo`      | **N**  | **16**   | **ClickPay Card No** **Required**              |                                                              |
+| `dataField3`      | **N**  | **16**   | **Token 3 for Clickpay** **Required**          |                                                              |
+| `clickPayToken`   | **N**  | **6**    | **Response Token** **Required**                |                                                              |
+| `billingAddr`     | **AN** | **100**  | **Billing Address**                            | Jln Cendrawasih                                              |
+| `deliveryNm`      | **A**  | **30**   | **Delivery Name**                              | JohnDoe                                                      |
+| `deliveryPhone`   | **N**  | **15**   | **Delivery Phone**                             | 08125912342                                                  |
+| `deliveryAddr`    | **AN** | **100**  | **Delivery Address**                           | Jln Merak                                                    |
+| `deliveryEmail`   | **AN** |          | **Delivery Email**                             | test@merchant.com                                            |
+| `deliveryCity`    | **A**  | **50**   | **Delivery City**                              | Jakarta                                                      |
+| `deliveryState`   | **A**  | **50**   | **Delivery State**                             | DKI Jakarta                                                  |
+| `deliveryPostCd`  | **N**  | **10**   | **Delivery Post Code**                         | 14350                                                        |
+| `deliveryCountry` | **A**  | **10**   | **Delivery Country**                           | Indonesia                                                    |
+| `vat`             | **N**  | **12**   | **Vat**                                        | 0                                                            |
+| `fee`             | **N**  | **12**   | **Service Tax**                                | 0                                                            |
+| `notaxAmt`        | **N**  | **12**   | **Tax Free Amount**                            | 0                                                            |
+| `reqDt`           | **N**  | **8**    | **Request Date** **(YYYYMMDD)**                | 20160301                                                     |
+| `reqTm`           | **N**  | **6**    | **Request Time** **(HH24MISS)**                | 135959                                                       |
+| `reqDomain`       | **AN** | **100**  | **Request Domain**                             | merchant.com                                                 |
+| `reqServerIP`     | **AN** | **15**   | **Request Server IP**                          | 127.0.0.1                                                    |
+| `reqClientVer`    | **AN** | **50**   | **Request Client Version**                     | 1.0                                                          |
+| `userSessionID`   | AN     | **100**  | **User Session ID**                            | userSessionID                                                |
+| `userAgent`       | **AN** | **100**  | **User Agent**                                 | Mozilla                                                      |
+| `userLanguage`    | **AN** | **2**    | **User Language**                              | en-US                                                        |
+
+### ClickPay Response
+
 > Sample JSON Response
 
 ```json
@@ -344,78 +410,21 @@ else:
 }
 ```
 
-&nbsp; | &nbsp;
----------- | -------
-**API url** | **/nicepay/api/onePass.do**
-Method | POST
-Description | ClickPay Transaction
-Merchant Token | SHA256 (Merchant ID + Reference Number + Amount + Merchant Key)
-
-<br>**Request POST Parameter**
-
-Parameter | Mandatory | Type | Size | Description
----------- | ---------- | ---------- | ---------- | ----------
-iMid | Y | AN | 10 | Merchant ID
-payMethod | Y | AN | 2 | Pay Method, refer to [here](#payment-method)
-currency | Y | AN | 3 | Currency
-amt | Y | N | 12 | Goods Amount
-referenceNo | Y | AN | 40 | Merchant Order No
-goodsNm | Y | AN | 100 | Goods Name
-billingNm | Y | A | 30 | Billing Name
-billingPhone | Y | N | 15 | Billing Phone Number
-billingEmail | Y | AN | 40 | Billing Email
-billingCity | Y | A | 50 | Billing City
-billingState | Y | A | 50 | Billing State
-billingPostCd | Y | N | 10 | Billing Post Number
-billingCountry | Y | A | 10 | Billing Country
-callBackUrl | Y | AN | 255 | Payment Result Forward Url (On Browser)
-dbProcessUrl | Y | AN | 255 | Payment Result Receive Url (Server Side)
-description | Y | AN | 100 | Description
-merchantToken | Y | AN | 255 | Merchant Token
-userIP | Y | AN | 15 | User IP (Customer)
-cartData | Y | AN | 4000 | Cart Data (Json Format)
-mitraCd | Y | AN | 4 | Mitra Code, refer to [here](#mitra-code)
-clickPayNo | Y | N | 16 | Clickpay card number
-dataField3 | Y | N | 16 | Token input 3 for Clickpay
-clickPayToken | Y | N | 6 | Code response from token
-billingAddr | N | 100 | AN | Billing Address
-deliveryNm | N | A | 30 | Delivery Name
-deliveryPhone | N | N | 15 | Delivery Phone
-deliveryAddr | N | AN | 100 | Delivery Address
-deliveryEmail | N | AN| &nbsp; | Delivery Email
-deliveryCity | N | A | 50 | Delivery City
-deliveryState | N | A | 50 | Delivery State
-deliveryPostCd | N | N | 10 | Delivery Post Number
-deliveryCountry | N | A | 10 | Delivery Country
-vat | N | N | 12 | Vat
-fee | N | N | 12 | Service Tax
-notaxAmt | N | N | 12 | Tax Free Amount
-reqDt | N | N | 8 | Request Date(YYYYMMDD)
-reqTm | N | N | 6 | Request Time(HH24MISS)
-reqDomain | N | AN | 100 | Request Domain
-reqServerIP | N | AN | 15 | Request Server IP
-reqClientVer | N | AN | 50 | Request Client Version
-userSessionID | N | AN | 100 | User Session ID
-userAgent | N | AN | 100 | User Agent Information
-userLanguage | N | AN | 2 | User Language
-
-<br>**Response JSON Object**
-
-Parameter | Type | Size | Description
----------- | ---------- | ---------- | ----------
-resultCd | N | 4 | Result Code
-resultMsg | AN | 255 | Result Message
-tXid | AN | 30 | Transaction ID
-referenceNo | ANS | 40 | Merchant Order No
-payMethod | N | 2 | Payment Method. Refer Code at [Here](#payment-method)
-amount | N | 12 | Transaction Amount
-currency | AN | 3 | Currency
-goodsNm | N | 100 | Goods Name
-billingNm | N | 30 | Buyer Name
-description | N | 100 | Transaction description
-callbackUrl | N | 100 | Callback Url
-mitraCd | AN | 4 | Mitra Code, refer to [Link](#mitra-code)
-transDt | N | 8 | Transaction date (YYYYMMDD)
-transTm  | N | 6 | Transaction Time (HH24MISS)
-receiptCode | ANS | 20 | Authorization Number
-mRefNo  | AN | 18 | Bank Reference No
+| Parameter     | Type    | Size    | Description                       |
+| ------------- | ------- | ------- | --------------------------------- |
+| `resultCd`    | **N**   | **4**   | [Result Code](#error-code)        |
+| `resultMsg`   | **AN**  | **255** | [Result Message](#error-code)     |
+| `tXid`        | **AN**  | **30**  | Transaction ID                    |
+| `referenceNo` | **ANS** | **40**  | Merchant Order No                 |
+| `payMethod`   | **N**   | **2**   | [Payment Method](#payment-method) |
+| `amount`      | **N**   | **12**  | Transaction Amount                |
+| `currency`    | **AN**  | **3**   | Currency                          |
+| `goodsNm`     | **N**   | **100** | Goods Name                        |
+| `billingNm`   | **N**   | **30**  | Buyer Name                        |
+| `transDt`     | **N**   | **8**   | Transaction date (YYYYMMDD)       |
+| `transTm`     | **N**   | **6**   | Transaction time (HH24MISS)       |
+| `description` | **N**   | **100** | Transaction description           |
+| `callbackUrl` | **N**   | **100** | Callback Url                      |
+| `mitraCd`     | **AN**  | **4**   | [Mitra Code](#mitra-code)         |
+| `receiptCode` | **ANS** | **20**  | Authorization Number              |
+| `mRefNo`      | **AN**  | **18**  | Bank Reference No                 |

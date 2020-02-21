@@ -1,4 +1,4 @@
-# Enterprise - Convenience Store
+# Convenience Store
 
 NICEPay offers Convenience Store (CVS) as Payment Method. This method allows customer to make payment at their nearest Convenience Stores such as Alfamart and Indomaret.
 Real time Notification will be sent when customer has completed the payment.
@@ -337,50 +337,50 @@ else:
         print("resultMsg : " + result['resultMsg'])
 ```
 
-| Parameter         | Type   | Size     | Description                                | Example Value                                                |
-| ----------------- | ------ | -------- | ------------------------------------------ | ------------------------------------------------------------ |
-| `iMid`            | **AN** | **10**   | **Merchant ID** **Required**               | IONPAYTEST                                                   |
-| `payMethod`       | **AN** | **2**    | [Pay Method](#payment-method) **Required** | 03                                                           |
-| `currency`        | **AN** | **3**    | **Currency** **Required**                  | IDR                                                          |
-| `amt`             | **N**  | **12**   | **Goods Amount** **Required**              | 15000                                                        |
-| `referenceNo`     | **AN** | **40**   | **Merchant Order No** **Required**         | ordNo123124                                                  |
-| `goodsNm`         | **AN** | **100**  | **Goods Name** **Required**                | Test Goods                                                   |
-| `billingNm`       | **A**  | **30**   | **Billing Name** **Required**              | John Doe                                                     |
-| `billingPhone`    | **N**  | **15**   | **Billing Phone Number** **Required**      | 081249195                                                    |
-| `billingEmail`    | **AN** | **40**   | **Billing Email** **Required**             | test@merchant.com                                            |
-| `billingCity`     | **A**  | **50**   | **Billing City** **Required**              | Jakarta                                                      |
-| `billingState`    | **A**  | **50**   | **Billing State** **Required**             | DKI Jakarta                                                  |
-| `billingPostCd`   | **N**  | **10**   | **Billing Post Number** **Required**       | 14350                                                        |
-| `billingCountry`  | **A**  | **10**   | **Billing Countr**y **Required**           | Indonesia                                                    |
-| `callBackUrl`     | **AN** | **255**  | **Payment Result Page** **Required**       | https://merchant.com/callBackUrl                             |
-| `dbProcessUrl`    | **AN** | **255**  | **Payment Notif Url** **Required**         | https://merchant.com/dbProcessUrl                            |
-| `description`     | **AN** | **100**  | **Description** **Required**               | test item                                                    |
-| `merchantToken`   | **AN** | **255**  | **Merchant Token** **Required**            | 6cfccfc0046773c1b589d8e<br>98f8b596c284f3c70a4ecf8<br>6eba14c18944b74bcd |
-| `userIP`          | **AN** | **15**   | **User IP (Customer)** **Required**        | 127.0.0.1                                                    |
-| `cartData`        | **AN** | **4000** | **Cart Data (Json Format)** **Required**   | {}                                                           |
-| `mitraCd`         | **AN** | **4**    | **[Mitra Code](#mitra-code)** **Required** | ALMA                                                         |
-| `billingAddr`     | **AN** | **100**  | **Billing Address**                        | Jln Cendrawasih                                              |
-| `deliveryNm`      | **A**  | **30**   | **Delivery Name**                          | JohnDoe                                                      |
-| `deliveryPhone`   | **N**  | **15**   | **Delivery Phone**                         | 08125912342                                                  |
-| `deliveryAddr`    | **AN** | **100**  | **Delivery Address**                       | Jln Merak                                                    |
-| `deliveryEmail`   | **AN** |          | **Delivery Email**                         | test@merchant.com                                            |
-| `deliveryCity`    | **A**  | **50**   | **Delivery City**                          | Jakarta                                                      |
-| `deliveryState`   | **A**  | **50**   | **Delivery State**                         | DKI Jakarta                                                  |
-| `deliveryPostCd`  | **N**  | **10**   | **Delivery Post Code**                     | 14350                                                        |
-| `deliveryCountry` | **A**  | **10**   | **Delivery Country**                       | Indonesia                                                    |
-| `vat`             | **N**  | **12**   | **Vat**                                    | 0                                                            |
-| `fee`             | **N**  | **12**   | **Service Tax**                            | 0                                                            |
-| `notaxAmt`        | **N**  | **12**   | **Tax Free Amount**                        | 0                                                            |
-| `reqDt`           | **N**  | **8**    | **Request Date (YYYYMMDD)**                | 20160301                                                     |
-| `reqTm`           | **N**  | **6**    | **Request Time (HH24MISS)**                | 135959                                                       |
-| `reqDomain`       | **AN** | **100**  | **Request Domain**                         | merchant.com                                                 |
-| `reqServerIP`     | **AN** | **15**   | **Request Server IP**                      | 127.0.0.1                                                    |
-| `reqClientVer`    | **AN** | **50**   | **Request Client Version**                 | 1.0                                                          |
-| `userSessionID`   | AN     | **100**  | **User Session ID**                        | userSessionID                                                |
-| `userAgent`       | **AN** | **100**  | **User Agent**                             | Mozilla                                                      |
-| `userLanguage`    | **AN** | **2**    | **User Language**                          | en-US                                                        |
-| `payValidDt`      | **N**  | **8**    | **CVS expiry date (YYYYMMDD)**             | 20200303                                                     |
-| `payValidTm`      | **N**  | **6**    | **CVS expiry time (HH24MISS)**             | 135959                                                       |
+| Parameter         | Type   | Size     | Description                                    | Example Value                                                |
+| ----------------- | ------ | -------- | ------------------------------------------     | ------------------------------------------------------------ |
+| `iMid`            | **AN** | **10**   | **Merchant ID** **Required**                   | IONPAYTEST                                                   |
+| `payMethod`       | **AN** | **2**    | [Pay Method](#payment-method) **Required**     | 03                                                           |
+| `currency`        | **AN** | **3**    | **Currency** **Required**                      | IDR                                                          |
+| `amt`             | **N**  | **12**   | **Goods Amount** **Required**                  | 15000                                                        |
+| `referenceNo`     | **AN** | **40**   | **Merchant Order No** **Required**             | ordNo123124                                                  |
+| `goodsNm`         | **AN** | **100**  | **Goods Name** **Required**                    | Test Goods                                                   |
+| `billingNm`       | **A**  | **30**   | **Billing Name** **Required**                  | John Doe                                                     |
+| `billingPhone`    | **N**  | **15**   | **Billing Phone Number** **Required**          | 081249195                                                    |
+| `billingEmail`    | **AN** | **40**   | **Billing Email** **Required**                 | test@merchant.com                                            |
+| `billingCity`     | **A**  | **50**   | **Billing City** **Required**                  | Jakarta                                                      |
+| `billingState`    | **A**  | **50**   | **Billing State** **Required**                 | DKI Jakarta                                                  |
+| `billingPostCd`   | **N**  | **10**   | **Billing Post Number** **Required**           | 14350                                                        |
+| `billingCountry`  | **A**  | **10**   | **Billing Countr**y **Required**               | Indonesia                                                    |
+| `callBackUrl`     | **AN** | **255**  | **Payment Result Page** **Required**           | https://merchant.com/callBackUrl                             |
+| `dbProcessUrl`    | **AN** | **255**  | **Payment Notif Url** **Required**             | https://merchant.com/dbProcessUrl                            |
+| `description`     | **AN** | **100**  | **Description** **Required**                   | test item                                                    |
+| `merchantToken`   | **AN** | **255**  | **Merchant Token** **Required**                | 6cfccfc0046773c1b589d8e<br>98f8b596c284f3c70a4ecf8<br>6eba14c18944b74bcd |
+| `userIP`          | **AN** | **15**   | **User IP (Customer)** **Required**            | 127.0.0.1                                                    |
+| `cartData`        | **AN** | **4000** | **Cart Data (Json Format)** **Required**       | {}                                                           |
+| `mitraCd`         | **AN** | **4**    | **[Mitra Code](#mitra-code)** **Required**     | ALMA                                                         |
+| `billingAddr`     | **AN** | **100**  | **Billing Address**                            | Jln Cendrawasih                                              |
+| `deliveryNm`      | **A**  | **30**   | **Delivery Name**                              | JohnDoe                                                      |
+| `deliveryPhone`   | **N**  | **15**   | **Delivery Phone**                             | 08125912342                                                  |
+| `deliveryAddr`    | **AN** | **100**  | **Delivery Address**                           | Jln Merak                                                    |
+| `deliveryEmail`   | **AN** |          | **Delivery Email**                             | test@merchant.com                                            |
+| `deliveryCity`    | **A**  | **50**   | **Delivery City**                              | Jakarta                                                      |
+| `deliveryState`   | **A**  | **50**   | **Delivery State**                             | DKI Jakarta                                                  |
+| `deliveryPostCd`  | **N**  | **10**   | **Delivery Post Code**                         | 14350                                                        |
+| `deliveryCountry` | **A**  | **10**   | **Delivery Country**                           | Indonesia                                                    |
+| `vat`             | **N**  | **12**   | **Vat**                                        | 0                                                            |
+| `fee`             | **N**  | **12**   | **Service Tax**                                | 0                                                            |
+| `notaxAmt`        | **N**  | **12**   | **Tax Free Amount**                            | 0                                                            |
+| `reqDt`           | **N**  | **8**    | **Request Date** **(YYYYMMDD)**                | 20160301                                                     |
+| `reqTm`           | **N**  | **6**    | **Request Time** **(HH24MISS)**                | 135959                                                       |
+| `reqDomain`       | **AN** | **100**  | **Request Domain**                             | merchant.com                                                 |
+| `reqServerIP`     | **AN** | **15**   | **Request Server IP**                          | 127.0.0.1                                                    |
+| `reqClientVer`    | **AN** | **50**   | **Request Client Version**                     | 1.0                                                          |
+| `userSessionID`   | AN     | **100**  | **User Session ID**                            | userSessionID                                                |
+| `userAgent`       | **AN** | **100**  | **User Agent**                                 | Mozilla                                                      |
+| `userLanguage`    | **AN** | **2**    | **User Language**                              | en-US                                                        |
+| `payValidDt`      | **N**  | **8**    | **CVS expiry date** **(YYYYMMDD)**             | 20200303                                                     |
+| `payValidTm`      | **N**  | **6**    | **CVS expiry time** **(HH24MISS)**             | 135959                                                       |
 
 ### CVS Response
 
@@ -412,17 +412,10 @@ else:
 | ------------- | ------- | ------- | --------------------------------- |
 | `resultCd`    | **N**   | **4**   | [Result Code](#error-code)        |
 | `resultMsg`   | **AN**  | **255** | [Result Message](#error-code)     |
-| `tXid`        | **AN**  | **30**  | **Transaction ID**                |
-| `referenceNo` | **ANS** | **40**  | **Merchant Order No**             |
+| `tXid`        | **AN**  | **30**  | Transaction ID                    |
+| `referenceNo` | **ANS** | **40**  | Merchant Order No                 |
 | `payMethod`   | **N**   | **2**   | [Payment Method](#payment-method) |
-| `amount`      | **N**   | **12**  | **Transaction Amount**            |
-| `currency`    | **AN**  | **3**   | **Currency**                      |
-| `goodsNm`     | **N**   | **100** | **Goods Name**                    |
-| `billingNm`   | **N**   | **30**  | **Buyer Name**                    |
-| `transDt`     | **N**   | **8**   | **Transaction date (YYYYMMDD)**   |
-| `description` | **N**   | **100** | **Transaction description**       |
-| `callbackUrl` | **N**   | **100** | **Callback Url**                  |
+| `amount`      | **N**   | **12**  | Transaction Amount                |
+| `transDt`     | **N**   | **8**   | Transaction date (YYYYMMDD)       |
+| `transTm`     | **N**   | **6**   | Transaction time (HH24MISS)       |
 | `mitraCd`     | **AN**  | **4**   | [Mitra Code](#mitra-code)         |
-| `payNo`       | **N**   | **16**  | **CVS Number**                    |
-| `payValidTm`  | **N**   | **8**   | **CVS Expiry Time (HH24MISS)**    |
-| `payValidDt`  | **N**   | **6**   | **CVS Expiry Date (YYYYMMDD)**    |
