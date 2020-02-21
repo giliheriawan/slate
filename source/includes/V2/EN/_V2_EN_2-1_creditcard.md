@@ -1,4 +1,5 @@
 # Credit Card
+<img src="/images/va-normal-v2-flow.png">
 Integration Step :
 <ol type="1">
   <li>Merchant Request Credit Card Registration to NICEPay.
