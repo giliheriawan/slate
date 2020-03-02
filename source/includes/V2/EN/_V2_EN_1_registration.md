@@ -1,7 +1,7 @@
 # Registration
 This API is used to Register your Transaction to NICEPAY.
 
-### Register API Specifications
+## Specifications | Register API V2
 
 |                                                           |                                                                                                               |
 |-----------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|
@@ -12,15 +12,15 @@ This API is used to Register your Transaction to NICEPAY.
 
 **Payment Methods:**
 
-| **Code** | **PayMethod**         | **Description**                                 |
-| -------- | --------------------- | ----------------------------------------------- |
-| **`01`** | **Credit Card**       | **Order will be created**                       |
-| **`02`** | **Virtual Account**   | **Virtual Account (`vacctNo`) will be created** |
-| **`03`** | **Convenience Store** | **Pay Number (`payNo`) will be created**        |
-| **`04`** | **ClickPay**          | **Order will be created**                       |
-| **`05`** | **E-Wallet**          | **Order will be created**                       |
+| **Code** | **PayMethod**         | Description                                 |
+| -------- | --------------------- | ------------------------------------------- |
+| **`01`** | **Credit Card**       | Order will be created                       |
+| **`02`** | **Virtual Account**   | Virtual Account (`vacctNo`) will be created |
+| **`03`** | **Convenience Store** | Pay Number (`payNo`) will be created        |
+| **`04`** | **ClickPay**          | Order will be created                       |
+| **`05`** | **E-Wallet**          | Order will be created                       |
 
-## Register API V2 Request Parameters
+## Request Parameters | Register API V2
 
 > Sample JSON Request
 
@@ -123,7 +123,7 @@ vacctValidTm | VA | N | 6 | VA expiry time (HH24MISS)
 merFixAcctId | VA | AN | 40 | Merchant Reserved VA ID
 mitraCd | CVS | A | 4 | Mitra code, refer Code at [Here](#mitra-code)
 
-## Register API V2 Cart Data
+## Cart Data | Register API V2
 <h3 id="cart-data"></h3>
 
 | **Parameter**                 |  Description                   |
@@ -156,7 +156,7 @@ mitraCd | CVS | A | 4 | Mitra code, refer Code at [Here](#mitra-code)
 } 
 ```
 
-## Register API V2 Response Parameters
+## Response Parameters | Register API V2
 
 > Sample JSON Response
 
