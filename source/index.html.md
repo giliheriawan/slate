@@ -15,17 +15,6 @@ search: true
 ---
 # Introduction
 
-> Welcome to NICEPAY
-
-```java
-    _   __________________   ____  _____  __
-   / | / /  _/ ____/ ____/  / __ \/   \ \/ /
-  /  |/ // // /   / __/    / /_/ / /| |\  / 
- / /|  // // /___/ /___   / ____/ ___ |/ /  
-/_/ |_/___/\____/_____/  /_/   /_/  |_/_/   
-
-```
-
 **Welcome to NICEPAY API Documentation and References.**
 
 **NICEPAY Payment Solution** is a product of PT. IONPAY NETWORKS that provide various electronic payment over the Internet safely without separate security device. 
