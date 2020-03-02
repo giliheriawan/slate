@@ -1,26 +1,26 @@
 # Registration
+This API is used to Register your Transaction to NICEPAY.
 
-> Sample **cartData** JSON
+### Register API Specifications
 
-```json
-{
-    "count": "2",  
-    "item": [  
-        {
-            "img_url": "http://img.aaa.com/ima1.jpg",  
-            "goods_name": "Item 1 Name",
-            "goods_detail": "Item 1 Detail",
-            "goods_amt": "700"
-        },  
-	    {
-            "img_url": "http://img.aaa.com/ima2.jpg",
-            "goods_name": "Item 2 Name",
-            "goods_detail": "Item 2 Detail",
-            "goods_amt": "300"
-        }  
-        ] 
-} 
-```
+|                                                           |                                                                                                               |
+|-----------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|
+| **API url**                                               | `/nicepay/direct/v2/registration`                                                                                |
+| **Request Method** **application/json**                   | `POST`                                                                                                        |
+| **Description**                                           | Performs Transaction Regist to NICEPAY                                                           |
+| **Merchant Token**                                        | SHA256(`timeStamp``iMid``referenceNo``amt``merchantKey`)                                                                 |
+
+**Payment Methods:**
+
+| **Code** | **PayMethod**         | **Description**                                 |
+| -------- | --------------------- | ----------------------------------------------- |
+| **`01`** | **Credit Card**       | **Order will be created**                       |
+| **`02`** | **Virtual Account**   | **Virtual Account (`vacctNo`) will be created** |
+| **`03`** | **Convenience Store** | **Pay Number (`payNo`) will be created**        |
+| **`04`** | **ClickPay**          | **Order will be created**                       |
+| **`05`** | **E-Wallet**          | **Order will be created**                       |
+
+## Register API V2 Request Parameters
 
 > Sample JSON Request
 
@@ -74,53 +74,6 @@
 }
 ```
 
-> Sample JSON Response
-
-```json
-{
-    "resultCd": "0000",
-    "resultMsg": "SUCCESS",
-    "tXid": "IONPAYTEST01201804191154334593",
-    "referenceNo": "OrdNo2017717942577",
-    "payMethod": "01",
-    "amt": "1000",
-    "transDt": "20180419",
-    "transTm": "115416",
-    "description": "this is test transaction!!",
-    "bankCd": null,
-    "vacctNo": null,
-    "mitraCd": null,
-    "payNo": null,
-    "currency": null,
-    "goodsNm": null,
-    "billingNm": null,
-    "vacctValidDt": null,
-    "vacctValidTm": null,
-    "payValidDt": null,
-    "payValidTm": null
-}
-```
-
-This API for Transaction Registration.<br>
-Detail Payment Method regarding Registration :
-
-Code | PayMethod | Description | Status
----------- | ---------- | ---------- | ----------
-01 | Credit Card (CC) | Order will be created | Available
-02 | Virtual Account (VA) | Virtual Account will be created | Available
-03 | Convenience Store (CVS) | Pay number will be created | Available
-04 | ClickPay | Order will be created | Coming Soon
-05 | E-Wallet | Order will be created | Coming Soon
-
- &nbsp; | &nbsp;
----------- | -------
-**API url** | **/nicepay/direct/v2/registration**
-Method | POST, JSON
-Description | Perform for Transaction Registration
-Merchant Token | SHA256 (timeStamp + iMid + referenceNo + amt + merchantKey)
-
-<br>**Request JSON Object**
-
 Parameter | Mandatory | Type | Size | Description
 ---------- | ---------- | ---------- | ---------- | ----------
 timeStamp | Y | N | 14 | API Request Date
@@ -170,19 +123,67 @@ vacctValidTm | VA | N | 6 | VA expiry time (HH24MISS)
 merFixAcctId | VA | AN | 40 | Merchant Reserved VA ID
 mitraCd | CVS | A | 4 | Mitra code, refer Code at [Here](#mitra-code)
 
-<br>**cartData JSON Object**
+## Register API V2 Cart Data
+<h3 id="cart-data"></h3>
 
-Parameter | Description
----------- | ----------
-count | Total card data count
-item | 
-Item -> img_url | good's image URL (image size 50*50)
-Item -> goods_name | goods name
-Item -> goods_detail | goods detail description
-Item -> goods_amt | goods Payment amount
+| **Parameter**                 |  Description                   |
+|-------------------------------|--------------------------------|
+|**count**                      | Total cart data count          |
+|**item**                       |                                |
+|**item ->** **img_url**        | Good's image URL (50x50 size)  |
+|**item ->** **goods_name**     | Good's name                    |
+|**item ->** **goods_detail**   | Good's description             |
+|**item ->** **goods_amt**      | Good's amount                  |
 
+<div class="center-column"></div>
+```json
+{
+    "count": "2",  
+    "item": [  
+        {
+            "img_url": "http://img.aaa.com/ima1.jpg",  
+            "goods_name": "Item 1 Name",
+            "goods_detail": "Item 1 Detail",
+            "goods_amt": "700"
+        },  
+	    {
+            "img_url": "http://img.aaa.com/ima2.jpg",
+            "goods_name": "Item 2 Name",
+            "goods_detail": "Item 2 Detail",
+            "goods_amt": "300"
+        }  
+        ] 
+} 
+```
 
-<br>**Response JSON Object**
+## Register API V2 Response Parameters
+
+> Sample JSON Response
+
+```json
+{
+    "resultCd": "0000",
+    "resultMsg": "SUCCESS",
+    "tXid": "IONPAYTEST01201804191154334593",
+    "referenceNo": "OrdNo2017717942577",
+    "payMethod": "01",
+    "amt": "1000",
+    "transDt": "20180419",
+    "transTm": "115416",
+    "description": "this is test transaction!!",
+    "bankCd": null,
+    "vacctNo": null,
+    "mitraCd": null,
+    "payNo": null,
+    "currency": null,
+    "goodsNm": null,
+    "billingNm": null,
+    "vacctValidDt": null,
+    "vacctValidTm": null,
+    "payValidDt": null,
+    "payValidTm": null
+}
+```
 
 Parameter | Type | Size | Description | Remark
 ---------- | ---------- | ---------- | ---------- | ----------

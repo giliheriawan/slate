@@ -325,22 +325,22 @@ print("tXid : " + result['data']['tXid'])
 <div class="center-column"></div>
 ```json
 {
-    "count": "2",
-    "item": [
+    "count": "2",  
+    "item": [  
         {
-            "goods_id": "BB12345678",
-            "goods_name": "iPhone 5S",
-            "goods_amt": "500000",
-            "img_url": "http://merchant.com/cellphones/iphone5s_64g"
-        },
-        {
-            "goods_id": "AZ14565678",
-            "goods_name": "Hailee Sneakers Blink Silver",
-            "goods_amt": "250000",
-            "goods_url": "http://merchant.com/fashion/shoes/sneakers-blink-shoes"
-        }
-    ]
-}
+            "img_url": "http://img.aaa.com/ima1.jpg",  
+            "goods_name": "Item 1 Name",
+            "goods_detail": "Item 1 Detail",
+            "goods_amt": "700"
+        },  
+	    {
+            "img_url": "http://img.aaa.com/ima2.jpg",
+            "goods_name": "Item 2 Name",
+            "goods_detail": "Item 2 Detail",
+            "goods_amt": "300"
+        }  
+        ] 
+} 
 ```
 
 <aside class="success">
