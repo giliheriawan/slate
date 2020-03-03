@@ -1,7 +1,7 @@
 # Registration
 This API is used to Register your Transaction to NICEPAY.
 
-## Specifications | Register API V2
+## Specifications - Register API V2
 
 |                                                           |                                                                                                               |
 |-----------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|
@@ -20,7 +20,7 @@ This API is used to Register your Transaction to NICEPAY.
 | **`04`** | **ClickPay**          | Order will be created                       |
 | **`05`** | **E-Wallet**          | Order will be created                       |
 
-## Request Parameters | Register API V2
+## Request Parameters - Register API V2
 
 > Sample JSON Request
 
@@ -123,7 +123,7 @@ vacctValidTm | VA | N | 6 | VA expiry time (HH24MISS)
 merFixAcctId | VA | AN | 40 | Merchant Reserved VA ID
 mitraCd | CVS | A | 4 | Mitra code, refer Code at [Here](#mitra-code)
 
-## Cart Data | Register API V2
+## Cart Data - Register API V2
 <h3 id="cart-data"></h3>
 
 | **Parameter**                 |  Description                   |
@@ -156,7 +156,7 @@ mitraCd | CVS | A | 4 | Mitra code, refer Code at [Here](#mitra-code)
 } 
 ```
 
-## Response Parameters | Register API V2
+## Response Parameters - Register API V2
 
 > Sample JSON Response
 

@@ -41,7 +41,7 @@ We support Virtual Account payments for other Banks via ATM BERSAMA, ALTO, LINK,
 </div>
 
 ## VA Registration
-### VA Registration API Specifications
+### API Specifications - VA Registration 
 
 |                                                           |                                                                                                               |
 |-----------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|
@@ -51,7 +51,7 @@ We support Virtual Account payments for other Banks via ATM BERSAMA, ALTO, LINK,
 | **Merchant Token**                                        | SHA256(`iMid``referenceNo``amt``merchantKey`)                                                                 |
 | **Payment Methods**                                       | `02` Credit Card                                                                                              |
 
-### VA Request Parameter
+### Request Parameter - VA Registration 
 
 > Sample API Request
 
@@ -391,7 +391,8 @@ else:
 | `userLanguage`    | **AN**         | **2**              | **User Language**                              | en-US                                                        |
 | `vacctValidDt`    | **N**          | **8**              | **VA expiry date** **(YYYYMMDD)**              | 20200303                                                     |
 | `vacctValidTm`    | **N**          | **6**              | **VA expiry time** **(HH24MISS)**              | 135959                                                       |
-### VA Response
+
+### Response Parameter - VA Registration 
 
 > Sample JSON Response
 

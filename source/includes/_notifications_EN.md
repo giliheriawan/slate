@@ -68,7 +68,7 @@ To Allow Push Notifications from NICEPAY Server, please add these details to you
 | `fee`            		| **N**  	| **12**   | Service fee																			   | 
 | `notaxAmt`       		| **N**  	| **12**   | Tax free amount																		   | 
 
-##### Additional Parameter for Virtual Account Notification
+### Additional Parameter for Virtual Account Notification
 
 | Parameter    			| **Type**  | **Size** | Description		                            |
 |-----------------------| ----------| ---------| -----------------------------------------------|

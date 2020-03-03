@@ -23,7 +23,7 @@ Transaction Flow:
 ## Request Token
 Merchant need to request `onePassToken` for each `Credit Card` transaction using NICEPay Enterprise.
 
-### Request Token API Specifications
+### API Specifications - Request Token
 
 |                                                           |                                                                                                               |
 |-----------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|
@@ -33,7 +33,7 @@ Merchant need to request `onePassToken` for each `Credit Card` transaction using
 | **Merchant Token**                                        | SHA256(`iMid``referenceNo``amt``merchantKey`)                                                                 |
 | **Payment Methods**                                       | `01` Credit Card                                                                                              |
 
-### Request Token Request Parameter
+### Request Parameter - Request Token
 
 > Sample API Request
 
@@ -70,7 +70,7 @@ String paymentType= nicePay.Get("paymentType");
 | `instmntType`   | **N**    | 2        | **[Installment Type](#installment-type)** | 1                                                            |
 | `instmntMon`    | **N**    | 2        | **Installment month**                     | 1                                                            |
 
-### Request Token Response
+### Response Parameter - Request Token
 
 > Sample JSON response
 
@@ -110,7 +110,7 @@ Proceed with this API when you get `paymentType = 1` from `onePassToken.do` resp
   <li>NICEPay will send response parameter to <code>callbackUrl</code>.
 </ol>
 
-### 3DS API Specifications
+### API Specifications - 3DS
 
 |                                                           |                                                                                                               |
 |-----------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|
@@ -120,7 +120,7 @@ Proceed with this API when you get `paymentType = 1` from `onePassToken.do` resp
 | **Merchant Token**                                        | SHA256(`iMid``referenceNo``amt``merchantKey`)                                                                 |
 | **Payment Methods**                                       | `01` Credit Card                                                                                              |
 
-### 3DS Request Parameter
+### Request Parameter - 3DS
 
 > Sample Request
 
@@ -160,7 +160,7 @@ MIGS Steps:
   <li>NICEPay will send response parameter to <code>callbackUrl</code>.
 </ol>
 
-### MIGS API Specifications
+### API Specifications - MIGS
 
 |                                                           |                                                                                                               |
 |-----------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|
@@ -170,9 +170,9 @@ MIGS Steps:
 | **Merchant Token**                                        | SHA256(`iMid``referenceNo``amt``merchantKey`)                                                                 |
 | **Payment Methods**                                       | `01` Credit Card                                                                                              |
 
-### MIGS Request Parameter
+### Request Parameter - MIGS
 
-> Sample URL Parameter 3DS Request
+> Sample URL Parameter MIGS Request
 
 ```
 https://www.nicepay.co.id/nicepay/api/migsRequest.do?instmntType=1&instmntMon=1&referenceNo={referenceNo}&cardCvv={cardCvv}&callbackUrl={callbackUrl}&onePassToken={onePassToken}
@@ -187,9 +187,9 @@ https://www.nicepay.co.id/nicepay/api/migsRequest.do?instmntType=1&instmntMon=1&
 | `callbackUrl`  | **AN**   | **200**  | **Callback Url for result** **Required**  | http://merchant.com/callbackUrl |
 | `onePassToken` | **AN**   | **64**   | **One time use token** **Required**       | 92869482578275828fdvf432        |
 
-### MIGS Response Parameter URL
+### Response Parameter - MIGS
 
-> Sample URL Parameter 3DS Response
+> Sample URL Parameter MIGS Response
 
 ```
 http://merchant.com/callbackUrl?resultCd={resultCd}&resultMsg={resultMsg}&referenceNo={referenceNo}&merchantToken={merchantToken}
@@ -201,7 +201,7 @@ http://merchant.com/callbackUrl?resultCd={resultCd}&resultMsg={resultMsg}&refere
 | `resultMsg` | **AN**   | **255**  | [Result message](#error-code) |
 
 ## Credit Card Registration
-### CC Registration API Specifications
+### API Specifications - CC Registration
 
 |                                                           |                                                                                                               |
 |-----------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|
@@ -211,7 +211,7 @@ http://merchant.com/callbackUrl?resultCd={resultCd}&resultMsg={resultMsg}&refere
 | **Merchant Token**                                        | SHA256(`iMid``referenceNo``amt``merchantKey`)                                                                 |
 | **Payment Methods**                                       | `01` Credit Card                                                                                              |
 
-### CC Registration Request parameter
+### Request parameter - CC Registration
 
 >Sample API Request
 
@@ -564,7 +564,7 @@ else:
 | `userAgent`       | **AN**   | **100**  | **User Agent Information**                                   | Mozilla                                                      |
 | `userLanguage`    | **AN**   | **2**    | **User Language**                                            | en-US                                                        |
 
-### CC Registration Response Parameter
+### Response Parameter - CC Registration
 
 > Sample JSON Response
 

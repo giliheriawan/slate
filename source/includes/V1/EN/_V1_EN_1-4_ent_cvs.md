@@ -36,7 +36,7 @@ Real time Notification will be sent when customer has completed the payment.
 </div>
 
 ## CVS Registration
-### CVS Registration API Specifications
+### API Specifications - CVS Registration
 
 |                                                           |                                                                                                               |
 |-----------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|
@@ -46,7 +46,7 @@ Real time Notification will be sent when customer has completed the payment.
 | **Merchant Token**                                        | SHA256(`iMid``referenceNo``amt``merchantKey`)                                                                 |
 | **Payment Methods**                                       | `03` Convenience Store                                                                                        |
 
-### CVS Request Parameter
+### Request Parameter - CVS Registration
 
 > Sample Request
 
@@ -390,7 +390,7 @@ else:
 | `payValidDt`      | **N**  | **8**    | **CVS expiry date** **(YYYYMMDD)**             | 20200303                                                     |
 | `payValidTm`      | **N**  | **6**    | **CVS expiry time** **(HH24MISS)**             | 135959                                                       |
 
-### CVS Response
+### Response Parameter - CVS Registration
 
 > Sample JSON Response
 

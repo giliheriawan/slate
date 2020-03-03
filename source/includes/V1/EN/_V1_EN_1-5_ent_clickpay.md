@@ -34,7 +34,7 @@ Real time Notification will be sent when customer completed the payment.
 </div>
 
 ## ClickPay Registration
-### ClickPay Registration API Specifications
+### API Specifications - ClickPay Registration
 
 |                                                           |                                                                                                               |
 |-----------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|
@@ -44,7 +44,7 @@ Real time Notification will be sent when customer completed the payment.
 | **Merchant Token**                                        | SHA256(`iMid``referenceNo``amt``merchantKey`)                                                                 |
 | **Payment Methods**                                       | `04` ClickPay                                                                                        |
 
-### ClickPay Request Parameter
+### Request Parameter - ClickPay Registration
 
 > Sample Request
 
@@ -393,7 +393,7 @@ else:
 | `userAgent`       | **AN** | **100**  | **User Agent**                                 | Mozilla                                                      |
 | `userLanguage`    | **AN** | **2**    | **User Language**                              | en-US                                                        |
 
-### ClickPay Response
+### Response - ClickPay Registration
 
 > Sample JSON Response
 

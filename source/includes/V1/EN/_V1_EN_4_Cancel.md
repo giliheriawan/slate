@@ -1,5 +1,5 @@
 # Cancel Transaction
-### Trans Cancel API Specifications
+## API Specifications - Cancel Order
 This API is intended to cancel a registered transaction.
 
 |                                                          |                                             |
@@ -10,7 +10,7 @@ This API is intended to cancel a registered transaction.
 | **Merchant Token**                                       | SHA256(`iMid``tXid``amt``merchantKey`)      |
 
 
-## Trans Cancel Request Parameters
+## Request Parameters - Cancel Order
 
 > Sample API Request
 
@@ -165,7 +165,7 @@ print("amount : " + result['amount'])
 | `cancelRetryCnt` | **N**    | **2**    | **Retry count for cancel**      	                      | 2                                                             		 |
 | `worker`         | **N**    | **10**   | **Worker**                      	                      | Worker                                                        		 |
                       
-## Trans Cancel Response Parameter
+## Response Parameter - Cancel Order
 
 > Sample Response
 

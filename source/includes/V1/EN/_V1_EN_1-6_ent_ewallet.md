@@ -20,7 +20,7 @@ Real time Notification will be sent when customer has completed the payment.
 </ol>
 
 ## E-Wallet Registration
-### E-Wallet Registration API Specifications
+### API Specifications - E-Wallet Registration
 
 |                                                           |                                                                                                               |
 |-----------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|
@@ -39,7 +39,7 @@ Method | POPUP (POST)
 Description | E-Wallet Transaction
 Merchant Token | SHA256 (Merchant ID + Reference Number + Amount + Merchant Key)
 
-### E-Wallet Request Parameter
+### Request Parameter - E-Wallet Registration
 
 > Sample Request
 
@@ -129,7 +129,7 @@ Merchant Token | SHA256 (Merchant ID + Reference Number + Amount + Merchant Key)
 | `userAgent`       | **AN** | **100**  | **User Agent**                                 | Mozilla                                                      |
 | `userLanguage`    | **AN** | **2**    | **User Language**                              | en-US                                                        |
 
-### E-Wallet Registration Response
+### Registration Response - E-Wallet Registration
 
 > Sample Response
 
