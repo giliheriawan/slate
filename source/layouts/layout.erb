@@ -125,15 +125,17 @@ under the License.
   <% end %>
   <div id="toc" class="toc-list-h1">
     <% toc_data(page_content).each do |h1| %>
-      <% h1content = h1[:content].to_s.slice(0..h1[:content].to_s.index('|')) %>
+      <% element_content = h1[:content].to_s %>
+      <% h1_content = element_content.slice(0..element_content.index('\|')) %>
       <li>
-        <a href="#<%= h1[:id] %>" class="toc-h1 toc-link" data-title="<%= h1content %>"><%= h1content %></a>
+        <a href="#<%= h1[:id] %>" class="toc-h1 toc-link" data-title="<%= h1_content %>"><%= h1_content %></a>
         <% if h1[:children].length > 0 %>
           <ul class="toc-list-h2">
             <% h1[:children].each do |h2| %>
-              <% h2content = h2[:content].to_s.slice(0..h2[:content].to_s.index('|')) %>
+              <% element_content2 = h2[:content].to_s %>
+              <% h2_content = element_content2.slice(0..element_content2.index('\|')) %>
               <li>
-                <a href="#<%= h2[:id] %>" class="toc-h2 toc-link" data-title="<%= h2content %>"><%= h2content %></a>
+                <a href="#<%= h2[:id] %>" class="toc-h2 toc-link" data-title="<%= h2_content %>"><%= h2_content %></a>
               </li>
             <% end %>
           </ul>
