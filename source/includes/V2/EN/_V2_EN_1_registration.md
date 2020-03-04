@@ -74,54 +74,54 @@ This API is used to Register your Transaction to NICEPAY.
 }
 ```
 
-| Parameter       | **Type** | **Size** | **Description**                                              | Example                                                      |
-| --------------- | -------- | -------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| timeStamp       | **N**    | **14**   | **Request Timestamp** **Required**                           | 20170708123456                                               |
-| iMid            | **AN**   | **10**   | **Merchant  ID** **Required**                                | IONPAYTEST                                                   |
-| payMethod       | **AN**   | **2**    | **[Payment  Method](#payment-method)** **Required**          | 1                                                            |
-| currency        | **AN**   | **3**    | **Currency** **Required**                                    | IDR                                                          |
-| amt             | **N**    | **12**   | **Amount** **Required**                                      | 1000                                                         |
-| referenceNo     | **ANS**  | **40**   | **Merchant's RefNo.** **Required**                           | MerchantReferenceNumber001                                   |
-| goodsNm         | **AN**   | **100**  | **Goods  Name** **Required**                                 | Merchant Goods 1                                             |
-| billingNm       | **A**    | **30**   | **Buyer  Name** **Required**                                 | John Doe                                                     |
-| billingPhone    | **N**    | **15**   | **Buyer  Phone No**. **Required**                            | 2112345678                                                   |
-| billingEmail    | **AN**   | **40**   | **Buyer  Email** **Required**                                | [buyer@merchant.com](mailto:buyer@merchant.com)              |
-| billingAddr     | **AN**   | **100**  | **Buyer  Address**                                           | Jln Merdeka 123                                              |
-| billingCity     | **A**    | **50**   | **Buyer  City** **Required**                                 | Jakara Selatan                                               |
-| billingState    | **A**    | **50**   | **Billing  State** **Required**                              | DKI Jakarta                                                  |
-| billingPostCd   | **N**    | **10**   | **Billing  Post Number** **Required**                        | 14350                                                        |
-| billingCountry  | **A**    | **10**   | **Billing  Country** **Required**                            | Indonesia                                                    |
-| cartData        | **AN**   | **4000** | **[Cart Data](#cart-data-v2)** **Required**                  | {}                                                           |
-| instmntType     | **N**    | **2**    | **[Installment Type](#installment-type)** **Required for CC** | 1                                                            |
-| instmntMon      | **N**    | **2**    | **Installment  Month** **Required for CC**                   | 1                                                            |
-| recurrOpt       | **N**    | **2**    | `0`: Automatic Cancel<br> `1`: Do not cancel <br>`2`: Do not make token | 2                                                            |
-| bankCd          | **A**    | **4**    | **[Bank Code](#bank-code)** **Required for VA**              | CENA                                                         |
-| vacctValidDt    | **N**    | **8**    | **VA  Expiry Date** **(YYYYMMDD)**                           | 20200303                                                     |
-| vacctValidTm    | **N**    | **6**    | **VA  Expiry Time** **(HH24MISS)**                           | 135959                                                       |
-| merFixAcctId    | **AN**   | **40**   | **Merchant  Reserved VA ID**                                 | 4                                                            |
-| mitraCd         | **A**    | **4**    | **[Mitra Code](#mitra-code)** **Required for CVS, E-Wallet, Payloan** | AKLP                                                         |
-| userIP          | **AN**   | **15**   | **User IP** **Required for CC**                              | 127.0.0.1                                                    |
-| dbProcessUrl    | **AN**   | **255**  | **Notification URL** **Required**                            | https://merchant.com/dbProcessUrl                            |
-| merchantToken   | **AN**   | **255**  | **merchantToken**  **Required**                              | 6cfccfc0046773c1b589d8e 98f8b596c284f3c70a4ecf8  6eba14c18944b74bcd |
-| deliveryNm      | **A**    | **30**   | **Delivery Name**                                            | John Doe                                                     |
-| deliveryPhone   | **N**    | **15**   | **Delivery Phone**                                           | 8124125931                                                   |
-| deliveryAddr    | **AN**   | **100**  | **Delviery Address**                                         | Jln Merdeka Riau 161                                         |
-| deliveryCity    | **A**    | **50**   | **Delivery  City**                                           | Riau                                                         |
-| deliveryState   | **A**    | **50**   | **Delivery  State**                                          | Riau                                                         |
-| deliveryPostCd  | **N**    | **10**   | **Delivery Post Code**                                       | 14350                                                        |
-| deliveryCountry | **A**    | **10**   | **Delivery Country**                                         | Indonesia                                                    |
-| vat             | **N**    | **12**   | **Vat**                                                      | 0                                                            |
-| fee             | **N**    | **12**   | **Service Fee**                                              | 0                                                            |
-| notaxAmt        | **N**    | **12**   | **Tax-free Amount**                                          | 0                                                            |
-| description     | **AN**   | **100**  | **Transaction  Description**                                 | Test Transaction                                             |
-| reqDt           | **N**    | **8**    | **Request  Date** **(YYYYMMDD)**                             | 20200303                                                     |
-| reqTm           | **N**    | **6**    | **Request  Time** **(HH24MISS)**                             | 135959                                                       |
-| reqDomain       | **AN**   | **100**  | **Request Domain**                                           | merchant.com                                                 |
-| reqServerIP     | **AN**   | **15**   | **Request Server IP**                                        | 127.0.0.1                                                    |
-| reqClientVer    | **AN**   | **50**   | **Client Version**                                           | 1.0                                                          |
-| userSessionID   | **AN**   | **100**  | **User Session ID**                                          | userSessionID                                                |
-| userAgent       | **AN**   | **100**  | Mozilla                                                      |                                                              |
-| userLanguage    | **A**    | **2**    | **User Language**                                            | en-US                                                        |
+| Parameter         | **Type** | **Size** | **Description**                                              | Example                                                      |
+| ----------------- | -------- | -------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `timeStamp`       | **N**    | **14**   | **Request Timestamp** **Required**                           | 20170708123456                                               |
+| `iMid`            | **AN**   | **10**   | **Merchant  ID** **Required**                                | IONPAYTEST                                                   |
+| `payMethod`       | **AN**   | **2**    | **[Payment  Method](#payment-method)** **Required**          | 1                                                            |
+| `currency`        | **AN**   | **3**    | **Currency** **Required**                                    | IDR                                                          |
+| `amt`             | **N**    | **12**   | **Amount** **Required**                                      | 1000                                                         |
+| `referenceNo`     | **ANS**  | **40**   | **Merchant's RefNo.** **Required**                           | MerchantReferenceNumber001                                   |
+| `goodsNm`         | **AN**   | **100**  | **Goods  Name** **Required**                                 | Merchant Goods 1                                             |
+| `billingNm`       | **A**    | **30**   | **Buyer  Name** **Required**                                 | John Doe                                                     |
+| `billingPhone`    | **N**    | **15**   | **Buyer  Phone No**. **Required**                            | 2112345678                                                   |
+| `billingEmail`    | **AN**   | **40**   | **Buyer  Email** **Required**                                | [buyer@merchant.com](mailto:buyer@merchant.com)              |
+| `billingAddr`     | **AN**   | **100**  | **Buyer  Address**                                           | Jln Merdeka 123                                              |
+| `billingCity`     | **A**    | **50**   | **Buyer  City** **Required**                                 | Jakara Selatan                                               |
+| `billingState`    | **A**    | **50**   | **Billing  State** **Required**                              | DKI Jakarta                                                  |
+| `billingPostCd`   | **N**    | **10**   | **Billing  Post Number** **Required**                        | 14350                                                        |
+| `billingCountry`  | **A**    | **10**   | **Billing  Country** **Required**                            | Indonesia                                                    |
+| `cartData`        | **AN**   | **4000** | **[Cart Data](#cart-data-v2)** **Required**                  | {}                                                           |
+| `instmntType`     | **N**    | **2**    | **[Installment Type](#installment-type)** **Required for CC** | 1                                                            |
+| `instmntMon`      | **N**    | **2**    | **Installment  Month** **Required for CC**                   | 1                                                            |
+| `recurrOpt`       | **N**    | **2**    | `0`: Automatic Cancel<br> `1`: Do not cancel <br>`2`: Do not make token | 2                                                            |
+| `bankCd`          | **A**    | **4**    | **[Bank Code](#bank-code)** **Required for VA**              | CENA                                                         |
+| `vacctValidDt`    | **N**    | **8**    | **VA  Expiry Date** **(YYYYMMDD)**                           | 20200303                                                     |
+| `vacctValidTm`    | **N**    | **6**    | **VA  Expiry Time** **(HH24MISS)**                           | 135959                                                       |
+| `merFixAcctId`    | **AN**   | **40**   | **Merchant  Reserved VA ID**                                 | 4                                                            |
+| `mitraCd`         | **A**    | **4**    | **[Mitra Code](#mitra-code)** **Required for CVS, E-Wallet, Payloan** | AKLP                                                         |
+| `userIP`          | **AN**   | **15**   | **User IP** **Required for CC**                              | 127.0.0.1                                                    |
+| `dbProcessUrl`    | **AN**   | **255**  | **Notification URL** **Required**                            | https://merchant.com/dbProcessUrl                            |
+| `merchantToken`   | **AN**   | **255**  | **merchantToken**  **Required**                              | 6cfccfc0046773c1b589d8e 98f8b596c284f3c70a4ecf8  6eba14c18944b74bcd |
+| `deliveryNm`      | **A**    | **30**   | **Delivery Name**                                            | John Doe                                                     |
+| `deliveryPhone`   | **N**    | **15**   | **Delivery Phone**                                           | 8124125931                                                   |
+| `deliveryAddr`    | **AN**   | **100**  | **Delviery Address**                                         | Jln Merdeka Riau 161                                         |
+| `deliveryCity`    | **A**    | **50**   | **Delivery  City**                                           | Riau                                                         |
+| `deliveryState`   | **A**    | **50**   | **Delivery  State**                                          | Riau                                                         |
+| `deliveryPostCd`  | **N**    | **10**   | **Delivery Post Code**                                       | 14350                                                        |
+| `deliveryCountry` | **A**    | **10**   | **Delivery Country**                                         | Indonesia                                                    |
+| `vat`             | **N**    | **12**   | **Vat**                                                      | 0                                                            |
+| `fee`             | **N**    | **12**   | **Service Fee**                                              | 0                                                            |
+| `notaxAmt`        | **N**    | **12**   | **Tax-free Amount**                                          | 0                                                            |
+| `description`     | **AN**   | **100**  | **Transaction  Description**                                 | Test Transaction                                             |
+| `reqDt`           | **N**    | **8**    | **Request  Date** **(YYYYMMDD)**                             | 20200303                                                     |
+| `reqTm`           | **N**    | **6**    | **Request  Time** **(HH24MISS)**                             | 135959                                                       |
+| `reqDomain`       | **AN**   | **100**  | **Request Domain**                                           | merchant.com                                                 |
+| `reqServerIP`     | **AN**   | **15**   | **Request Server IP**                                        | 127.0.0.1                                                    |
+| `reqClientVer`    | **AN**   | **50**   | **Client Version**                                           | 1.0                                                          |
+| `userSessionID`   | **AN**   | **100**  | **User Session ID**                                          | userSessionID                                                |
+| `userAgent`       | **AN**   | **100**  | u                                                            | Mozilla                                                      |
+| `userLanguage`    | **A**    | **2**    | **User Language**                                            | en-US                                                        |
 
 ## Cart Data - Register API V2
 <h3 id="cart-data-v2"></h3>
@@ -185,25 +185,25 @@ This API is used to Register your Transaction to NICEPAY.
 }
 ```
 
-Parameter | Type | Size | Description | Remark
----------- | ---------- | ---------- | ---------- | ----------
-resultCd | N | 4 | result code | 
-resultMsg | AN | 255 | result message | 
-tXid | AN | 30 | Transaction Id (Key from NICEPay) | When success
-referenceNo | ANS | 40 | Merchant Order No (Key from merchant) | When success VA,CVS
-payMethod | N | 2 | Payment Method | When success VA,CVS
-amt | N | 12 | Payment amount | When success VA,CVS
-currency | AN | 3 | currency | When success VA,CVS
-goodsNm | AN | 100 | Goods Name | When success VA,CVS
-billingNm | A | 30 | Buyer name | When success VA,CVS
-transDt | N | 8 | Transaction date (YYYYMMDD) | When success VA,CVS
-transTm | N | 6 | Transaction time(HH24MISS) | When success VA,CVS
-description | AN | 100 | Transaction Description  | When success VA,CVS
-bankCd | A | 4 | bank code | When success VA, Refer Code at [Here](#bank-code)
-vacctNo | N | 20 | Virtual Account number | When success VA
-vacctValidDt | N | 8 | VA expiry date (YYYYMMDD) | When success VA
-vacctValidTm | N | 6 | VA expiry time (HH24MISS) | When success VA
-mitraCd | AN | 4 | Mitra code | When success CVS, Refer Code at [Here](#mitra-code)
-payNo | N | 12 | CVS Number | When success CVS
-payValidDt | N | 8 | CVS expiry date (YYYYMMDD) | When success CVS
-payValidTm | N | 6 | CVS expiry time (HH24MISS) | When success CVS
+| Parameter      | **Type** | **Size** | **Description**                       | Remark                              |
+| -------------- | -------- | -------- | ------------------------------------- | ----------------------------------- |
+| `resultCd`     | **N**    | **4**    | **[Result Code](#error-code)**        |                                     |
+| `resultMsg`    | **AN**   | **255**  | **[Result Message](#error-code)**     |                                     |
+| `tXid`         | **AN**   | **30**   | **Transaction ID**                    | When success                        |
+| `referenceNo`  | **ANS**  | **40**   | **Merchant Order No**                 | When success                        |
+| `payMethod`    | **N**    | **2**    | **[Payment Method](#payment-method)** | When success                        |
+| `amt`          | **N**    | **12**   | **Payment amount**                    | When success                        |
+| `currency`     | **AN**   | **3**    | **Currency**                          | When success VA and CVS             |
+| `goodsNm`      | **AN**   | **100**  | **Goods Name**                        | When success VA and CVS             |
+| `billingNm`    | **A**    | **30**   | **Buyer name**                        | When success VA and CVS             |
+| `transDt`      | **N**    | **8**    | **Transaction Date** **(YYYYMMDD)**   | When success                        |
+| `transTm`      | **N**    | **6**    | **Transaction Time** **(HH24MISS)**   | When success                        |
+| `description`  | **AN**   | **100**  | **Transaction Description**           | When success VA and CVS             |
+| `bankCd`       | **A**    | **4**    | **[Bank Code](#bank-code)**           | When success VA                     |
+| `vacctNo`      | **N**    | **20**   | **Virtual Account No.**               | When success VA                     |
+| `vacctValidDt` | **N**    | **8**    | **VA Expiry Date** **(YYYYMMDD)**     | When success VA                     |
+| `vacctValidTm` | **N**    | **6**    | **VA Expiry Time** **(HH24MISS)**     | When success VA                     |
+| `mitraCd`      | **AN**   | **4**    | **[Mitra Code](#mitra-code)**         | When success CVS, Payloan, E-Wallet |
+| `payNo`        | **N**    | **12**   | **CVS Payment Number**                | When success CVS                    |
+| `payValidDt`   | **N**    | **8**    | **CVS Expiry Date** **(YYYYMMDD)**    | When success CVS                    |
+| `payValidTm`   | **N**    | **6**    | **CVS Expiry Time** **(HH24MISS)**    | When success CVS                    |
