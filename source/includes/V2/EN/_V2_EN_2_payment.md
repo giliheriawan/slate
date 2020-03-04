@@ -17,7 +17,7 @@
 | **`05`** | **E-Wallet**    | Redirect to E-Wallet Page / App Notification                                                |
 | **`06`** | **Payloan**     | Redirect to Payloan Mitra Page                                                              |
 
-<aside class="notice">Please note, before using the <code>Payment API</code>, please register your payment using <code>Registration API</code> first.</aside>
+<aside class="notice">Note: Before using the <code>Payment API</code>, please register your payment using <code>Registration API</code> first.</aside>
 
 ## Request Parameters - Payment API V2
 
