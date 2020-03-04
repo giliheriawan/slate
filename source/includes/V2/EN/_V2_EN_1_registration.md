@@ -1,6 +1,4 @@
 # Registration
-This API is used to Register your Transaction to NICEPAY.
-
 ## Specifications - Register API V2
 
 |                                                           |                                                                                                               |
@@ -19,6 +17,7 @@ This API is used to Register your Transaction to NICEPAY.
 | **`03`** | **Convenience Store** | Pay Number (`payNo`) will be created        |
 | **`04`** | **ClickPay**          | Order will be created                       |
 | **`05`** | **E-Wallet**          | Order will be created                       |
+| **`06`** | **Payloan**           | Order will be created                       |
 
 ## Request Parameters - Register API V2
 

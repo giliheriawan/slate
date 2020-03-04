@@ -1,33 +1,31 @@
 # Payment
+## Specifications - Register API V2
+
+|                                                           |                                                                                                               |
+|-----------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|
+| **API url**                                               | `/nicepay/direct/v2/payment`                                                                                  |
+| **Request Method** **application/x-www-form-urlencoded**  | `Popup`, `Redirect`, `Submit`                                                                                 |
+| **Description**                                           | Performs Payment Request to NICEPAY                                                                           |
+| **Merchant Token**                                        | SHA256(`timeStamp``iMid``referenceNo``amt``merchantKey`)                                                      |
+
+**Payment Methods:**
+
+| **Code** | **PayMethod**   | Description                                                                                 |
+| -------- | --------------- | ------------------------------------------------------------------------------------------- |
+| **`01`** | **Credit Card** | If 3DS / MIGS authentication is required, users will be redirected to the card issuer page. |
+| **`04`** | **ClickPay**    | Redirect to Bank Page                                                                       |
+| **`05`** | **E-Wallet**    | Redirect to E-Wallet Page / App Notification                                                |
+| **`06`** | **Payloan**     | Redirect to Payloan Mitra Page                                                              |
+
+<aside class="notice">Please note, before using the <code>Payment API</code>, please register your payment using <code>Registration API</code> first.</aside>
+
+## Request Parameters - Payment API V2
 
 > Sample JSON Request
->
-> `timeStamp=20180302112151&tXid=TESTIDTEST01201803021122164984&merchantToken=b4171e8228be7a75d19ad29b509e76d5fc70a4c000ef87bc55cf0cda72767e72&cardNo=1234567890123456&cardExpYymm=2006&cardCvv=123&cardHolderNm=Thomas Alfa Edison&recurringToken=&preauthToken=&clickPayNo=&dataField3=&clickPayToken=&callBackUrl=https://merchant.com/callBackUrl`
 
-
-> Sample Response Parameter(redirect to the callbackUrl)
->
-> `callbackUrl?resultCd=0000&resultMsg=SUCCESS&tXid=TESTIDTEST01201803021122164984&referenceNo=99997&payMethod=01&amt=10000&transDt=20180302&transTm=112216&description=Payment of referenceNo 99997&authNo=164984&issuBankCd=BMRI&issuBankNm=PT Bank Mandiri (Persero)&acquBankCd=BMRI&acquBankNm=PT Bank Mandiri (Persero)&cardNo=123456******3456&receiptCode=&mitraCd=&recurringToken=&preauthToken=&currency=IDR&goodsNm=Test Transaction Nicepay&billingNm=Customer Name&ccTransType=1&mRefNo=&instmntType=2&instmntMon=1&cardExpYymm=2006`
-
-<aside class="notice">Please note, before hit <strong>Payment API</strong>, please hit <strong>Registration API</strong> first.</aside>
-
-This API for Payment Process.<br>
-Detail Payment Method regarding Payment :
-
-Code | PayMethod | Description
----------- | ---------- | ----------
-01 | Credit Card (CC) | If 3DS / MIGS authentication is required, the page will be redirect to the card issuer page.
-04 | ClickPay | The page will be redirect to the e-wallet payment window.
-05 | E-Wallet | The page will be redirect to the ClickPay payment window.
-
- &nbsp; | &nbsp;
----------- | -------
-**API url** | **/nicepay/direct/v2/payment**
-Method | POST (Popup, Redirect, Submit, etc) [not server to server API]
-Description | Perform for Transaction Registration
-Merchant Token | SHA256 (timeStamp + iMid + referenceNo + amt + merchantKey)
-
-<br>**Request POST Parameter**
+```
+https://dev.nicepay.co.id/nicepay/direct/v2/payment?timeStamp=20180302112151&tXid=TESTIDTEST01201803021122164984&merchantToken=b4171e8228be7a75d19ad29b509e76d5fc70a4c000ef87bc55cf0cda72767e72&cardNo=1234567890123456&cardExpYymm=2006&cardCvv=123&cardHolderNm=Thomas Alfa Edison&recurringToken=&preauthToken=&clickPayNo=&dataField3=&clickPayToken=&callBackUrl=https://merchant.com/callBackUrl
+```
 
 Parameter | Mandatory | Type | Size | Description
 ---------- | ---------- | ---------- | ---------- | ----------
@@ -45,7 +43,13 @@ clickPayToken | ClickPay | N | 6 | Code response from token
 merchantToken | Y | AN | 255 | merchantToken
 callBackUrl | Y | AN | 255 | Payment result forward url (on browser)
 
-<br>**Response POST Parameter(redirect to the callBackUrl)**
+## Response Parameters - Payment API V2
+
+> Sample Response Parameter (Redirect to the callbackUrl)
+
+```
+https://merchant.com/callBackUrl?callbackUrl?resultCd=0000&resultMsg=SUCCESS&tXid=TESTIDTEST01201803021122164984&referenceNo=99997&payMethod=01&amt=10000&transDt=20180302&transTm=112216&description=Payment of referenceNo 99997&authNo=164984&issuBankCd=BMRI&issuBankNm=PT Bank Mandiri (Persero)&acquBankCd=BMRI&acquBankNm=PT Bank Mandiri (Persero)&cardNo=123456******3456&receiptCode=&mitraCd=&recurringToken=&preauthToken=&currency=IDR&goodsNm=Test Transaction Nicepay&billingNm=Customer Name&ccTransType=1&mRefNo=&instmntType=2&instmntMon=1&cardExpYymm=2006
+```
 
 Parameter | Type | Size | Description | Remark
 ---------- | ---------- | ---------- | ---------- | ----------
