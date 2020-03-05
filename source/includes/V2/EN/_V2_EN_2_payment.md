@@ -8,7 +8,7 @@
 | **Description**                                           | Performs Payment Request to NICEPAY                                                                           |
 | **Merchant Token**                                        | SHA256(`timeStamp``iMid``referenceNo``amt``merchantKey`)                                                      |
 
-**Payment Methods:**
+**Payment Methods Available for Payment:**
 
 | **Code** | **PayMethod**   | Description                                                                                 |
 | -------- | --------------- | ------------------------------------------------------------------------------------------- |
@@ -55,8 +55,8 @@ https://merchant.com/callBackUrl?callbackUrl?resultCd=0000&resultMsg=SUCCESS&tXi
 | ---------------- | -------- | -------- | ----------------------------------------- | ------------------------------------------------------------ |
 | `resultCd`       | **N**    | **4**    | **[Result Code](#error-code)**            |                                                              |
 | `resultMsg`      | **AN**   | **255**  | **[Result Message](#error-code)**         |                                                              |
-| `tXid`           | **AN**   | **30**   | **Transaction ID**                        |                                                              |
-| `referenceNo`    | **ANS**  | **40**   | **Merchant Order No**                     |                                                              |
+| `tXid`           | **AN**   | **30**   | **Transaction ID**                        | When success                                                 |
+| `referenceNo`    | **ANS**  | **40**   | **Merchant Order No**                     | When success                                                 |
 | `payMethod`      | **N**    | **2**    | **[Payment Method](#payment-method)**     | When success                                                 |
 | `amt`            | **N**    | **12**   | **Payment Amount**                        | When success                                                 |
 | `currency`       | **AN**   | **3**    | **Currency**                              | When success                                                 |

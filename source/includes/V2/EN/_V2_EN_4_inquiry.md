@@ -8,16 +8,6 @@
 | **Description**                                           | Performs Inquiry Request to NICEPAY for Status Checking                                                       |
 | **Merchant Token**                                        | SHA256(`timeStamp``iMid``referenceNo``amt``merchantKey`)                                                      |
 
-**Payment Methods:**
-
-| **Code** | **PayMethod**   | Description                                                                                 |
-| -------- | --------------- | ------------------------------------------------------------------------------------------- |
-| **`01`** | **Credit Card** | If 3DS / MIGS authentication is required, users will be redirected to the card issuer page. |
-| **`04`** | **ClickPay**    | Redirect to Bank Page                                                                       |
-| **`05`** | **E-Wallet**    | Redirect to E-Wallet Page / App Notification                                                |
-| **`06`** | **Payloan**     | Redirect to Payloan Mitra Page                                                              |
-
-
 <aside class="notice">When Notification to your <code>dbProcessUrl</code> is received, we strongly recommend Merchants to verify the Notification by using the Inquiry API.</aside>
 
 ## Request Parameters - Inquiry
@@ -41,7 +31,7 @@
 | `tXid`          | **AN**   | **30**   | **Transaction Id** **Required**                      | IONPAYTEST02201607291027025291       |
 | `iMid`          | **AN**   | **10**   | **Merchant Id** **Required**                         | IONPAYTEST                           |
 | `referenceNo`   | **ANS**  | **40**   | **Merchant Order No** **Required**                   | OrdNo20160525000-52104               |
-| `amt`           | **N**    | **12**   | **Transaction Amount** Required                      | 1000                                 |
+| `amt`           | **N**    | **12**   | **Transaction Amount** **Required**                  | 1000                                 |
 | `merchantToken` | **AN**   | **255**  | **merchantToken** **Required**                       | 6cfccfc0046773c1b89d8e98f8b596c284f… |
 
 ## Response Parameters - Inquiry
@@ -99,7 +89,7 @@
 | `resultMsg`   | **AN**   | **255**  | [Result Message](#error-code)              |
 | `tXid`        | **AN**   | **30**   | Transaction Id                             |
 | `iMid`        | **AN**   | **10**   | Merchant Id                                |
-| `referenceNo` | **ANS**  | **40**   | Merchant Order No(Key from merchant)       |
+| `referenceNo` | **ANS**  | **40**   | Merchant Order No                          |
 | `payMethod`   | **N**    | **2**    | [Payment Method](#payment-method)          |
 | `amt`         | **N**    | **12**   | Payment amount                             |
 | `cancelAmt`   | **N**    | **12**   | Cancel amount                              |
@@ -114,7 +104,7 @@
 | `billingNm`   | **AN**   | **30**   | Buyer name                                 |
 | `status`      | **N**    | **1**    | [Transaction Status](#payment-status-code) |
 
-## Additional Response Parameters - Credit Card
+### Additional Response Parameters - Credit Card
 
 | Parameter        | **Type** | **Size** | Description                                                  |
 | ---------------- | -------- | -------- | ------------------------------------------------------------ |
@@ -133,7 +123,7 @@
 | `fee`            | **N**    | **12**   | Service Fee                                                  |
 | `notaxAmt`       | **N**    | **12**   | Tax-free Amount                                              |
 
-## Additional Response Parameters - Virtual Account
+### Additional Response Parameters - Virtual Account
 
 | Parameter      | **Type** | **Size** | Description                 |
 | -------------- | -------- | -------- | --------------------------- |
@@ -142,7 +132,7 @@
 | `vacctValidDt` | **N**    | **8**    | VA expiry date (YYYYMMDD)   |
 | `vacctValidTm` | **N**    | **6**    | VA expiry time (HH24MISS)   |
 
-## Additional Response Parameters - Others
+### Additional Response Parameters - Others
 
 | Parameter     | **Type** | **Size** | Description                                                  |
 | ------------- | -------- | -------- | ------------------------------------------------------------ |
