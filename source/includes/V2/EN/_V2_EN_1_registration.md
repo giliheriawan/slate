@@ -75,7 +75,7 @@
 
 | Parameter         | **Type** | **Size** | **Description**                                              | Example                                                      |
 | ----------------- | -------- | -------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `timeStamp`       | **N**    | **14**   | **Request Timestamp** **Required** **(YYYYMMDDHH24MISS)**    | 20170708123456                                               |
+| `timeStamp`       | **N**    | **14**   | **Request Timestamp** **Required** *(YYYYMMDDHH24MISS)*      | 20170708123456                                               |
 | `iMid`            | **AN**   | **10**   | **Merchant  ID** **Required**                                | IONPAYTEST                                                   |
 | `payMethod`       | **AN**   | **2**    | **[Payment  Method](#payment-method)** **Required**          | 1                                                            |
 | `currency`        | **AN**   | **3**    | **Currency** **Required**                                    | IDR                                                          |
