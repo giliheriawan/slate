@@ -52,9 +52,9 @@
 | `payMethod`      | **N**    | **2**    | **Payment Method** **Required**        | 01                             |
 | `cancelType`     | **N**    | **2**    | **Cancel Type** **Required**           | 1                              |
 | `merchantToken`  | **AN**   | **255**  | **merchantToken** **Required**         | 6cfccfc0046773c1b89d8e98f8b5…  |
-| `amt`            | **N**    | **12**   | Payment amount Required                | 1000                           |
+| `amt`            | **N**    | **12**   | **Payment Amount** **Required**        | 1000                           |
 | `cancelMsg`      | **AN**   | **255**  | **Cancel Message**                     | Test Cancel                    |
-| `preauthToken`   | **AN**   | **100**  | **PreauthToken**                       | d4ef98b26f917a697691807cf…     |
+| `preauthToken`   | **AN**   | **100**  | **Pre-authToken**                      | d4ef98b26f917a697691807cf…     |
 | `fee`            | **N**    | **12**   | **Fee**                                | 0                              |
 | `vat`            | **N**    | **12**   | **Vat**                                | 0                              |
 | `notaxAmt`       | **N**    | **12**   | **Tax-free Amount**                    | 0                              |

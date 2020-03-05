@@ -16,7 +16,7 @@ includes:
   - V2/EN/V2_EN_2_payment
   - V2/EN/V2_EN_4_inquiry
   - V2/EN/V2_EN_5_cancel
-  - V2/EN/border
+  - border
   - V2/EN/V2_EN_2-1_creditcard
   - V2/EN/V2_EN_2-2_va
   - V2/EN/V2_EN_2-3_cvs
