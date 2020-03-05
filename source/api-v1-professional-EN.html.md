@@ -9,7 +9,7 @@ language_tabs: # must be one of https://git.io/vQNgJ
 
 toc_footers:
   - <a href='http://nicepay.co.id/'>Sign Up</a>
-  - <a href='./api-V1-professional-ID.html'>Bahasa Indonesia</a>
+  - <a href='./api-v1-professional-ID.html'>Bahasa Indonesia</a>
 
 includes:
   - V1/EN/V1_EN_1-1_professional
