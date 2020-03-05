@@ -27,21 +27,21 @@
 https://dev.nicepay.co.id/nicepay/direct/v2/payment?timeStamp=20180302112151&tXid=TESTIDTEST01201803021122164984&merchantToken=b4171e8228be7a75d19ad29b509e76d5fc70a4c000ef87bc55cf0cda72767e72&cardNo=1234567890123456&cardExpYymm=2006&cardCvv=123&cardHolderNm=Thomas Alfa Edison&recurringToken=&preauthToken=&clickPayNo=&dataField3=&clickPayToken=&callBackUrl=https://merchant.com/callBackUrl
 ```
 
-| Parameter        | **Type** | **Size** | **Description**                               | Example                                                      |
-| ---------------- | -------- | -------- | --------------------------------------------- | ------------------------------------------------------------ |
-| `timeStamp`      | **N**    | **14**   | **API Request Timestamp** **Required**        | 20170708123456                                               |
-| `tXid`           | **AN**   | **30**   | **Transaction ID** **Required**               | BMRITEST0102201607291027025291                               |
-| `cardNo`         | **N**    | **20**   | **Credit Card Number** **Required for CC**    | 1234567890123450                                             |
-| `cardExpYymm`    | **N**    | **4**    | **Card Expiry (YYMM)** **Required for CC**    | 2412                                                         |
-| `cardCvv`        | **N**    | **4**    | **Card CVV** **Required for CC**              | 141                                                          |
-| `cardHolderNm`   | **AN**   | **50**   | **Card Holder Name** **Required for CIMB CC** | John Doe                                                     |
-| `recurringToken` | **AN**   | **64**   | **Recurring Token** **Optional CC**           | 9338d54573688ae18e175240b025<br>7de48d89c6ef1c9c7<br>b5c094dc4beed9e435f |
-| `preauthToken`   | **AN**   | **64**   | **Pre-Auth Token** **Optional CC**            | 9338d54573688ae18e175240b025<br>7de48d89c6ef1c9c7b<br>5c094dc4beed9e435f |
-| `merchantToken`  | **AN**   | **255**  | **merchantToken** **Required**                | 6cfccfc0046773c1b589d8e98f8b59<br>6c284f3c70a4ecf86eb<br>a14c18944b74bcd |
-| `callBackUrl`    | **AN**   | **255**  | **Payment Result URL** **Required**           | https://merchant.com/callBackUrl                             |
-| `clickPayNo`     | **N**    | **16**   | **ClickPay No**                               | 1234567890123450                                                 |
-| `dataField3`     | **N**    | **16**   | **Token 3 for Clickpay**                      | 123                                                          |
-| `clickPayToken`  | **N**    | **6**    | **Code Response Token**                       | 123456                                                       |
+| Parameter        | **Type** | **Size** | **Description**                                             | Example                                                      |
+| ---------------- | -------- | -------- | ----------------------------------------------------------- | ------------------------------------------------------------ |
+| `timeStamp`      | **N**    | **14**   | **API Request Timestamp** **Required** *(YYYYMMDDHH24MISS)* | 20170708123456                                               |
+| `tXid`           | **AN**   | **30**   | **Transaction ID** **Required**                             | BMRITEST0102201607291027025291                               |
+| `cardNo`         | **N**    | **20**   | **Credit Card Number** **Required for CC**                  | 1234567890123450                                             |
+| `cardExpYymm`    | **N**    | **4**    | **Card Expiry (YYMM)** **Required for CC**                  | 2412                                                         |
+| `cardCvv`        | **N**    | **4**    | **Card CVV** **Required for CC**                            | 141                                                          |
+| `cardHolderNm`   | **AN**   | **50**   | **Card Holder Name** **Required for CIMB CC**               | John Doe                                                     |
+| `recurringToken` | **AN**   | **64**   | **Recurring Token** **Optional CC**                         | 9338d54573688ae18e175240b025<br>7de48d89c6ef1c9c7<br>b5c094dc4beed9e435f |
+| `preauthToken`   | **AN**   | **64**   | **Pre-Auth Token** **Optional CC**                          | 9338d54573688ae18e175240b025<br>7de48d89c6ef1c9c7b<br>5c094dc4beed9e435f |
+| `merchantToken`  | **AN**   | **255**  | **merchantToken** **Required**                              | 6cfccfc0046773c1b589d8e98f8b59<br>6c284f3c70a4ecf86eb<br>a14c18944b74bcd |
+| `callBackUrl`    | **AN**   | **255**  | **Payment Result URL** **Required**                         | https://merchant.com/callBackUrl                             |
+| `clickPayNo`     | **N**    | **16**   | **ClickPay No**                                             | 1234567890123450                                             |
+| `dataField3`     | **N**    | **16**   | **Token 3 for Clickpay**                                    | 123                                                          |
+| `clickPayToken`  | **N**    | **6**    | **Code Response Token**                                     | 123456                                                       |
 
 ## Response Parameters - Payment
 
