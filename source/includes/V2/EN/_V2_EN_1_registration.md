@@ -1,5 +1,5 @@
 # Registration
-## Specifications - Register API V2
+## Specifications - Register
 
 |                                                           |                                                                                                               |
 |-----------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|
@@ -19,7 +19,7 @@
 | **`05`** | **E-Wallet**          | Order will be created                       |
 | **`06`** | **Payloan**           | Order will be created                       |
 
-## Request Parameters - Register API V2
+## Request Parameters - Register
 
 > Sample JSON Request
 
@@ -75,7 +75,7 @@
 
 | Parameter         | **Type** | **Size** | **Description**                                              | Example                                                      |
 | ----------------- | -------- | -------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `timeStamp`       | **N**    | **14**   | **Request Timestamp** **Required**                           | 20170708123456                                               |
+| `timeStamp`       | **N**    | **14**   | **Request Timestamp** **Required** **(YYYYMMDDHH24MISS)**    | 20170708123456                                               |
 | `iMid`            | **AN**   | **10**   | **Merchant  ID** **Required**                                | IONPAYTEST                                                   |
 | `payMethod`       | **AN**   | **2**    | **[Payment  Method](#payment-method)** **Required**          | 1                                                            |
 | `currency`        | **AN**   | **3**    | **Currency** **Required**                                    | IDR                                                          |
@@ -122,7 +122,7 @@
 | `userAgent`       | **AN**   | **100**  | u                                                            | Mozilla                                                      |
 | `userLanguage`    | **A**    | **2**    | **User Language**                                            | en-US                                                        |
 
-## Cart Data - Register API V2
+## Cart Data - Register
 <h3 id="cart-data-v2"></h3>
 
 | **Parameter**                 |  Description                   |
@@ -155,7 +155,7 @@
 } 
 ```
 
-## Response Parameters - Register API V2
+## Response Parameters - Register
 
 > Sample JSON Response
 

@@ -1,5 +1,5 @@
 # Payment
-## Specifications - Register API V2
+## Specifications - Register
 
 |                                                           |                                                                                                               |
 |-----------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|
@@ -19,9 +19,9 @@
 
 <aside class="notice">Note: Before using the <code>Payment API</code>, please register your payment using <code>Registration API</code> first.</aside>
 
-## Request Parameters - Payment API V2
+## Request Parameters - Payment
 
-> Sample JSON Request
+> Sample Request
 
 ```
 https://dev.nicepay.co.id/nicepay/direct/v2/payment?timeStamp=20180302112151&tXid=TESTIDTEST01201803021122164984&merchantToken=b4171e8228be7a75d19ad29b509e76d5fc70a4c000ef87bc55cf0cda72767e72&cardNo=1234567890123456&cardExpYymm=2006&cardCvv=123&cardHolderNm=Thomas Alfa Edison&recurringToken=&preauthToken=&clickPayNo=&dataField3=&clickPayToken=&callBackUrl=https://merchant.com/callBackUrl
@@ -43,7 +43,7 @@ https://dev.nicepay.co.id/nicepay/direct/v2/payment?timeStamp=20180302112151&tXi
 | `dataField3`     | **N**    | **16**   | **Token 3 for Clickpay**                      | 123                                                          |
 | `clickPayToken`  | **N**    | **6**    | **Code Response Token**                       | 123456                                                       |
 
-## Response Parameters - Payment API V2
+## Response Parameters - Payment
 
 > Sample Response Parameter (Redirect to the callbackUrl)
 

@@ -1,4 +1,26 @@
-# Order Status (Inquiry)
+# Status Inquiry
+## Specifications - Inquiry API V2
+
+|                                                           |                                                                                                               |
+|-----------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|
+| **API url**                                               | `/nicepay/direct/v2/inquiry`                                                                                  |
+| **Request Method** **application/json**                   | `POST`                                                                                                        |
+| **Description**                                           | Performs Inquiry Request to NICEPAY for Status Checking                                                       |
+| **Merchant Token**                                        | SHA256(`timeStamp``iMid``referenceNo``amt``merchantKey`)                                                      |
+
+**Payment Methods:**
+
+| **Code** | **PayMethod**   | Description                                                                                 |
+| -------- | --------------- | ------------------------------------------------------------------------------------------- |
+| **`01`** | **Credit Card** | If 3DS / MIGS authentication is required, users will be redirected to the card issuer page. |
+| **`04`** | **ClickPay**    | Redirect to Bank Page                                                                       |
+| **`05`** | **E-Wallet**    | Redirect to E-Wallet Page / App Notification                                                |
+| **`06`** | **Payloan**     | Redirect to Payloan Mitra Page                                                              |
+
+
+<aside class="notice">When Notification to your <code>dbProcessUrl</code> is received, we strongly recommend Merchants to verify the Notification by using the Inquiry API.</aside>
+
+## Request Parameters - Inquiry
 
 > Sample JSON Request
 
@@ -12,6 +34,17 @@
 	"merchantToken":"a1b747ad8ce72461de6194e1fff3ef5b5022b957d9003d14b52f4d52b5b55fe8"
 }
 ```
+
+Parameter | Mandatory | Type | Size | Description
+---------- | ---------- | ---------- | ---------- | ----------
+timeStamp | Y | N | 14 | API Request Date
+tXid | Y | AN | 30 | Transaction Id
+iMid | Y | AN | 10 | Merchant Id
+referenceNo | Y | ANS | 40 | Merchant Order No
+amt | Y | N | 12 | Transaction  Amount
+merchantToken | Y | AN | 255 | merchantToken
+
+## Response Parameters - Inquiry
 
 > Sample JSON Response
 
@@ -60,28 +93,6 @@
 }
 ```
 
-This API is for request to check status of transaction. Merchant can check order status using inquiry API. when merchant receive notification, NICEPay strongly to recommend for the Merchant re-check the transaction using the Inquiry API.
-
- &nbsp; | &nbsp;
----------- | -------
-**API url** | **/nicepay/direct/v2/inquiry**
-Method | POST, JSON
-Description | Order Status Inquiry
-Merchant Token | SHA256 (timeStamp + iMid + referenceNo + amt + Merchant Key)
-
-<br>**Request Json Object**
-
-Parameter | Mandatory | Type | Size | Description
----------- | ---------- | ---------- | ---------- | ----------
-timeStamp | Y | N | 14 | API Request Date
-tXid | Y | AN | 30 | Transaction Id
-iMid | Y | AN | 10 | Merchant Id
-referenceNo | Y | ANS | 40 | Merchant Order No
-amt | Y | N | 12 | Transaction  Amount
-merchantToken | Y | AN | 255 | merchantToken
-
-<br>**Response Json Object**
-
 Parameter | Type | Size | Description
 ---------- | ---------- | ---------- | ----------
 resultCd | N | 4 | Result Code
@@ -103,7 +114,7 @@ goodsNm | AN | 100 | Goods Name
 billingNm | AN | 30 | Buyer name
 status | N | 1 | Transaction status, refer Code at [Here](#payment-status-code)
 
-<br>**Additional Credit Card Response Json Object**
+## Additional Response Parameters - Credit Card
 
 Parameter | Type | Size | Description
 ---------- | ---------- | ---------- | ----------
@@ -122,7 +133,7 @@ vat | N | 12 | Vat
 fee | N | 12 | service fee
 notaxAmt | N | 12 | tax free amount
 
-<br>**Additional Virtual Account Response Json Object**
+## Additional Response Parameters - Virtual Account
 
 Parameter | Type | Size | Description
 ---------- | ---------- | ---------- | ----------
@@ -131,7 +142,7 @@ vacctNo | N | 16 | Bank Virtual Account number
 vacctValidDt | N | 8 | VA expiry date (YYYYMMDD)
 vacctValidTm | N | 6 | VA expiry time (HH24MISS)
 
-<br>**Additional Others Response Json Object**
+## Additional Response Parameters - Others
 
 Parameter | Type | Size | Description
 ---------- | ---------- | ---------- | ----------
