@@ -7,7 +7,7 @@ This API is intended for merchant to check the status of the transaction.
 | **API url**                                               | `/nicepay/api/onePassStatus.do`                                                                               |
 | **Request Method** **application/x-www-form-urlencoded**  | `POST`                                                                                                        |
 | **Description**                                           | Inquires transaction status to NICEPAY server.                                                                |
-| **Merchant Token**                                        | SHA256(`iMid``referenceNo``amt``merchantKey`)                                                                 |
+| **Merchant Token**                                        | SHA256(`iMid`+`referenceNo`+`amt`+`merchantKey`)                                                                 |
 
 ## Request Parameters - Check Status 
 

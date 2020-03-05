@@ -30,7 +30,7 @@ Merchant need to request `onePassToken` for each `Credit Card` transaction using
 | **API url**                                               | `/nicepay/api/onePassToken.do`                                                                                |
 | **Request Method** **application/json**                   | `POST`                                                                                                        |
 | **Description**                                           | Request `onePassToken` for Credit Card Transaction.                                                           |
-| **Merchant Token**                                        | SHA256(`iMid``referenceNo``amt``merchantKey`)                                                                 |
+| **Merchant Token**                                        | SHA256(`iMid`+`referenceNo`+`amt`+`merchantKey`)                                                                 |
 | **Payment Methods**                                       | `01` Credit Card                                                                                              |
 
 ### Request Parameter - Request Token
@@ -117,7 +117,7 @@ Proceed with this API when you get `paymentType = 1` from `onePassToken.do` resp
 | **API url**                                               | `/nicepay/api/secureVeRequest.do`                                                                             |
 | **Request Method** **application/json**                   | `POPUP` or `Redirect`                                                                                         |
 | **Description**                                           | Request `3DS` page for `paymentType = 1`                                                                      |
-| **Merchant Token**                                        | SHA256(`iMid``referenceNo``amt``merchantKey`)                                                                 |
+| **Merchant Token**                                        | SHA256(`iMid`+`referenceNo`+`amt`+`merchantKey`)                                                                 |
 | **Payment Methods**                                       | `01` Credit Card                                                                                              |
 
 ### Request Parameter - 3DS
@@ -167,7 +167,7 @@ MIGS Steps:
 | **API url**                                               | `/nicepay/api/migsRequest.do`                                                                             |
 | **Request Method** **application/json**                   | `POPUP` or `Redirect`                                                                                         |
 | **Description**                                           | Request `MIGS` page for `paymentType = 3`                                                                      |
-| **Merchant Token**                                        | SHA256(`iMid``referenceNo``amt``merchantKey`)                                                                 |
+| **Merchant Token**                                        | SHA256(`iMid`+`referenceNo`+`amt`+`merchantKey`)                                                                 |
 | **Payment Methods**                                       | `01` Credit Card                                                                                              |
 
 ### Request Parameter - MIGS
@@ -208,7 +208,7 @@ http://merchant.com/callbackUrl?resultCd={resultCd}&resultMsg={resultMsg}&refere
 | **API url**                                               | `/nicepay/api/onePass.do`                                                                                     |
 | **Request Method** **application/json**                   | `POST`                                                                                                        |
 | **Description**                                           | Register Transaction and Charge Credit Card using onePassToken                                                |
-| **Merchant Token**                                        | SHA256(`iMid``referenceNo``amt``merchantKey`)                                                                 |
+| **Merchant Token**                                        | SHA256(`iMid`+`referenceNo`+`amt`+`merchantKey`)                                                                 |
 | **Payment Methods**                                       | `01` Credit Card                                                                                              |
 
 ### Request parameter - CC Registration

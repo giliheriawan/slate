@@ -41,7 +41,7 @@ Real time Notification will be sent when customer completed the payment.
 | **API url**                                               | `/nicepay/api/onePass.do`                                                                                     |
 | **Request Method** **application/json**                   | `POST`                                                                                                        |
 | **Description**                                           | Request ClickPay Transaction on Bank Page                                                                     |
-| **Merchant Token**                                        | SHA256(`iMid``referenceNo``amt``merchantKey`)                                                                 |
+| **Merchant Token**                                        | SHA256(`iMid`+`referenceNo`+`amt`+`merchantKey`)                                                                 |
 | **Payment Methods**                                       | `04` ClickPay                                                                                        |
 
 ### Request Parameter - ClickPay Registration

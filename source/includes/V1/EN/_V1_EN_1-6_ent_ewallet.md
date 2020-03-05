@@ -27,7 +27,7 @@ Real time Notification will be sent when customer has completed the payment.
 | **API url**                                               | `/nicepay/api/ewalletTrans.do`                                                                                |
 | **Request Method** **application/json**                   | `POST`                                                                                                        |
 | **Description**                                           | Request E-Wallet Transaction                                                                                  |
-| **Merchant Token**                                        | SHA256(`iMid``referenceNo``amt``merchantKey`)                                                                 |
+| **Merchant Token**                                        | SHA256(`iMid`+`referenceNo`+`amt`+`merchantKey`)                                                                 |
 | **Payment Methods**                                       | `05` E-Wallet                                                                                                 |
 
 

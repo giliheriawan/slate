@@ -6,7 +6,7 @@
 | **API url**                                               | `/nicepay/direct/v2/payment`                                                                                  |
 | **Request Method** **application/x-www-form-urlencoded**  | `Popup`, `Redirect`, `Submit`                                                                                 |
 | **Description**                                           | Performs Payment Request to NICEPAY                                                                           |
-| **Merchant Token**                                        | SHA256(`timeStamp``iMid``referenceNo``amt``merchantKey`)                                                      |
+| **Merchant Token**                                        | SHA256(`timeStamp`+`iMid`+`referenceNo`+`amt`+`merchantKey`)                                                      |
 
 **Payment Methods Available for Payment:**
 
@@ -35,9 +35,9 @@ https://dev.nicepay.co.id/nicepay/direct/v2/payment?timeStamp=20180302112151&tXi
 | `cardExpYymm`    | **N**    | **4**    | **Card Expiry (YYMM)** **Required for CC**                  | 2412                                                         |
 | `cardCvv`        | **N**    | **4**    | **Card CVV** **Required for CC**                            | 141                                                          |
 | `cardHolderNm`   | **AN**   | **50**   | **Card Holder Name** **Required for CIMB CC**               | John Doe                                                     |
-| `recurringToken` | **AN**   | **64**   | **Recurring Token** **Optional CC**                         | 9338d54573688ae18e175240b025<br>7de48d89c6ef1c9c7<br>b5c094dc4beed9e435f |
-| `preauthToken`   | **AN**   | **64**   | **Pre-Auth Token** **Optional CC**                          | 9338d54573688ae18e175240b025<br>7de48d89c6ef1c9c7b<br>5c094dc4beed9e435f |
-| `merchantToken`  | **AN**   | **255**  | **merchantToken** **Required**                              | 6cfccfc0046773c1b589d8e98f8b59<br>6c284f3c70a4ecf86eb<br>a14c18944b74bcd |
+| `recurringToken` | **AN**   | **64**   | **Recurring Token** **Optional CC**                         | 9338d54573688ae18e175240b025...                              |
+| `preauthToken`   | **AN**   | **64**   | **Pre-Auth Token** **Optional CC**                          | 9338d54573688ae18e175240b025...                              |
+| `merchantToken`  | **AN**   | **255**  | **merchantToken** **Required**                              | 6cfccfc0046773c1b589d8e98f8b59...                            |
 | `callBackUrl`    | **AN**   | **255**  | **Payment Result URL** **Required**                         | https://merchant.com/callBackUrl                             |
 | `clickPayNo`     | **N**    | **16**   | **ClickPay No**                                             | 1234567890123450                                             |
 | `dataField3`     | **N**    | **16**   | **Token 3 for Clickpay**                                    | 123                                                          |

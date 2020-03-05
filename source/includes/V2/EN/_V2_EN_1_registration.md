@@ -6,7 +6,7 @@
 | **API url**                                               | `/nicepay/direct/v2/registration`                                                                                |
 | **Request Method** **application/json**                   | `POST`                                                                                                        |
 | **Description**                                           | Performs Transaction Regist to NICEPAY                                                           |
-| **Merchant Token**                                        | SHA256(`timeStamp``iMid``referenceNo``amt``merchantKey`)                                                                 |
+| **Merchant Token**                                        | SHA256(`timeStamp`+`iMid`+`referenceNo`+`amt`+`merchantKey`)                                                                 |
 
 **Payment Methods:**
 
@@ -77,7 +77,7 @@
 | ----------------- | -------- | -------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | `timeStamp`       | **N**    | **14**   | **Request Timestamp** **Required** *(YYYYMMDDHH24MISS)*      | 20170708123456                                               |
 | `iMid`            | **AN**   | **10**   | **Merchant  ID** **Required**                                | IONPAYTEST                                                   |
-| `payMethod`       | **AN**   | **2**    | **[Payment  Method](#payment-method)** **Required**          | 1                                                            |
+| `payMethod`       | **AN**   | **2**    | **[Payment  Method](#payment-method)** **Required**          | 01                                                           |
 | `currency`        | **AN**   | **3**    | **Currency** **Required**                                    | IDR                                                          |
 | `amt`             | **N**    | **12**   | **Amount** **Required**                                      | 1000                                                         |
 | `referenceNo`     | **ANS**  | **40**   | **Merchant's RefNo.** **Required**                           | MerchantReferenceNumber001                                   |

@@ -6,7 +6,7 @@
 | **API url**                                               | `/nicepay/direct/v2/inquiry`                                                                                  |
 | **Request Method** **application/json**                   | `POST`                                                                                                        |
 | **Description**                                           | Performs Inquiry Request to NICEPAY for Status Checking                                                       |
-| **Merchant Token**                                        | SHA256(`timeStamp``iMid``referenceNo``amt``merchantKey`)                                                      |
+| **Merchant Token**                                        | SHA256(`timeStamp`+`iMid`+`referenceNo`+`amt`+`merchantKey`)                                                      |
 
 <aside class="notice">When Notification to your <code>dbProcessUrl</code> is received, we strongly recommend Merchants to verify the Notification by using the Inquiry API.</aside>
 
@@ -32,7 +32,7 @@
 | `iMid`          | **AN**   | **10**   | **Merchant Id** **Required**                         | IONPAYTEST                           |
 | `referenceNo`   | **ANS**  | **40**   | **Merchant Order No** **Required**                   | OrdNo20160525000-52104               |
 | `amt`           | **N**    | **12**   | **Transaction Amount** **Required**                  | 1000                                 |
-| `merchantToken` | **AN**   | **255**  | **merchantToken** **Required**                       | 6cfccfc0046773c1b89d8e98f8b596c284f… |
+| `merchantToken` | **AN**   | **255**  | **merchantToken** **Required**                       | 6cfccfc0046773c1b89d8e98f8b59...     |
 
 ## Response Parameters - Inquiry
 

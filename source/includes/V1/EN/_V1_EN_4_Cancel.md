@@ -7,7 +7,7 @@ This API is intended to cancel a registered transaction.
 | **API url**                                              | `/nicepay/api/onePassAllCancel.do`          |
 | **Request Method** **application/x-www-form-urlencoded** | `POST`                                      |
 | **Description**                                          | Request Transaction Cancellation to NICEPAY |
-| **Merchant Token**                                       | SHA256(`iMid``tXid``amt``merchantKey`)      |
+| **Merchant Token**                                       | SHA256(`iMid`+`tXid`+`amt`+`merchantKey`)      |
 
 
 ## Request Parameters - Cancel Order

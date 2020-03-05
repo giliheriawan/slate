@@ -43,7 +43,7 @@ Real time Notification will be sent when customer has completed the payment.
 | **API url**                                               | `/nicepay/api/onePass.do`                                                                                     |
 | **Request Method** **application/json**                   | `POST`                                                                                                        |
 | **Description**                                           | Request `payNo` for CVS Payment                                                                               |
-| **Merchant Token**                                        | SHA256(`iMid``referenceNo``amt``merchantKey`)                                                                 |
+| **Merchant Token**                                        | SHA256(`iMid`+`referenceNo`+`amt`+`merchantKey`)                                                                 |
 | **Payment Methods**                                       | `03` Convenience Store                                                                                        |
 
 ### Request Parameter - CVS Registration
