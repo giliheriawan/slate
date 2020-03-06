@@ -1,7 +1,6 @@
 # Convenience Store
+NICEPay offers Convenience Store as a Payment Method. Notification will be sent real-time when customer has completed the payment.<br>
 
-
-NICEPay offer **Convenience Store (CVS)** as Payment Method. Notification will be send on real time when customer completed the payment.<br>
 Supported CVS by NICEPay:
 <ol type="1">
   <li>Alfamart
@@ -11,16 +10,37 @@ Supported CVS by NICEPay:
   <li>Dan+Dan Store
 </ol>
 
-Integration Step :
+Transaction Flow:
 <ol type="1">
-  <li>Merchant Request CVS Registration to NICEPay
-  <li>Merchant display CVS detail and customer journey then send CVS detail via email / sms / customer transaction history.
-  <li>Customer pay CVS in prefered payment channel.
-  <li>NICEPay send notification
-  <li>Handle notification
+  <li>Merchant Request CVS Registration to NICEPay.
+  <li>Merchant Display CVS Details and How-To-Pay to Customer.
+  <li>Customer Make Payment at preferred Convenience Store.
+  <li>NICEPay Send Notification
+  <li>Merchant Handle Notification
 </ol>
 
-## CVS Registration
+<div class="wrapper">
+<ul>
+  <li>
+    <input type="checkbox" id="list-item-cvsv2">
+    <label for="list-item-cvsv2" class="first">Virtual Account V2 Flow</label>
+    <ul>
+      <img src="/images/cvs-normal-v2-flow.png">
+    </ul>
+  </li>
+</ul>
+</div>
+
+## Registration - Convenience Store
+
+|                                                           |                                                                                                               |
+|-----------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|
+| **API url**                                               | `/nicepay/direct/v2/registration`                                                                             |
+| **Request Method** **application/json**                   | `POST`                                                                                                        |
+| **Description**                                           | Performs Transaction Regist to NICEPAY                                                                        |        
+| **Merchant Token**                                        | SHA256(`timeStamp`+`iMid`+`referenceNo`+`amt`+`merchantKey`)                                                  |
+
+### Request Parameters - Convenience Store Registration
 
 > Sample JSON Request
 
@@ -64,6 +84,17 @@ Integration Step :
 }
 ```
 
+<aside class="notice">Please refer to <a href="#registration">Register API</a> for Complete Parameters, the parameters below are the additional that will be required for CVS Registration</aside>
+
+| Parameters   | **Type** | **Size** | **Description**                               | Example  |
+| ------------ | -------- | -------- | --------------------------------------------- | -------- |
+| `payMethod`  | **N**    | **2**    | **Convenience Store (CVS)** **Required**      | 03       |
+| `mitraCd`    | **A**    | **4**    | **[Mitra Code](#mitra-code)** **Required**    | ALMA     |
+| `payValidDt` | **N**    | **8**    | **CVS Expiry Date** **Required** *(YYYYMMDD)* | 20200404 |
+| `payValidTm` | **N**    | **6**    | **CVS Expiry Time** **Required** *(HH24MISS)* | 091309   |
+
+### Response Parameters - Convenience Store Registration
+
 > Sample JSON Response
 
 ```json
@@ -91,37 +122,18 @@ Integration Step :
 }
 ```
 
- &nbsp; | &nbsp;
----------- | -------
-**API url** | **/nicepay/direct/v2/registration**
-Method | POST, JSON
-Description | Perform for Transaction Registration
-Merchant Token | SHA256 (timeStamp + iMid + referenceNo + amt + merchantKey)
-
-<br>Please refer to [here](#registration) for JSON parameters.<br>
-Below for extra parameter will be required for Convenience Store (CVS) Registration:
-
-Parameters | Mandatory | Type | Size | Value | Description
----------- | ---------- | ---------- | ---------- | ---------- | ----------
-PayMethod | Y | AN | 2 | 03 | Convenience Store (CVS)
-mitraCd | Y | A | 4 | 2 | Mitra Code. refer to [here](#mitra-code)
-payValidDt | Y | N | 8 | 1 | CVS expiry date (YYYYMMDD)
-payValidTm | Y | N | 6 | 2 | CVS expiry time (HH24MISS)
-
-<br>**Response Json Object**
-
-Paramenter | Type | Size | Description
----------- | ---------- | ---------- | ----------
-resultCd | N | 4 | Result code
-resultMsg | AN | 255 | Result Message
-tXid | AN | 30 | Transactionn ID (Key from NICEPay)
-referenceNo | ANS | 40 | Merchant order N. (Key from merchant)
-payMethod | N | 2 | Payment Method
-amt | N | 12 | Payment amount
-transDt | N | 8 | Transaction date (YYYYMMDD)
-transTm | N | 6 | Transction time (HH24MISS)
-description | AN | 100 | Transaction description
-mitraCd | A | 4 | Mitra Code. refer to [here](#mitra-code)
-payNo | N | 12 | CVS Payment No.
-payValidDt | N | 8 | VA expiry date (YYYYMMDD)
-payValidTm | N | 6 | VA expiry time (HH24MISS)
+| Parameter     | **Type** | **Size** | Description                       |
+| ------------- | -------- | -------- | --------------------------------- |
+| `resultCd`    | **N**    | **4**    | [Result Code](#error-code)        |
+| `resultMsg`   | **AN**   | **255**  | [Result Message](#error-code)     |
+| `tXid`        | **AN**   | **30**   | Transactionn ID                   |
+| `referenceNo` | **ANS**  | **40**   | Merchant Ref. No                  |
+| `payMethod`   | **N**    | **2**    | [Payment Method](#payment-method) |
+| `amt`         | **N**    | **12**   | Payment Amount                    |
+| `transDt`     | **N**    | **8**    | Transaction Date (YYYYMMDD)       |
+| `transTm`     | **N**    | **6**    | Transaction Time (HH24MISS)       |
+| `description` | **AN**   | **100**  | Transaction Description           |
+| `mitraCd`     | **A**    | **4**    | [Mitra Code](#mitra-code)         |
+| `payNo`       | **N**    | **12**   | CVS Payment No.                   |
+| `payValidDt`  | **N**    | **8**    | VA Expiry Date (YYYYMMDD)         |
+| `payValidTm`  | **N**    | **6**    | VA Expiry Time (HH24MISS)         |

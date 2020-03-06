@@ -20,7 +20,6 @@ Transaction Flow:
 <ol type="1">
   <li>Merchant Request VA Registration to NICEPay.
   <li>Merchant Display VA Details and How-To-Pay to Customer.
-  <li>NICEPay redirect to 3DS / MIGS Bank Page.
   <li>Customer Make Payment using Preferred Channel
   <li>NICEPay Send Notification
   <li>Merchant Handle Notification
@@ -94,12 +93,14 @@ Transaction Flow:
 
 <aside class="notice">Please refer to <a href="#registration">Register API</a> for Complete Parameters, the parameters below are the additional that will be required for VA Registration</aside>
 
+<br>**Virtual Account Registration Additional Parameters**
+
 | Parameters     | **Type** | **Size** | **Description**                                          | Value    |
 | -------------- | -------- | -------- | -------------------------------------------------------- | -------- |
 | `payMethod`    | **AN**   | **2**    | **Virtual Account** **Required**                         | 02       |
 | `bankCd`       | **A**    | **4**    | **Bank Code** **Required**                               | CENA     |
-| `vacctValidDt` | **N**    | **8**    | **VA Expiry Date** *(YYYYMMDD)* **Required**             | 20200303 |
-| `vacctValidTm` | **N**    | **6**    | **VA Expiry Time** *(HH24MISS)* **Required**             | 091309   |
+| `vacctValidDt` | **N**    | **8**    | **VA Expiry Date** **Required** *(YYYYMMDD)*             | 20200303 |
+| `vacctValidTm` | **N**    | **6**    | **VA Expiry Time** **Required** *(HH24MISS)*             | 091309   |
 | `merFixAcctld` | **AN**   | **40**   | **Merchant Reserved VA ID** **Required for Fix VA Type** | 000045   |
 
 ### Response Parameters - Virtual Account Registration
