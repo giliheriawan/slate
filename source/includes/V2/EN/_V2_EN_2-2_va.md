@@ -1,6 +1,8 @@
 # Virtual Account
-NICEPay offer **Virtual Account** as Payment Method. By using this method, customer will have option to make payment via ATM, SMS Banking, Internet Banking, or Mobile Banking. Real time Notification will be send when customer completed the payment.<br>
-Supported Bank by NICEPay:
+NICEPay offers Virtual Account as Payment Method. By using this method, customer will have the option to make payment via ATM, SMS Banking, Internet Banking, or Mobile Banking. 
+Real time Notification will be sent when customer has completed the payment.<br>
+
+Supported Bank:
 <ol type="1">
   <li>Bank Mandiri
   <li>Bank International Indonesia Maybank
@@ -11,20 +13,41 @@ Supported Bank by NICEPay:
   <li>Bank Rakyat Indonesia (BRI)
   <li>Bank CIMB Niaga
   <li>Bank DANAMON
+  <li>ATM Bersama, Alto, Link and Prima
 </ol>
 
-NICEPay also supported Virtual Account (VA) for others Bank via ATM BERSAMA, ALTO, LINK, and PRIMA.
-
-Integration Step :
+Transaction Flow:
 <ol type="1">
   <li>Merchant Request VA Registration to NICEPay.
-  <li>Merchant display VA detail and customer journey then send VA detail via email / sms / customer transaction history.
-  <li>Customer pay VA in prefered payment channel.
-  <li>NICEPay send notification
-  <li>Handle notification
+  <li>Merchant Display VA Details and How-To-Pay to Customer.
+  <li>NICEPay redirect to 3DS / MIGS Bank Page.
+  <li>Customer Make Payment using Preferred Channel
+  <li>NICEPay Send Notification
+  <li>Merchant Handle Notification
 </ol>
 
-## VA Registration
+<div class="wrapper">
+<ul>
+  <li>
+    <input type="checkbox" id="list-item-1">
+    <label for="list-item-1" class="first">Virtual Account V2 Flow</label>
+    <ul>
+      <img src="/images/va-normal-v2-flow.png">
+    </ul>
+  </li>
+</ul>
+</div>
+
+## Registration - Virtual Account
+
+|                                                           |                                                                                                               |
+|-----------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|
+| **API url**                                               | `/nicepay/direct/v2/registration`                                                                             |
+| **Request Method** **application/json**                   | `POST`                                                                                                        |
+| **Description**                                           | Performs Transaction Regist to NICEPAY                                                                        |        
+| **Merchant Token**                                        | SHA256(`timeStamp`+`iMid`+`referenceNo`+`amt`+`merchantKey`)                                                  |
+
+### Request Parameters - Virtual Account Registration
 
 > Sample JSON Request
 
@@ -69,6 +92,18 @@ Integration Step :
 }
 ```
 
+<aside class="notice">Please refer to <a href="#registration">Register API</a> for Complete Parameters, the parameters below are the additional that will be required for VA Registration</aside>
+
+| Parameters     | **Type** | **Size** | **Description**                                          | Value    |
+| -------------- | -------- | -------- | -------------------------------------------------------- | -------- |
+| `payMethod`    | **AN**   | **2**    | **Virtual Account** **Required**                         | 02       |
+| `bankCd`       | **A**    | **4**    | **Bank Code** **Required**                               | CENA     |
+| `vacctValidDt` | **N**    | **8**    | **VA Expiry Date** *(YYYYMMDD)* **Required**             | 20200303 |
+| `vacctValidTm` | **N**    | **6**    | **VA Expiry Time** *(HH24MISS)* **Required**             | 091309   |
+| `merFixAcctld` | **AN**   | **40**   | **Merchant Reserved VA ID** **Required for Fix VA Type** | 000045   |
+
+### Response Parameters - Virtual Account Registration
+
 > Sample JSON Response
 
 ```json
@@ -96,41 +131,21 @@ Integration Step :
 }
 ```
 
- &nbsp; | &nbsp;
----------- | -------
-**API url** | **/nicepay/direct/v2/registration**
-Method | POST, JSON
-Description | Perform for Transaction Registration
-Merchant Token | SHA256 (timeStamp + iMid + referenceNo + amt + merchantKey)
-
-<br>Please refer to [here](#registration) for JSON parameters.<br>
-Below for extra parameter will be required for Virtual Account (VA) Registration:
-
-Parameters | Mandatory | Type | Size | Value | Description
----------- | ---------- | ---------- | ---------- | ---------- | ----------
-PayMethod | Y | AN | 2 | 02 | Virtual Account (VA)
-bankCd | Y | A | 4 | 2 | Bank code. refer to [here](#bank-code)
-vacctValidDt | Y | N | 8 | 20180306 | VA expiry date (YYYYMMDD)
-vacctValidTm | Y | N | 6 | 091309 | VA expiry time (HH24MISS)
-merFixAcctld | Y (if Fix Type) | AN | 40 | Merchant reserved VA ID
-
-<br>**Response Json Object**
-
-Paramenter | Type | Size | Description
----------- | ---------- | ---------- | ----------
-resultCd | N | 4 | Result code
-resultMsg | AN | 255 | Result Message
-tXid | AN | 30 | Transactionn ID (Key from NICEPay)
-referenceNo | ANS | 40 | Merchant order N. (Key from merchant)
-payMethod | N | 2 | Payment Method
-amt | N | 12 | Payment amount
-transDt | N | 8 | Transaction date (YYYYMMDD)
-transTm | N | 6 | Transction time (HH24MISS)
-description | AN | 100 | Transaction description
-bankCd | A | 4 | Bank code. refer to [here](#bank-code)
-vacctNo | N | 20 | VA Number
-currency | AN | 3 | Currency
-goodsNm | AN | 100 | Goods name
-billingNm | A | 30 | Buyer name
-vacctValidDt | N | 8 | VA expiry date (YYYYMMDD)
-vacctValidTm | N | 6 | VA expiry time (HH24MISS)
+| Paramenter     | **Type** | Size    | Description                       |
+| -------------- | -------- | ------- | --------------------------------- |
+| `resultCd`     | **N**    | **4**   | [Result Code](#error-code)        |
+| `resultMsg`    | **AN**   | **255** | [Result Message](#error-code)     |
+| `tXid`         | **AN**   | **30**  | Transactionn ID                   |
+| `referenceNo`  | **ANS**  | **40**  | Merchant Ref. No                  |
+| `payMethod`    | **N**    | **2**   | [Payment Method](#payment-method) |
+| `amt`          | **N**    | **12**  | Payment Amount                    |
+| `transDt`      | **N**    | **8**   | Transaction Date (YYYYMMDD)       |
+| `transTm`      | **N**    | **6**   | Transction Time (HH24MISS)        |
+| `description`  | **AN**   | **100** | Transaction Description           |
+| `bankCd`       | **A**    | **4**   | [Bank Code](#bank-code)           |
+| `vacctNo`      | **N**    | **20**  | VA Number                         |
+| `currency`     | **AN**   | **3**   | Currency                          |
+| `goodsNm`      | **AN**   | **100** | Goods Name                        |
+| `billingNm`    | **A**    | **30**  | Buyer Name                        |
+| `vacctValidDt` | **N**    | **8**   | VA Expiry Date (YYYYMMDD)         |
+| `vacctValidTm` | **N**    | **6**   | VA Expiry Time (HH24MISS)         |

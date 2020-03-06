@@ -1,6 +1,6 @@
 # Credit Card
 
-Integration Step :
+Transaction Flow:
 <ol type="1">
   <li>Merchant Request Credit Card Registration to NICEPay.
   <li>Merchant Request Credit Card Payment to NICEPay.
@@ -16,13 +16,22 @@ Integration Step :
     <input type="checkbox" id="list-item-1">
     <label for="list-item-1" class="first">Credit Card V2 Flow</label>
     <ul>
-      <img src="/images/va-normal-v2-flow.png">
+      <img src="/images/cc-normal-v2-flow.png">
     </ul>
   </li>
 </ul>
 </div>
 
 ## Registration - Credit Card
+
+|                                                           |                                                                                                               |
+|-----------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|
+| **API url**                                               | `/nicepay/direct/v2/registration`                                                                             |
+| **Request Method** **application/json**                   | `POST`                                                                                                        |
+| **Description**                                           | Performs Transaction Regist to NICEPAY                                                                        |        
+| **Merchant Token**                                        | SHA256(`timeStamp`+`iMid`+`referenceNo`+`amt`+`merchantKey`)                                                  |
+
+### Request Parameters - Credit Card Registration
 
 > Sample JSON Request
 
@@ -63,15 +72,6 @@ Integration Step :
 	"recurrOpt":"2"
 }
 ```
-
-|                                                           |                                                                                                               |
-|-----------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|
-| **API url**                                               | `/nicepay/direct/v2/registration`                                                                             |
-| **Request Method** **application/json**                   | `POST`                                                                                                        |
-| **Description**                                           | Performs Transaction Regist to NICEPAY                                                                        |        
-| **Merchant Token**                                        | SHA256(`timeStamp`+`iMid`+`referenceNo`+`amt`+`merchantKey`)                                                  |
-
-### Request Parameters - Credit Card Registration
 
 <aside class="notice">Please refer to <a href="#registration">Register API</a> for Complete Parameters, the parameters below are the additional that will be required for CC Registration</aside>
 
@@ -127,10 +127,6 @@ Integration Step :
 
 ## Payment - Credit Card
 
->Sample POST Request Parameter
->
-> `timeStamp=20180123100505&tXid=IONPAYTEST01201804191202084760&merchantToken=f9d30f6c972e2b5718751bd087b178534673a91bbac845f8a24e60e8e4abbbc5&cardNo=4222222222222222&cardExpYymm=2006&cardCvv=123&cardHolderNm=Thomas Alfa Edison&callBackUrl=http://merchant.com/callbackUrl`
-
 |                                                           |                                                                                                               |
 |-----------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|
 | **API url**                                               | `/nicepay/direct/v2/payment`                                                                                  |
@@ -140,7 +136,11 @@ Integration Step :
 
 ### Request Parameters - Credit Card Payment
 
-<aside class="notice">Payment can only be processed after <a href="#registration-credit-card">Registration</a>. See <a href="#payment">Payment API</a> for complete Parameters.</aside>
+>Sample POST Request Parameter
+>
+> `timeStamp=20180123100505&tXid=IONPAYTEST01201804191202084760&merchantToken=f9d30f6c972e2b5718751bd087b178534673a91bbac845f8a24e60e8e4abbbc5&cardNo=4222222222222222&cardExpYymm=2006&cardCvv=123&cardHolderNm=Thomas Alfa Edison&callBackUrl=http://merchant.com/callbackUrl`
+
+<aside class="notice">Payment can only be processed after <a href="#registration-credit-card">Registration</a>.</aside>
 
 <br>**Credit Card Payment Parameters**
 
@@ -157,7 +157,7 @@ Integration Step :
 
 ### Response Parameters - Credit Card Payment
 
-> Sample callbackUrl with parameter will be POST
+> Sample Response to callBackUrl
 >
 > referenceNo: ORD12345<br>
 > authNo: 084760<br>
