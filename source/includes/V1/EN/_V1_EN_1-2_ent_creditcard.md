@@ -11,8 +11,8 @@ Transaction Flow:
 <div class="wrapper">
 <ul>
   <li>
-    <input type="checkbox" id="list-item-1">
-    <label for="list-item-1" class="first">Credit Card Flow</label>
+    <input type="checkbox" id="list-item-ccv1">
+    <label for="list-item-ccv1" class="first">Credit Card Flow</label>
     <ul>
       <img src="/images/ent-cc-flow.png">
     </ul>

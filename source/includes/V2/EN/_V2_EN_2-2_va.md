@@ -29,8 +29,8 @@ Transaction Flow:
 <div class="wrapper">
 <ul>
   <li>
-    <input type="checkbox" id="list-item-1">
-    <label for="list-item-1" class="first">Virtual Account V2 Flow</label>
+    <input type="checkbox" id="list-item-vav2">
+    <label for="list-item-vav2" class="first">Virtual Account V2 Flow</label>
     <ul>
       <img src="/images/va-normal-v2-flow.png">
     </ul>

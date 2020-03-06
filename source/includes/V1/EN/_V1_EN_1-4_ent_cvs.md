@@ -26,8 +26,8 @@ Real time Notification will be sent when customer has completed the payment.
 <div class="wrapper">
 <ul>
   <li>
-    <input type="checkbox" id="list-item-1">
-    <label for="list-item-1" class="first">CVS Flow</label>
+    <input type="checkbox" id="list-item-cvsv1">
+    <label for="list-item-cvsv1" class="first">CVS Flow</label>
     <ul>
       <img src="/images/ent-cvs-flow.png">
     </ul>

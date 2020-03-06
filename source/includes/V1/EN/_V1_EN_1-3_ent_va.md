@@ -31,8 +31,8 @@ We support Virtual Account payments for other Banks via ATM BERSAMA, ALTO, LINK,
 <div class="wrapper">
 <ul>
   <li>
-    <input type="checkbox" id="list-item-1">
-    <label for="list-item-1" class="first">Virtual Account Flow</label>
+    <input type="checkbox" id="list-item-vav1">
+    <label for="list-item-vav1" class="first">Virtual Account Flow</label>
     <ul>
       <img src="/images/ent-va-flow.png">
     </ul>

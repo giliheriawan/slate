@@ -24,8 +24,8 @@ Real time Notification will be sent when customer completed the payment.
 <div class="wrapper">
 <ul>
   <li>
-    <input type="checkbox" id="list-item-1">
-    <label for="list-item-1" class="first">ClickPay Flow</label>
+    <input type="checkbox" id="list-item-cpayv1">
+    <label for="list-item-cpayv1" class="first">ClickPay Flow</label>
     <ul>
       <img src="/images/ent-clickpay-flow.png">
     </ul>
