@@ -4,7 +4,7 @@ Transaction Flow:
 <ol type="1">
   <li>Merchant Request Credit Card Registration to NICEPay.
   <li>Merchant Request Credit Card Payment to NICEPay.
-  <li>NICEPay redirect to 3DS / MIGS Bank Page.
+  <li>NICEPay will redirect to 3DS / MIGS Bank Page.
   <li>Customer input OTP in Bank Page.
   <li>NICEPay send notification
   <li>Merchant Handle notification
@@ -157,7 +157,7 @@ Transaction Flow:
 
 ### Response Parameters - Credit Card Payment
 
-> Sample Response to callBackUrl
+> Sample Response to callbackUrl with parameter
 >
 > referenceNo: ORD12345<br>
 > authNo: 084760<br>

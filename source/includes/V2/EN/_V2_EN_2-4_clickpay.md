@@ -1,5 +1,4 @@
 # ClickPay
-
 NICEPay offers ClickPay as Payment Method.
 
 Supported ClickPay by NICEPay:
@@ -13,7 +12,7 @@ Transaction Flow :
 <ol type="1">
   <li>Merchant Request ClickPay Registration to NICEPay.
   <li>Merchant Request ClickPay Payment to NICEPay.
-  <li>NICEPay will be redirect to Bank Page.
+  <li>NICEPay will redirect to Bank Page.
   <li>Customer pay ClickPay in Bank Page.
   <li>NICEPay Send Notification.
   <li>Merchant Handles Notification.
@@ -159,7 +158,7 @@ Transaction Flow :
 
 ### Response Parameters - ClickPay Payment
 
-> Sample callbackUrl with parameter
+> Sample Response to callbackUrl with parameter
 >
 > `http://merchant.com/callbackUrl?resultCd=0000&resultMsg=SUCCESS&tXid=TESTIMIDTEST01201803020917502088&referenceNo=ORD12345&payMethod=04&amt=10000&transDt=20180302&transTm=151052&description=Transaction Description&receiptCode=0684G143372548&mitraCd=MDRC&currency=IDR&goodsNm=Test Transaction Nicepay&billingNm=Customer Name&mRefNo=2017514268567`
 
