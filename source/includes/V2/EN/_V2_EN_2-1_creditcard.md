@@ -188,7 +188,7 @@ Transaction Flow:
 > currency: IDR<br>
 >
 
-| Paramenter  | Type | Size   | Description                           |
+| Parameter   | Type | Size   | Description                           |
 | ----------- | ---- | ------ | ------------------------------------- |
 | resultCd    | N    | 4      | Result Code                           |
 | resultMsg   | AN   | 255    | Result Message                        |

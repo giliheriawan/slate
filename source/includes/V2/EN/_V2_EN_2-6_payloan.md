@@ -113,7 +113,7 @@ payValidTm | Y | N | 6 | 135959 | expiry time (HH24MISS)
 
 <br>**Response Json Object**
 
-Paramenter | Type | Size | Description
+Parameter | Type | Size | Description
 ---------- | ---------- | ---------- | ----------
 resultCd | N | 4 | result code
 resultMsg | AN | 255 | result message
@@ -133,7 +133,7 @@ payValidTm | AN | 6 | expiry time (HH24MISS)
 
 ## Akulaku Payment
 
-<!-- > Sample POST Paramenter Request
+<!-- > Sample POST Parameter Request
 >
 > `callBackUrl=http://merchant.com/callbackUrl&tXid=TESTIDTEST04201803051057003960&timeStamp=20180305105635&merchantToken=58161e87726ecf5cdaed5462a994d9bf05172d786c1cbfe0ad03e133c5797645`
 
@@ -301,7 +301,7 @@ payValidTm | Y | N | 6 | 135959 | expiry time (HH24MISS)
 
 <br>**Response Json Object**
 
-Paramenter | Type | Size | Description
+Parameter | Type | Size | Description
 ---------- | ---------- | ---------- | ----------
 resultCd | N | 4 | result code
 resultMsg | AN | 255 | result message
@@ -321,7 +321,7 @@ payValidTm | AN | 6 | expiry time (HH24MISS)
 
 ## Kredivo Payment
 
-<!-- > Sample POST Paramenter Request
+<!-- > Sample POST Parameter Request
 >
 > `callBackUrl=http://merchant.com/callbackUrl&tXid=TESTIDTEST04201803051057003960&timeStamp=20180305105635&merchantToken=58161e87726ecf5cdaed5462a994d9bf05172d786c1cbfe0ad03e133c5797645`
 

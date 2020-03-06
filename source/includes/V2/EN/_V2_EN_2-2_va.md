@@ -132,7 +132,7 @@ Transaction Flow:
 }
 ```
 
-| Paramenter     | **Type** | Size    | Description                       |
+| Parameter      | **Type** | Size    | Description                       |
 | -------------- | -------- | ------- | --------------------------------- |
 | `resultCd`     | **N**    | **4**   | [Result Code](#error-code)        |
 | `resultMsg`    | **AN**   | **255** | [Result Message](#error-code)     |

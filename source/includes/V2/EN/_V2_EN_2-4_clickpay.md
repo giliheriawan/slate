@@ -1,10 +1,7 @@
 # ClickPay
 
-<aside class="warning">
-Coming Soon!!! Kindly check later.
-</aside>
+NICEPay offers ClickPay as Payment Method.
 
-NICEPay offer **ClickPay** as Payment Method. Notification will be send on real time when customer completed the payment.<br>
 Supported ClickPay by NICEPay:
 <ol type="1">
   <li>Mandiri Clickpay
@@ -12,17 +9,38 @@ Supported ClickPay by NICEPay:
   <li>BCA KlikPay
 </ol>
 
-Integration Step :
+Transaction Flow :
 <ol type="1">
   <li>Merchant Request ClickPay Registration to NICEPay.
   <li>Merchant Request ClickPay Payment to NICEPay.
   <li>NICEPay will be redirect to Bank Page.
   <li>Customer pay ClickPay in Bank Page.
-  <li>NICEPay send notification.
-  <li>handle notification.
+  <li>NICEPay Send Notification.
+  <li>Merchant Handles Notification.
 </ol>
 
-## ClickPay Registration
+<div class="wrapper">
+<ul>
+  <li>
+    <input type="checkbox" id="list-item-cpayv2">
+    <label for="list-item-cpayv2" class="first">Click Pay V2 Flow</label>
+    <ul>
+      <img src="/images/cpay-normal-v2-flow.png">
+    </ul>
+  </li>
+</ul>
+</div>
+
+## Registration - ClickPay
+
+|                                                           |                                                                                                               |
+|-----------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|
+| **API url**                                               | `/nicepay/direct/v2/registration`                                                                             |
+| **Request Method** **application/json**                   | `POST`                                                                                                        |
+| **Description**                                           | Performs Transaction Regist to NICEPAY                                                                        |        
+| **Merchant Token**                                        | SHA256(`timeStamp`+`iMid`+`referenceNo`+`amt`+`merchantKey`)                                                  |
+
+### Request Parameters - ClickPay Registration
 
 > Sample JSON Request
 
@@ -64,6 +82,15 @@ Integration Step :
 }
 ```
 
+<aside class="notice">Please refer to <a href="#registration">Register API</a> for Complete Parameters, the parameters below are the additional that will be required for ClickPay Registration</aside>
+
+| Parameters  | **Type** | **Size** | **Description**                            | Example |
+| ----------- | -------- | -------- | ------------------------------------------ | ------- |
+| `payMethod` | **N**    | **2**    | **ClickPay** **Required**                  | 04      |
+| `mitraCd`   | **A**    | **4**    | **[Mitra code](#mitra-code)** **Required** | CIMC    |
+| `mRefNo`    | **AN**   | **18**   | **ClickPay CIMB Reference No**             |         |
+
+### Response Parameters - ClickPay Registration
 > Sample JSON Response
 
 ```json
@@ -91,84 +118,66 @@ Integration Step :
 }
 ```
 
- &nbsp; | &nbsp;
----------- | -------
-**API url** | **/nicepay/direct/v2/registration**
-Method | POST, JSON
-Description | Perform for Transaction Registration
-Merchant Token | SHA256 (timeStamp + iMid + referenceNo + amt + merchantKey)
+| Parameter     | Type    | **Size** | Description                       |
+| ------------- | ------- | -------- | --------------------------------- |
+| `resultCd`    | **N**   | **4**    | [Result Code](#error-code)        |
+| `resultMsg`   | **AN**  | **255**  | [Result Message](#error-code)     |
+| `tXid`        | **AN**  | **30**   | Transactionn ID                   |
+| `referenceNo` | **ANS** | **40**   | Merchant Ref. No                  |
+| `payMethod`   | **N**   | **2**    | [Payment Method](#payment-method) |
+| `amt`         | **N**   | **12**   | Payment Amount                    |
+| `transDt`     | **N**   | **8**    | Transaction Date (YYYYMMDD)       |
+| `transTm`     | **N**   | **6**    | Transction Time (HH24MISS)        |
+| `description` | **AN**  | **100**  | Transaction Description           |
 
-<br>Please refer to [here](#registration) for JSON parameters.<br>
-Below for extra parameter will be required for ClickPay Registration:
+## Payment - ClickPay
 
-Parameters | Mandatory | Type | Size | Value | Description
----------- | ---------- | ---------- | ---------- | ---------- | ----------
-PayMethod | Y | AN | 2 | 04 | ClickPay
-mitraCd | Y | A | 4 | Mitra code, refer Code at [Here](#mitra-code)
-mRefNo | Y (CIMB) | AN | 18 | ClickPay CIMB reference No
+|                                                           |                                                                                                               |
+|-----------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|
+| **API url**                                               | `/nicepay/direct/v2/payment`                                                                                  |
+| **Request Method** **application/x-www-form-urlencoded**  | `Popup`, `Redirect`, `Submit`                                                                                 |
+| **Description**                                           | Performs Payment Request to NICEPAY                                                                           |
+| **Merchant Token**                                        | SHA256(`timeStamp`+`iMid`+`referenceNo`+`amt`+`merchantKey`)                                                  |
 
-<br>**Response Json Object**
-
-Paramenter | Type | Size | Description
----------- | ---------- | ---------- | ----------
-resultCd | N | 4 | Result code
-resultMsg | AN | 255 | Result Message
-tXid | AN | 30 | Transactionn ID (Key from NICEPay)
-referenceNo | ANS | 40 | Merchant order N. (Key from merchant)
-payMethod | N | 2 | Payment Method
-amt | N | 12 | Payment amount
-transDt | N | 8 | Transaction date (YYYYMMDD)
-transTm | N | 6 | Transction time (HH24MISS)
-description | AN | 100 | Transaction description
-
-## ClickPay Payment
-
-> Sample POST Paramenter Request
+> Sample POST Parameter Request
 >
 > `callBackUrl=http://merchant.com/callbackUrl&tXid=TESTIMIDTEST01201803020917502088&timeStamp=20180305105635&merchantToken=58161e87726ecf5cdaed5462a994d9bf05172d786c1cbfe0ad03e133c5797645&clickPayNo=1234567890123456&dataField3=123&clickPayToken=123456`
+
+<aside class="notice">Payment can only be processed after <a href="#registration-clickpay">Registration</a>.</aside>
+
+<br>**ClickPay Payment Parameters**
+
+| Parameter       | Type   | **Size** | **Description**                                             | Example                          |
+| --------------- | ------ | -------- | ----------------------------------------------------------- | -------------------------------- |
+| `timeStamp`     | **N**  | **14**   | **API Request Timestamp** **Required** *(YYYYMMDDHH24MISS)* | 20170708123456                   |
+| `tXid`          | **AN** | **30**   | **Transaction ID** **Required**                             | IONPAYTEST02201607291027025291   |
+| `clickPayNo`    | **N**  | **16**   | **ClickPay No** **Required**                                | 1234567890123456                 |
+| `dataField3`    | **N**  | **16**   | **ClickPay Token 3** **Required**                           | 123                              |
+| `clickPayToken` | **N**  | **6**    | **Code Response Token** **Required**                        | 123456                           |
+| `merchantToken` | **AN** | **255**  | **merchantToken** **Required**                              | 9338d54573688ae18e175240b02...   |
+| `callBackUrl`   | **AN** | **255**  | **Payment Result Url** **Required**                         | https://merchant.com/callBackUrl |
+
+### Response Parameters - ClickPay Payment
 
 > Sample callbackUrl with parameter
 >
 > `http://merchant.com/callbackUrl?resultCd=0000&resultMsg=SUCCESS&tXid=TESTIMIDTEST01201803020917502088&referenceNo=ORD12345&payMethod=04&amt=10000&transDt=20180302&transTm=151052&description=Transaction Description&receiptCode=0684G143372548&mitraCd=MDRC&currency=IDR&goodsNm=Test Transaction Nicepay&billingNm=Customer Name&mRefNo=2017514268567`
 
-ClickPay Payment can be process if [CC Registration](#cc-registration) is **Success**
 
- &nbsp; | &nbsp;
----------- | -------
-**API url** | **/nicepay/direct/v2/payment**
-Method | POST (Popup, Redirect, Submit, etc) [not server to server API]
-Description | Perform for Transaction Registration
-Merchant Token | SHA256 (timeStamp + iMid + referenceNo + amt + merchantKey)
-
-<br>Please refer to [here](#payment) for POST request and response parameters<br>
-**Mandatory POST parameters**
-
-Parameter | Mandatory | Type | Size | Description
----------- | ---------- | ---------- | ---------- | ----------
-timeStamp | Y | N | 14 | API Request Date
-tXid | Y | AN | 30 | Transaction ID
-clickPayNo | Y | N | 16 | ClickPay number
-dataField3 | Y | N | 16 | Token input 3 for clickpay
-clickPayToken | Y | N | 6 | Code response from token
-merchantToken | Y | AN | 255 | merchantToken
-callBackUrl | Y | AN | 255 | Payment result forward url (on browser)
-
-<br>**Response POST Parameter(redirect to the callBackUrl)**
-
-Parameter | Type | Size | Description
----------- | ---------- | ---------- | ----------
-resultCd | N | 4 | result code
-resultMsg | AN | 255 | Result Message
-tXid | AN | 30 | Transaction Id (Key from NICEPay)
-referenceNo | ANS | 40 | Merchant Order No (Key from merchant)
-payMethod | N | 2 | Payment Method
-amt | N | 12 | Payment amount
-currency | AN | 3 | currency
-goodsNm | AN | 100 | Goods Name
-billingNm | AN | 30 | Buyer name
-transDt | N | 8 | Transaction date (YYYYMMDD)
-transTm | N | 6 | Transaction time (HH24MISS)
-description | AN | 100 | Transaction Description
-mitraCd | AN | 4 | Mitra Code, refer Code at [Here](#mitra-code)
-receiptCode | ANS | 20 | Authrization number
-mRefNo | AN | 18 | Bank Reference No
+| Parameter     | **Type** | Size    | Description                       |
+| ------------- | -------- | ------- | --------------------------------- |
+| `resultCd`    | **N**    | **4**   | [Result Code](#error-code)        |
+| `resultMsg`   | **AN**   | **255** | [Result Message](#error-code)     |
+| `tXid`        | **AN**   | **30**  | Transaction ID                    |
+| `referenceNo` | **ANS**  | **40**  | Merchant Ref. No                  |
+| `payMethod`   | **N**    | **2**   | [Payment Method](#payment-method) |
+| `amt`         | **N**    | **12**  | Payment Amount                    |
+| `currency`    | **AN**   | **3**   | Currency                          |
+| `goodsNm`     | **AN**   | **100** | Goods Name                        |
+| `billingNm`   | **AN**   | **30**  | Buyer Name                        |
+| `transDt`     | **N**    | **8**   | Transaction Date (YYYYMMDD)       |
+| `transTm`     | **N**    | **6**   | Transaction Time (HH24MISS)       |
+| `description` | **AN**   | **100** | Transaction Description           |
+| `mitraCd`     | **AN**   | **4**   | [Mitra Code](#mitra-code)         |
+| `receiptCode` | **ANS**  | **20**  | Authrization Number               |
+| `mRefNo`      | **AN**   | **18**  | Bank Reference No                 |

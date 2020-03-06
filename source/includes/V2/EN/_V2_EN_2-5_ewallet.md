@@ -103,7 +103,7 @@ mitraCd | Y | A | 4 |   | Mitra code, refer Code at [Here](#mitra-code)
 
 <br>**Response Json Object**
 
-Paramenter | Type | Size | Description
+Parameter | Type | Size | Description
 ---------- | ---------- | ---------- | ----------
 resultCd | N | 4 | Result code
 resultMsg | AN | 255 | Result Message
@@ -117,7 +117,7 @@ description | AN | 100 | Transaction description
 
 ## E-Wallet Payment
 
-> Sample POST Paramenter Request
+> Sample POST Parameter Request
 >
 > `callBackUrl=http://localhost/ci_nicepay_v2/CallPaymentEW?tXid=IONPAYTEST05201908141607307963&timeStamp=20180123095456&amt=100000&merchantToken=1f90b3f4fbfc7476a800cf2c108509be3cf193f4678dc91e9a69c3b941d97ccc`
 

@@ -23,7 +23,7 @@ Transaction Flow:
 <ul>
   <li>
     <input type="checkbox" id="list-item-cvsv2">
-    <label for="list-item-cvsv2" class="first">Virtual Account V2 Flow</label>
+    <label for="list-item-cvsv2" class="first">Convenience Store V2 Flow</label>
     <ul>
       <img src="/images/cvs-normal-v2-flow.png">
     </ul>
