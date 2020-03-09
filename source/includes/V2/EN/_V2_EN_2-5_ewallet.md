@@ -22,9 +22,9 @@ Integration Step :
 <ul>
   <li>
     <input type="checkbox" id="list-item-ovov2">
-    <label for="list-item-ovov2" class="first">OVO Transaction Flow (CHANGE THIS)</label>
+    <label for="list-item-ovov2" class="first">OVO Transaction Flow (Coming Soon)</label>
     <ul>
-      <h1>(Coming Soon)</h1>
+      <h3>(Coming Soon)</h3>
     </ul>
   </li>
 </ul>
@@ -34,9 +34,9 @@ Integration Step :
 <ul>
   <li>
     <input type="checkbox" id="list-item-linkv2">
-    <label for="list-item-linkv2" class="first">LinkAja Transaction Flow (CHANGE THIS)</label>
+    <label for="list-item-linkv2" class="first">LinkAja Transaction Flow (Coming Soon)</label>
     <ul>
-      <h1>(Coming Soon)</h1>
+      <h3>(Coming Soon)</h3>
     </ul>
   </li>
 </ul>
