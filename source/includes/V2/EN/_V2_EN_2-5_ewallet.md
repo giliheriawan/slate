@@ -137,7 +137,7 @@ Integration Step :
             "goods_name": "Item 2 Name",
             "goods_detail": "Item 2 Detail",
             "goods_amt": "300",
-            "goods_quantity: "1" //Only for LinkAja
+            "goods_quantity": "1" //Only for LinkAja
         }  
         ] 
 } 
@@ -175,47 +175,46 @@ Integration Step :
 
 ## Payment - E-Wallet
 
+|                                                           |                                                                                                               |
+|-----------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|
+| **API url**                                               | `/nicepay/direct/v2/payment`                                                                                  |
+| **Request Method** **application/x-www-form-urlencoded**  | `Popup`, `Redirect`, `Submit`                                                                                 |
+| **Description**                                           | Performs Payment Request to NICEPAY                                                                           |
+| **Merchant Token**                                        | SHA256(`timeStamp`+`iMid`+`referenceNo`+`amt`+`merchantKey`)                                                  |
+
 > Sample POST Parameter Request
 >
 > `callBackUrl=http://localhost/ci_nicepay_v2/CallPaymentEW?tXid=IONPAYTEST05201908141607307963&timeStamp=20180123095456&amt=100000&merchantToken=1f90b3f4fbfc7476a800cf2c108509be3cf193f4678dc91e9a69c3b941d97ccc`
 
-E-Wallet Payment can be process if [ Registration E-Wallet](#e-wallet-registration) is **Success**
+<aside class="notice">Payment can only be processed after <a href="#registration-e-wallet">Registration</a>.</aside>
 
- &nbsp; | &nbsp;
----------- | -------
-**API url** | **/nicepay/direct/v2/payment**
-Method | POST (Popup, Redirect, Submit, etc) [not server to server API]
-Description | Perform for Transaction Registration
-Merchant Token | SHA256 (timeStamp + iMid + referenceNo + amt + merchantKey)
+<br>**E-Wallet Payment Parameters**
 
-<br>Please refer to [here](#payment) for POST request and response parameters<br>
-**Mandatory POST parameters**
+| Parameter       | **Type** | **Size** | **Description**                                         | Example                          |
+| --------------- | -------- | -------- | ------------------------------------------------------- | -------------------------------- |
+| `timeStamp`     | **N**    | **14**   | **Request Timestamp** **Required** *(YYYYMMDDHH24MISS)* | 20170708123456                   |
+| `tXid`          | **AN**   | **30**   | **Transaction ID** **Required**                         | IONPAYTEST02201607291027025291   |
+| `merchantToken` | **AN**   | **255**  | **merchantToken** **Required**                          | 9338d54573688ae18e175240b02...   |
+| `callBackUrl`   | **AN**   | **255**  | **Result Page** **Required**                            | https://merchant.com/callBackUrl |
 
-Parameter | Mandatory | Type | Size | Description
----------- | ---------- | ---------- | ---------- | ----------
-timeStamp | Y | N | 14 | API Request Date
-tXid | Y | AN | 30 | Transaction ID
-merchantToken | Y | AN | 255 | merchantToken
-callBackUrl | Y | AN | 255 | Payment result forward url (on browser)
+### Response Parameters - E-Wallet Payment
 
-<br>**Response POST Parameter(redirect to the callBackUrl)**
-> Sample callbackUrl with parameter
+> Sample Response to callbackUrl with parameter
 >
 > `http://merchant.com/callbackUrl?resultCd=0000&resultMsg=SUCCESS&tXid=IONPAYTEST05201908141607307963&referenceNo=ORD12345&payMethod=05&amt=10000&transDt=20180302&transTm=151052&description=Transaction Description&mitraCd=OVOE&currency=IDR&goodsNm=Test Transaction Nicepay&billingNm=Customer Name`
 
-
-Parameter | Type | Size | Description
----------- | ---------- | ---------- | ----------
-resultCd | N | 4 | result code
-resultMsg | AN | 255 | Result Message
-tXid | AN | 30 | Transaction Id (Key from NICEPay)
-referenceNo | ANS | 40 | Merchant Order No (Key from merchant)
-payMethod | N | 2 | Payment Method
-amt | N | 12 | Payment amount
-currency | AN | 3 | currency
-goodsNm | AN | 100 | Goods Name
-billingNm | AN | 30 | Buyer name
-transDt | N | 8 | Transaction date (YYYYMMDD)
-transTm | N | 6 | Transaction time (HH24MISS)
-description | AN | 100 | Transaction Description
-mitraCd | AN | 4 | Mitra Code, refer Code at [Here](#mitra-code)
+| Parameter     | **Type** | Size    | Description                       |
+| ------------- | -------- | ------- | --------------------------------- |
+| `resultCd`    | **N**    | **4**   | [Result Code](#error-code)        |
+| `resultMsg`   | **AN**   | **255** | [Result Message](#error-code)     |
+| `tXid`        | **AN**   | **30**  | Transaction ID                    |
+| `referenceNo` | **ANS**  | **40**  | Merchant Ref. No                  |
+| `payMethod`   | **N**    | **2**   | [Payment Method](#payment-method) |
+| `amt`         | **N**    | **12**  | Payment Amount                    |
+| `currency`    | **AN**   | **3**   | Currency                          |
+| `goodsNm`     | **AN**   | **100** | Goods Name                        |
+| `billingNm`   | **AN**   | **30**  | Buyer Name                        |
+| `transDt`     | **N**    | **8**   | Transaction Date (YYYYMMDD)       |
+| `transTm`     | **N**    | **6**   | Transaction Time (HH24MISS)       |
+| `description` | **AN**   | **100** | Transaction Description           |
+| `mitraCd`     | **AN**   | **4**   | [Mitra Code](#mitra-code)         |
