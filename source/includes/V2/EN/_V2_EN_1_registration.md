@@ -99,7 +99,7 @@
 | `vacctValidTm`    | **N**    | **6**    | **VA  Expiry Time** **(HH24MISS)**                           | 135959                                                       |
 | `merFixAcctId`    | **AN**   | **40**   | **Merchant  Reserved VA ID**                                 | 4                                                            |
 | `mitraCd`         | **A**    | **4**    | **[Mitra Code](#mitra-code)** **Required for CVS, E-Wallet, Payloan** | AKLP                                                         |
-| `userIP`          | **AN**   | **15**   | **User IP** **Required for CC**                              | 127.0.0.1                                                    |
+| `userIP`          | **AN**   | **15**   | **User IP** **Required for CC, E-Wallet, Payloan**           | 127.0.0.1                                                    |
 | `dbProcessUrl`    | **AN**   | **255**  | **Notification URL** **Required**                            | https://merchant.com/dbProcessUrl                            |
 | `merchantToken`   | **AN**   | **255**  | **merchantToken**  **Required**                              | 6cfccfc0046773c1b589d8e 98f8b596c284f3c70a4ecf8  6eba14c18944b74bcd |
 | `deliveryNm`      | **A**    | **30**   | **Delivery Name**                                            | John Doe                                                     |

@@ -105,7 +105,7 @@ Integration Step :
 | `payMethod` | **AN**   | **2**    | **E-Wallet** **Required**                        | 05            |
 | `mitraCd`   | **A**    | **4**    | **[Mitra Code](#mitra-code)** **Required**       | OVOE          |
 | `userIP`    | **AN**   | **15**   | **Customer IP** **Required**                     | 127.0.0.1     |
-| `cartData`  | **AN**   | **4000** | **[Cart Data](#ewallet-cart-data)** **Required** | `JSON FORMAT` |
+| `cartData`  | **AN**   | **4000** | **[Cart Data](#ewallet-cart-data)** **Required** | `JSON`        |
 
 ### E-Wallet Cart Data
 <h3 id="ewallet-cart-data"></h3>

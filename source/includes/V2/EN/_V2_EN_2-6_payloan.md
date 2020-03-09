@@ -1,11 +1,8 @@
 # Payloan
+NICEPay offers Pay Loan (Cardless Credit) as a Payment Method.<br>
+Notification will be sent real-time when customer has completed the payment.<br>
 
-<aside class="warning">
-Coming Soon!!! Kindly check later.
-</aside>
-
-NICEPay offer **Payloan** as Payment Method. Notification will be send on real time when customer completed the payment.<br>
-Supported Payloan by NICEPay:
+Supported E-Wallet:
 <ol type="1">
   <li>Akulaku</li>
   <li>Kredivo</li>
@@ -15,13 +12,46 @@ Integration Step :
 <ol type="1">
   <li>Merchant Request Registration
   <li>Merchant Request Payment
-  <li>NICEPay Redirect to Mitra Page
-  <li>Customer paid
-  <li>NICEPay send notification
-  <li>Handle notification
+  <li>NICEPay will Redirect to Pay Loan Payment Page
+  <li>Customer Confirms Payment on Mitra Page
+  <li>NICEPay Send Notification
+  <li>Handle Notification
 </ol>
 
-## Akulaku Registration
+<div class="wrapper">
+<ul>
+  <li>
+    <input type="checkbox" id="list-item-akulakuv2">
+    <label for="list-item-akulakuv2" class="first">Akulaku Transaction Flow (CHANGE THIS)</label>
+    <ul>
+      <img src="/images/cpay-normal-v2-flow.png">
+    </ul>
+  </li>
+</ul>
+</div>
+
+<div class="wrapper">
+<ul>
+  <li>
+    <input type="checkbox" id="list-item-kredivov2">
+    <label for="list-item-kredivov2" class="first">Kredivo Transaction Flow (CHANGE THIS)</label>
+    <ul>
+      <img src="/images/cpay-normal-v2-flow.png">
+    </ul>
+  </li>
+</ul>
+</div>
+
+## Registration - Payloan
+
+|                                                           |                                                                                                               |
+|-----------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|
+| **API url**                                               | `/nicepay/direct/v2/registration`                                                                             |
+| **Request Method** **application/json**                   | `POST`                                                                                                        |
+| **Description**                                           | Performs Transaction Regist to NICEPAY                                                                        |        
+| **Merchant Token**                                        | SHA256(`timeStamp`+`iMid`+`referenceNo`+`amt`+`merchantKey`)                                                  |
+
+### Request Parameters - Payloan Registration
 
 > Sample JSON Request
 
@@ -66,10 +96,121 @@ Integration Step :
 	"recurrOpt":"0",
 	"mitraCd":"AKLP",
 	"payValidDt":"20170313",
-	"payValidTm":"135959",
+	"payValidTm":"135959"
 }
 ```
 
+<aside class="notice">Please refer to <a href="#registration">Register API</a> for Complete Parameters, the parameters below are the additional that will be required for Payloan Registration</aside>
+
+| Parameters    | **Type** | **Size** | **Description**                                              | Example   |
+| ------------- | -------- | -------- | ------------------------------------------------------------ | --------- |
+| `payMethod`   | **N**    | **2**    | **Pay Loan** **Required**                                    | 06        |
+| `userIp`      | **AN**   | **15**   | **Buyer's IP Address** **Required**                          | 127.0.0.1 |
+| `instmntType` | **N**    | **2**    | **[Installment Type](#installment-type)** **Required**       | 1         |
+| `instmntMon`  | **N**    | **2**    | **Installment Month** **Required**                           | 1         |
+| `mitraCd`     | **A**    | **4**    | **[Mitra Code](#mitra-code)** **Required**                   | KDVI      |
+| `cartData`    | **AN**   | **4000** | **[Cart Data](#payloan-cart-data)** **Required**             | `JSON`    |
+| `sellers`     | **AN**   | **4000** | **[Sellers Data ](#payloan-sellers-data)** **Required for Akulaku** | `JSON`    |
+
+### Payloan Cart Data
+<h3 id="payloan-cart-data"></h3>
+
+| **Parameter**                      | Description                     |
+| ---------------------------------- | ------------------------------- |
+| **count**                          | Total cart data count           |
+| **item**                           |                                 |
+| **item ->** **goods_id**           | Good's ID                       |
+| **item ->** **goods_detail**       | Good's Detail                   |
+| **item ->** **goods_name**         | Good's Name                     |
+| **item ->** **goods_amt**          | Good's Amount                   |
+| **item ->** **goods_type**         | Good's Type                     |
+| **item ->** **goods_url**          | Good's Url                      |
+| **item ->** **goods_quantity**     | Good's Quantity                 |
+| **item ->** **goods_sellers_id**   | Sellers ID (Only for Akulaku)   |
+| **item ->** **goods_sellers_name** | Sellers Name (Only for Akulaku) |
+
+<div class="center-column"></div>
+```json
+{
+  "count": "2",
+  "item": [
+    {
+      "goods_id": "BB12345678",
+      "goods_detail": "BB123456",
+      "goods_name": "iPhone 5S",
+      "goods_amt": "6000000",
+      "goods_type": "Smartphone",
+      "goods_url": "http://merchant.com/cel lphones/iphone5s_64g",
+      "goods_quantity": "1",
+      "goods_sellers_id": "SEL123",
+      "goods_sellers_name": "Sellers 1"
+    },
+    {
+      "goods_id": "AZ14565678",
+      "goods_name": "Hailee Sneakers Blink Silver",
+      "goods_amt": "250000",
+      "goods_url": "http://merchant.com/fashion/shoes/sneakers-blinkshoes",
+      "goods_type": "Sneakers",
+      "goods_quantity": "2",
+      "goods_sellers_id": "SEL124",
+      "goods_ sellers_name": "Sellers 2"
+    }
+  ]
+}
+```
+
+### Payloan Sellers Data
+<h3 id="payloan-sellers-data"></h3>
+
+| **Parameter**                           | Description      |
+| --------------------------------------- | ---------------- |
+| **sellersId**                           | Sellers ID       |
+| **sellersNm**                           | Sellers Name     |
+| **sellersEmail**                        | Sellers Email    |
+| **sellersAddress ->** **sellerNm**      | Seller Name      |
+| **sellersAddress ->** **sellerLastNm**  | Seller Last Name |
+| **sellersAddress ->** **sellerAddr**    | Seller Address   |
+| **sellersAddress ->** **sellerCity**    | Seller City      |
+| **sellersAddress ->** **sellerPostCd**  | Seller Post Code |
+| **sellersAddress ->** **sellerPhone**   | Seller Phone     |
+| **sellersAddress ->** **sellerCountry** | Seller Country   |
+
+<div class="center-column"></div>
+```json
+[
+  {
+    "sellersId": "SEL123",
+    "sellersNm": "Sellers 1",
+    "sellersEmail": "sellers@test.com",
+    "sellersAddress": {
+      "sellerNm": "Sellers",
+      "sellerLastNm": "1",
+      "sellerAddr": "jalan berbangsa 1",
+      "sellerCity": "Jakarta Barat",
+      "sellerPostCd": "12344",
+      "sellerPhone": "08123456789",
+      "sellerCountry": "ID"
+    }
+  },
+  {
+    "sellersId": "SEL124",
+    "sellersNm": "Sellers 2",
+    "sellersEmail": "sellers2@test.com",
+    "sellersAddress": {
+      "sellerNm": "Sellers",
+      "sellerLastNm": "2",
+      "sellerAddr": "jalan berkelok 3",
+      "sellerCity": "Jakarta Utara",
+      "sellerPostCd": "12222",
+      "sellerPhone": "081255556789",
+      "sellerCountry": "ID"
+    }
+  }
+]
+```
+
+__
+### Response Parameters - Payloan Registration
 > Sample JSON Response
 
 ```json
@@ -92,277 +233,69 @@ Integration Step :
 }
 ```
 
- &nbsp; | &nbsp;
----------- | -------
-**API url** | **/nicepay/direct/v2/registration**
-Method | POST, JSON
-Description | TXID will be created
-Merchant Token | SHA256 (timeStamp + iMid + referenceNo + amt + merchantKey)
+| Parameter     | **Type** | Size    | Description                       |
+| ------------- | -------- | ------- | --------------------------------- |
+| `resultCd`    | **N**    | **4**   | [Result Code](#error-code)        |
+| `resultMsg`   | **AN**   | **255** | [Result Message](#error-code)     |
+| `tXid`        | **AN**   | **30**  | Transaction ID                    |
+| `referenceNo` | **ANS**  | **40**  | Reference No                      |
+| `payMethod`   | **N**    | **2**   | [Payment Method](#payment-method) |
+| `amt`         | **N**    | **12**  | Payment Amount                    |
+| `currency`    | **AN**   | **3**   | Currency                          |
+| `goodsNm`     | **AN**   | **100** | Goods Name                        |
+| `billingNm`   | **A**    | **30**  | Buyer Name                        |
+| `transDt`     | **N**    | **8**   | Transaction Date (YYYYMMDD)       |
+| `transTm`     | **N**    | **6**   | Transaction Time (HH24MISS)       |
+| `description` | **AN**   | **100** | Description                       |
+| `mitraCd`     | **AN**   | **4**   | [Mitra Code](#mitra-code)         |
+| `payValidDt`  | **N**    | **8**   | Expiry Date (YYYYMMDD)            |
+| `payValidTm`  | **N**    | **6**   | Expiry Time (HH24MISS)            |
 
-<br>Please refer to [here](#registration) for JSON parameters.<br>
-Below for extra parameter will be required for AKULAKU Registration:
+## Payment - Payloan
 
-Parameters | Mandatory | Type | Size | Value | Description
----------- | ---------- | ---------- | ---------- | ---------- | ----------
-instmntType | Y | N | 2 | 2 | Installment Type
-instmntMon | Y | N | 2 | 1 | Installment month
-recurrOpt | Y | N | 2 | 0 | Recurring option
-mitraCd | Y | A | 4 | AKLP | Mitra code, refer Code at [Here](#mitra-code)
-payValidDt | Y | N | 8 | 20170313 | expiry date (YYYYMMDD)
-payValidTm | Y | N | 6 | 135959 | expiry time (HH24MISS)
+|                                                           |                                                                                                               |
+|-----------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|
+| **API url**                                               | `/nicepay/direct/v2/payment`                                                                                  |
+| **Request Method** **application/x-www-form-urlencoded**  | `Popup`, `Redirect`, `Submit`                                                                                 |
+| **Description**                                           | Performs Payment Request to NICEPAY                                                                           |
+| **Merchant Token**                                        | SHA256(`timeStamp`+`iMid`+`referenceNo`+`amt`+`merchantKey`)                                                  |
 
-<br>**Response Json Object**
 
-Parameter | Type | Size | Description
----------- | ---------- | ---------- | ----------
-resultCd | N | 4 | result code
-resultMsg | AN | 255 | result message
-tXid | ANS | 40| result message
-referenceNo | AN | 255 | Transaction Id (Key from NICEPay)
-payMethod | N | 2 | Payment Method
-amt | N | 12 | Payment amount
-currency | AN | 3 | currency
-goodsNm | AN | 100 | goodsNm
-billingNm | A | 30 | Buyer name
-transDt | N | 8 | Transaction date (YYYYMMDD)
-transTm | N | 6 | Transaction time (HH24MISS)
-description | AN | 100 | Transaction Description
-mitraCd | AN | 4 | Mitra code
-payValidDt | N | 8 | expiry date (YYYYMMDD)
-payValidTm | AN | 6 | expiry time (HH24MISS)
-
-## Akulaku Payment
-
-<!-- > Sample POST Parameter Request
+> Sample Parameter Request
 >
 > `callBackUrl=http://merchant.com/callbackUrl&tXid=TESTIDTEST04201803051057003960&timeStamp=20180305105635&merchantToken=58161e87726ecf5cdaed5462a994d9bf05172d786c1cbfe0ad03e133c5797645`
+
+<aside class="notice">Payment can only be processed after <a href="#registration-payloan">Registration</a>.</aside>
+
+<br>**Payloan Payment Parameters**
+
+| Parameter       | **Type** | **Size** | **Description**                                         | Example                          |
+| --------------- | -------- | -------- | ------------------------------------------------------- | -------------------------------- |
+| `timeStamp`     | **N**    | **14**   | **Request Timestamp** **Required** *(YYYYMMDDHH24MISS)* | 20170708123456                   |
+| `tXid`          | **AN**   | **30**   | **Transaction ID** **Required**                         | IONPAYTEST02201607291027025291   |
+| `merchantToken` | **AN**   | **255**  | **merchantToken** **Required**                          | 9338d54573688ae18e175240b02...   |
+| `callBackUrl`   | **AN**   | **255**  | **Result Page** **Required**                            | https://merchant.com/callBackUrl |
+
+### Response Parameters - Payloan Payment
 
 > Sample callbackUrl with parameter
 >
 > `http://merchant.com/callbackUrl?resultCd=0000&resultMsg=SUCCESS&tXid=TESTIMIDTEST01201803020917502088&referenceNo=ORD12345&payMethod=04&amt=10000&transDt=20180302&transTm=151052&description=Transaction Description&mitraCd=MDRE&currency=IDR&goodsNm=Test Transaction Nicepay&billingNm=Customer Name` -->
 
-Akulaku Payment can be process if [Akulaku Registration](#akulaku-registration) is **Success**
-
- &nbsp; | &nbsp;
----------- | -------
-**API url** | **/nicepay/direct/v2/payment**
-Method | POST (Popup, Redirect, Submit, etc) [not server to server API]
-Description |
-Merchant Token | SHA256 (timeStamp + iMid + referenceNo + amt + merchantKey)
-
-<br>Please refer to [here](#payment) for POST request and response parameters<br>
-**Mandatory POST parameters**
-
-Parameter | Mandatory | Type | Size | Description
----------- | ---------- | ---------- | ---------- | ----------
-timeStamp | Y | N | 14 | API Request Date
-tXid | Y | AN | 30 | Transaction ID
-merchantToken | Y | AN | 255 | merchantToken
-callBackUrl | Y | AN | 255 | Payment result forward url (on browser)
-
-<br>**Response POST Parameter(redirect to the callBackUrl)**
-
-Parameter | Type | Size | Description
----------- | ---------- | ---------- | ----------
-resultCd | N | 4 | result code
-resultMsg | AN | 255 | Result Message
-tXid | AN | 30 | Transaction Id (Key from NICEPay)
-referenceNo | ANS | 40 | Merchant Order No (Key from merchant)
-payMethod | N | 2 | Payment Method
-amt | N | 12 | Payment amount
-currency | AN | 3 | currency
-goodsNm | AN | 100 | Goods Name
-billingNm | AN | 30 | Buyer name
-transDt | N | 8 | Transaction date (YYYYMMDD)
-transTm | N | 6 | Transaction time (HH24MISS)
-description | AN | 100 | Transaction Description
-instmntMon | N | 2 | Installment month
-instmntType | N | 2 | Installment Type
-
-## Akulaku Confirm Receipt
-
- &nbsp; | &nbsp;
----------- | -------
-**API url** | **/nicepay/direct/v2/confirmAkulaku**
-Method | POST(parameter)
-Description | Akulaku confirm receipt (when success)
-Merchant Token | SHA256 (Timestamp + Transaction ID + Merchant ID + Merchant Key)
-
-<br>POST request and response parameters<br>
-**Request Parameter**
-
-Parameter | Mandatory | Type | Size | Description
----------- | ---------- | ---------- | ---------- | ----------
-timeStamp | Y | N | 14 | API Request Date
-tXid | Y | AN | 30 | Transaction ID
-iMid | Y | AN | 10 | Merchant Id
-merchantToken | Y | AN | 255 | merchantToken
-
-<br>**Response POST Parameter(redirect to the callBackUrl)**
-
-Parameter | Type | Size | Description
----------- | ---------- | ---------- | ----------
-resultCd | N | 4 | result code
-resultMsg | AN | 255 | Result Message
-ResponseData | AN | 30 | Response Data
-
-## Kredivo Registration
-
-> Sample JSON Request
-
-```json
-{
-	"timeStamp":"20170708123456",
-	"iMid":"IONPAYTEST",
-	"payMethod":"06",
-	"currency":"IDR",
-	"amt":"1000",
-	"referenceNo":"MerchantReferenceNumber001",
-	"goodsNm":"Merchant Goods 1",
-	"billingNm":"Buyer Name",
-	"billingPhone":"02112345678",
-	"billingEmail":"buyer@merchant.com",
-	"billingAddr":"Billing Address",
-	"billingCity":"Jakarta",
-	"billingState":"Jakarta",
-	"billingPostCd":"12345",
-	"billingCountry":"Indonesia",
-	"deliveryNm":"Buyer Name",
-	"deliveryPhone":"02112345678",
-	"deliveryAddr":"Billing Address",
-	"deliveryCity":"Jakarta",
-	"deliveryState":"Jakarta",
-	"deliveryPostCd":"12345",
-	"deliveryCountry":"Indonesia",
-	"dbProcessUrl":"http://www.merchant.com/notiication",
-	"vat":"0",
-	"fee":"0",
-	"notaxAmt":"0",
-	"merchantToken":"6cfccfc0046773c1b589d8e98f8b596c284f3c70a4ecf86eba14c18944b74bcd",
-	"reqDt":"20160301",
-	"reqTm":"135959",
-	"reqDomain":"merchant.com",
-	"reqServerIP":"127.0.0.1",
-	"reqClientVer":"1.0",
-	"userIP":"127.0.0.1",
-	"userSessionID":"userSessionID",
-	"userAgent":"Mozilla",
-	"userLanguage":"en-US",
-	"cartData":"{JSON_Format}",
-	"instmntType":"2",
-	"instmntMon":"1",
-	"recurrOpt":"0",
-	"mitraCd":"AKLP",
-	"payValidDt":"20170313",
-	"payValidTm":"135959",
-}
-```
-
-> Sample JSON Response
-
-```json
-{
-    "resultCd": "0000",
-    "resultMsg": "SUCCESS",
-    "tXid": "IONPAYTEST02201607291027025291",
-    "referenceNo": "OrdNo20160525000-52104",
-    "payMethod": "06",
-    "amt": "1000",
-    "currency": "IDR",
-    "goodsNm": "Merchant Goods 1",
-    "billingNm": "Buyer Name",
-    "transDt": "20160303",
-    "transTm": "135959",
-    "description": "Payment of OrdNo20160525000-52104",
-    "mitraCd": "KDVI",
-    "payValidDt": "20170313",
-    "payValidTm": "135959"
-}
-```
-
- &nbsp; | &nbsp;
----------- | -------
-**API url** | **/nicepay/direct/v2/registration**
-Method | POST, JSON
-Description | TXID will be created
-Merchant Token | SHA256 (timeStamp + iMid + referenceNo + amt + merchantKey)
-
-<br>Please refer to [here](#registration) for JSON parameters.<br>
-Below for extra parameter will be required for KREDIVO Registration:
-
-Parameters | Mandatory | Type | Size | Value | Description
----------- | ---------- | ---------- | ---------- | ---------- | ----------
-instmntType | Y | N | 2 | 2 | Installment Type
-instmntMon | Y | N | 2 | 1 | Installment month
-recurrOpt | Y | N | 2 | 0 | Recurring option
-mitraCd | Y | A | 4 | KDVI | Mitra code, refer Code at [Here](#mitra-code)
-payValidDt | Y | N | 8 | 20170313 | expiry date (YYYYMMDD)
-payValidTm | Y | N | 6 | 135959 | expiry time (HH24MISS)
-
-<br>**Response Json Object**
-
-Parameter | Type | Size | Description
----------- | ---------- | ---------- | ----------
-resultCd | N | 4 | result code
-resultMsg | AN | 255 | result message
-tXid | ANS | 40| result message
-referenceNo | AN | 255 | Transaction Id (Key from NICEPay)
-payMethod | N | 2 | Payment Method
-amt | N | 12 | Payment amount
-currency | AN | 3 | currency
-goodsNm | AN | 100 | goodsNm
-billingNm | A | 30 | Buyer name
-transDt | N | 8 | Transaction date (YYYYMMDD)
-transTm | N | 6 | Transaction time (HH24MISS)
-description | AN | 100 | Transaction Description
-mitraCd | AN | 4 | Mitra code
-payValidDt | N | 8 | expiry date (YYYYMMDD)
-payValidTm | AN | 6 | expiry time (HH24MISS)
-
-## Kredivo Payment
-
-<!-- > Sample POST Parameter Request
->
-> `callBackUrl=http://merchant.com/callbackUrl&tXid=TESTIDTEST04201803051057003960&timeStamp=20180305105635&merchantToken=58161e87726ecf5cdaed5462a994d9bf05172d786c1cbfe0ad03e133c5797645`
-
-> Sample callbackUrl with parameter
->
-> `http://merchant.com/callbackUrl?resultCd=0000&resultMsg=SUCCESS&tXid=TESTIMIDTEST01201803020917502088&referenceNo=ORD12345&payMethod=04&amt=10000&transDt=20180302&transTm=151052&description=Transaction Description&mitraCd=MDRE&currency=IDR&goodsNm=Test Transaction Nicepay&billingNm=Customer Name` -->
-
-Kredivo Payment can be process if [Kredivo Registration](#kredivo-registration) is **Success**
-
- &nbsp; | &nbsp;
----------- | -------
-**API url** | **/nicepay/direct/v2/payment**
-Method | POST (Popup, Redirect, Submit, etc) [not server to server API]
-Description |
-Merchant Token | SHA256 (timeStamp + iMid + referenceNo + amt + merchantKey)
-
-<br>Please refer to [here](#payment) for POST request and response parameters<br>
-**Mandatory POST parameters**
-
-Parameter | Mandatory | Type | Size | Description
----------- | ---------- | ---------- | ---------- | ----------
-timeStamp | Y | N | 14 | API Request Date
-tXid | Y | AN | 30 | Transaction ID
-merchantToken | Y | AN | 255 | merchantToken
-callBackUrl | Y | AN | 255 | Payment result forward url (on browser)
-
-<br>**Response POST Parameter(redirect to the callBackUrl)**
-
-Parameter | Type | Size | Description
----------- | ---------- | ---------- | ----------
-resultCd | N | 4 | result code
-resultMsg | AN | 255 | Result Message
-tXid | AN | 30 | Transaction Id (Key from NICEPay)
-referenceNo | ANS | 40 | Merchant Order No (Key from merchant)
-payMethod | N | 2 | Payment Method
-amt | N | 12 | Payment amount
-currency | AN | 3 | currency
-goodsNm | AN | 100 | Goods Name
-billingNm | AN | 30 | Buyer name
-transDt | N | 8 | Transaction date (YYYYMMDD)
-transTm | N | 6 | Transaction time (HH24MISS)
-description | AN | 100 | Transaction Description
-instmntMon | N | 2 | Installment month
-instmntType | N | 2 | Installment Type
+| Parameter     | **Type** | Size    | Description                           |
+| ------------- | -------- | ------- | ------------------------------------- |
+| `resultCd`    | **N**    | **4**   | [Result Code](#error-code)            |
+| `resultMsg`   | **AN**   | **255** | [Result Message](#error-code)         |
+| `tXid`        | **AN**   | **30**  | Transaction ID                        |
+| `referenceNo` | **ANS**  | **40**  | Merchant Ref. No                      |
+| `payMethod`   | **N**    | **2**   | [Payment Method](#payment-method)     |
+| `amt`         | **N**    | **12**  | Payment Amount                        |
+| `currency`    | **AN**   | **3**   | Currency                              |
+| `goodsNm`     | **AN**   | **100** | Goods Name                            |
+| `billingNm`   | **AN**   | **30**  | Buyer Name                            |
+| `transDt`     | **N**    | **8**   | Transaction Date (YYYYMMDD)           |
+| `transTm`     | **N**    | **6**   | Transaction Time (HH24MISS)           |
+| `description` | **AN**   | **100** | Transaction Description               |
+| `mitraCd`     | **AN**   | **4**   | [Mitra Code](#mitra-code)             |
+| `instmntMon`  | N        | 2       | Installment Month                     |
+| `instmntType` | N        | 2       | [Installment Type](#installment-type) |
