@@ -209,7 +209,6 @@ Integration Step :
 ]
 ```
 
-__
 ### Response Parameters - Payloan Registration
 > Sample JSON Response
 
@@ -217,7 +216,7 @@ __
 {
     "resultCd": "0000",
     "resultMsg": "SUCCESS",
-    "tXid": "AYLOANTE506201905021036566",
+    "tXid": "PAYLOANTE506201905021036566",
     "referenceNo": "OrdNo20160525000-52104",
     "payMethod": "06",
     "amt": "1000",
@@ -280,7 +279,7 @@ __
 
 > Sample callbackUrl with parameter
 >
-> `http://merchant.com/callbackUrl?resultCd=0000&resultMsg=SUCCESS&tXid=TESTIMIDTEST01201803020917502088&referenceNo=ORD12345&payMethod=04&amt=10000&transDt=20180302&transTm=151052&description=Transaction Description&mitraCd=MDRE&currency=IDR&goodsNm=Test Transaction Nicepay&billingNm=Customer Name` -->
+> `http://merchant.com/callbackUrl?resultCd=0000&resultMsg=SUCCESS&tXid=TESTIMIDTEST01201803020917502088&referenceNo=ORD12345&payMethod=04&amt=10000&transDt=20180302&transTm=151052&description=Transaction Description&mitraCd=MDRE&currency=IDR&goodsNm=Test Transaction Nicepay&billingNm=Customer Name`
 
 | Parameter     | **Type** | Size    | Description                           |
 | ------------- | -------- | ------- | ------------------------------------- |
@@ -297,5 +296,5 @@ __
 | `transTm`     | **N**    | **6**   | Transaction Time (HH24MISS)           |
 | `description` | **AN**   | **100** | Transaction Description               |
 | `mitraCd`     | **AN**   | **4**   | [Mitra Code](#mitra-code)             |
-| `instmntMon`  | N        | 2       | Installment Month                     |
-| `instmntType` | N        | 2       | [Installment Type](#installment-type) |
+| `instmntMon`  | **N**    | **2**   | Installment Month                     |
+| `instmntType` | **N**    | **2**   | [Installment Type](#installment-type) |
