@@ -22,9 +22,9 @@ Integration Step :
 <ul>
   <li>
     <input type="checkbox" id="list-item-akulakuv2">
-    <label for="list-item-akulakuv2" class="first">Akulaku Transaction Flow (CHANGE THIS)</label>
+    <label for="list-item-akulakuv2" class="first">Akulaku Transaction Flow (Coming Soon)</label>
     <ul>
-      <img src="/images/cpay-normal-v2-flow.png">
+      <h1>(Coming Soon)</h1>
     </ul>
   </li>
 </ul>
@@ -34,9 +34,9 @@ Integration Step :
 <ul>
   <li>
     <input type="checkbox" id="list-item-kredivov2">
-    <label for="list-item-kredivov2" class="first">Kredivo Transaction Flow (CHANGE THIS)</label>
+    <label for="list-item-kredivov2" class="first">Kredivo Transaction Flow (Coming Soon)</label>
     <ul>
-      <img src="/images/cpay-normal-v2-flow.png">
+      <h1>(Coming Soon)</h1>
     </ul>
   </li>
 </ul>

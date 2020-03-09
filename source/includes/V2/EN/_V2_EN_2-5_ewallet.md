@@ -24,7 +24,7 @@ Integration Step :
     <input type="checkbox" id="list-item-ovov2">
     <label for="list-item-ovov2" class="first">OVO Transaction Flow (CHANGE THIS)</label>
     <ul>
-      <img src="/images/cpay-normal-v2-flow.png">
+      <h1>(Coming Soon)</h1>
     </ul>
   </li>
 </ul>
@@ -36,7 +36,7 @@ Integration Step :
     <input type="checkbox" id="list-item-linkv2">
     <label for="list-item-linkv2" class="first">LinkAja Transaction Flow (CHANGE THIS)</label>
     <ul>
-      <img src="/images/cpay-normal-v2-flow.png">
+      <h1>(Coming Soon)</h1>
     </ul>
   </li>
 </ul>
