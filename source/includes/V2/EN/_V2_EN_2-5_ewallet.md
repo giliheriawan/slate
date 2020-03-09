@@ -173,29 +173,7 @@ Integration Step :
 | `transTm`     | **N**    | **6**    | Transction Time (HH24MISS)        |
 | `description` | **AN**   | **100**  | Transaction Description           |
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-BELUM DIEDITBELUM DIEDITBELUM DIEDITBELUM DIEDITBELUM DIEDITBELUM DIEDITBELUM DIEDITBELUM DIEDITBELUM DIEDITBELUM DIEDITBELUM DIEDIT
-## E-Wallet Payment
+## Payment - E-Wallet
 
 > Sample POST Parameter Request
 >
