@@ -2,7 +2,7 @@
 NICEPay offers Pay Loan (Cardless Credit) as a Payment Method.<br>
 Notification will be sent real-time when customer has completed the payment.<br>
 
-Supported E-Wallet:
+Supported Payloan:
 <ol type="1">
   <li>Akulaku</li>
   <li>Kredivo</li>
