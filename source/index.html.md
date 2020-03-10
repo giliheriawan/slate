@@ -30,7 +30,7 @@ There are two Versions of our API, allowing you to interact securely with our AP
 
 Have any inquiry ?<br>Feel free contact us : [it@nicepay.co.id](mailto:it@nicepay.co.id).
 
-### Prerequisites
+## Prerequisites
 <ol type="1">
   <li>Contact our Merchant Acquisition Staff
   <li>Get Test MID (Merchant ID)
@@ -39,7 +39,7 @@ Have any inquiry ?<br>Feel free contact us : [it@nicepay.co.id](mailto:it@nicepa
   <li>Read NICEPAY API Documentation
 </ol>
 
-### Integration Process
+## Integration Process
 <ol type="1">
   <li>Understanding SDK, Parameters and Payment Flow
   <li>Explore API Operation Calls
