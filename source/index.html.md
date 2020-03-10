@@ -10,7 +10,6 @@ toc_footers:
   - <a href='http://nicepay.co.id/'>Sign Up</a>
 
 includes:
-  - border
 
 search: true
 ---
