@@ -22,7 +22,7 @@ Integration Step :
 <ul>
   <li>
     <input type="checkbox" id="list-item-akulakuv2">
-    <label for="list-item-akulakuv2" class="first">Akulaku Transaction Flow (Coming Soon)</label>
+    <label for="list-item-akulakuv2" class="first">Akulaku Transaction Flow</label>
     <ul>
       <img src="/images/akulaku-v2-flow.jpg">
     </ul>
@@ -34,7 +34,7 @@ Integration Step :
 <ul>
   <li>
     <input type="checkbox" id="list-item-kredivov2">
-    <label for="list-item-kredivov2" class="first">Kredivo Transaction Flow (Coming Soon)</label>
+    <label for="list-item-kredivov2" class="first">Kredivo Transaction Flow</label>
     <ul>
       <img src="/images/kredivo-v2-flow.jpg">
     </ul>
