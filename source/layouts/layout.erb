@@ -142,11 +142,11 @@ under the License.
     <ul class="search-results"></ul>
   <% end %>
   <div id="toc" class="toc-list-h1">
-    <li>
-      <a style="color: #00B5AD !important;" class="toc-h1 toc-link">Content</a>
-      <% toc_data(page_content).each do |h1| %>
-        <% element_content = h1[:content].to_s %>
-        <% h1_content = element_content.split(' - ')[0] %>
+<!--    <li><h2 style="color: #00B5AD !important;" class="toc-h1 toc-link">Content</h2></li>-->
+    <% toc_data(page_content).each do |h1| %>
+      <% element_content = h1[:content].to_s %>
+      <% h1_content = element_content.split(' - ')[0] %>
+      <li>
         <a href="#<%= h1[:id] %>" class="toc-h1 toc-link" data-title="<%= h1_content %>"><%= h1_content %></a>
         <% if h1[:children].length > 0 %>
           <ul class="toc-list-h2">
@@ -159,12 +159,10 @@ under the License.
             <% end %>
           </ul>
         <% end %>
-      <% end %>
-    </li>
-
+      </li>
+    <% end %>
     <!--FOR HOMEPAGE-->
     <% if page_classes == 'index' %>
-      <li><a style="color: #00B5AD !important;" class="toc-h1 toc-link">API Version</a></li>
       <li>
         <a class="toc-h1 toc-link" href="./api-v1-professional-EN.html" class="en">API V1 Professional</a>
       </li>
