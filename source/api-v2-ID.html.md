@@ -4,7 +4,8 @@ title: NICEPAY API Documentation - V2
 language_tabs: # must be one of https://git.io/vQNgJ
 
 toc_footers:
-
+  - <li><a href='http://nicepay.co.id/'>Sign Up</a></li>
+  
 includes:
   - under_construction
   - V2/ID/V2_ID_1_registration

@@ -8,7 +8,8 @@ language_tabs: # must be one of https://git.io/vQNgJ
   - python
 
 toc_footers:
-
+  - <li><a href='http://nicepay.co.id/'>Sign Up</a></li>
+  
 includes:
   - V1/EN/V1_EN_1-2_ent_creditcard
   - V1/EN/V1_EN_1-3_ent_va

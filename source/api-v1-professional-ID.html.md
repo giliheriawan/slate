@@ -8,6 +8,7 @@ language_tabs: # must be one of https://git.io/vQNgJ
   - python
 
 toc_footers:
+  - <li><a href='http://nicepay.co.id/'>Sign Up</a></li>
 
 includes:
   - under_construction
