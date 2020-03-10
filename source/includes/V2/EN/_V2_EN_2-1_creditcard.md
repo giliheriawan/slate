@@ -152,7 +152,7 @@ Transaction Flow:
 | `cardExpYymm`   | **N**    | **4**    | **Expiry** *(YYMM)* **Required**                            | 2412                             |
 | `cardCvv`       | **N**    | **4**    | **Card CVV** **Required**                                   | 141                              |
 | `cardHolderNm`  | **AN**   | **50**   | **Card Holder Name** **Required CIMB**                      | John Doe                         |
-| `merchantToken` | **AN**   | **255**  | **merchantToken** Required                                  | 9338d54573688ae18e175240b025…    |
+| `merchantToken` | **AN**   | **255**  | **merchantToken** **Required**                              | 9338d54573688ae18e175240b025…    |
 | `callBackUrl`   | **AN**   | **255**  | **Payment Result URL** **Required**                         | https://merchant.com/callBackUrl |
 
 ### Response Parameters - Credit Card Payment
