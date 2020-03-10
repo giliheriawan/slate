@@ -260,7 +260,7 @@ print("tXid : " + result['data']['tXid'])
 |-------------------|-------------------|----------|----------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------|
 | `iMid`            | **AN**          	| **10**   | **Merchant ID** **Required**                    				| IONPAYTEST                                                                                     			|
 | `merchantToken`   | **AN**          	| **255**  | **Merchant Token** **Required**                 				| 6cfccfc0046773c1b589d8e98f8b596c<br>284f3c70a4ecf86eba14c18944b74bcd                           			|
-| `payMethod`       | **AN**          	| **2**    | **[Payment Method](#payment-method)** **Required**             | 01												                               							|
+| `payMethod`       | **N**          	| **2**    | **[Payment Method](#payment-method)** **Required**             | 01												                               							|
 | `currency`        | **A**           	| **3**    | **Currency** **Required**                       				| IDR                                                                                            			|
 | `amt`             | **N**           	| **12**   | **Transaction Amount** **Required**             				| 10000                                                                                          			|
 | `instmntType`     | **N**           	| **2**    | **[Installment Type](#installment-type)** **Required for CC**  | 1                                                    					                                    |

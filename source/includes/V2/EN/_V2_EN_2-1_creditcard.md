@@ -188,27 +188,27 @@ Transaction Flow:
 > currency: IDR<br>
 >
 
-| Parameter   | Type | Size   | Description                           |
-| ----------- | ---- | ------ | ------------------------------------- |
-| resultCd    | N    | 4      | Result Code                           |
-| resultMsg   | AN   | 255    | Result Message                        |
-| tXid        | AN   | 30     | Transaction ID                        |
-| referenceNo | ANS  | 40     | Merchant Ref. No                      |
-| payMethod   | N    | 2      | Payment Method                        |
-| amt         | N    | 12     | Payment Amount                        |
-| transDt     | N    | 8      | Transaction Date (YYYYMMDD)           |
-| transTm     | N    | 6      | Transaction Time (HH24MISS)           |
-| description | AN   | 100    | Transaction Description               |
-| authNo      | N    | 10     | Approval No                           |
-| issuBankCd  | A    | 4      | Issue [Bank Code](#bank-code)         |
-| issuBankNm  | A    | &nbsp; | Issue Bank Name                       |
-| acquBankCd  | A    | 4      | Acquire [Bank Code](#bank-code)       |
-| acquBankNm  | A    | &nbsp; | Acquire Bank Name.                    |
-| cardNo      | N    | 20     | Masked Card Number                    |
-| cardExpYymm | N    | 4      | Card Expiry (YYMM)                    |
-| currency    | AN   | 3      | Currency                              |
-| goodsNm     | AN   | 100    | Goods Name                            |
-| billingNm   | A    | 30     | Billing Name                          |
-| ccTransType | AN   | 2      | Credit Card Trans Type                |
-| instmntType | N    | 2      | [Installment Type](#installment-type) |
-| instmntMon  | N    | 2      | Insatllment Month                     |
+| Parameter     | **Type** | **Size** | Description                           |
+| ------------- | -------- | -------- | ------------------------------------- |
+| `resultCd`    | **N**    | **4**    | Result Code                           |
+| `resultMsg`   | **AN**   | **255**  | Result Message                        |
+| `tXid`        | **AN**   | **30**   | Transaction ID                        |
+| `referenceNo` | **ANS**  | **40**   | Merchant Ref. No                      |
+| `payMethod`   | **N**    | **2**    | Payment Method                        |
+| `amt`         | **N**    | **12**   | Payment Amount                        |
+| `transDt`     | **N**    | **8**    | Transaction Date (YYYYMMDD)           |
+| `transTm`     | **N**    | **6**    | Transaction Time (HH24MISS)           |
+| `description` | **AN**   | **100**  | Transaction Description               |
+| `authNo`      | **N**    | **10**   | Approval No                           |
+| `issuBankCd`  | **A**    | **4**    | Issue [Bank Code](#bank-code)         |
+| `issuBankNm`  | **A**    | &nbsp;   | Issue Bank Name                       |
+| `acquBankCd`  | **A**    | **4**    | Acquire [Bank Code](#bank-code)       |
+| `acquBankNm`  | **A**    | &nbsp;   | Acquire Bank Name.                    |
+| `cardNo`      | **N**    | **20**   | Masked Card Number                    |
+| `cardExpYymm` | **N**    | **4**    | Card Expiry (YYMM)                    |
+| `currency`    | **AN**   | **3**    | Currency                              |
+| `goodsNm`     | **AN**   | **100**  | Goods Name                            |
+| `billingNm`   | **A**    | **30**   | Billing Name                          |
+| `ccTransType` | **AN**   | **2**    | Credit Card Trans Type                |
+| `instmntType` | **N**    | **2**    | [Installment Type](#installment-type) |
+| `instmntMon`  | **N**    | **2**    | Insatllment Month                     |

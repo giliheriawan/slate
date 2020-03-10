@@ -102,7 +102,7 @@ Integration Step :
 
 | Parameters  | **Type** | **Size** | **Description**                                  | Value         |
 | ----------- | -------- | -------- | ------------------------------------------------ | ------------- |
-| `payMethod` | **AN**   | **2**    | **E-Wallet** **Required**                        | 05            |
+| `payMethod` | **N**    | **2**    | **E-Wallet** **Required**                        | 05            |
 | `mitraCd`   | **A**    | **4**    | **[Mitra Code](#mitra-code)** **Required**       | OVOE          |
 | `userIP`    | **AN**   | **15**   | **Customer IP** **Required**                     | 127.0.0.1     |
 | `cartData`  | **AN**   | **4000** | **[Cart Data](#ewallet-cart-data)** **Required** | `JSON`        |
