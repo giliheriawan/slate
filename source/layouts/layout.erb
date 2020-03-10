@@ -142,7 +142,7 @@ under the License.
     <ul class="search-results"></ul>
   <% end %>
   <div id="toc" class="toc-list-h1">
-    <h2 class="toc-h2">Content</h2>
+    <a class="toc-h1">Content</a>
     <% toc_data(page_content).each do |h1| %>
       <% element_content = h1[:content].to_s %>
       <% h1_content = element_content.split(' - ')[0] %>
