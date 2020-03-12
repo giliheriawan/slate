@@ -263,6 +263,7 @@ print("tXid : " + result['data']['tXid'])
 | `payMethod`       | **N**          	| **2**    | **[Payment Method](#payment-method)** **Required**             | 01												                               							|
 | `currency`        | **A**           	| **3**    | **Currency** **Required**                       				| IDR                                                                                            			|
 | `amt`             | **N**           	| **12**   | **Transaction Amount** **Required**             				| 10000                                                                                          			|
+| `cartData`        | **`JSON OBJECT`** | **4000** | **Transaction Cart Data** **Required**                   	  	| [cartData](#cart-data) JSON                                                                    			|
 | `instmntType`     | **N**           	| **2**    | **[Installment Type](#installment-type)** **Required for CC**  | 1                                                    					                                    |
 | `instmntMon`      | **N**           	| **2**    | **Installment Month** **Required for CC**       				| 1                                                                                              			|
 | `referenceNo`     | **ANS**         	| **40**   | **Merchant Order Number** **Required**          				| MerchantReferenceNumber1                                                                       			|
@@ -297,7 +298,6 @@ print("tXid : " + result['data']['tXid'])
 | `userSessionID`   | **AN**          	| **100**  | **User Session ID**                        	  				| userSessionID                                                                                  			|
 | `userAgent`       | **AN**          	| **100**  | **User Agent Information**                  	  				| Mozilla                                                                                        			|
 | `userLanguage`    | **A**           	| **2**    | **User Language**                           	  				| en-US                                                                                          			|
-| `cartData`        | **`JSON OBJECT`** | **4000** | **Transaction Cart Data**                   	  				| [cartData](#cart-data) JSON                                                                    			|
 | `worker`          | **AN**          	| **10**   | **Worker**                                 	  				| worker                                                                                         			|
 | `merFixAcctId`    | **N**           	| **40**   | **Merchant Fix VA Number** **Required for Fix-Type VA**		| 14015824                                                                                       			|
 | `vacctValidDt`    | **N**           	| **8**    | **Virtual Account Valid Date** *YYYYMMDD*     	      	  		| 20180404                                                                                       			|
