@@ -49,6 +49,11 @@ Have any inquiry ?<br>Feel free contact us : [it@nicepay.co.id](mailto:it@nicepa
 
 # Authentication and Credentials
 
+To connect to our APIs, `merchantToken` is **required** to be sent along with other parameters.
+This token is generated using `SHA-256` hashing which includes secret keys such as `iMid`, `merchantKey` and other keys.
+
+## Sandbox Credentials
+
 > Example: Generating Merchant Token
 
 ```java
@@ -91,17 +96,12 @@ def getMerchantToken():
         return token
 ```
 
-To connect to our APIs, `merchantToken` is **required** to be sent along with other parameters.
-This token is generated using `SHA-256` hashing which includes secret keys such as `iMid`, `merchantKey` and other keys.
-
-## Sandbox Credentials
 The credentials below are provided only for testing purposes
 
 |                           |                                                              |
 | ------------------------- | ------------------------------------------------------------ |
 | **`iMid `** **(Merchant ID)** | IONPAYTEST                                                   |
 | **`merchantKey`**         | 33F49GnCMS1mFYlGXisbUDzVf2ATWCl9k3R++d5hDd3Frmuos/XLx8XhXpe+LDYAbpGKZYSwtlyyLOtS/8aD7A== |
-
 
 <aside class="notice">
 Concatenation of the keys to generate <code>merchantToken</code> should not include spaces.
