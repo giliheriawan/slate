@@ -53,49 +53,6 @@ To connect to our APIs, `merchantToken` is **required** to be sent along with ot
 This token is generated using `SHA-256` hashing which includes secret keys such as `iMid`, `merchantKey` and other keys.
 
 ## Sandbox Credentials
-
-> Example: Generating Merchant Token
-
-```java
-public String makeTokenV1(String amount, String ReferenceNo) throws Exception {
-		MessageDigest md = MessageDigest.getInstance("SHA-256");
-		String textToken = iMid + referenceNo + amt + merchantKey;
-
-		md.update(textToken.getBytes("UTF-8"));
-		merchantToken = String.format("%064x", new java.math.BigInteger(1, md.digest()));
-
-		return merchantToken;
-	}
-```
-
-```php
-<?php
-public function merchantToken() {
-        return hash('sha256',   $this->get('iMid').
-                                $this->get('referenceNo').
-                                $this->get('amt').
-                                $this->merchantKey
-        );
-    }
-?>
-```
-
-```python
-def getMerchantToken():
-    if not iMid:
-        sys.exit("Cannot set Merchant Token, please set param iMid using NICEPay.iMid = iMid values")
-    elif not referenceNo:
-        sys.exit("Cannot set Merchant Token, please set param referenceNo using NICEPay.referenceNo = referenceNo values")
-    elif not amt:
-        sys.exit("Cannot set Merchant Token, please set param amt using NICEPay.amt = amt values")
-    elif not merchantKey:
-        sys.exit("Cannot set Merchant Token, please set param merchantKey using NICEPay.merchantKey = merchantKey values")
-    else:
-        mercToken = iMid + referenceNo + amt + merchantKey
-        token = hashlib.sha256(mercToken.encode('ascii')).hexdigest()
-        return token
-```
-
 The credentials below are provided only for testing purposes
 
 |                           |                                                              |
