@@ -6,6 +6,7 @@ language_tabs: # must be one of https://git.io/vQNgJ
   
 toc_footers:
   - <li><a href='http://nicepay.co.id/'>Sign Up</a></li>
+  - <li><a href="mailto:it@nicepay.co.id?Subject=Hello%20Nicepay!" target="_top">Contact Us</a></li>
 
 includes:
   - V2/EN/V2_EN_1_registration
