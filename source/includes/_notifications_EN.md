@@ -30,6 +30,7 @@ To Allow Push Notifications from NICEPAY Server, please add these details to you
 | **Method**                                      | Merchant Token                            | IP                                     | Description                                                  |
 | ----------------------------------------------- | ----------------------------------------- | -------------------------------------- | ------------------------------------------------------------ |
 | **POST** **application/x-www-form-urlencoded*** | SHA256(`iMid`+`tXid`+`amt`+`merchantKey`) | `103.20.51.0/24` <br> `103.117.8.0/24` | Notification from `User-Agent: Jakarta Commons-HttpClient/3.1` |
+
 ## Notification Parameter
 
 | **Parameter**       | **Type** | **Size** | Description                                          |
@@ -46,6 +47,7 @@ To Allow Push Notifications from NICEPAY Server, please add these details to you
 | **`billingNm`**     | **A**    | **30**   | Billing name                                         |
 | **`matchCl`**       | **N**    | **1**    | Payment [Flag](#notification-match-amount-indicator) |
 | **`status`**        | **A**    | **1**    | Deposit Status:<br>`0` Deposit<br>`1` Reversal       |
+
 ### Additional Parameter for Credit Card Notification
 
 | **Parameter**        | **Type** | **Size** | Description                                                  |

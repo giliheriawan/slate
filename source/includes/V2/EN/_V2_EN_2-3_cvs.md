@@ -86,12 +86,12 @@ Transaction Flow:
 
 <aside class="notice">Please refer to <a href="#registration">Register API</a> for Complete Parameters, the parameters below are the additional that will be required for CVS Registration</aside>
 
-| Parameters   | **Type** | **Size** | **Description**                               | Example  |
-| ------------ | -------- | -------- | --------------------------------------------- | -------- |
-| `payMethod`  | **N**    | **2**    | **Convenience Store (CVS)** **Required**      | 03       |
-| `mitraCd`    | **A**    | **4**    | **[Mitra Code](#mitra-code)** **Required**    | ALMA     |
-| `payValidDt` | **N**    | **8**    | **CVS Expiry Date** **Required** *(YYYYMMDD)* | 20200404 |
-| `payValidTm` | **N**    | **6**    | **CVS Expiry Time** **Required** *(HH24MISS)* | 091309   |
+| **Parameters**                | **Type** | **Size** | Description                 | Example  |
+| ----------------------------- | -------- | -------- | --------------------------- | -------- |
+| **`payMethod`** **Required**  | **N**    | **2**    | Convenience Store (CVS)     | 03       |
+| **`mitraCd`** **Required**    | **A**    | **4**    | [Mitra Code](#mitra-code)   | ALMA     |
+| **`payValidDt`** **Required** | **N**    | **8**    | CVS Expiry Date  (YYYYMMDD) | 20200404 |
+| **`payValidTm`** **Required** | **N**    | **6**    | CVS Expiry Time  (HH24MISS) | 091309   |
 
 ### Response Parameters - Convenience Store Registration
 
@@ -122,18 +122,18 @@ Transaction Flow:
 }
 ```
 
-| Parameter     | **Type** | **Size** | Description                       |
-| ------------- | -------- | -------- | --------------------------------- |
-| `resultCd`    | **N**    | **4**    | [Result Code](#error-code)        |
-| `resultMsg`   | **AN**   | **255**  | [Result Message](#error-code)     |
-| `tXid`        | **AN**   | **30**   | Transactionn ID                   |
-| `referenceNo` | **ANS**  | **40**   | Merchant Ref. No                  |
-| `payMethod`   | **N**    | **2**    | [Payment Method](#payment-method) |
-| `amt`         | **N**    | **12**   | Payment Amount                    |
-| `transDt`     | **N**    | **8**    | Transaction Date (YYYYMMDD)       |
-| `transTm`     | **N**    | **6**    | Transaction Time (HH24MISS)       |
-| `description` | **AN**   | **100**  | Transaction Description           |
-| `mitraCd`     | **A**    | **4**    | [Mitra Code](#mitra-code)         |
-| `payNo`       | **N**    | **12**   | CVS Payment No.                   |
-| `payValidDt`  | **N**    | **8**    | VA Expiry Date (YYYYMMDD)         |
-| `payValidTm`  | **N**    | **6**    | VA Expiry Time (HH24MISS)         |
+| **Parameter**     | **Type** | **Size** | Description                       |
+| ----------------- | -------- | -------- | --------------------------------- |
+| **`resultCd`**    | **N**    | **4**    | [Result Code](#error-code)        |
+| **`resultMsg`**   | **AN**   | **255**  | [Result Message](#error-code)     |
+| **`tXid`**        | **AN**   | **30**   | Transactionn ID                   |
+| **`referenceNo`** | **ANS**  | **40**   | Merchant Ref. No                  |
+| **`payMethod`**   | **N**    | **2**    | [Payment Method](#payment-method) |
+| **`amt`**         | **N**    | **12**   | Payment Amount                    |
+| **`transDt`**     | **N**    | **8**    | Transaction Date (YYYYMMDD)       |
+| **`transTm`**     | **N**    | **6**    | Transaction Time (HH24MISS)       |
+| **`description`** | **AN**   | **100**  | Transaction Description           |
+| **`mitraCd`**     | **A**    | **4**    | [Mitra Code](#mitra-code)         |
+| **`payNo`**       | **N**    | **12**   | CVS Payment No.                   |
+| **`payValidDt`**  | **N**    | **8**    | VA Expiry Date (YYYYMMDD)         |
+| **`payValidTm`**  | **N**    | **6**    | VA Expiry Time (HH24MISS)         |

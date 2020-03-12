@@ -100,12 +100,12 @@ Integration Step :
 
 <aside class="notice">Please refer to <a href="#registration">Register API</a> for Complete Parameters, the parameters below are the additional that will be required for E-Wallet Registration</aside>
 
-| Parameters  | **Type** | **Size** | **Description**                                  | Value         |
-| ----------- | -------- | -------- | ------------------------------------------------ | ------------- |
-| `payMethod` | **N**    | **2**    | **E-Wallet** **Required**                        | 05            |
-| `mitraCd`   | **A**    | **4**    | **[Mitra Code](#mitra-code)** **Required**       | OVOE          |
-| `userIP`    | **AN**   | **15**   | **Customer IP** **Required**                     | 127.0.0.1     |
-| `cartData`  | **AN**   | **4000** | **[Cart Data](#ewallet-cart-data)** **Required** | `JSON`        |
+| **Parameters**  | **Type**            | **Size** | Description                     | Value     |
+| --------------- | ------------------- | -------- | ------------------------------- | --------- |
+| **`payMethod`** | **N**               | **2**    | E-Wallet                        | 05        |
+| **`mitraCd`**   | **A**               | **4**    | [Mitra Code](#mitra-code)       | OVOE      |
+| **`userIP`**    | **ANS**             | **15**   | Customer IP                     | 127.0.0.1 |
+| **`cartData`**  | **`JSON Object`**   | **4000** | [Cart Data](#ewallet-cart-data) | `JSON`    |
 
 ### E-Wallet Cart Data
 <h3 id="ewallet-cart-data"></h3>
@@ -161,17 +161,17 @@ Integration Step :
 }
 ```
 
-| Parameters    | **Type** | **Size** | Description                       |
-| ------------- | -------- | -------- | --------------------------------- |
-| `resultCd`    | **N**    | **4**    | [Result Code](#error-code)        |
-| `resultMsg`   | **AN**   | **255**  | [Result Message](#error-code)     |
-| `tXid`        | **AN**   | **30**   | Transactionn ID                   |
-| `referenceNo` | **ANS**  | **40**   | Merchant Ref. No                  |
-| `payMethod`   | **N**    | **2**    | [Payment Method](#payment-method) |
-| `amt`         | **N**    | **12**   | Payment Amount                    |
-| `transDt`     | **N**    | **8**    | Transaction Date (YYYYMMDD)       |
-| `transTm`     | **N**    | **6**    | Transction Time (HH24MISS)        |
-| `description` | **AN**   | **100**  | Transaction Description           |
+| **Parameters**    | **Type** | **Size** | Description                       |
+| ----------------- | -------- | -------- | --------------------------------- |
+| **`resultCd`**    | **N**    | **4**    | [Result Code](#error-code)        |
+| **`resultMsg`**   | **AN**   | **255**  | [Result Message](#error-code)     |
+| **`tXid`**        | **AN**   | **30**   | Transactionn ID                   |
+| **`referenceNo`** | **ANS**  | **40**   | Merchant Ref. No                  |
+| **`payMethod`**   | **N**    | **2**    | [Payment Method](#payment-method) |
+| **`amt`**         | **N**    | **12**   | Payment Amount                    |
+| **`transDt`**     | **N**    | **8**    | Transaction Date (YYYYMMDD)       |
+| **`transTm`**     | **N**    | **6**    | Transction Time (HH24MISS)        |
+| **`description`** | **AN**   | **100**  | Transaction Description           |
 
 ## Payment - E-Wallet
 
@@ -190,12 +190,12 @@ Integration Step :
 
 <br>**E-Wallet Payment Parameters**
 
-| Parameter       | **Type** | **Size** | **Description**                                         | Example                          |
-| --------------- | -------- | -------- | ------------------------------------------------------- | -------------------------------- |
-| `timeStamp`     | **N**    | **14**   | **Request Timestamp** **Required** *(YYYYMMDDHH24MISS)* | 20170708123456                   |
-| `tXid`          | **AN**   | **30**   | **Transaction ID** **Required**                         | IONPAYTEST02201607291027025291   |
-| `merchantToken` | **AN**   | **255**  | **merchantToken** **Required**                          | 9338d54573688ae18e175240b02...   |
-| `callBackUrl`   | **AN**   | **255**  | **Result Page** **Required**                            | https://merchant.com/callBackUrl |
+| **Parameter**                    | **Type** | **Size** | Description                          | Example                          |
+| -------------------------------- | -------- | -------- | ------------------------------------ | -------------------------------- |
+| **`timeStamp`** **Required**     | **N**    | **14**   | Request Timestamp (YYYYMMDDHH24MISS) | 20170708123456                   |
+| **`tXid`** **Required**          | **AN**   | **30**   | Transaction ID                       | IONPAYTEST02201607291027025291   |
+| **`merchantToken`** **Required** | **AN**   | **255**  | merchantToken                        | 9338d54573688ae18e175240b02...   |
+| **`callBackUrl`** **Required**   | **AN**   | **255**  | Result Page                          | https://merchant.com/callBackUrl |
 
 ### Response Parameters - E-Wallet Payment
 
@@ -203,18 +203,18 @@ Integration Step :
 >
 > `http://merchant.com/callbackUrl?resultCd=0000&resultMsg=SUCCESS&tXid=IONPAYTEST05201908141607307963&referenceNo=ORD12345&payMethod=05&amt=10000&transDt=20180302&transTm=151052&description=Transaction Description&mitraCd=OVOE&currency=IDR&goodsNm=Test Transaction Nicepay&billingNm=Customer Name`
 
-| Parameter     | **Type** | Size    | Description                       |
-| ------------- | -------- | ------- | --------------------------------- |
-| `resultCd`    | **N**    | **4**   | [Result Code](#error-code)        |
-| `resultMsg`   | **AN**   | **255** | [Result Message](#error-code)     |
-| `tXid`        | **AN**   | **30**  | Transaction ID                    |
-| `referenceNo` | **ANS**  | **40**  | Merchant Ref. No                  |
-| `payMethod`   | **N**    | **2**   | [Payment Method](#payment-method) |
-| `amt`         | **N**    | **12**  | Payment Amount                    |
-| `currency`    | **AN**   | **3**   | Currency                          |
-| `goodsNm`     | **AN**   | **100** | Goods Name                        |
-| `billingNm`   | **AN**   | **30**  | Buyer Name                        |
-| `transDt`     | **N**    | **8**   | Transaction Date (YYYYMMDD)       |
-| `transTm`     | **N**    | **6**   | Transaction Time (HH24MISS)       |
-| `description` | **AN**   | **100** | Transaction Description           |
-| `mitraCd`     | **AN**   | **4**   | [Mitra Code](#mitra-code)         |
+| **Parameter**     | **Type** | Size    | Description                       |
+| ----------------- | -------- | ------- | --------------------------------- |
+| **`resultCd`**    | **N**    | **4**   | [Result Code](#error-code)        |
+| **`resultMsg`**   | **AN**   | **255** | [Result Message](#error-code)     |
+| **`tXid`**        | **AN**   | **30**  | Transaction ID                    |
+| **`referenceNo`** | **ANS**  | **40**  | Merchant Ref. No                  |
+| **`payMethod`**   | **N**    | **2**   | [Payment Method](#payment-method) |
+| **`amt`**         | **N**    | **12**  | Payment Amount                    |
+| **`currency`**    | **A**    | **3**   | Currency                          |
+| **`goodsNm`**     | **AN**   | **100** | Goods Name                        |
+| **`billingNm`**   | **A**    | **30**  | Buyer Name                        |
+| **`transDt`**     | **N**    | **8**   | Transaction Date (YYYYMMDD)       |
+| **`transTm`**     | **N**    | **6**   | Transaction Time (HH24MISS)       |
+| **`description`** | **AN**   | **100** | Transaction Description           |
+| **`mitraCd`**     | **A**    | **4**   | [Mitra Code](#mitra-code)         |

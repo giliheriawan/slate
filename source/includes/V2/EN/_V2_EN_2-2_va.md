@@ -95,13 +95,13 @@ Transaction Flow:
 
 <br>**Virtual Account Registration Additional Parameters**
 
-| Parameters     | **Type** | **Size** | **Description**                                          | Value    |
-| -------------- | -------- | -------- | -------------------------------------------------------- | -------- |
-| `payMethod`    | **AN**   | **2**    | **Virtual Account** **Required**                         | 02       |
-| `bankCd`       | **A**    | **4**    | **Bank Code** **Required**                               | CENA     |
-| `vacctValidDt` | **N**    | **8**    | **VA Expiry Date** **Required** *(YYYYMMDD)*             | 20200303 |
-| `vacctValidTm` | **N**    | **6**    | **VA Expiry Time** **Required** *(HH24MISS)*             | 091309   |
-| `merFixAcctld` | **AN**   | **40**   | **Merchant Reserved VA ID** **Required for Fix VA Type** | 000045   |
+| **Parameters**                                  | **Type** | **Size** | Description                | Value    |
+| ----------------------------------------------- | -------- | -------- | -------------------------- | -------- |
+| **`payMethod`** **Required**                    | **N**    | **2**    | Virtual Account            | 02       |
+| **`bankCd`** **Required**                       | **A**    | **4**    | Bank Code                  | CENA     |
+| **`vacctValidDt`** **Required**                 | **N**    | **8**    | VA Expiry Date  (YYYYMMDD) | 20200303 |
+| **`vacctValidTm`** **Required**                 | **N**    | **6**    | VA Expiry Time  (HH24MISS) | 091309   |
+| **`merFixAcctld`** **Required for Fix VA Type** | **N**    | **8**    | Merchant Reserved VA ID    | 000045   |
 
 ### Response Parameters - Virtual Account Registration
 
@@ -132,21 +132,21 @@ Transaction Flow:
 }
 ```
 
-| Parameter      | **Type** | Size    | Description                       |
-| -------------- | -------- | ------- | --------------------------------- |
-| `resultCd`     | **N**    | **4**   | [Result Code](#error-code)        |
-| `resultMsg`    | **AN**   | **255** | [Result Message](#error-code)     |
-| `tXid`         | **AN**   | **30**  | Transactionn ID                   |
-| `referenceNo`  | **ANS**  | **40**  | Merchant Ref. No                  |
-| `payMethod`    | **N**    | **2**   | [Payment Method](#payment-method) |
-| `amt`          | **N**    | **12**  | Payment Amount                    |
-| `transDt`      | **N**    | **8**   | Transaction Date (YYYYMMDD)       |
-| `transTm`      | **N**    | **6**   | Transction Time (HH24MISS)        |
-| `description`  | **AN**   | **100** | Transaction Description           |
-| `bankCd`       | **A**    | **4**   | [Bank Code](#bank-code)           |
-| `vacctNo`      | **N**    | **20**  | VA Number                         |
-| `currency`     | **AN**   | **3**   | Currency                          |
-| `goodsNm`      | **AN**   | **100** | Goods Name                        |
-| `billingNm`    | **A**    | **30**  | Buyer Name                        |
-| `vacctValidDt` | **N**    | **8**   | VA Expiry Date (YYYYMMDD)         |
-| `vacctValidTm` | **N**    | **6**   | VA Expiry Time (HH24MISS)         |
+| **Parameter**      | **Type** | **Size**| Description                       |
+| ------------------ | -------- | ------- | --------------------------------- |
+| **`resultCd`**     | **N**    | **4**   | [Result Code](#error-code)        |
+| **`resultMsg`**    | **AN**   | **255** | [Result Message](#error-code)     |
+| **`tXid`**         | **AN**   | **30**  | Transactionn ID                   |
+| **`referenceNo`**  | **ANS**  | **40**  | Merchant Ref. No                  |
+| **`payMethod`**    | **N**    | **2**   | [Payment Method](#payment-method) |
+| **`amt`**          | **N**    | **12**  | Payment Amount                    |
+| **`transDt`**      | **N**    | **8**   | Transaction Date (YYYYMMDD)       |
+| **`transTm`**      | **N**    | **6**   | Transction Time (HH24MISS)        |
+| **`description`**  | **AN**   | **100** | Transaction Description           |
+| **`bankCd`**       | **A**    | **4**   | [Bank Code](#bank-code)           |
+| **`vacctNo`**      | **N**    | **20**  | VA Number                         |
+| **`currency`**     | **A**    | **3**   | Currency                          |
+| **`goodsNm`**      | **AN**   | **100** | Goods Name                        |
+| **`billingNm`**    | **A**    | **30**  | Buyer Name                        |
+| **`vacctValidDt`** | **N**    | **8**   | VA Expiry Date (YYYYMMDD)         |
+| **`vacctValidTm`** | **N**    | **6**   | VA Expiry Time (HH24MISS)         |

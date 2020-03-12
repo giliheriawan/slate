@@ -83,11 +83,11 @@ Transaction Flow :
 
 <aside class="notice">Please refer to <a href="#registration">Register API</a> for Complete Parameters, the parameters below are the additional that will be required for ClickPay Registration</aside>
 
-| Parameters  | **Type** | **Size** | **Description**                            | Example |
-| ----------- | -------- | -------- | ------------------------------------------ | ------- |
-| `payMethod` | **N**    | **2**    | **ClickPay** **Required**                  | 04      |
-| `mitraCd`   | **A**    | **4**    | **[Mitra code](#mitra-code)** **Required** | CIMC    |
-| `mRefNo`    | **AN**   | **18**   | **ClickPay CIMB Reference No**             |         |
+| **Parameters**               | **Type** | **Size** | Description                | Example |
+| ---------------------------- | -------- | -------- | -------------------------- | ------- |
+| **`payMethod`** **Required** | **N**    | **2**    | ClickPay                   | 04      |
+| **`mitraCd`** **Required**   | **A**    | **4**    | [Mitra code](#mitra-code)  | CIMC    |
+| **`mRefNo`**                 | **AN**   | **18**   | ClickPay CIMB Reference No |         |
 
 ### Response Parameters - ClickPay Registration
 > Sample JSON Response
@@ -117,17 +117,17 @@ Transaction Flow :
 }
 ```
 
-| Parameter     | Type    | **Size** | Description                       |
-| ------------- | ------- | -------- | --------------------------------- |
-| `resultCd`    | **N**   | **4**    | [Result Code](#error-code)        |
-| `resultMsg`   | **AN**  | **255**  | [Result Message](#error-code)     |
-| `tXid`        | **AN**  | **30**   | Transactionn ID                   |
-| `referenceNo` | **ANS** | **40**   | Merchant Ref. No                  |
-| `payMethod`   | **N**   | **2**    | [Payment Method](#payment-method) |
-| `amt`         | **N**   | **12**   | Payment Amount                    |
-| `transDt`     | **N**   | **8**    | Transaction Date (YYYYMMDD)       |
-| `transTm`     | **N**   | **6**    | Transction Time (HH24MISS)        |
-| `description` | **AN**  | **100**  | Transaction Description           |
+| **Parameter**     | **Type**| **Size** | Description                       |
+| ----------------- | ------- | -------- | --------------------------------- |
+| **`resultCd`**    | **N**   | **4**    | [Result Code](#error-code)        |
+| **`resultMsg`**   | **AN**  | **255**  | [Result Message](#error-code)     |
+| **`tXid`**        | **AN**  | **30**   | Transactionn ID                   |
+| **`referenceNo`** | **ANS** | **40**   | Merchant Ref. No                  |
+| **`payMethod`**   | **N**   | **2**    | [Payment Method](#payment-method) |
+| **`amt`**         | **N**   | **12**   | Payment Amount                    |
+| **`transDt`**     | **N**   | **8**    | Transaction Date (YYYYMMDD)       |
+| **`transTm`**     | **N**   | **6**    | Transction Time (HH24MISS)        |
+| **`description`** | **AN**  | **100**  | Transaction Description           |
 
 ## Payment - ClickPay
 
@@ -146,15 +146,15 @@ Transaction Flow :
 
 <br>**ClickPay Payment Parameters**
 
-| Parameter       | Type   | **Size** | **Description**                                             | Example                          |
-| --------------- | ------ | -------- | ----------------------------------------------------------- | -------------------------------- |
-| `timeStamp`     | **N**  | **14**   | **API Request Timestamp** **Required** *(YYYYMMDDHH24MISS)* | 20170708123456                   |
-| `tXid`          | **AN** | **30**   | **Transaction ID** **Required**                             | IONPAYTEST02201607291027025291   |
-| `clickPayNo`    | **N**  | **16**   | **ClickPay No** **Required**                                | 1234567890123456                 |
-| `dataField3`    | **N**  | **16**   | **ClickPay Token 3** **Required**                           | 123                              |
-| `clickPayToken` | **N**  | **6**    | **Code Response Token** **Required**                        | 123456                           |
-| `merchantToken` | **AN** | **255**  | **merchantToken** **Required**                              | 9338d54573688ae18e175240b02...   |
-| `callBackUrl`   | **AN** | **255**  | **Payment Result Url** **Required**                         | https://merchant.com/callBackUrl |
+| **Parameter**       | Type   | **Size** | Description                              | Example                          |
+| ------------------- | ------ | -------- | ---------------------------------------- | -------------------------------- |
+| **`timeStamp`**     | **N**  | **14**   | API Request Timestamp (YYYYMMDDHH24MISS) | 20170708123456                   |
+| **`tXid`**          | **AN** | **30**   | Transaction ID                           | IONPAYTEST02201607291027025291   |
+| **`clickPayNo`**    | **N**  | **16**   | ClickPay No                              | 1234567890123456                 |
+| **`dataField3`**    | **N**  | **16**   | ClickPay Token 3                         | 123                              |
+| **`clickPayToken`** | **N**  | **6**    | Code Response Token                      | 123456                           |
+| **`merchantToken`** | **AN** | **255**  | merchantToken                            | 9338d54573688ae18e175240b02...   |
+| **`callBackUrl`**   | **ANS**| **255**  | Payment Result Url                       | https://merchant.com/callBackUrl |
 
 ### Response Parameters - ClickPay Payment
 
@@ -163,20 +163,20 @@ Transaction Flow :
 > `http://merchant.com/callbackUrl?resultCd=0000&resultMsg=SUCCESS&tXid=TESTIMIDTEST01201803020917502088&referenceNo=ORD12345&payMethod=04&amt=10000&transDt=20180302&transTm=151052&description=Transaction Description&receiptCode=0684G143372548&mitraCd=MDRC&currency=IDR&goodsNm=Test Transaction Nicepay&billingNm=Customer Name&mRefNo=2017514268567`
 
 
-| Parameter     | **Type** | Size    | Description                       |
-| ------------- | -------- | ------- | --------------------------------- |
-| `resultCd`    | **N**    | **4**   | [Result Code](#error-code)        |
-| `resultMsg`   | **AN**   | **255** | [Result Message](#error-code)     |
-| `tXid`        | **AN**   | **30**  | Transaction ID                    |
-| `referenceNo` | **ANS**  | **40**  | Merchant Ref. No                  |
-| `payMethod`   | **N**    | **2**   | [Payment Method](#payment-method) |
-| `amt`         | **N**    | **12**  | Payment Amount                    |
-| `currency`    | **AN**   | **3**   | Currency                          |
-| `goodsNm`     | **AN**   | **100** | Goods Name                        |
-| `billingNm`   | **AN**   | **30**  | Buyer Name                        |
-| `transDt`     | **N**    | **8**   | Transaction Date (YYYYMMDD)       |
-| `transTm`     | **N**    | **6**   | Transaction Time (HH24MISS)       |
-| `description` | **AN**   | **100** | Transaction Description           |
-| `mitraCd`     | **AN**   | **4**   | [Mitra Code](#mitra-code)         |
-| `receiptCode` | **ANS**  | **20**  | Authrization Number               |
-| `mRefNo`      | **AN**   | **18**  | Bank Reference No                 |
+| **Parameter**     | **Type** | Size    | Description                       |
+| ----------------- | -------- | ------- | --------------------------------- |
+| **`resultCd`**    | **N**    | **4**   | [Result Code](#error-code)        |
+| **`resultMsg`**   | **AN**   | **255** | [Result Message](#error-code)     |
+| **`tXid`**        | **AN**   | **30**  | Transaction ID                    |
+| **`referenceNo`** | **ANS**  | **40**  | Merchant Ref. No                  |
+| **`payMethod`**   | **N**    | **2**   | [Payment Method](#payment-method) |
+| **`amt`**         | **N**    | **12**  | Payment Amount                    |
+| **`currency`**    | **A**    | **3**   | Currency                          |
+| **`goodsNm`**     | **AN**   | **100** | Goods Name                        |
+| **`billingNm`**   | **A**    | **30**  | Buyer Name                        |
+| **`transDt`**     | **N**    | **8**   | Transaction Date (YYYYMMDD)       |
+| **`transTm`**     | **N**    | **6**   | Transaction Time (HH24MISS)       |
+| **`description`** | **AN**   | **100** | Transaction Description           |
+| **`mitraCd`**     | **A**    | **4**   | [Mitra Code](#mitra-code)         |
+| **`receiptCode`** | **ANS**  | **20**  | Authrization Number               |
+| **`mRefNo`**      | **AN**   | **18**  | Bank Reference No                 |

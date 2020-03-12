@@ -102,15 +102,15 @@ Integration Step :
 
 <aside class="notice">Please refer to <a href="#registration">Register API</a> for Complete Parameters, the parameters below are the additional that will be required for Payloan Registration</aside>
 
-| Parameters    | **Type** | **Size** | **Description**                                              | Example   |
-| ------------- | -------- | -------- | ------------------------------------------------------------ | --------- |
-| `payMethod`   | **N**    | **2**    | **Pay Loan** **Required**                                    | 06        |
-| `userIp`      | **AN**   | **15**   | **Buyer's IP Address** **Required**                          | 127.0.0.1 |
-| `instmntType` | **N**    | **2**    | **[Installment Type](#installment-type)** **Required**       | 1         |
-| `instmntMon`  | **N**    | **2**    | **Installment Month** **Required**                           | 1         |
-| `mitraCd`     | **A**    | **4**    | **[Mitra Code](#mitra-code)** **Required**                   | KDVI      |
-| `cartData`    | **AN**   | **4000** | **[Cart Data](#payloan-cart-data)** **Required**             | `JSON`    |
-| `sellers`     | **AN**   | **4000** | **[Sellers Data ](#payloan-sellers-data)** **Required for Akulaku** | `JSON`    |
+| **Parameters**                         | **Type**            | **Size** | Description                            | Example   |
+| -------------------------------------- | ------------------- | -------- | -------------------------------------- | --------- |
+| **`payMethod`** **Required**           | **N**               | **2**    | Pay Loan                               | 06        |
+| **`userIp`** **Required**              | **ANS**             | **15**   | Buyer's IP Address                     | 127.0.0.1 |
+| **`instmntType`** **Required**         | **N**               | **2**    | [Installment Type](#installment-type)  | 1         |
+| **`instmntMon`** **Required**          | **N**               | **2**    | Installment Month                      | 1         |
+| **`mitraCd`** **Required**             | **A**               | **4**    | [Mitra Code](#mitra-code)              | KDVI      |
+| **`cartData`** **Required**            | **`JSON Object`**   | **4000** | [Cart Data](#payloan-cart-data)        | `JSON`    |
+| **`sellers`** **Required for Akulaku** | **`JSON Object`**   | **4000** | [Sellers Data ](#payloan-sellers-data) | `JSON`    |
 
 ### Payloan Cart Data
 <h3 id="payloan-cart-data"></h3>
@@ -232,23 +232,23 @@ Integration Step :
 }
 ```
 
-| Parameter     | **Type** | Size    | Description                       |
-| ------------- | -------- | ------- | --------------------------------- |
-| `resultCd`    | **N**    | **4**   | [Result Code](#error-code)        |
-| `resultMsg`   | **AN**   | **255** | [Result Message](#error-code)     |
-| `tXid`        | **AN**   | **30**  | Transaction ID                    |
-| `referenceNo` | **ANS**  | **40**  | Reference No                      |
-| `payMethod`   | **N**    | **2**   | [Payment Method](#payment-method) |
-| `amt`         | **N**    | **12**  | Payment Amount                    |
-| `currency`    | **AN**   | **3**   | Currency                          |
-| `goodsNm`     | **AN**   | **100** | Goods Name                        |
-| `billingNm`   | **A**    | **30**  | Buyer Name                        |
-| `transDt`     | **N**    | **8**   | Transaction Date (YYYYMMDD)       |
-| `transTm`     | **N**    | **6**   | Transaction Time (HH24MISS)       |
-| `description` | **AN**   | **100** | Description                       |
-| `mitraCd`     | **AN**   | **4**   | [Mitra Code](#mitra-code)         |
-| `payValidDt`  | **N**    | **8**   | Expiry Date (YYYYMMDD)            |
-| `payValidTm`  | **N**    | **6**   | Expiry Time (HH24MISS)            |
+| **Parameter**     | **Type** | **Size** | Description                       |
+| ----------------- | -------- | -------- | --------------------------------- |
+| **`resultCd`**    | **N**    | **4**    | [Result Code](#error-code)        |
+| **`resultMsg`**   | **AN**   | **255**  | [Result Message](#error-code)     |
+| **`tXid`**        | **AN**   | **30**   | Transaction ID                    |
+| **`referenceNo`** | **ANS**  | **40**   | Reference No                      |
+| **`payMethod`**   | **N**    | **2**    | [Payment Method](#payment-method) |
+| **`amt`**         | **N**    | **12**   | Payment Amount                    |
+| **`currency`**    | **A**    | **3**    | Currency                          |
+| **`goodsNm`**     | **AN**   | **100**  | Goods Name                        |
+| **`billingNm`**   | **A**    | **30**   | Buyer Name                        |
+| **`transDt`**     | **N**    | **8**    | Transaction Date (YYYYMMDD)       |
+| **`transTm`**     | **N**    | **6**    | Transaction Time (HH24MISS)       |
+| **`description`** | **AN**   | **100**  | Description                       |
+| **`mitraCd`**     | **A**    | **4**    | [Mitra Code](#mitra-code)         |
+| **`payValidDt`**  | **N**    | **8**    | Expiry Date (YYYYMMDD)            |
+| **`payValidTm`**  | **N**    | **6**    | Expiry Time (HH24MISS)            |
 
 ## Payment - Payloan
 
@@ -268,12 +268,12 @@ Integration Step :
 
 <br>**Payloan Payment Parameters**
 
-| Parameter       | **Type** | **Size** | **Description**                                         | Example                          |
-| --------------- | -------- | -------- | ------------------------------------------------------- | -------------------------------- |
-| `timeStamp`     | **N**    | **14**   | **Request Timestamp** **Required** *(YYYYMMDDHH24MISS)* | 20170708123456                   |
-| `tXid`          | **AN**   | **30**   | **Transaction ID** **Required**                         | IONPAYTEST02201607291027025291   |
-| `merchantToken` | **AN**   | **255**  | **merchantToken** **Required**                          | 9338d54573688ae18e175240b02...   |
-| `callBackUrl`   | **AN**   | **255**  | **Result Page** **Required**                            | https://merchant.com/callBackUrl |
+| **Parameter**                    | **Type** | **Size** | Description                           | Example                          |
+| -------------------------------- | -------- | -------- | ------------------------------------- | -------------------------------- |
+| **`timeStamp`** **Required**     | **N**    | **14**   | Request Timestamp  (YYYYMMDDHH24MISS) | 20170708123456                   |
+| **`tXid`** **Required**          | **AN**   | **30**   | Transaction ID                        | IONPAYTEST02201607291027025291   |
+| **`merchantToken`** **Required** | **AN**   | **255**  | merchantToken                         | 9338d54573688ae18e175240b02...   |
+| **`callBackUrl`** **Required**   | **ANS**  | **255**  | Result Page                           | https://merchant.com/callBackUrl |
 
 ### Response Parameters - Payloan Payment
 
@@ -281,20 +281,20 @@ Integration Step :
 >
 > `http://merchant.com/callbackUrl?resultCd=0000&resultMsg=SUCCESS&tXid=TESTIMIDTEST01201803020917502088&referenceNo=ORD12345&payMethod=04&amt=10000&transDt=20180302&transTm=151052&description=Transaction Description&mitraCd=MDRE&currency=IDR&goodsNm=Test Transaction Nicepay&billingNm=Customer Name`
 
-| Parameter     | **Type** | Size    | Description                           |
-| ------------- | -------- | ------- | ------------------------------------- |
-| `resultCd`    | **N**    | **4**   | [Result Code](#error-code)            |
-| `resultMsg`   | **AN**   | **255** | [Result Message](#error-code)         |
-| `tXid`        | **AN**   | **30**  | Transaction ID                        |
-| `referenceNo` | **ANS**  | **40**  | Merchant Ref. No                      |
-| `payMethod`   | **N**    | **2**   | [Payment Method](#payment-method)     |
-| `amt`         | **N**    | **12**  | Payment Amount                        |
-| `currency`    | **AN**   | **3**   | Currency                              |
-| `goodsNm`     | **AN**   | **100** | Goods Name                            |
-| `billingNm`   | **AN**   | **30**  | Buyer Name                            |
-| `transDt`     | **N**    | **8**   | Transaction Date (YYYYMMDD)           |
-| `transTm`     | **N**    | **6**   | Transaction Time (HH24MISS)           |
-| `description` | **AN**   | **100** | Transaction Description               |
-| `mitraCd`     | **AN**   | **4**   | [Mitra Code](#mitra-code)             |
-| `instmntMon`  | **N**    | **2**   | Installment Month                     |
-| `instmntType` | **N**    | **2**   | [Installment Type](#installment-type) |
+| **Parameter**     | **Type** | **Size** | Description                           |
+| ----------------- | -------- | -------- | ------------------------------------- |
+| **`resultCd`**    | **N**    | **4**    | [Result Code](#error-code)            |
+| **`resultMsg`**   | **AN**   | **255**  | [Result Message](#error-code)         |
+| **`tXid`**        | **AN**   | **30**   | Transaction ID                        |
+| **`referenceNo`** | **ANS**  | **40**   | Merchant Ref. No                      |
+| **`payMethod`**   | **N**    | **2**    | [Payment Method](#payment-method)     |
+| **`amt`**         | **N**    | **12**   | Payment Amount                        |
+| **`currency`**    | **A**    | **3**    | Currency                              |
+| **`goodsNm`**     | **AN**   | **100**  | Goods Name                            |
+| **`billingNm`**   | **A**    | **30**   | Buyer Name                            |
+| **`transDt`**     | **N**    | **8**    | Transaction Date (YYYYMMDD)           |
+| **`transTm`**     | **N**    | **6**    | Transaction Time (HH24MISS)           |
+| **`description`** | **AN**   | **100**  | Transaction Description               |
+| **`mitraCd`**     | **A**    | **4**    | [Mitra Code](#mitra-code)             |
+| **`instmntMon`**  | **N**    | **2**    | Installment Month                     |
+| **`instmntType`** | **N**    | **2**    | [Installment Type](#installment-type) |

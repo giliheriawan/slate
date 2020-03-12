@@ -77,12 +77,12 @@ Transaction Flow:
 
 <br>**Credit Card Registration Additional Parameters**
 
-| Parameters    | **Type** | Size | **Description**                                              | Value |
-| ------------- | -------- | ---- | ------------------------------------------------------------ | ----- |
-| `payMethod`   | **N**    | 2    | **Credit Card (CC)** **Required**                            | 1     |
-| `instmntType` | **N**    | 2    | **[Installment Type](#installment-type)** **Required**       | 2     |
-| `instmntMon`  | **N**    | 2    | **Default 1 for Full Payment** **Required**                  | 1     |
-| `recurrOpt`   | **N**    | 2    | `0`: Automatic Cancel<br/> `1`: Do not cancel <br/>`2`: Do not make token<br> **Required** | 2     |
+| **Parameters**                 | **Type** | Size | Description                                                  | Value |
+| ------------------------------ | -------- | ---- | ------------------------------------------------------------ | ----- |
+| **`payMethod`** **Required**   | **N**    | 2    | Credit Card (CC)                                             | 1     |
+| **`instmntType`** **Required** | **N**    | 2    | [Installment Type](#installment-type)                        | 2     |
+| **`instmntMon`** **Required**  | **N**    | 2    | Default 1 for Full Payment                                   | 1     |
+| **`recurrOpt`** **Required**   | **N**    | 2    | `0`: Automatic Cancel<br/> `1`: Do not cancel <br/>`2`: Do not make token<br> | 2     |
 
 ### Response Parameters - Credit Card Registration
 
@@ -113,17 +113,17 @@ Transaction Flow:
 }
 ```
 
-| Parameter     | **Type** | Size    | Description                       |
-| ------------- | -------- | ------- | --------------------------------- |
-| `resultCd`    | **N**    | **4**   | [Result Code](#error-code)        |
-| `resultMsg`   | **AN**   | **255** | [Result Message](#error-code)     |
-| `tXid`        | **AN**   | **30**  | Transactionn ID                   |
-| `referenceNo` | **ANS**  | **40**  | Merchant Reference No.            |
-| `payMethod`   | **N**    | **2**   | [Payment Method](#payment-method) |
-| `amt`         | **N**    | **12**  | Payment Amount                    |
-| `transDt`     | **N**    | **8**   | Transaction Date (YYYYMMDD)       |
-| `transTm`     | **N**    | **6**   | Transction Tim (HH24MISS)         |
-| `description` | **AN**   | **100** | Transaction Description           |
+| **Parameter**     | **Type** | **Size** | Description                       |
+| ----------------- | -------- | -------- | --------------------------------- |
+| **`resultCd`**    | **N**    | **4**    | [Result Code](#error-code)        |
+| **`resultMsg`**   | **AN**   | **255**  | [Result Message](#error-code)     |
+| **`tXid`**        | **AN**   | **30**   | Transactionn ID                   |
+| **`referenceNo`** | **ANS**  | **40**   | Merchant Reference No.            |
+| **`payMethod`**   | **N**    | **2**    | [Payment Method](#payment-method) |
+| **`amt`**         | **N**    | **12**   | Payment Amount                    |
+| **`transDt`**     | **N**    | **8**    | Transaction Date (YYYYMMDD)       |
+| **`transTm`**     | **N**    | **6**    | Transction Tim (HH24MISS)         |
+| **`description`** | **AN**   | **100**  | Transaction Description           |
 
 ## Payment - Credit Card
 
@@ -144,16 +144,16 @@ Transaction Flow:
 
 <br>**Credit Card Payment Parameters**
 
-| Parameter       | **Type** | **Size** | **Description**                                             | Example                          |
-| --------------- | -------- | -------- | --------------------------------------                      | -------------------------------- |
-| `timeStamp`     | **N**    | **14**   | **API Request Timestamp** **Required** *(YYYYMMDDHH24MISS)* | 20170708123456                   |
-| `tXid`          | **AN**   | **30**   | **Transaction ID** **Required**                             | BMRITEST0102201607291027025291   |
-| `cardNo`        | **N**    | **20**   | **Card Number** **Required**                                | 1234567890123450                 |
-| `cardExpYymm`   | **N**    | **4**    | **Expiry** *(YYMM)* **Required**                            | 2412                             |
-| `cardCvv`       | **N**    | **4**    | **Card CVV** **Required**                                   | 141                              |
-| `cardHolderNm`  | **AN**   | **50**   | **Card Holder Name** **Required CIMB**                      | John Doe                         |
-| `merchantToken` | **AN**   | **255**  | **merchantToken** **Required**                              | 9338d54573688ae18e175240b025…    |
-| `callBackUrl`   | **AN**   | **255**  | **Payment Result URL** **Required**                         | https://merchant.com/callBackUrl |
+| **Parameter**                        | **Type** | **Size** | Description                               | Example                          |
+| ------------------------------------ | -------- | -------- | ----------------------------------------- | -------------------------------- |
+| **`timeStamp`** **Required**         | **N**    | **14**   | API Request Timestamp  (YYYYMMDDHH24MISS) | 20170708123456                   |
+| **`tXid`** **Required**              | **AN**   | **30**   | Transaction ID                            | BMRITEST0102201607291027025291   |
+| **`cardNo`** **Required**            | **N**    | **20**   | Card Number                               | 1234567890123450                 |
+| **`cardExpYymm`** **Required**       | **N**    | **4**    | Expiry (YYMM)                             | 2412                             |
+| **`cardCvv`** **Required**           | **N**    | **4**    | Card CVV                                  | 141                              |
+| **`cardHolderNm`** **Required CIMB** | **AN**   | **50**   | Card Holder Name                          | John Doe                         |
+| **`merchantToken`** **Required**     | **AN**   | **255**  | merchantToken                             | 9338d54573688ae18e175240b025…    |
+| **`callBackUrl`** **Required**       | **ANs**  | **255**  | Payment Result URL                        | https://merchant.com/callBackUrl |
 
 ### Response Parameters - Credit Card Payment
 
@@ -188,27 +188,27 @@ Transaction Flow:
 > currency: IDR<br>
 >
 
-| Parameter     | **Type** | **Size** | Description                           |
-| ------------- | -------- | -------- | ------------------------------------- |
-| `resultCd`    | **N**    | **4**    | Result Code                           |
-| `resultMsg`   | **AN**   | **255**  | Result Message                        |
-| `tXid`        | **AN**   | **30**   | Transaction ID                        |
-| `referenceNo` | **ANS**  | **40**   | Merchant Ref. No                      |
-| `payMethod`   | **N**    | **2**    | Payment Method                        |
-| `amt`         | **N**    | **12**   | Payment Amount                        |
-| `transDt`     | **N**    | **8**    | Transaction Date (YYYYMMDD)           |
-| `transTm`     | **N**    | **6**    | Transaction Time (HH24MISS)           |
-| `description` | **AN**   | **100**  | Transaction Description               |
-| `authNo`      | **N**    | **10**   | Approval No                           |
-| `issuBankCd`  | **A**    | **4**    | Issue [Bank Code](#bank-code)         |
-| `issuBankNm`  | **A**    | &nbsp;   | Issue Bank Name                       |
-| `acquBankCd`  | **A**    | **4**    | Acquire [Bank Code](#bank-code)       |
-| `acquBankNm`  | **A**    | &nbsp;   | Acquire Bank Name.                    |
-| `cardNo`      | **N**    | **20**   | Masked Card Number                    |
-| `cardExpYymm` | **N**    | **4**    | Card Expiry (YYMM)                    |
-| `currency`    | **AN**   | **3**    | Currency                              |
-| `goodsNm`     | **AN**   | **100**  | Goods Name                            |
-| `billingNm`   | **A**    | **30**   | Billing Name                          |
-| `ccTransType` | **AN**   | **2**    | Credit Card Trans Type                |
-| `instmntType` | **N**    | **2**    | [Installment Type](#installment-type) |
-| `instmntMon`  | **N**    | **2**    | Insatllment Month                     |
+| **Parameter**     | **Type** | **Size** | Description                           |
+| ----------------- | -------- | -------- | ------------------------------------- |
+| **`resultCd`**    | **N**    | **4**    | Result Code                           |
+| **`resultMsg`**   | **AN**   | **255**  | Result Message                        |
+| **`tXid`**        | **AN**   | **30**   | Transaction ID                        |
+| **`referenceNo`** | **ANS**  | **40**   | Merchant Ref. No                      |
+| **`payMethod`**   | **N**    | **2**    | Payment Method                        |
+| **`amt`**         | **N**    | **12**   | Payment Amount                        |
+| **`transDt`**     | **N**    | **8**    | Transaction Date (YYYYMMDD)           |
+| **`transTm`**     | **N**    | **6**    | Transaction Time (HH24MISS)           |
+| **`description`** | **AN**   | **100**  | Transaction Description               |
+| **`authNo`**      | **N**    | **10**   | Approval No                           |
+| **`issuBankCd`**  | **A**    | **4**    | Issue [Bank Code](#bank-code)         |
+| **`issuBankNm`**  | **A**    | &nbsp;   | Issue Bank Name                       |
+| **`acquBankCd`**  | **A**    | **4**    | Acquire [Bank Code](#bank-code)       |
+| **`acquBankNm`**  | **A**    | &nbsp;   | Acquire Bank Name.                    |
+| **`cardNo`**      | **N**    | **20**   | Masked Card Number                    |
+| **`cardExpYymm`** | **N**    | **4**    | Card Expiry (YYMM)                    |
+| **`currency`**    | **AN**   | **3**    | Currency                              |
+| **`goodsNm`**     | **AN**   | **100**  | Goods Name                            |
+| **`billingNm`**   | **A**    | **30**   | Billing Name                          |
+| **`ccTransType`** | **AN**   | **2**    | Credit Card Trans Type                |
+| **`instmntType`** | **N**    | **2**    | [Installment Type](#installment-type) |
+| **`instmntMon`**  | **N**    | **2**    | Insatllment Month                     |

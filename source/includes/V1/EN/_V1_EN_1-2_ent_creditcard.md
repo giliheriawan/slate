@@ -61,7 +61,7 @@ String paymentType= nicePay.Get("paymentType");
 | **Parameter**                        | **Type** | **Size** | Description                           | Example Value                                                |
 | ------------------------------------ | -------- | -------- | ------------------------------------- | ------------------------------------------------------------ |
 | **`iMid`** **Required**              | **AN**   | 10       | Merchant ID                           | IONPAYTEST                                                   |
-| **`merchantToken`**                  | **AN**   | 255      | Merchant Token                        | c69fd0a2e36fb9d97fc8418f6b22699143a1177e570769dac2cf4d2008558946 |
+| **`merchantToken`** **Required**     | **AN**   | 255      | Merchant Token                        | c69fd0a2e36fb9d97fc8418f6b22699143a1177e570769dac2cf4d2008558946 |
 | **`cardNo`** **Required**            | **N**    | 16       | Card number                           | 5409123456789123                                             |
 | **`cardExpYYmm`** **Required**       | **N**    | 4        | Card expiry (YYMM)                    | 2012                                                         |
 | **`cardHolderNm`** **Required CIMB** | **AN**   | 50       | Card holder name                      | asdasdas                                                     |
