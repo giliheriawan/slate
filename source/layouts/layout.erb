@@ -169,24 +169,24 @@ under the License.
       </li>
     <% end %>
     <br>
-    <!--FOR HOMEPAGE-->
-    <% if page_classes.include? == 'index' %>
-      <div class="toc-list-h1">
-        <li>
-          <h3 style="color: #00B5AD" class="toc-h1 toc-link">Our APIs</h3>
-        </li>
-        <li>
-          <a class="toc-h1 toc-link" href="./api-v2-EN.html" class="en">API V2</a>
-        </li>
-        <li>
-          <a class="toc-h1 toc-link" href="./api-v1-professional-EN.html" class="en">API V1 Professional</a>
-        </li>
-        <li>
-          <a class="toc-h1 toc-link" href="./api-v1-enterprise-EN.html" class="en">API V1 Enterprise</a>
-        </li>
-      </div>
-    <% end %>
   </div>
+  <!--FOR HOMEPAGE-->
+  <% if page_classes.include? == 'index' %>
+    <div class="toc-list-h1">
+      <li>
+        <h3 style="color: #00B5AD" class="toc-h1 toc-link">Our APIs</h3>
+      </li>
+      <li>
+        <a class="toc-h1 toc-link" href="./api-v2-EN.html" class="en">API V2</a>
+      </li>
+      <li>
+        <a class="toc-h1 toc-link" href="./api-v1-professional-EN.html" class="en">API V1 Professional</a>
+      </li>
+      <li>
+        <a class="toc-h1 toc-link" href="./api-v1-enterprise-EN.html" class="en">API V1 Enterprise</a>
+      </li>
+    </div>
+  <% end %>
   <% if current_page.data.toc_footers %>
     <ul class="toc-footer">
       <% current_page.data.toc_footers.each do |footer| %>
