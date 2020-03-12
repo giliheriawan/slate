@@ -47,16 +47,7 @@ Have any inquiry ?<br>Feel free contact us : [it@nicepay.co.id](mailto:it@nicepa
   <li>Go Live
 </ol>
 
-# NICEPAY URLs
-NICEPAY APIs should be requested through HTTPS request to our Endpoint URL.
-
-| **Environment** | **Protocol** | Base URL |
-| --- | --- | --- |
-| **Development** | **https** | `https://dev.nicepay.co.id/` |
-| **Staging** | **https** | `https://staging.nicepay.co.id/` |
-| **Production** | **https** | `https://www.nicepay.co.id/` |
-
-## NICEPAY API Authentication
+# Authentication and Credentials
 
 > Example: Generating Merchant Token
 
@@ -101,15 +92,28 @@ def getMerchantToken():
 ```
 
 To connect to our APIs, `merchantToken` is **required** to be sent along with other parameters.
-This token is generated using `SHA-256` hashing which includes secret keys such as `iMid` and `merchantKey`.
+This token is generated using `SHA-256` hashing which includes secret keys such as `iMid`, `merchantKey` and other keys.
+
+## Sandbox Credentials
+The credentials below are provided only for testing purposes
+
+|                           |                                                              |
+| ------------------------- | ------------------------------------------------------------ |
+| **`iMid `** (Merchant ID) | IONPAYTEST                                                   |
+| **`merchantKey`**         | 33F49GnCMS1mFYlGXisbUDzVf2ATWCl9k3R++d5hDd3Frmuos/XLx8XhXpe+LDYAbpGKZYSwtlyyLOtS/8aD7A== |
 
 <aside class="notice">
 Concatenation of the keys to generate <code>merchantToken</code> should not include spaces.
 </aside>
 
-<aside class="warning">
-Do not share your secret keys.
-</aside>
+# NICEPAY URLs
+NICEPAY APIs should be requested through HTTPS request to our Endpoint URL.
+
+| **Environment** | **Protocol** | Base URL |
+| --- | --- | --- |
+| **Development** | **https** | `https://dev.nicepay.co.id/` |
+| **Staging** | **https** | `https://staging.nicepay.co.id/` |
+| **Production** | **https** | `https://www.nicepay.co.id/` |
 
 ## API V1 Endpoints
 
