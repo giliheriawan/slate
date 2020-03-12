@@ -199,40 +199,42 @@ print("status : " + result['status'])
 }
 ```
 
-| Parameter   	 | **Type** 	| **Size** 	   | Description                   	   				|
-| ------------	 | -------- 	| -------- 	   | --------------------------------- 	   			|
-| `resultCd`  	 | **N**        | **4**        | [Result Code](#error-code)             		| 
-| `resultMsg`    | **AN**       | **255**      | [Result Message](#error-code)          		|
-| `tXid`         | **AN**       | **30**       | Transaction ID                    				|
-| `iMid`         | **AN**       | **10**       | Merchant ID                       				|
-| `referenceNo`  | **ANS**      | **40**       | Merchant Order No                 				|
-| `payMethod`    | **N**        | **2**        | [Payment method](#payment-method)      		|
-| `amt`          | **N**        | **12**       | Payment amount                    				|
-| `reqDt`        | **N**        | **8**        | Transaction request date (YYYYMMDD) 			|
-| `reqTm`        | **N**        | **6**        | Transaction request time (HH24MISS) 			|
-| `currency`     | **N**        | **3**        | Currency                          				|
-| `goodsNm`      | **AN**       | **100**      | Goods name                        				|
-| `billingNm`    | **AN**       | **30**       | Billing name                      				|
-| `status`       | **N**        | **1**        | [Transaction status](#payment-status-code)		|
-| `instmntMon`   | **N**        | **2**        | Installment month                 				|
-| `instmntType`  | **N**        | **2**        | [Installment Type](#installment-type)  		|
+| **Parameter**     | **Type** | **Size** | Description                                |
+| ----------------- | -------- | -------- | ------------------------------------------ |
+| **`resultCd`**    | **N**    | **4**    | [Result Code](#error-code)                 |
+| **`resultMsg`**   | **AN**   | **255**  | [Result Message](#error-code)              |
+| **`tXid`**        | **AN**   | **30**   | Transaction ID                             |
+| **`iMid`**        | **AN**   | **10**   | Merchant ID                                |
+| **`referenceNo`** | **ANS**  | **40**   | Merchant Order No                          |
+| **`payMethod`**   | **N**    | **2**    | [Payment method](#payment-method)          |
+| **`amt`**         | **N**    | **12**   | Payment amount                             |
+| **`reqDt`**       | **N**    | **8**    | Transaction request date (YYYYMMDD)        |
+| **`reqTm`**       | **N**    | **6**    | Transaction request time (HH24MISS)        |
+| **`currency`**    | **A**    | **3**    | Currency                                   |
+| **`goodsNm`**     | **AN**   | **100**  | Goods name                                 |
+| **`billingNm`**   | **AN**   | **30**   | Billing name                               |
+| **`status`**      | **N**    | **1**    | [Transaction status](#payment-status-code) |
+| **`instmntMon`**  | **N**    | **2**    | Installment month                          |
+| **`instmntType`** | **N**    | **2**    | [Installment Type](#installment-type)      |
+
 ### Additional Response for Virtual Account
 
-| Parameter    	 | **Type** | **Size** | Description             	|
-| ------------ 	 | ---- 	| -------- | ----------------------- 	|
-| `vacctValidDt` | **N**    | **8**    | VA Expiry Date (YYYYMMDD) 	|
-| `vacctValidTm` | **N**    | **6**    | VA Expiry Time (HH24MISS) 	|
-| `vacctNo`      | **N**    | **16**   | VA Number               	|
-| `bankCd`       | **AN**   | **4**    | [Bank Code](#bank-code)    |
+| **Parameter**      | **Type** | **Size** | Description               |
+| ------------------ | -------- | -------- | ------------------------- |
+| **`vacctValidDt`** | **N**    | **8**    | VA Expiry Date (YYYYMMDD) |
+| **`vacctValidTm`** | **N**    | **6**    | VA Expiry Time (HH24MISS) |
+| **`vacctNo`**      | **N**    | **16**   | VA Number                 |
+| **`bankCd`**       | **A**    | **4**    | [Bank Code](#bank-code)   |
+
 
 ### Additional Response for Others Payment Method
 
-| Parameter     | **Type** | **Size**   | Description                        |
-| ------------- | -------- | ------     | ---------------------------------- |
-| `mitraCd`     | **A**    | **4**      | [Mitra Code](#mitra-code)          |
-| `payNo`       | **N**    | **12**     | Payment Number                 	 |
-| `payValidDt`  | **N**    | **8**      | Payment Expiry Date (YYYYMMDD) 	 |
-| `payValidTm`  | **N**    | **6**      | Payment Expiry Time (HH24MISS) 	 |
-| `receiptCode` | **ANS**  | **18**     | Auth Number                    	 |
+| **Parameter**     | **Type** | **Size** | Description                    |
+| ----------------- | -------- | -------- | ------------------------------ |
+| **`mitraCd`**     | **A**    | **4**    | [Mitra Code](#mitra-code)      |
+| **`payNo`**       | **N**    | **12**   | Payment Number                 |
+| **`payValidDt`**  | **N**    | **8**    | Payment Expiry Date (YYYYMMDD) |
+| **`payValidTm`**  | **N**    | **6**    | Payment Expiry Time (HH24MISS) |
+| **`receiptCode`** | **ANS**  | **18**   | Auth Number                    |
 
-### Additional Responses Coming Soon
+### Additional Responses (Coming Soon)

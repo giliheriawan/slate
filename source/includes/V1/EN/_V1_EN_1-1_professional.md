@@ -266,13 +266,13 @@ print("tXid : " + result['data']['tXid'])
 | **`cartData`** **Required**                     | **`JSON OBJECT`** | **4000** | **Transaction Cart Data**                 | [cartData](#cart-data) JSON                                  |
 | **`referenceNo`** **Required**                  | **ANS**           | **40**   | **Merchant Order Number**                 | MerchantReferenceNumber1                                     |
 | **`goodsNm`** **Required**                      | **AN**            | **100**  | **Goods Name**                            | Merchant Goods 1                                             |
-| **`callBackUrl`** **Required**                  | **AN**            | **255**  | **Payment Result Page URL**               | https://merchant.com/callBackUrl                             |
-| **`dbProcessUrl`** **Required**                 | **AN**            | **255**  | **Push Notification URL**                 | https://merchant.com/dbProcessUrl                            |
+| **`callBackUrl`** **Required**                  | **ANS**           | **255**  | **Payment Result Page URL**               | https://merchant.com/callBackUrl                             |
+| **`dbProcessUrl`** **Required**                 | **ANS**           | **255**  | **Push Notification URL**                 | https://merchant.com/dbProcessUrl                            |
 | **`userIP`** **Required**                       | **AN**            | **15**   | **User IP address**                       | 127.0.0.1                                                    |
 | **`description`** **Required**                  | **AN**            | **100**  | **Transaction Description**               | this is test order                                           |
 | **`billingNm`** **Required**                    | **A**             | **30**   | **Billing Name**                          | Buyer Name                                                   |
 | **`billingPhone`** **Required**                 | **N**             | **15**   | **Billing Phone Number**                  | 2123456789                                                   |
-| **`billingEmail`** **Required**                 | **AN**            | **40**   | **Billing Email**                         | buyer@merchant.com                                           |
+| **`billingEmail`** **Required**                 | **ANS**            | **40**   | **Billing Email**                         | buyer@merchant.com                                           |
 | **`billingCity`** **Required**                  | **A**             | **50**   | **Billing City**                          | Jakarta Utara                                                |
 | **`billingState`** **Required**                 | **A**             | **50**   | **Billing State**                         | DKI Jakarta                                                  |
 | **`billingPostCd`** **Required**                | **A**             | **10**   | **Billing Postcode**                      | 10160                                                        |
@@ -293,21 +293,21 @@ print("tXid : " + result['data']['tXid'])
 | **`notaxAmt`**                                  | **N**             | **12**   | **Tax Free Amount**                       | 0                                                            |
 | **`reqDt`**                                     | **N**             | **8**    | **Request Date**                          | 20180303                                                     |
 | **`reqTm`**                                     | **N**             | **6**    | **Request Time**                          | 135959                                                       |
-| **`reqDomain`**                                 | **AN**            | **100**  | **Request domain**                        | merchant.com                                                 |
-| **`reqServerIP`**                               | **AN**            | **15**   | **Request Server IP Address**             | 127.0.0.1                                                    |
+| **`reqDomain`**                                 | **ANS**            | **100**  | **Request domain**                        | merchant.com                                                 |
+| **`reqServerIP`**                               | **ANS**            | **15**   | **Request Server IP Address**             | 127.0.0.1                                                    |
 | **`reqClientVer`**                              | **AN**            | **50**   | **Request Client Version**                | 1                                                            |
 | **`userSessionID`**                             | **AN**            | **100**  | **User Session ID**                       | userSessionID                                                |
-| **`userAgent`**                                 | **AN**            | **100**  | **User Agent Information**                | Mozilla                                                      |
-| **`userLanguage`**                              | **A**             | **2**    | **User Language**                         | en-US                                                        |
+| **`userAgent`**                                 | **ANS**            | **100**  | **User Agent Information**                | Mozilla                                                      |
+| **`userLanguage`**                              | **ANS**             |       | **User Language**                         | en-US                                                        |
 | **`worker`**                                    | **AN**            | **10**   | **Worker**                                | worker                                                       |
-| **`vacctValidDt`**                              | **N**             | **8**    | **Virtual Account Valid Date** *YYYYMMDD* | 20180404                                                     |
-| **`vacctValidTm`**                              | **N**             | **6**    | **Virtual Account Valid Time** *HH24MISS* | 235959                                                       |
-| **`paymentExpDt`**                              | **N**             | **8**    | **Payment Expired Date** *YYYYMMDD*       | 20180404                                                     |
-| **`paymentExpTm`**                              | **N**             | **6**    | **Payment Expired Time** *HH24MISS*       | 235959                                                       |
-| **`payValidDt`**                                | **N**             | **8**    | **CVS Valid Date** *YYYYMMDD*             | 20180404                                                     |
-| **`payValidTm`**                                | **N**             | **6**    | **CVS Valid Time** *HH24MISS*             | 235959                                                       |
+| **`vacctValidDt`**                              | **N**             | **8**    | **Virtual Account Valid Date** **YYYYMMDD** | 20180404                                                     |
+| **`vacctValidTm`**                              | **N**             | **6**    | **Virtual Account Valid Time** **HH24MISS** | 235959                                                       |
+| **`paymentExpDt`**                              | **N**             | **8**    | **Payment Expired Date** **YYYYMMDD**       | 20180404                                                     |
+| **`paymentExpTm`**                              | **N**             | **6**    | **Payment Expired Time** **HH24MISS**       | 235959                                                       |
+| **`payValidDt`**                                | **N**             | **8**    | **CVS Valid Date** **YYYYMMDD**             | 20180404                                                     |
+| **`payValidTm`**                                | **N**             | **6**    | **CVS Valid Time** **HH24MISS**             | 235959                                                       |
 | **`mRefNo`**                                    | **N**             | **18**   | **Bank Reference No.**                    | bankcd123456789                                              |
-| **`timeStamp`**                                 | **N**             | **14**   | **Timestamp** *YYYYMMDDHH24MISS*          | 20180404165639                                               |
+| **`timeStamp`**                                 | **N**             | **14**   | **Timestamp** **YYYYMMDDHH24MISS**          | 20180404165639                                               |
 | **`version`**                                   | **AN**            |          | **Version**                               | Nicepay Lite                                                 |
 				
 ### Cart Data API V1
@@ -368,11 +368,11 @@ if (nicePay.Get("resultCd").equals("0000")) {
          } 
 ```
 
-| Parameter         | **Type**   | **Size** | **Description**                       	      | Example Value                     |
-|-------------------|------------|----------|-------------------------------------------------|-----------------------------------|
-| `tXid`            | **AN**     | **30**   | **Transaction ID** **Required**                 | IONPAYTEST02201607291027025291    |
-| `optDisplayCB`    | **N**      | **2**    | **Display change button**                       | `show = 0` `hide = 1`             |
-| `optDisplayBL`    | **N**      | **2**    | **Display back link**                           | `show = 0` `hide = 1`             |
+| **Parameter**           | **Type** | **Size** | **Description**           | Example Value                  |
+| ----------------------- | -------- | -------- | ------------------------- | ------------------------------ |
+| **`tXid`** **Required** | **AN**   | **30**   | **Transaction ID**        | IONPAYTEST02201607291027025291 |
+| **`optDisplayCB`**      | **N**    | **2**    | **Display change button** | `show = 0` `hide = 1`          |
+| **`optDisplayBL`**      | **N**    | **2**    | **Display back link**     | `show = 0` `hide = 1`          |
 
 <aside class="notice">
 To prevent your client from changing the payment method, set <code>optDisplayCB = 1</code>
