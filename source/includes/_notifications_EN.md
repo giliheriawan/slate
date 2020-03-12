@@ -79,17 +79,16 @@ To Allow Push Notifications from NICEPAY Server, please add these details to you
 
 ### Additional Parameter for Others Payment Method Notification
 
-| **Parameter** | **Type** | **Size** | Description               |
-| ------------- | -------- | -------- | ------------------------- |
-| `mitraCd`     | **A**    | **4**    | [Mitra Code](#mitra-code) |
-| `payNo`       | **N**    | **12**   | Payment Number            |
-| `payValidDt`  | **N**    | **8**    | Expiry Date (YYYYMMDD)    |
-| `payValidTm`  | **N**    | **6**    | Expiry Time (HH24MISS)    |
-| `receiptCode` | **ANS**  | **20**   | Authorization number      |
-| `mRefNo`      | **AN**   | **18**   | Reference No.             |
-| `depositDt`   | **N**    | **8**    | Deposit Date (YYYYMMDD)   |
-| `depositTm`   | **N**    | **6**    | Deposit Time (HH24MISS)   |
-
+| **Parameter**     | **Type** | **Size** | Description               |
+| ----------------- | -------- | -------- | ------------------------- |
+| **`mitraCd`**     | **A**    | **4**    | [Mitra Code](#mitra-code) |
+| **`payNo`**       | **N**    | **12**   | Payment Number            |
+| **`payValidDt`**  | **N**    | **8**    | Expiry Date (YYYYMMDD)    |
+| **`payValidTm`**  | **N**    | **6**    | Expiry Time (HH24MISS)    |
+| **`receiptCode`** | **ANS**  | **20**   | Authorization number      |
+| **`mRefNo`**      | **AN**   | **18**   | Reference No.             |
+| **`depositDt`**   | **N**    | **8**    | Deposit Date (YYYYMMDD)   |
+| **`depositTm`**   | **N**    | **6**    | Deposit Time (HH24MISS)   |
 <aside class="notice">
 Merchant Token received by your Notification Endpoint should be compared internally to prevent fake Notifications.
 </aside>

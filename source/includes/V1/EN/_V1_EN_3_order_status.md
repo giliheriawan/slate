@@ -142,13 +142,13 @@ print("reqTm : " + result['reqTm'])
 print("status : " + result['status'])
 ```
 
-| Parameter       | **Type**    | **Size** | **Description**                       | Example Value                       										|
-|-----------------|-------------|----------|---------------------------------------|----------------------------------------------------------------------------|
-| `iMid`          | **AN**      | **10**   | **Merchant ID** **Required**          | IONPAYTEST           														|
-| `merchantToken` | **AN**      | **255**  | **Merchant Token** **Required**       | 6cfccfc0046773c1b89d8e98f8b596c<br>284f3c70a4ecf86eba14c18944b74bcd        |
-| `tXid`   		  | **AN**      | **30**   | **Transaction ID** **Required**       | IONPAYTEST02201607291027025291       										|
-| `amt`   		  | **N**       | **12**   | **Amount** **Required**               | 15000               														|
-| `referenceNo`   | **ANS**     | **40**   | **referenceNo** **Required**          | OrdNo20160525000          													|
+| **Parameter**                    | **Type** | **Size** | Description    | Example Value                  |
+| -------------------------------- | -------- | -------- | -------------- | ------------------------------ |
+| **`iMid`** **Required**          | **AN**   | **10**   | Merchant ID    | IONPAYTEST                     |
+| **`merchantToken`** **Required** | **AN**   | **255**  | Merchant Token | 6cfccfc0046773c1b89d8e98c...   |
+| **`tXid`** **Required**          | **AN**   | **30**   | Transaction ID | IONPAYTEST02201607291027025291 |
+| **`amt`** **Required**           | **N**    | **12**   | Amount         | 15000                          |
+| **`referenceNo`** **Required**   | **ANS**  | **40**   | Reference No.  | OrdNo20160525000               |
 
 ## Response Object - Check Status
 

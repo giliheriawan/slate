@@ -147,23 +147,23 @@ print("description : " + result['description'])
 print("amount : " + result['amount'])
 ```
 
-| **Parameter**        | **Type** | **Size** | **Description**                                              | Example Value                                                |
-| -------------------- | -------- | -------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| **`iMid`**           | **AN**   | **10**   | **Merchant ID** **Required**                                 | IONPAYTEST                                                   |
-| **`merchantToken`**  | **AN**   | **255**  | **Merchant Token** **Required**                              | 6cfccfc0046773c1b89d8e98f8b596c<br>284f3c70a4ecf86eba14c18944b74bcd |
-| **`tXid`**           | **AN**   | **30**   | **Transaction ID** **Required**                              | IONPAYTEST02201607291027025291                               |
-| **`payMethod`**      | **N**    | **2**    | **[Payment method](#payment-method)** **Required**           | `01`                                                         |
-| **`cancelType`**     | **N**    | **2**    | **[Cancellation type](#cancel-type)** **Required**           | `1`                                                          |
-| **`amt`**            | **N**    | **12**   | **Cancellation amount** **Required**                         | 15000                                                        |
-| **`cancelMsg`**      | **AN**   | **255**  | **Cancellation message**         	                   Cancel |                                                              |
-| **`fee`**            | **N**    | **12**   | **Service fee**                                              | 0                                                            |
-| **`vat`**            | **N**    | **12**   | **Vat number**                                               | 0                                                            |
-| **`cancelServerIp`** | **ANS**  | **15**   | **Server IP address**                                        | 127.0.0.1                                                    |
-| **`cancelUserId`**   | **AN**   | **30**   | **User ID**                                                  | Admin                                                        |
-| **`cancelUserIp`**   | **ANS**  | **15**   | **User IP address**                                          | 127.0.0.1                                                    |
-| **`cancelUserInfo`** | **AN**   | **100**  | **User Information**                                         | New customer                                                 |
-| **`cancelRetryCnt`** | **N**    | **2**    | **Retry count for cancel**                                   | 2                                                            |
-| **`worker`**         | **N**    | **10**   | **Worker**                                                   | Worker                                                       |                      
+| **Parameter**                    | **Type** | **Size** | Description                       | Example Value                                                |
+| -------------------------------- | -------- | -------- | --------------------------------- | ------------------------------------------------------------ |
+| **`iMid`**          **Required** | **AN**   | **10**   | Merchant ID                       | IONPAYTEST                                                   |
+| **`merchantToken`** **Required** | **AN**   | **255**  | Merchant Token                    | 6cfccfc0046773c1b89d8e98f8b596c<br>284f3c70a4ecf86eba14c18944b74bcd |
+| **`tXid`**          **Required** | **AN**   | **30**   | Transaction ID                    | IONPAYTEST02201607291027025291                               |
+| **`payMethod`**     **Required** | **N**    | **2**    | [Payment method](#payment-method) | `01`                                                         |
+| **`cancelType`**    **Required** | **N**    | **2**    | [Cancellation type](#cancel-type) | `1`                                                          |
+| **`amt`**           **Required** | **N**    | **12**   | Cancellation amount               | 15000                                                        |
+| **`cancelMsg`**                  | **AN**   | **255**  | Cancellation message              | Cancel                                                       |
+| **`fee`**                        | **N**    | **12**   | Service fee                       | 0                                                            |
+| **`vat`**                        | **N**    | **12**   | Vat number                        | 0                                                            |
+| **`cancelServerIp`**             | **ANS**  | **15**   | Server IP address                 | 127.0.0.1                                                    |
+| **`cancelUserId`**               | **AN**   | **30**   | User ID                           | Admin                                                        |
+| **`cancelUserIp`**               | **ANS**  | **15**   | User IP address                   | 127.0.0.1                                                    |
+| **`cancelUserInfo`**             | **AN**   | **100**  | User Information                  | New customer                                                 |
+| **`cancelRetryCnt`**             | **N**    | **2**    | Retry count for cancel            | 2                                                            |
+| **`worker`**                     | **N**    | **10**   | Worker                            | Worker                                                       |
 ## Response Parameter - Cancel Order
 
 > Sample Response

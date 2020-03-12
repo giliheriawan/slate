@@ -58,17 +58,17 @@ String cardToken= nicePay.Get("cardToken");
 String paymentType= nicePay.Get("paymentType");
 ```
 
-| **Parameter**                        | **Type** | **Size** | **Description**                           | Example Value                                                |
-| ------------------------------------ | -------- | -------- | ----------------------------------------- | ------------------------------------------------------------ |
-| **`iMid`** **Required**              | **AN**   | 10       | **Merchant ID**                           | IONPAYTEST                                                   |
-| **`merchantToken`**                  | **AN**   | 255      | **Merchant Token**                        | c69fd0a2e36fb9d97fc8418f6b22699143a1177e570769dac2cf4d2008558946 |
-| **`cardNo`** **Required**            | **N**    | 16       | **Card number**                           | 5409123456789123                                             |
-| **`cardExpYYmm`** **Required**       | **N**    | 4        | **Card expiry** **(YYMM)**                | 2012                                                         |
-| **`cardHolderNm`** **Required CIMB** | **AN**   | 50       | **Card holder name**                      | asdasdas                                                     |
-| **`amt`** **Required**               | **N**    | 12       | **Payment amount**                        | 10000                                                        |
-| **`referenceNo`** **Required**       | **ANS**  | 40       | **Merchant Order Number** **Required**    | ABC123                                                       |
-| **`instmntType`**                    | **N**    | 2        | **[Installment Type](#installment-type)** | 1                                                            |
-| **`instmntMon`**                     | **N**    | 2        | **Installment month**                     | 1                                                            |
+| **Parameter**                        | **Type** | **Size** | Description                           | Example Value                                                |
+| ------------------------------------ | -------- | -------- | ------------------------------------- | ------------------------------------------------------------ |
+| **`iMid`** **Required**              | **AN**   | 10       | Merchant ID                           | IONPAYTEST                                                   |
+| **`merchantToken`**                  | **AN**   | 255      | Merchant Token                        | c69fd0a2e36fb9d97fc8418f6b22699143a1177e570769dac2cf4d2008558946 |
+| **`cardNo`** **Required**            | **N**    | 16       | Card number                           | 5409123456789123                                             |
+| **`cardExpYYmm`** **Required**       | **N**    | 4        | Card expiry (YYMM)                    | 2012                                                         |
+| **`cardHolderNm`** **Required CIMB** | **AN**   | 50       | Card holder name                      | asdasdas                                                     |
+| **`amt`** **Required**               | **N**    | 12       | Payment amount                        | 10000                                                        |
+| **`referenceNo`** **Required**       | **ANS**  | 40       | Merchant Order Number Required        | ABC123                                                       |
+| **`instmntType`**                    | **N**    | 2        | [Installment Type](#installment-type) | 1                                                            |
+| **`instmntMon`**                     | **N**    | 2        | Installment month                     | 1                                                            |
 
 ### Response Parameter - Request Token
 
@@ -128,11 +128,11 @@ Proceed with this API when you get `paymentType = 1` from `onePassToken.do` resp
 https://www.nicepay.co.id/nicepay/api/secureVeRequest.do?country=360&callbackUrl={callbackUrl}&onePassToken={onePassToken}
 ```
 
-| **Parameter**                   | **Type** | **Size** | **Description**                    | Sample Data                                                  |
-| ------------------------------- | -------- | -------- | ---------------------------------- | ------------------------------------------------------------ |
-| **`country`** **Required**      | **N**    | **3**    | **Country**                        | 360                                                          |
-| **`callbackUrl`** **Required**  | **ANS**  | **200**  | **Callback Url**                   | http://merchant.com/callback                                 |
-| **`onePassToken`** **Required** | **AN**   | **64**   | **One time use transaction token** | c5bd0b91bcc3d21358cd004c60e54<br>579441c23aa8e7553b41ce3402db1113fff |
+| **Parameter**                   | **Type** | **Size** | Description                    | Sample Data                                                  |
+| ------------------------------- | -------- | -------- | ------------------------------ | ------------------------------------------------------------ |
+| **`country`** **Required**      | **N**    | **3**    | Country                        | 360                                                          |
+| **`callbackUrl`** **Required**  | **ANS**  | **200**  | Callback Url                   | http://merchant.com/callback                                 |
+| **`onePassToken`** **Required** | **AN**   | **64**   | One time use transaction token | c5bd0b91bcc3d21358cd004c60e54<br>579441c23aa8e7553b41ce3402db1113fff |
 
 ### 3DS Response Parameter
 
@@ -178,14 +178,14 @@ MIGS Steps:
 https://www.nicepay.co.id/nicepay/api/migsRequest.do?instmntType=1&instmntMon=1&referenceNo={referenceNo}&cardCvv={cardCvv}&callbackUrl={callbackUrl}&onePassToken={onePassToken}
 ```
 
-| **Parameter**                   | **Type** | **Size** | **Description**                           | Example Value                   |
-| ------------------------------- | -------- | -------- | ----------------------------------------- | ------------------------------- |
-| **`instmntType`**               | **N**    | **2**    | **[Installment Type](#installment-type)** | 1                               |
-| **`instmntMon`**                | **N**    | **2**    | **Installment Month**                     | 1                               |
-| **`referenceNo`** **Required**  | **ANS**  | **40**   | **Merchant Order Number**                 | OrdNo-125315314                 |
-| **`cardCvv`**                   | **N**    | **3**    | **Card CVV**                              | 123                             |
-| **`callbackUrl`** **Required**  | **ANS**  | **200**  | **Callback Url for result**               | http://merchant.com/callbackUrl |
-| **`onePassToken`** **Required** | **AN**   | **64**   | **One time use token**                    | 92869482578275828fdvf432        |
+| **Parameter**                   | **Type** | **Size** | Description                           | Example Value                   |
+| ------------------------------- | -------- | -------- | ------------------------------------- | ------------------------------- |
+| **`instmntType`**               | **N**    | **2**    | [Installment Type](#installment-type) | 1                               |
+| **`instmntMon`**                | **N**    | **2**    | Installment Month                     | 1                               |
+| **`referenceNo`** **Required**  | **ANS**  | **40**   | Merchant Order Number                 | OrdNo-125315314                 |
+| **`cardCvv`**                   | **N**    | **3**    | Card CVV                              | 123                             |
+| **`callbackUrl`** **Required**  | **ANS**  | **200**  | Callback Url for result               | http://merchant.com/callbackUrl |
+| **`onePassToken`** **Required** | **AN**   | **64**   | One time use token                    | 92869482578275828fdvf432        |
 
 ### Response Parameter - MIGS
 
@@ -517,53 +517,52 @@ else:
         print("resultMsg : " + result['resultMsg'])
 ```
 
-| **Parameter**                     | **Type** | **Size** | **Description**                                              | Sample Data                                                  |
+| **Parameter**                     | **Type** | **Size** | Description                                                  | Sample Data                                                  |
 | --------------------------------- | -------- | -------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| **`iMid`** **Required**           | **AN**   | **10**   | **Merchant ID**                                              | IONPAYTEST                                                   |
-| **`payMethod`** **Required**      | **N**    | **2**    | **[Pay Method](#payment-method)**                            | 01                                                           |
-| **`currency`** **Required**       | **A**    | **3**    | **Currency**                                                 | IDR                                                          |
-| **`amt`** **Required**            | **N**    | **12**   | **Goods Amount**                                             | 1000                                                         |
-| **`referenceNo`** **Required**    | **ANS**  | **40**   | **Merchant Order No**                                        | MerchantReferenceNumber001                                   |
-| **`goodsNm`** **Required**        | **AN**   | **100**  | **Goods Name**                                               | Merchant Goods 1                                             |
-| **`billingNm`** **Required**      | **A**    | **30**   | **Billing Name**                                             | Buyer Name                                                   |
-| **`billingPhone`** **Required**   | **N**    | **15**   | **Billing Phone Number**                                     | 02112345678                                                  |
-| **`billingEmail`** **Required**   | **ANS**   | **40**   | **Billing Email**                                            | buyer@merchant.com                                           |
-| **`billingCity`** **Required**    | **A**    | **50**   | **Billing City**                                             | Jakarta                                                      |
-| **`billingState`** **Required**   | **A**    | **50**   | **Billing State**                                            | Jakarta                                                      |
-| **`billingPostCd`** **Required**  | **N**    | **10**   | **Billing Post Number**                                      | 12345                                                        |
-| **`billingCountry`** **Required** | **A**    | **10**   | **Billing Country**                                          | Indonesia                                                    |
-| **`callBackUrl`** **Required**    | **ANS**  | **255**  | **Payment Result Forward Url (On Browser)**                  | www.merchant.com/callback                                    |
-| **`dbProcessUrl`** **Required**   | **ANS**   | **255**  | **Payment Result Receive Url (Server Side)**                 | www.merchant.com/dbprocess                                   |
-| **`description`** **Required**    | **AN**   | **100**  | **Description**                                              | Description                                                  |
-| **`merchantToken`** **Required**  | **AN**   | **255**  | **Merchant Token**                                           | 6cfccfc0046773c1b589d8e98f8b596<br>c284f3c70a4ecf86eba14c18944b74bcd |
-| **`userIP`** **Required**         | **ANS**   | **15**   | **User IP**                                                  | 127.0.0.1                                                    |
-| **`cartData`** **Required**       | **ANS**   | **4000** | **Cart Data (Json Format)**                                  | {}                                                           |
-| **`instmntType`** **Required**    | **N**    | **2**    | **[Installment Type](#installment-type)**                    | 1                                                            |
-| **`instmntMon`** **Required**     | **N**    | **2**    | **Installment Month**                                        | 1                                                            |
-| **`cardCvv`**                     | **N**    | **3**    | **Card CVV**                                                 | 123                                                          |
-| **`onePassToken`** **Required**   | **AN**   |          | **One time use Token**                                       | 9338d54573688ae18e175240b0257<br>de48d89c6ef1c9c7b5c094dc4beed9e435f |
+| **`iMid`** **Required**           | **AN**   | **10**   | Merchant ID                                                  | IONPAYTEST                                                   |
+| **`payMethod`** **Required**      | **N**    | **2**    | [Pay Method](#payment-method)                                | 01                                                           |
+| **`currency`** **Required**       | **A**    | **3**    | Currency                                                     | IDR                                                          |
+| **`amt`** **Required**            | **N**    | **12**   | Goods Amount                                                 | 1000                                                         |
+| **`referenceNo`** **Required**    | **ANS**  | **40**   | Merchant Order No                                            | MerchantReferenceNumber001                                   |
+| **`goodsNm`** **Required**        | **AN**   | **100**  | Goods Name                                                   | Merchant Goods 1                                             |
+| **`billingNm`** **Required**      | **A**    | **30**   | Billing Name                                                 | Buyer Name                                                   |
+| **`billingPhone`** **Required**   | **N**    | **15**   | Billing Phone Number                                         | 02112345678                                                  |
+| **`billingEmail`** **Required**   | **ANS**  | **40**   | Billing Email                                                | buyer@merchant.com                                           |
+| **`billingCity`** **Required**    | **A**    | **50**   | Billing City                                                 | Jakarta                                                      |
+| **`billingState`** **Required**   | **A**    | **50**   | Billing State                                                | Jakarta                                                      |
+| **`billingPostCd`** **Required**  | **N**    | **10**   | Billing Post Number                                          | 12345                                                        |
+| **`billingCountry`** **Required** | **A**    | **10**   | Billing Country                                              | Indonesia                                                    |
+| **`callBackUrl`** **Required**    | **ANS**  | **255**  | Payment Result Forward Url (On Browser)                      | www.merchant.com/callback                                    |
+| **`dbProcessUrl`** **Required**   | **ANS**  | **255**  | Payment Result Receive Url (Server Side)                     | www.merchant.com/dbprocess                                   |
+| **`description`** **Required**    | **AN**   | **100**  | Description                                                  | Description                                                  |
+| **`merchantToken`** **Required**  | **AN**   | **255**  | Merchant Token                                               | 6cfccfc0046773c1b589d8e98...                                 |
+| **`userIP`** **Required**         | **ANS**  | **15**   | User IP                                                      | 127.0.0.1                                                    |
+| **`cartData`** **Required**       | **ANS**  | **4000** | Cart Data (Json Format)                                      | {}                                                           |
+| **`instmntType`** **Required**    | **N**    | **2**    | [Installment Type](#installment-type)                        | 1                                                            |
+| **`instmntMon`** **Required**     | **N**    | **2**    | Installment Month                                            | 1                                                            |
+| **`cardCvv`**                     | **N**    | **3**    | Card CVV                                                     | 123                                                          |
+| **`onePassToken`** **Required**   | **AN**   |          | One time use Token                                           | 9338d54573688ae18e175240b0257<br>de48d89c6ef1c9c7b5c094dc4beed9e435f |
 | **`recurrOpt`**                   | **N**    | **2**    | `0` Automatic Cancel<br>`1` Do not cancel<br>`2` Do not make token | 1                                                            |
-| **`billingAddr`**                 | **AN**   |          | **Billing Address**                                          | Billing Address                                              |
-| **`deliveryNm`**                  | **A**    | **30**   | **Delivery Name**                                            | Buyer Name                                                   |
-| **`deliveryPhone`**               | **N**    | **15**   | **Delivery Phone**                                           | 02112345678                                                  |
-| **`deliveryAddr`**                | **AN**   | **100**  | **Delivery Address**                                         | Billing Address                                              |
-| **`deliveryEmail`**               | **AN**   |          | **Delivery Email**                                           | buyer@merchant.com                                           |
-| **`deliveryCity`**                | **A**    | **50**   | **Delivery City**                                            | Jakarta                                                      |
-| **`deliveryState`**               | **A**    | **50**   | **Delivery State**                                           | Jakarta                                                      |
-| **`deliveryPostCd`**              | **N**    | **10**   | **Delivery Post Number**                                     | 12345                                                        |
-| **`deliveryCountry`**             | **A**    | **10**   | **Delivery Country**                                         | Indonesia                                                    |
-| **`vat`**                         | **N**    | **12**   | **Vat**                                                      | 0                                                            |
-| **`fee`**                         | **N**    | **12**   | **Service Tax**                                              | 0                                                            |
-| **`notaxAmt`**                    | **N**    | **12**   | **Tax Free Amount**                                          | 0                                                            |
-| **`reqDt`**                       | **N**    | **8**    | **Request Date** **(YYYYMMDD)**                              | 20160301                                                     |
-| **`reqTm`**                       | **N**    | **6**    | **Request Time** **(HH24MISS)**                              | 135959                                                       |
-| **`reqDomain`**                   | **ANS**   | **100**  | **Request Domain**                                           | merchant.com                                                 |
-| **`reqServerIP`**                 | **ANS**   | **15**   | **Request Server IP**                                        | 127.0.0.1                                                    |
-| **`reqClientVer`**                | **ANS**   | **50**   | **Request Client Version**                                   | 1.0                                                          |
-| **`userSessionID`**               | **AN**   | **100**  | **User Session ID**                                          | userSessionID                                                |
-| **`userAgent`**                   | **ANS**   | **100**  | **User Agent Information**                                   | Mozilla                                                      |
-| **`userLanguage`**                | **ANS**   |       | **User Language**                                            | en-US                                                        |
-
+| **`billingAddr`**                 | **AN**   |          | Billing Address                                              | Billing Address                                              |
+| **`deliveryNm`**                  | **A**    | **30**   | Delivery Name                                                | Buyer Name                                                   |
+| **`deliveryPhone`**               | **N**    | **15**   | Delivery Phone                                               | 02112345678                                                  |
+| **`deliveryAddr`**                | **AN**   | **100**  | Delivery Address                                             | Billing Address                                              |
+| **`deliveryEmail`**               | **AN**   |          | Delivery Email                                               | buyer@merchant.com                                           |
+| **`deliveryCity`**                | **A**    | **50**   | Delivery City                                                | Jakarta                                                      |
+| **`deliveryState`**               | **A**    | **50**   | Delivery State                                               | Jakarta                                                      |
+| **`deliveryPostCd`**              | **N**    | **10**   | Delivery Post Number                                         | 12345                                                        |
+| **`deliveryCountry`**             | **A**    | **10**   | Delivery Country                                             | Indonesia                                                    |
+| **`vat`**                         | **N**    | **12**   | Vat                                                          | 0                                                            |
+| **`fee`**                         | **N**    | **12**   | Service Tax                                                  | 0                                                            |
+| **`notaxAmt`**                    | **N**    | **12**   | Tax Free Amount                                              | 0                                                            |
+| **`reqDt`**                       | **N**    | **8**    | Request Date (YYYYMMDD)                                      | 20160301                                                     |
+| **`reqTm`**                       | **N**    | **6**    | Request Time (HH24MISS)                                      | 135959                                                       |
+| **`reqDomain`**                   | **ANS**  | **100**  | Request Domain                                               | merchant.com                                                 |
+| **`reqServerIP`**                 | **ANS**  | **15**   | Request Server IP                                            | 127.0.0.1                                                    |
+| **`reqClientVer`**                | **ANS**  | **50**   | Request Client Version                                       | 1.0                                                          |
+| **`userSessionID`**               | **AN**   | **100**  | User Session ID                                              | userSessionID                                                |
+| **`userAgent`**                   | **ANS**  | **100**  | User Agent Information                                       | Mozilla                                                      |
+| **`userLanguage`**                | **ANS**  |          | User Language                                                | en-US                                                        |
 ### Response Parameter - CC Registration
 
 > Sample JSON Response
@@ -601,8 +600,8 @@ else:
 | **`currency`**       | **AN**   | **3**                | Currency                              |
 | **`goodsNm`**        | **N**    | **100**              | Goods Name                            |
 | **`billingNm`**      | **N**    | **30**               | Buyer Name                            |
-| **`transDt`**        | **N**    | **8** **(YYYYMMDD)** | Transaction date                      |
-| **`transTm`**        | **N**    | **6** **(HH24MISS)** | Transaction time                      |
+| **`transDt`**        | **N**    | **8**                | Transaction date (YYYYMMDD)           |
+| **`transTm`**        | **N**    | **6**                | Transaction time (HH24MISS)           |
 | **`description`**    | **AN**   | **100**              | Transaction description               |
 | **`callbackUrl`**    | **ANS**  | **100**              | Callback Url                          |
 | **`authNo`**         | **N**    | **10**               | Authorization Number                  |
