@@ -102,6 +102,12 @@ The credentials below are provided only for testing purposes
 | **`iMid `** (Merchant ID) | IONPAYTEST                                                   |
 | **`merchantKey`**         | 33F49GnCMS1mFYlGXisbUDzVf2ATWCl9k3R++d5hDd3Frmuos/XLx8XhXpe+LDYAbpGKZYSwtlyyLOtS/8aD7A== |
 
+|                                                           |                                                                                                                           |
+|-----------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------|
+| **API url**                                               | `/nicepay/api/orderInquiry.do`                                                                                            |
+| **Request Method** **application/x-www-form-urlencoded**  | `REDIRECT`                                                                                                                |
+| **Description**                                           | URL Redirect to NICEPAY Payment Page                                                                                      |
+
 <aside class="notice">
 Concatenation of the keys to generate <code>merchantToken</code> should not include spaces.
 </aside>
