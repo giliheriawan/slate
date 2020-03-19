@@ -199,23 +199,25 @@ under the License.
 <div class="page-wrapper">
   <% if page_classes != 'index' %>
     <div class="dark-box"></div>
+  <% end %>
   <div class="content">
     <%= page_content %>
   </div>
-  <div class="dark-box">
-    <% if language_tabs.any? %>
-      <div class="lang-selector">
-        <% language_tabs.each do |lang| %>
-          <% if lang.is_a? Hash %>
-            <a href="#" data-language-name="<%= lang.keys.first %>"><%= lang.values.first %></a>
-          <% else %>
-            <a href="#" data-language-name="<%= lang %>"><%= lang %></a>
+  <% if page_classes != 'index' %>
+    <div class="dark-box">
+      <% if language_tabs.any? %>
+        <div class="lang-selector">
+          <% language_tabs.each do |lang| %>
+            <% if lang.is_a? Hash %>
+              <a href="#" data-language-name="<%= lang.keys.first %>"><%= lang.values.first %></a>
+            <% else %>
+              <a href="#" data-language-name="<%= lang %>"><%= lang %></a>
+            <% end %>
           <% end %>
-        <% end %>
-        <div class="postman-run-button" data-postman-action="collection/import" data-postman-var-1="3f18b456452959cfcedb"></div>
-      </div>
-    <% end %>
-  </div>
+          <div class="postman-run-button" data-postman-action="collection/import" data-postman-var-1="3f18b456452959cfcedb"></div>
+        </div>
+      <% end %>
+    </div>
   <% end %>
 </div>
 
