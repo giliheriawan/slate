@@ -2,7 +2,7 @@
 title: NICEPAY API Documentation - V2
 
 language_tabs: # must be one of https://git.io/vQNgJ
-
+  - java
   
 toc_footers:
   - <li><a href='http://nicepay.co.id/'>Sign Up</a></li>

@@ -101,6 +101,7 @@
 | **`AKLP`**       | Akulaku              |
 | **`KDVI`**       | Kredivo              |
 | **`OVOE`**       | OVO                  |
+| **`LINK`**       | LinkAja              |
 
 ## Error Code
 
