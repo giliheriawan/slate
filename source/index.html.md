@@ -65,32 +65,32 @@ Concatenation of the keys to generate <code>merchantToken</code> should not incl
 # NICEPAY URLs
 NICEPAY APIs should be requested through HTTPS request to our Endpoint URL.
 
-| **Environment** | **Protocol** | Base URL |
-| --- | --- | --- |
-| **Development** | **https** | `https://dev.nicepay.co.id/` |
-| **Staging** | **https** | `https://staging.nicepay.co.id/` |
-| **Production** | **https** | `https://www.nicepay.co.id/` |
+| Environment | Protocol | Base URL                         |
+| ----------- | -------- | -------------------------------- |
+| Development | https    | `https://dev.nicepay.co.id/`     |
+| Staging     | https    | `https://staging.nicepay.co.id/` |
+| Production  | https    | `https://www.nicepay.co.id/`     |
 
 ## API V1 Endpoints
 
-| **API**                  | Merchant Token                                    | **Method**                                     | End Point                          | Description                                                  |
-| ------------------------ | ------------------------------------------------- | ---------------------------------------------- | ---------------------------------- | ------------------------------------------------------------ |
-| **V1**  **Professional** | `iMid`<br>`referenceNo`<br>`amt`<br>`merchantKey` | **POST** **application/x-www-form-urlencoded** | `/nicepay/api/orderRegist.do`      | Transaction Registration                                     |
-| **V1**  **Enterprise**   | `iMid`<br>`referenceNo`<br>`amt`<br>`merchantKey` | **POST** **application/x-www-form-urlencoded** | `/nicepay/api/onePassToken.do`     | Request Credit Card Token                                    |
-| **V1**  **Enterprise**   | `n/a`                                             | **Pop-up**                                     | `/nicepay/api/secureVeRequest.do`  | Request 3DS Pages                                            |
-| **V1**  **Enterprise**   | `n/a`                                             | **Pop-up**                                     | `/nicepay/api/migsRequest.do`      | Request MIGS Pages                                           |
-| **V1**  **Enterprise**   | `iMid`<br>`referenceNo`<br>`amt`<br>`merchantKey` | **POST** **application/x-www-form-urlencoded** | `/nicepay/api/onePass.do`          | Transaction Payment (Credit Card) and Registration for other payment methods. |
-| **V1**  **Enterprise**   | `iMid`<br>`referenceNo`<br>`amt`<br>`merchantKey` | **POST** **application/x-www-form-urlencoded** | `/nicepay/api/ewalletTrans.do`     | E-Wallet Trans                                               |
-| **V1**                   | `iMid`<br>`referenceNo`<br>`amt`<br>`merchantKey` | **POST** **application/x-www-form-urlencoded** | `/nicepay/api/onePassStatus.do`    | Status Inquiry                                               |
-| **V1**                   | `iMid`<br>`tXid`<br>`amt`<br>`merchantKey`        | **POST** **application/x-www-form-urlencoded** | `/nicepay/api/onePassAllCancel.do` | Cancel Transaction                                           |
+| **API**                  | **Method**                                     | End Point                          | Merchant Token                                    |  Description                                                  |
+| ------------------------ | ---------------------------------------------- | ---------------------------------- | ------------------------------------------------- |  ------------------------------------------------------------ |
+| **V1**  **Professional** | **POST** **application/x-www-form-urlencoded** | `/nicepay/api/orderRegist.do`      | `iMid`<br>`referenceNo`<br>`amt`<br>`merchantKey` |  Transaction Registration                                     |
+| **V1**  **Enterprise**   | **POST** **application/x-www-form-urlencoded** | `/nicepay/api/onePassToken.do`     | `iMid`<br>`referenceNo`<br>`amt`<br>`merchantKey` |  Request Credit Card Token                                    |
+| **V1**  **Enterprise**   | **Pop-up**                                     | `/nicepay/api/secureVeRequest.do`  | `n/a`                                             |  Request 3DS Pages                                            |
+| **V1**  **Enterprise**   | **Pop-up**                                     | `/nicepay/api/migsRequest.do`      | `n/a`                                             |  Request MIGS Pages                                           |
+| **V1**  **Enterprise**   | **POST** **application/x-www-form-urlencoded** | `/nicepay/api/onePass.do`          | `iMid`<br>`referenceNo`<br>`amt`<br>`merchantKey` |  Transaction Payment (Credit Card) and Registration for other payment methods. |
+| **V1**  **Enterprise**   | **POST** **application/x-www-form-urlencoded** | `/nicepay/api/ewalletTrans.do`     | `iMid`<br>`referenceNo`<br>`amt`<br>`merchantKey` |  E-Wallet Trans                                               |
+| **V1**                   | **POST** **application/x-www-form-urlencoded** | `/nicepay/api/onePassStatus.do`    | `iMid`<br>`referenceNo`<br>`amt`<br>`merchantKey` |  Status Inquiry                                               |
+| **V1**                   | **POST** **application/x-www-form-urlencoded** | `/nicepay/api/onePassAllCancel.do` | `iMid`<br>`tXid`<br>`amt`<br>`merchantKey`        |  Cancel Transaction                                           |
 
 
 ## API V2 Endpoints
 
-| **API** | Merchant Token                                               | **Method**                                     | End Point                         | Description                |
-| ------- | ------------------------------------------------------------ | ---------------------------------------------- | --------------------------------- | -------------------------- |
-| **V2**  | `timeStamp`<br>`iMid`<br>`referenceNo`<br>`amt`<br>`merchantKey` | **POST** **application/json**                  | `/nicepay/direct/v2/registration` | Transaction Registration   |
-| **V2**  | `timeStamp`<br>`iMid`<br>`referenceNo`<br>`amt`<br>`merchantKey` | **POST** **application/x-www-form-urlencoded** | `/nicepay/direct/v2/payment`      | Transaction Payment        |
-| **V2**  | `timeStamp`<br>`iMid`<br>`referenceNo`<br>`amt`<br>`merchantKey` | **POST** **application/json**                  | `/nicepay/direct/v2/inquiry`      | Transaction Status Inquiry |
-| **V2**  | `timeStamp`<br>`iMid`<br>`referenceNo`<br>`amt`<br>`merchantKey` | **POST** **application/json**                  | `/nicepay/direct/v2/cancel`       | Transaction Cancel         |
-| **V2**  | `timeStamp`<br>`iMid`<br>`msgRefno`<br>`merchantKey`         | **POST** **application/json**                  | `/nicepay/direct/v2/sms-transmit` | SMS Transmit               |
+| **API** | **Method**                                     | End Point                         | Merchant Token                                                   |  Description                |
+| ------- | ---------------------------------------------- | --------------------------------- | ---------------------------------------------------------------- |  -------------------------- |
+| **V2**  | **POST** **application/json**                  | `/nicepay/direct/v2/registration` | `timeStamp`<br>`iMid`<br>`referenceNo`<br>`amt`<br>`merchantKey` |  Transaction Registration   |
+| **V2**  | **POST** **application/x-www-form-urlencoded** | `/nicepay/direct/v2/payment`      | `timeStamp`<br>`iMid`<br>`referenceNo`<br>`amt`<br>`merchantKey` |  Transaction Payment        |
+| **V2**  | **POST** **application/json**                  | `/nicepay/direct/v2/inquiry`      | `timeStamp`<br>`iMid`<br>`referenceNo`<br>`amt`<br>`merchantKey` |  Transaction Status Inquiry |
+| **V2**  | **POST** **application/json**                  | `/nicepay/direct/v2/cancel`       | `timeStamp`<br>`iMid`<br>`referenceNo`<br>`amt`<br>`merchantKey` |  Transaction Cancel         |
+| **V2**  | **POST** **application/json**                  | `/nicepay/direct/v2/sms-transmit` | `timeStamp`<br>`iMid`<br>`msgRefno`<br>`merchantKey`             |  SMS Transmit               |
