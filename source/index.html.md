@@ -9,7 +9,7 @@ includes:
 
 search: true
 ---
-# Introduction
+# NICEPAY
 
 **Welcome to NICEPAY API Documentation and References.**
 
