@@ -8,7 +8,7 @@
 | **Description**                                           | Performs Transaction Cancel Request to NICEPAY                                                                |
 | **Merchant Token**                                        | SHA256(`timeStamp`+`iMid`+`tXid`+`amt`+`merchantKey`)                                                             |
 
-**Payment Methods Available for Payment:**
+**Payment Methods Available for Cancel:**
 
 | **Code** | **PayMethod**         |
 | -------- | --------------------- |

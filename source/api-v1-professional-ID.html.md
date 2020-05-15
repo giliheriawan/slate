@@ -12,7 +12,6 @@ toc_footers:
   - <li><a href="mailto:it@nicepay.co.id?Subject=Hello%20Nicepay!" target="_top">Contact Us</a></li>
 
 includes:
-  - under_construction
   - V1/ID/V1_ID_1-1_professional
   - V1/ID/V1_ID_3_order_status
   - V1/ID/V1_ID_4_Cancel

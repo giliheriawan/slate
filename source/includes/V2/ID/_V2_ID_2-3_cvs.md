@@ -1,7 +1,9 @@
 # Convenience Store
+NICEPay menyediakan Toserba (Indomaret dan Alfamart Group) sebagai metode pembayaran. 
+Dengan menggunakan Fitur ini, pelanggan akan dapat melakukan pembayaran melalui gerai-gerai Mitra Toserba di Seluruh Indonesia. 
+Notifikasi real-time secara langsung akan dikirimkan ketika pembayaran berhasil.<br>
 
-NICEPay menawarkan **Convenience Store (CVS)** sebagai metode pembayaran. Pemberitahuan Real Time akan dikirim saat pelanggan menyelesaikan pembayaran.<br>
-CVS yang didukung oleh NICEPay:
+Mitra Toserba NICEPay:
 <ol type="1">
   <li>Alfamart
   <li>Indomaret
@@ -10,18 +12,39 @@ CVS yang didukung oleh NICEPay:
   <li>Dan+Dan Store
 </ol>
 
-Proses Integrasi :
+Alur Transaksi:
 <ol type="1">
-  <li>Merchant meminta registrasi CVS ke NICEPay.
-  <li>Merchant menampilkan detail CVS dan customer journey, kemudian mengirimkan detail CVS melalui email / sms / riwayat transaksi nasabah.
-  <li>Pelanggan membayarkan CVS di saluran pembayaran yang diinginkan.
-  <li>NICEPay kirim notifikasi.
-  <li>Merchant handle notifikasi.
+  <li>Merchant melakukan Request ke API Register NICEPay.
+  <li>Merchant menampilkan detail Pembarayan Toserba dan cara melakukan pembayaran untuk pembeli.
+  <li>Pembeli melakukan pembayaran di gerai Mitra Toserba terdekat.
+  <li>NICEPay akan mengirimkan Notifikasi setelah transaksi selesai.
+  <li>Merchant mengolah Notifikasi yang didapatkan.
 </ol>
 
-## Registrasi CVS
+<div class="wrapper">
+<ul>
+  <li>
+    <input type="checkbox" id="list-item-cvsv2">
+    <label for="list-item-cvsv2" class="first">Convenience Store V2 Flow</label>
+    <ul>
+      <img src="/images/cvs-normal-v2-flow.png">
+    </ul>
+  </li>
+</ul>
+</div>
 
-> Contoh JSON Request
+## Registrasi - Convenience Store
+
+|                                                           |                                                                                                               |
+|-----------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|
+| **API url**                                               | `/nicepay/direct/v2/registration`                                                                             |
+| **Request Method** **application/json**                   | `POST`                                                                                                        |
+| **Description**                                           | Request Registrasi Transaksi ke NICEPAY                                                                       |        
+| **Merchant Token**                                        | SHA256(`timeStamp`+`iMid`+`referenceNo`+`amt`+`merchantKey`)                                                  |
+
+### Request Parameters - Registrasi Convenience Store
+
+> Sample JSON Request
 
 ```json
 {
@@ -63,7 +86,18 @@ Proses Integrasi :
 }
 ```
 
-> Contoh JSON Response
+<aside class="notice">Mohon merujuk kepada <a href="#registration">Register API</a> untuk Parameter yang lengkap, Parameter di bawah merupakah tambahan yang dibutuhkan untuk Registrasi Convenience Store.</aside>
+
+| **Parameters**                | **Type** | **Size** | Description                 | Example  |
+| ----------------------------- | -------- | -------- | --------------------------- | -------- |
+| **`payMethod`** **Required**  | **N**    | **2**    | Convenience Store (CVS)     | 03       |
+| **`mitraCd`** **Required**    | **A**    | **4**    | [Mitra Code](#mitra-code)   | ALMA     |
+| **`payValidDt`** **Required** | **N**    | **8**    | CVS Expiry Date  (YYYYMMDD) | 20200404 |
+| **`payValidTm`** **Required** | **N**    | **6**    | CVS Expiry Time  (HH24MISS) | 091309   |
+
+### Response Parameters - Registrasi Convenience Store
+
+> Sample JSON Response
 
 ```json
 {
@@ -90,37 +124,18 @@ Proses Integrasi :
 }
 ```
 
- &nbsp; | &nbsp;
----------- | -------
-**API url** | **/nicepay/direct/v2/registration**
-Metode | POST, JSON
-Deskripsi | Registrasi Transaksi
-Merchant Token | SHA256 (timeStamp + iMid + referenceNo + amt + merchantKey)
-
-<br>Please refer to [here](#registration) for JSON parameters.<br>
-Below for extra parameter will be required for Convenience Store (CVS) Registration:
-
-Parameters | Mandatory | Tipe | Ukuran | Value | Deskripsi
----------- | ---------- | ---------- | ---------- | ---------- | ----------
-PayMethod | Y | AN | 2 | 03 | Convenience Store (CVS)
-mitraCd | Y | A | 4 | 2 | Mitra Code. refer to [here](#mitra-code)
-payValidDt | Y | N | 8 | 1 | CVS expiry date (YYYYMMDD)
-payValidTm | Y | N | 6 | 2 | CVS expiry time (HH24MISS)
-
-<br>**Response Json Object**
-
-Paramenter | Tipe | Ukuran | Deskripsi
----------- | ---------- | ---------- | ----------
-resultCd | N | 4 | Result code
-resultMsg | AN | 255 | Result Message
-tXid | AN | 30 | Transactionn ID (Key from NICEPay)
-referenceNo | ANS | 40 | Merchant order N. (Key from merchant)
-payMethod | N | 2 | Payment Method
-amt | N | 12 | Payment amount
-transDt | N | 8 | Transaction date (YYYYMMDD)
-transTm | N | 6 | Transction time (HH24MISS)
-description | AN | 100 | Transaction description
-mitraCd | A | 4 | Mitra Code. refer to [here](#mitra-code)
-payNo | N | 12 | CVS Payment No.
-payValidDt | N | 8 | VA expiry date (YYYYMMDD)
-payValidTm | N | 6 | VA expiry time (HH24MISS)
+| **Parameter**     | **Type** | **Size** | Description                       |
+| ----------------- | -------- | -------- | --------------------------------- |
+| **`resultCd`**    | **N**    | **4**    | [Result Code](#error-code)        |
+| **`resultMsg`**   | **AN**   | **255**  | [Result Message](#error-code)     |
+| **`tXid`**        | **AN**   | **30**   | Transactionn ID                   |
+| **`referenceNo`** | **ANS**  | **40**   | Merchant Ref. No                  |
+| **`payMethod`**   | **N**    | **2**    | [Payment Method](#payment-method) |
+| **`amt`**         | **N**    | **12**   | Payment Amount                    |
+| **`transDt`**     | **N**    | **8**    | Transaction Date (YYYYMMDD)       |
+| **`transTm`**     | **N**    | **6**    | Transaction Time (HH24MISS)       |
+| **`description`** | **AN**   | **100**  | Transaction Description           |
+| **`mitraCd`**     | **A**    | **4**    | [Mitra Code](#mitra-code)         |
+| **`payNo`**       | **N**    | **12**   | CVS Payment No.                   |
+| **`payValidDt`**  | **N**    | **8**    | VA Expiry Date (YYYYMMDD)         |
+| **`payValidTm`**  | **N**    | **6**    | VA Expiry Time (HH24MISS)         |

@@ -16,6 +16,7 @@ Integration Step :
   <li>Customer Confirms Payment on Mitra Page
   <li>NICEPay Send Notification
   <li>Handle Notification
+  <li>Merchant Confirms Transaction (AKULAKU Only)
 </ol>
 
 <div class="wrapper">
@@ -298,3 +299,32 @@ Integration Step :
 | **`mitraCd`**     | **A**    | **4**    | [Mitra Code](#mitra-code)             |
 | **`instmntMon`**  | **N**    | **2**    | Installment Month                     |
 | **`instmntType`** | **N**    | **2**    | [Installment Type](#installment-type) |
+
+## Confirm Receipt - Akulaku Only
+
+|                                                           |                                                                                                               |
+|-----------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|
+| **API url**                                               | `/nicepay/direct/v2/confirmAkulaku`                                                                           |
+| **Request Method** **application/x-www-form-urlencoded**  | `POST`                                                                                                        |
+| **Description**                                           | Performs Receipt Confirmation for Fund Settlement.                                                            |
+| **Merchant Token**                                        | SHA256(`timeStamp`+`tXid`+`iMid`+`merchantKey`)                                                               |
+
+<aside class="notice">You should only Confirm Receipt after the customer have received the item.</aside>
+
+<br>**AkuLaku Confirm Receipt Parameters**
+
+| **Parameter**                      | **Type** | **Size** | Description                           | Example                          |
+| --------------------------------   | -------- | -------- | ------------------------------------- | -------------------------------- |
+| **`timeStamp`** **Required**       | **N**    | **14**   | Request Timestamp  (YYYYMMDDHH24MISS) | 20170708123456                   |
+| **`tXid`** **Required**            | **AN**   | **30**   | Transaction ID                        | IONPAYTEST02201607291027025291   |
+| **`iMid`** **Required**            | **AN**   | **10**   | Merchant ID                           | IONPAYTEST                       |
+| **`merchantToken`** **Required**   | **ANS**  | **255**  | Merchant Token                        | 6cfccfc0046773c1b589d8e98f8...   |
+
+### Response Parameters - AkuLaku Confirm Receipt
+
+| **Parameter**             | **Type** | **Size** | Description                           |
+| -----------------         | -------- | -------- | ------------------------------------- |
+| **`resultCd`**            | **N**    | **4**    | [Result Code](#error-code)            |
+| **`resultMsg`**           | **AN**   | **255**  | [Result Message](#error-code)         |
+| **`ResponseData`**        | **AN**   | **30**   | null                                  |
+

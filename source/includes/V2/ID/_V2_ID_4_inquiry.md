@@ -1,6 +1,18 @@
-# Order Status (Inquiry)
+# Cek Status
+## Specifications - Cek Status
 
-> Contoh JSON Request
+|                                                           |                                                                                                               |
+|-----------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|
+| **API url**                                               | `/nicepay/direct/v2/inquiry`                                                                                  |
+| **Request Method** **application/json**                   | `POST`                                                                                                        |
+| **Description**                                           | Melakukan Request untuk Cek Status.                                                                           |
+| **Merchant Token**                                        | SHA256(`timeStamp`+`iMid`+`referenceNo`+`amt`+`merchantKey`)                                                  |
+
+<aside class="notice">Ketika Notifikasi di <code>dbProcessUrl</code> sudah diterima, sangat disarankan bagi Merchant untuk melakukan verifikasi menggunakan Inquiry API ini.</aside>
+
+## Request Parameters - Cek Status
+
+> Sample JSON Request
 
 ```json
 {
@@ -12,6 +24,17 @@
 	"merchantToken":"a1b747ad8ce72461de6194e1fff3ef5b5022b957d9003d14b52f4d52b5b55fe8"
 }
 ```
+
+| **Parameter**                    | **Type** | **Size** | Description                         | Example                          |
+| -------------------------------- | -------- | -------- | ----------------------------------- | -------------------------------- |
+| **`timeStamp`** **Required**     | **N**    | **14**   | API Request Date (YYYYMMDDHH24MISS) | 20170708123456                   |
+| **`tXid`** **Required**          | **AN**   | **30**   | Transaction Id                      | IONPAYTEST02201607291027025291   |
+| **`iMid`** **Required**          | **AN**   | **10**   | Merchant Id                         | IONPAYTEST                       |
+| **`referenceNo`** **Required**   | **ANS**  | **40**   | Merchant Order No                   | OrdNo20160525000-52104           |
+| **`amt`** **Required**           | **N**    | **12**   | Transaction Amount                  | 1000                             |
+| **`merchantToken`** **Required** | **AN**   | **255**  | merchantToken                       | 6cfccfc0046773c1b89d8e98f8b59... |
+
+## Response Parameters - Cek Status
 
 > Contoh JSON Response
 
@@ -60,84 +83,62 @@
 }
 ```
 
-API ini untuk permintaan untuk memeriksa status transaksi. Merchant dapat memeriksa status pesanan menggunakan API inquiry. Saat pedagang menerima pemberitahuan, NICEPay sangat menyarankan agar Merchant memeriksa ulang transaksi menggunakan Inquiry API.
+| **Parameter**     | **Type** | **Size** | Description                                |
+| ----------------- | -------- | -------- | ------------------------------------------ |
+| **`resultCd`**    | **N**    | **4**    | [Result Code](#error-code)                 |
+| **`resultMsg`**   | **AN**   | **255**  | [Result Message](#error-code)              |
+| **`tXid`**        | **AN**   | **30**   | Transaction Id                             |
+| **`iMid`**        | **AN**   | **10**   | Merchant Id                                |
+| **`referenceNo`** | **ANS**  | **40**   | Merchant Order No                          |
+| **`payMethod`**   | **N**    | **2**    | [Payment Method](#payment-method)          |
+| **`amt`**         | **N**    | **12**   | Payment amount                             |
+| **`cancelAmt`**   | **N**    | **12**   | Cancel amount                              |
+| **`reqDt`**       | **N**    | **8**    | Transaction request date (YYYYMMDD)        |
+| **`reqTm`**       | **N**    | **6**    | Transaction request time (HH24MISS)        |
+| **`transDt`**     | **N**    | **8**    | Transaction date (YYYYMMDD)                |
+| **`transTm`**     | **N**    | **6**    | Transaction time (HH24MISS)                |
+| **`depositDt`**   | **N**    | **8**    | Transaction deposit date (YYYYMMDD)        |
+| **`depositTm`**   | **N**    | **6**    | Transaction deposit time (HH24MISS)        |
+| **`currency`**    | **A**    | **3**    | Currency                                   |
+| **`goodsNm`**     | **AN**   | **100**  | Goods Name                                 |
+| **`billingNm`**   | **A**    | **30**   | Buyer name                                 |
+| **`status`**      | **N**    | **1**    | [Transaction Status](#payment-status-code) |
 
- &nbsp; | &nbsp;
----------- | -------
-**API url** | **/nicepay/direct/v2/inquiry**
-Metode | POST, JSON
-Deskripsi | Permintaan Status Transaksi
-Merchant Token | SHA256 (timeStamp + iMid + referenceNo + amt + Merchant Key)
+### Parameter Response Tambahan - Credit Card
 
-<br>**Request JSON Object**
+| **Parameter**        | **Type** | **Size** | Description                                                  |
+| -------------------- | -------- | -------- | ------------------------------------------------------------ |
+| **`authNo`**         | **N**    | **10**   | Approval Number                                              |
+| **`issuBankCd`**     | **A**    | **4**    | Issuer [Bank Code](#bank-code)                               |
+| **`acquBankCd`**     | **A**    | **4**    | Acquire [Bank Code](#bank-code)                              |
+| **`cardNo`**         | **ANS**  | **20**   | Masked Card Number                                           |
+| **`cardExpYymm`**    | **N**    | **4**    | Card Expiration (YYMM)                                       |
+| **`instmntMon`**     | **N**    | **2**    | Installment Month                                            |
+| **`instmntType`**    | **N**    | **2**    | [Installment Type](#installment-type)                        |
+| **`preauthToken`**   | **AN**   | **255**  | Pre-Auth Token (Needed for Capture Payment)                  |
+| **`recurringToken`** | **AN**   | **255**  | Recurring Token (Needed for Recurring Payment)               |
+| **`ccTransType`**    | **N**    | **2**    | Credit Card Transaction Type                                 |
+| **`acquStatus`**     | **N**    | **2**    | Purchase Status<br>1: Normal<br>2: Recurring<br>3: Pre-auth<br>4: Capture |
+| **`vat`**            | **N**    | **12**   | Vat                                                          |
+| **`fee`**            | **N**    | **12**   | Service Fee                                                  |
+| **`notaxAmt`**       | **N**    | **12**   | Tax-free Amount                                              |
 
-Parameter | Mandatory | Tipe | Ukuran | Deskripsi
----------- | ---------- | ---------- | ---------- | ----------
-timeStamp | Y | N | 14 | API Request Date
-tXid | Y | AN | 30 | Transaction Id
-iMid | Y | AN | 10 | Merchant Id
-referenceNo | Y | ANS | 40 | Merchant Order No
-amt | Y | N | 12 | Transaction  Amount
-merchantToken | Y | AN | 255 | merchantToken
+### Parameter Response Tambahan - Virtual Account
 
-<br>**Response JSON Object**
+| **Parameter**      | **Type** | **Size** | Description                 |
+| ------------------ | -------- | -------- | --------------------------- |
+| **`bankCd`**       | **A**    | **4**    | [Bank Code](#bank-code)     |
+| **`vacctNo`**      | **N**    | **16**   | Bank Virtual Account Number |
+| **`vacctValidDt`** | **N**    | **8**    | VA expiry date (YYYYMMDD)   |
+| **`vacctValidTm`** | **N**    | **6**    | VA expiry time (HH24MISS)   |
 
-Parameter | Tipe | Ukuran | Deskripsi
----------- | ---------- | ---------- | ----------
-resultCd | N | 4 | Result Code
-resultMsg | AN | 255 | Result Message
-tXid | AN | 30 | Transaction Id(Key from NICEPay)
-iMid | AN | 10 | Merchant Id
-referenceNo | ANS | 40 | Merchant Order No(Key from merchant)
-payMethod | N | 2 | Payment Method
-amt | N | 12 | Payment amount
-cancelAmt | N | 12 | Cancel amount
-reqDt | N | 8 | Transaction request date(YYYYMMDD)
-reqTm | N | 6 | Transaction request time(HH24MISS)
-transDt | N | 8 | Transaction date(YYYYMMDD)
-transTm | N | 6 | Transaction time(HH24MISS)
-depositDt | N | &nbsp; | Transaction deposit date(YYYYMMDD)
-depositTm | N | &nbsp; | Transaction deposit time(HH24MISS)
-currency | AN | 3 | currency
-goodsNm | AN | 100 | Goods Name
-billingNm | AN | 30 | Buyer name
-status | N | 1 | Transaction status, refer Code at [Here](#payment-status-code)
+### Parameter Response Tambahan - Others
 
-<br>**Additional Credit Card Response Json Object**
-
-Parameter | Tipe | Ukuran | Deskripsi
----------- | ---------- | ---------- | ----------
-authNo | N | 10 | Approval Number
-issuBankCd | A | 4 | Issue Bank Code, refer Code at [Here](#bank-code)
-acquBankCd | A | 4 | Acquire Bank Code, refer Code at [Here](#bank-code)
-cardNo | AN | 20 | Card No with masking
-cardExpYymm | N | 4 | card expiry(YYMM)
-instmntMon | N | 2 | Installment month
-instmntType | N | 2 | Installment Type, refer Code at [Here](#installment-type)
-preauthToken | AN | 255 | Pre-Auth Token (need for capture)
-recurringToken | AN | 255 | Recurring Token (Can use next payment)
-ccTransType | AN | 2 | Credit Card Transaction Type
-acquStatus | AN | 2 | Purchase Status<br>1: Normal<br>2: Recurring<br>3: Pre-auth<br>4: Capture
-vat | N | 12 | Vat
-fee | N | 12 | service fee
-notaxAmt | N | 12 | tax free amount
-
-<br>**Additional Virtual Account Response Json Object**
-
-Parameter | Tipe | Ukuran | Deskripsi
----------- | ---------- | ---------- | ----------
-bankCd | AN | 4 | Bank Code, refer Code at [Here](#bank-code)
-vacctNo | N | 16 | Bank Virtual Account number
-vacctValidDt | N | 8 | VA expiry date (YYYYMMDD)
-vacctValidTm | N | 6 | VA expiry time (HH24MISS)
-
-<br>**Additional Others Response Json Object**
-
-Parameter | Tipe | Ukuran | Deskripsi
----------- | ---------- | ---------- | ----------
-mitraCd | A | 4 | Mitra code, refer Code at [Here](#mitra-code)<br>(CVS, ClickPay, E-Wallet)
-payNo | N | 12 | CVS number (CVS)
-payValidDt | N | 8 | CVS expiry date  (YYYYMMDD) (CVS)
-payValidTm | N | 6 | CVS expiry time (HH24MISS) (CVS)
-mRefNo | AN | 20 | Bank reference No (CVS)
-receiptCode | ANS | 18 | Authorization code (CVS)
+| **Parameter**     | **Type** | **Size** | Description                                                  |
+| ----------------- | -------- | -------- | ------------------------------------------------------------ |
+| **`mitraCd`**     | **A**    | **4**    | [Mitra code](#mitra-code)<br>(CVS, ClickPay, E-Wallet, Payloan) |
+| **`payNo`**       | **N**    | **12**   | CVS number (CVS)                                             |
+| **`payValidDt`**  | **N**    | **8**    | CVS expiry date  (YYYYMMDD) (CVS)                            |
+| **`payValidTm`**  | **N**    | **6**    | CVS expiry time (HH24MISS) (CVS)                             |
+| **`receiptCode`** | **ANS**  | **20**   | Authorization code (CVS)                                     |
+| **`mRefNo`**      | **AN**   | **20**   | Bank reference No (ClickPay)                                 |

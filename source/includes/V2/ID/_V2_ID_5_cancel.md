@@ -1,6 +1,27 @@
-# Cancel
+# Pembatalan
+## Specifications - Pembatalan
 
-> Contoh JSON request
+|                                                           |                                                                                                               |
+|-----------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|
+| **API url**                                               | `/nicepay/direct/v2/cancel`                                                                                   |
+| **Request Method** **application/json**                   | `POST`                                                                                                        |
+| **Description**                                           | Melakukan Pembatalan Transaksi ke NICEPAY                                                                     |
+| **Merchant Token**                                        | SHA256(`timeStamp`+`iMid`+`tXid`+`amt`+`merchantKey`)                                                         |
+
+**Metode Pembayaran yang Dapat Dibatalkan:**
+
+| **Code** | **PayMethod**         |
+| -------- | --------------------- |
+| **`01`** | **Credit Card**       |
+| **`02`** | **Virtual Account**   |
+| **`03`** | **Convenience Store** |
+| **`04`** | **ClickPay**          |
+| **`05`** | **E-Wallet**          |
+| **`06`** | **Payloan**           |
+                        
+## Request Parameters - Pembatalan
+
+> Contoh JSON Request
 
 ```json
 {
@@ -22,6 +43,30 @@
 }
 ```
 
+
+| Parameter        | **Type** | **Size** | Description                            | Example                        |
+| ---------------- | -------- | -------- | -------------------------------------- | ------------------------------ |
+| `timeStamp`      | **N**    | **14**   | **API Request Timestamp** **Required** | 20170708123456                 |
+| `tXid`           | **AN**   | **30**   | **Transaction Id** **Required**        | IONPAYTEST02201603091207051498 |
+| `iMid`           | **AN**   | **10**   | **Merchant Id** **Required**           | IONPAYTEST                     |
+| `payMethod`      | **N**    | **2**    | **Payment Method** **Required**        | 01                             |
+| `cancelType`     | **N**    | **2**    | **Cancel Type** **Required**           | 1                              |
+| `merchantToken`  | **AN**   | **255**  | **merchantToken** **Required**         | 6cfccfc0046773c1b89d8e98f8b5…  |
+| `amt`            | **N**    | **12**   | **Payment Amount** **Required**        | 1000                           |
+| `cancelMsg`      | **AN**   | **255**  | **Cancel Message**                     | Test Cancel                    |
+| `preauthToken`   | **AN**   | **100**  | **Pre-authToken**                      | d4ef98b26f917a697691807cf…     |
+| `fee`            | **N**    | **12**   | **Fee**                                | 0                              |
+| `vat`            | **N**    | **12**   | **Vat**                                | 0                              |
+| `notaxAmt`       | **N**    | **12**   | **Tax-free Amount**                    | 0                              |
+| `cancelServerIp` | **AN**   | **15**   | **Server IP**                          | 127.0.0.1                      |
+| `cancelUserId`   | **AN**   | **30**   | **User ID**                            | Admin                          |
+| `cancelUserIp`   | **AN**   | **15**   | **User IP**                            | 127.0.0.1                      |
+| `cancelUserInfo` | **AN**   | **100**  | **User Information**                   | Test Cancel                    |
+| `cancelRetryCnt` | **N**    | **2**    | **Retry Count**                        | 5                              |
+| `worker`         | **AN**   | **10**   | **Worker**                             | Worker                         |
+
+## Response Parameters - Pembatalan
+
 > Contoh JSON Response
 
 ```json
@@ -37,55 +82,14 @@
 }
 ```
 
-This API is for request to cancel of transaction.<br>
-type of transaction can be requested :
-
-Code | Deskripsi
----------- | ----------
-01 | Credit Card
-02 | Virtual Account
-03 | CVS (Convenience Store)
-
- &nbsp; | &nbsp;
----------- | -------
-**API url** | **/nicepay/direct/v2/cancel**
-Metode | POST, JSON
-Description | Perform cancel API for Credit Card, Virtual Account, and CVS
-Merchant Token | SHA256 (timeStamp + iMid + tXid + amt + Merchant Key)
-
-<br>**Request Json Object**
-
-Parameter | Mandatory | Tipe | Ukuran | Deskripsi
----------- | ---------- | ---------- | ---------- | ----------
-timeStamp | Y | N | 14 | API Request Date
-tXid | Y | AN | 30 | Transaction Id
-iMid | Y |AN | | 10 Merchant Id
-payMethod | Y | N | 2 | Payment Method
-cancelType | Y | N | 2 | Cancel Type
-cancelMsg | N | AN | 255 | Cancel Message
-merchantToken | Y | AN | 255 | merchantToken
-preauthToken | Y | AN | 100 | PreauthToken
-amt | Y | N | 12 | Payment amount
-fee | N | N | 12 | Fee
-vat | N | N | 12 | Vat
-notaxAmt | N | N | 12 | No tax Amount	
-cancelServerIp | N | AN | 15 | Server IP
-cancelUserId | N | AN | 30 | User ID	
-cancelUserIp | N | AN | 15 | User IP
-cancelUserInfo | N | AN | 100 | User Information
-cancelRetryCnt | N | N | 2 | Retry Count
-worker | N | AN | 10 | Worker
-
-<br>**Response Json Object**
-
-Parameter | Tipe | Ukuran | Deskripsi | Remark
----------- | ---------- | ---------- | ---------- | ----------
-resultCd | N | 4 | Result Code | 
-resultMsg | AN | 255 | Result Message | 
-tXid | AN | 30 | Transaction ID | When Success
-referenceNo | ANS | 30 | Merchant Order No | When Success
-transDt | N | 40 | Transaction Date | When Success
-transTm | N | 12 | Transaction Time | When Success
-description | AN | 255 | Description | When Success
-amt | N | 8 | Amount | When Success
-canceltXid | AN | 6 | Cancel transaction ID | When Success
+| Parameter     | **Type** | **Size** | **Description**                   | Remark       |
+| ------------- | -------- | -------- | --------------------------------- | ------------ |
+| `resultCd`    | **N**    | **4**    | **[Result Code](#error-code)**    |              |
+| `resultMsg`   | **AN**   | **255**  | **[Result Message](#error-code)** |              |
+| `tXid`        | **AN**   | **30**   | **Transaction ID**                | Jika Sukses  |
+| `referenceNo` | **ANS**  | **40**   | **Merchant Order No**             | Jika Sukses  |
+| `transDt`     | **N**    | **8**    | **Transaction Date**              | Jika Sukses  |
+| `transTm`     | **N**    | **6**    | **Transaction Time**              | Jika Sukses  |
+| `description` | **AN**   | **255**  | **Description**                   | Jika Sukses  |
+| `amt`         | **N**    | **12**   | **Amount**                        | Jika Sukses  |
+| `canceltXid`  | **AN**   | **30**   | **Cancel Transaction ID**         | Jika Sukses  |

@@ -1,6 +1,8 @@
 # Virtual Account
-NICEPay menawarkan **Virtual Account** sebagai metode pembayaran. Dengan menggunakan metode ini, nasabah akan memiliki pilihan untuk melakukan pembayaran melalui ATM, SMS Banking, Internet Banking, atau Mobile Banking. Pemberitahuan Real Time akan dikirim saat pelanggan menyelesaikan pembayaran.<br>
-Bank yang Didukung oleh NICEPay:
+NICEPay menyediakan Virtual Account sebagai metode pembayaran. Dengan menggunakan Fitur ini, pelanggan akan dapat melakukan pembayaran melalui ATM, SMS Banking, Internet Banking, atau Mobile Banking. 
+Notifikasi real-time secara langsung akan dikirimkan ketika pembayaran berhasil.<br>
+
+Bank yang didukung:
 <ol type="1">
   <li>Bank Mandiri
   <li>Bank International Indonesia Maybank
@@ -11,22 +13,42 @@ Bank yang Didukung oleh NICEPay:
   <li>Bank Rakyat Indonesia (BRI)
   <li>Bank CIMB Niaga
   <li>Bank DANAMON
+  <li>ATM Bersama, Alto, Link and Prima
 </ol>
 
-NICEPay juga mendukung Virtual Account (VA) untuk bank lain melalui ATM BERSAMA, ALTO, LINK, and PRIMA.
-
-Integration Step :
+Alur Transaksi:
 <ol type="1">
-  <li>Merchant meminta registrasi VA ke NICEPay.
-  <li>Merchant menampilkan detail VA dan customer journey, kemudian mengirimkan detail VA melalui email / sms / riwayat transaksi nasabah.
-  <li>Pelanggan membayarkan VA di saluran pembayaran yang diinginkan.
-  <li>NICEPay kirim notifikasi.
-  <li>Merchant handle notifikasi.
+  <li>Merchant melakukan Request ke API Register NICEPay.
+  <li>Merchant menampilkan detail VA dan cara melakukan pembayaran untuk pembeli.
+  <li>Pembeli melakukan pembayaran menggunakan cara yang diinginkan.
+  <li>NICEPay akan mengirimkan Notifikasi setelah transaksi selesai.
+  <li>Merchant mengolah Notifikasi yang didapatkan.
 </ol>
 
-## Registrasi VA
+<div class="wrapper">
+<ul>
+  <li>
+    <input type="checkbox" id="list-item-vav2">
+    <label for="list-item-vav2" class="first">Virtual Account V2 Flow</label>
+    <ul>
+      <img src="/images/va-normal-v2-flow.png">
+    </ul>
+  </li>
+</ul>
+</div>
 
-> Contoh JSON Request
+## Registrasi - Virtual Account
+
+|                                                           |                                                                                                               |
+|-----------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|
+| **API url**                                               | `/nicepay/direct/v2/registration`                                                                             |
+| **Request Method** **application/json**                   | `POST`                                                                                                        |
+| **Description**                                           | Request Registrasi Transaksi ke NICEPAY                                                                       |        
+| **Merchant Token**                                        | SHA256(`timeStamp`+`iMid`+`referenceNo`+`amt`+`merchantKey`)                                                  |
+
+### Request Parameters - Registrasi Virtual Account
+
+> Sample JSON Request
 
 ```json
 {
@@ -69,7 +91,21 @@ Integration Step :
 }
 ```
 
-> Contoh JSON Response
+<aside class="notice">Mohon merujuk kepada <a href="#registration">Register API</a> untuk Parameter yang lengkap, Parameter di bawah merupakah tambahan yang dibutuhkan untuk Registrasi Virtual Account.</aside>
+
+<br>**Parameter Tambahan Registrasi Virtual Account**
+
+| **Parameters**                                  | **Type** | **Size** | Description                | Value    |
+| ----------------------------------------------- | -------- | -------- | -------------------------- | -------- |
+| **`payMethod`** **Required**                    | **N**    | **2**    | Virtual Account            | 02       |
+| **`bankCd`** **Required**                       | **A**    | **4**    | Bank Code                  | CENA     |
+| **`vacctValidDt`** **Required**                 | **N**    | **8**    | VA Expiry Date  (YYYYMMDD) | 20200303 |
+| **`vacctValidTm`** **Required**                 | **N**    | **6**    | VA Expiry Time  (HH24MISS) | 091309   |
+| **`merFixAcctld`** **Required for Fix VA Type** | **N**    | **8**    | Merchant Reserved VA ID    | 000045   |
+
+### Response Parameters - Registrasi Virtual Account
+
+> Sample JSON Response
 
 ```json
 {
@@ -96,41 +132,21 @@ Integration Step :
 }
 ```
 
- &nbsp; | &nbsp;
----------- | -------
-**API url** | **/nicepay/direct/v2/registration**
-Metode | POST, JSON
-Deskripsi | Registrasi Transaksi
-Merchant Token | SHA256 (timeStamp + iMid + referenceNo + amt + merchantKey)
-
-<br>Silahkan lihat ke [sini](#registration) untuk JSON parameters.<br>
-Berikut untuk parameter tambahan yang akan dibutuhkan untuk Registrasi Virtual Account (VA):
-
-Parameters | Mandatory | Tipe | Ukuran | Value | Deskripsi
----------- | ---------- | ---------- | ---------- | ---------- | ----------
-PayMethod | Y | AN | 2 | 02 | Virtual Account (VA)
-bankCd | Y | A | 4 | 2 | Bank code. refer to [here](#bank-code)
-vacctValidDt | Y | N | 8 | 20180306 | VA expiry date (YYYYMMDD)
-vacctValidTm | Y | N | 6 | 091309 | VA expiry time (HH24MISS)
-merFixAcctld | Y (if Fix Type) | AN | 40 | Merchant reserved VA ID
-
-<br>**Response Json Object**
-
-Paramenter | Tipe | Ukuran | Deskripsi
----------- | ---------- | ---------- | ----------
-resultCd | N | 4 | Result code
-resultMsg | AN | 255 | Result Message
-tXid | AN | 30 | Transactionn ID (Key from NICEPay)
-referenceNo | ANS | 40 | Merchant order N. (Key from merchant)
-payMethod | N | 2 | Payment Method
-amt | N | 12 | Payment amount
-transDt | N | 8 | Transaction date (YYYYMMDD)
-transTm | N | 6 | Transction time (HH24MISS)
-description | AN | 100 | Transaction description
-bankCd | A | 4 | Bank code. refer to [here](#bank-code)
-vacctNo | N | 20 | VA Number
-currency | AN | 3 | Currency
-goodsNm | AN | 100 | Goods name
-billingNm | A | 30 | Buyer name
-vacctValidDt | N | 8 | VA expiry date (YYYYMMDD)
-vacctValidTm | N | 6 | VA expiry time (HH24MISS)
+| **Parameter**      | **Type** | **Size**| Description                       |
+| ------------------ | -------- | ------- | --------------------------------- |
+| **`resultCd`**     | **N**    | **4**   | [Result Code](#error-code)        |
+| **`resultMsg`**    | **AN**   | **255** | [Result Message](#error-code)     |
+| **`tXid`**         | **AN**   | **30**  | Transactionn ID                   |
+| **`referenceNo`**  | **ANS**  | **40**  | Merchant Ref. No                  |
+| **`payMethod`**    | **N**    | **2**   | [Payment Method](#payment-method) |
+| **`amt`**          | **N**    | **12**  | Payment Amount                    |
+| **`transDt`**      | **N**    | **8**   | Transaction Date (YYYYMMDD)       |
+| **`transTm`**      | **N**    | **6**   | Transction Time (HH24MISS)        |
+| **`description`**  | **AN**   | **100** | Transaction Description           |
+| **`bankCd`**       | **A**    | **4**   | [Bank Code](#bank-code)           |
+| **`vacctNo`**      | **N**    | **20**  | VA Number                         |
+| **`currency`**     | **A**    | **3**   | Currency                          |
+| **`goodsNm`**      | **AN**   | **100** | Goods Name                        |
+| **`billingNm`**    | **A**    | **30**  | Buyer Name                        |
+| **`vacctValidDt`** | **N**    | **8**   | VA Expiry Date (YYYYMMDD)         |
+| **`vacctValidTm`** | **N**    | **6**   | VA Expiry Time (HH24MISS)         |

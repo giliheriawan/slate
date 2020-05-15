@@ -120,6 +120,8 @@ Integration Step :
 |**item ->** **goods_amt**           | Good's amount                                       |
 |**item ->** **goods_quantity**      | Good's Quantity (Only for LinkAja)                  |
 
+<aside class="notice">Please make sure that <code>count</code> is equal to the amount of unique item. For LinkAja, make sure that <code>goods_amt</code> x <code>goods_quantity</code> equals to <code>amt</code> parameter in Registration.</aside>
+
 <div class="center-column"></div>
 ```json
 {

@@ -73,24 +73,24 @@ NICEPAY APIs should be requested through HTTPS request to our Endpoint URL.
 
 ## API V1 Endpoints
 
-| **API** | Merchant Token | **Method** | End Point | Description |
-| --- | --- | --- | --- | --- |
-| **V1**  **Professional** | `iMid`<br>`referenceNo`<br>`amt`<br>`merchantKey` | **POST** *application/x-www-form-urlencoded* | `/nicepay/api/orderRegist.do` | Transaction Registration |
-| **V1**  **Enterprise** | `iMid`<br>`referenceNo`<br>`amt`<br>`merchantKey` | **POST** *application/x-www-form-urlencoded* | `/nicepay/api/onePassToken.do` | Request Credit Card Token |
-| **V1**  **Enterprise** | `n/a` | **Pop-up** | `/nicepay/api/secureVeRequest.do` | Request 3DS Pages |
-| **V1**  **Enterprise** | `n/a` | **Pop-up** | `/nicepay/api/migsRequest.do` | Request MIGS Pages |
-| **V1**  **Enterprise** |`iMid`<br>`referenceNo`<br>`amt`<br>`merchantKey` | **POST** *application/x-www-form-urlencoded* | `/nicepay/api/onePass.do` | Transaction Payment (Credit Card) and Registration for other payment methods. |
-| **V1**  **Enterprise** | `iMid`<br>`referenceNo`<br>`amt`<br>`merchantKey` | **POST** *application/x-www-form-urlencoded* | `/nicepay/api/ewalletTrans.do` | E-Wallet Trans? |
-| **V1** | `iMid`<br>`referenceNo`<br>`amt`<br>`merchantKey` | **POST** *application/x-www-form-urlencoded* | `/nicepay/api/onePassStatus.do` | Status Inquiry |
-| **V1** | `iMid`<br>`tXid`<br>`amt`<br>`merchantKey` | **POST** *application/x-www-form-urlencoded* | `/nicepay/api/onePassAllCancel.do` | Cancel Transaction |
+| **API**                  | Merchant Token                                    | **Method**                                     | End Point                          | Description                                                  |
+| ------------------------ | ------------------------------------------------- | ---------------------------------------------- | ---------------------------------- | ------------------------------------------------------------ |
+| **V1**  **Professional** | `iMid`<br>`referenceNo`<br>`amt`<br>`merchantKey` | **POST** **application/x-www-form-urlencoded** | `/nicepay/api/orderRegist.do`      | Transaction Registration                                     |
+| **V1**  **Enterprise**   | `iMid`<br>`referenceNo`<br>`amt`<br>`merchantKey` | **POST** **application/x-www-form-urlencoded** | `/nicepay/api/onePassToken.do`     | Request Credit Card Token                                    |
+| **V1**  **Enterprise**   | `n/a`                                             | **Pop-up**                                     | `/nicepay/api/secureVeRequest.do`  | Request 3DS Pages                                            |
+| **V1**  **Enterprise**   | `n/a`                                             | **Pop-up**                                     | `/nicepay/api/migsRequest.do`      | Request MIGS Pages                                           |
+| **V1**  **Enterprise**   | `iMid`<br>`referenceNo`<br>`amt`<br>`merchantKey` | **POST** **application/x-www-form-urlencoded** | `/nicepay/api/onePass.do`          | Transaction Payment (Credit Card) and Registration for other payment methods. |
+| **V1**  **Enterprise**   | `iMid`<br>`referenceNo`<br>`amt`<br>`merchantKey` | **POST** **application/x-www-form-urlencoded** | `/nicepay/api/ewalletTrans.do`     | E-Wallet Trans                                               |
+| **V1**                   | `iMid`<br>`referenceNo`<br>`amt`<br>`merchantKey` | **POST** **application/x-www-form-urlencoded** | `/nicepay/api/onePassStatus.do`    | Status Inquiry                                               |
+| **V1**                   | `iMid`<br>`tXid`<br>`amt`<br>`merchantKey`        | **POST** **application/x-www-form-urlencoded** | `/nicepay/api/onePassAllCancel.do` | Cancel Transaction                                           |
 
 
 ## API V2 Endpoints
 
-| **API** | Merchant Token | **Method** | End Point | Description |
-| --- | --- | --- | --- | --- |
-| **V2** | `timeStamp`<br>`iMid`<br>`referenceNo`<br>`amt`<br>`merchantKey` | **POST** *application/json* | `/nicepay/direct/v2/registration` | Transaction Registration |
-| **V2** | `timeStamp`<br>`iMid`<br>`referenceNo`<br>`amt`<br>`merchantKey` | **POST** *application/x-www-form-urlencoded* | `/nicepay/direct/v2/payment` | Transaction Payment |
-| **V2** | `timeStamp`<br>`iMid`<br>`referenceNo`<br>`amt`<br>`merchantKey` | **POST** *application/json* | `/nicepay/direct/v2/inquiry` | Transaction Status Inquiry |
-| **V2** | `timeStamp`<br>`iMid`<br>`referenceNo`<br>`amt`<br>`merchantKey` | **POST** *application/json* | `/nicepay/direct/v2/cancel` | Transaction Cancel |
-| **V2** | `timeStamp`<br>`iMid`<br>`msgRefno`<br>`merchantKey` 			| **POST** *application/json* | `/nicepay/direct/v2/sms-transmit` | SMS Transmit |
+| **API** | Merchant Token                                               | **Method**                                     | End Point                         | Description                |
+| ------- | ------------------------------------------------------------ | ---------------------------------------------- | --------------------------------- | -------------------------- |
+| **V2**  | `timeStamp`<br>`iMid`<br>`referenceNo`<br>`amt`<br>`merchantKey` | **POST** **application/json**                  | `/nicepay/direct/v2/registration` | Transaction Registration   |
+| **V2**  | `timeStamp`<br>`iMid`<br>`referenceNo`<br>`amt`<br>`merchantKey` | **POST** **application/x-www-form-urlencoded** | `/nicepay/direct/v2/payment`      | Transaction Payment        |
+| **V2**  | `timeStamp`<br>`iMid`<br>`referenceNo`<br>`amt`<br>`merchantKey` | **POST** **application/json**                  | `/nicepay/direct/v2/inquiry`      | Transaction Status Inquiry |
+| **V2**  | `timeStamp`<br>`iMid`<br>`referenceNo`<br>`amt`<br>`merchantKey` | **POST** **application/json**                  | `/nicepay/direct/v2/cancel`       | Transaction Cancel         |
+| **V2**  | `timeStamp`<br>`iMid`<br>`msgRefno`<br>`merchantKey`         | **POST** **application/json**                  | `/nicepay/direct/v2/sms-transmit` | SMS Transmit               |
