@@ -18,7 +18,7 @@ Real time Notification will be sent when customer has completed the payment.
 <ol type="1">
   <li>Merchant Request CVS Registration to NICEPay.
   <li>Merchant Display CVS Details and How-To Pay Details.
-  <li>Customer pay CVS with Preferred Payment Channel.
+  <li>Customer pay through the nearest Mitra Store.
   <li>NICEPay Send Notification to Merchant.
   <li>Merchant Handle Notification.
 </ol>

@@ -229,12 +229,12 @@ print("status : " + result['status'])
 
 ### Additional Response for Others Payment Method
 
-| **Parameter**     | **Type** | **Size** | Description                    |
-| ----------------- | -------- | -------- | ------------------------------ |
-| **`mitraCd`**     | **A**    | **4**    | [Mitra Code](#mitra-code)      |
-| **`payNo`**       | **N**    | **12**   | Payment Number                 |
-| **`payValidDt`**  | **N**    | **8**    | Payment Expiry Date (YYYYMMDD) |
-| **`payValidTm`**  | **N**    | **6**    | Payment Expiry Time (HH24MISS) |
-| **`receiptCode`** | **ANS**  | **18**   | Auth Number                    |
+| **Parameter**     | **Type** | **Size** | Description                                             |
+| ----------------- | -------- | -------- | ------------------------------------------------------- |
+| **`mitraCd`**     | **A**    | **4**    | [Mitra Code](#mitra-code) (CVS, E-Wallet, Payloan)      |
+| **`payNo`**       | **N**    | **12**   | Payment Number (CVS)                                    |
+| **`payValidDt`**  | **N**    | **8**    | CVS Payment Expiry Date (YYYYMMDD)                      |
+| **`payValidTm`**  | **N**    | **6**    | CVS Payment Expiry Time (HH24MISS)                      |
+| **`receiptCode`** | **ANS**  | **18**   | Auth Number                                             |
 
 ### Additional Responses (Coming Soon)

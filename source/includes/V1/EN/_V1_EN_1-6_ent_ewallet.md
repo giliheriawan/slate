@@ -6,10 +6,11 @@ Real time Notification will be sent when customer has completed the payment.
 **Supported E-Wallet by NICEPay:**
 
 <ol type="1">
-  <li>Mandiri E-Cash
+  <li>OVO
+  <li>LinkAja
 </ol>
 
-*Transaction Flow:**
+**Transaction Flow:**
 
 <ol type="1">
   <li>Merchant Request E-Wallet Registration to NICEPay.

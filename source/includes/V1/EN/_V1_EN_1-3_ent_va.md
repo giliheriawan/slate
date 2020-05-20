@@ -48,8 +48,8 @@ We support Virtual Account payments for other Banks via ATM BERSAMA, ALTO, LINK,
 | **API url**                                               | `/nicepay/api/onePass.do`                                                                                     |
 | **Request Method** **application/json**                   | `POST`                                                                                                        |
 | **Description**                                           | Request `vacctNo` for Virtual Account Payment                                                                 |
-| **Merchant Token**                                        | SHA256(`iMid`+`referenceNo`+`amt`+`merchantKey`)                                                                 |
-| **Payment Methods**                                       | `02` Credit Card                                                                                              |
+| **Merchant Token**                                        | SHA256(`iMid`+`referenceNo`+`amt`+`merchantKey`)                                                              |
+| **Payment Methods**                                       | `02` Virtual Account                                                                                          |
 
 ### Request Parameter - VA Registration 
 

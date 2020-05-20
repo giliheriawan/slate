@@ -3,7 +3,7 @@ Transaction Flow:
 <ol type="1">
   <li>Request `onePassToken`.
   <li>Redirect to 3DS / MIGS page.
-  <li>**Customer** input `OTP` on 3DS page.
+  <li>Customer input `OTP` on 3DS page.
   <li>Merchant Register Transaction.
   <li>NICEPay Send Notification
 </ol>
@@ -66,7 +66,7 @@ String paymentType= nicePay.Get("paymentType");
 | **`cardExpYYmm`** **Required**       | **N**    | 4        | Card expiry (YYMM)                    | 2012                                                         |
 | **`cardHolderNm`** **Required CIMB** | **AN**   | 50       | Card holder name                      | asdasdas                                                     |
 | **`amt`** **Required**               | **N**    | 12       | Payment amount                        | 10000                                                        |
-| **`referenceNo`** **Required**       | **ANS**  | 40       | Merchant Order Number Required        | ABC123                                                       |
+| **`referenceNo`** **Required**       | **ANS**  | 40       | Merchant Order Number                 | ABC123                                                       |
 | **`instmntType`**                    | **N**    | 2        | [Installment Type](#installment-type) | 1                                                            |
 | **`instmntMon`**                     | **N**    | 2        | Installment month                     | 1                                                            |
 
@@ -563,6 +563,7 @@ else:
 | **`userSessionID`**               | **AN**   | **100**  | User Session ID                                              | userSessionID                                                |
 | **`userAgent`**                   | **ANS**  | **100**  | User Agent Information                                       | Mozilla                                                      |
 | **`userLanguage`**                | **ANS**  |          | User Language                                                | en-US                                                        |
+
 ### Response Parameter - CC Registration
 
 > Sample JSON Response

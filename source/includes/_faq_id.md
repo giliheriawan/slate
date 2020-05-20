@@ -1,7 +1,3 @@
-# Inquiry
-
-Have any inquiry ?<br>Feel free contact us : [it@nicepay.co.id](mailto:it@nicepay.co.id).
-
 # F.A.Q
 
 |                  |                                                              |
@@ -18,3 +14,6 @@ Have any inquiry ?<br>Feel free contact us : [it@nicepay.co.id](mailto:it@nicepa
 | **>** **Answer** | Merchant bisa melakukan pengecekan terlebih dahulu, apakah nomor virtual account, batas waktu pembayaran, dan nominal tagihan sesuai dengan invoice? Jika sudah benar semua namun tetap gagal, maka coba dahulu menggunakan fasilitas lain. sebagai contoh, pembayaran menggunakan ATM gagal, maka coba pembayaran menggunakan E-Banking. Jika pembayaran masih tetap mengalami masalah, silahkan hubungi Customer Service kami. |
 | **Q**            | Bagaimana jika customer sudah berhasil melakukan pembayaran, namun tidak mendapatkan email konfirmasi bayaran? |
 | **>** **Answer** | Dalam kondisi normal, customer akan mendapatkan email konfirmasi dalam waktu maksimal 5 menit setelah pembayaran. Jika tetap tidak mendapatkan email konfirmasi, silahkan mengirimkan email kepada customer service kami disertai bukti pembayaran. |
+
+Ada Pertanyaan ?
+<br>Silahkan hubngi kami : [it@nicepay.co.id](mailto:it@nicepay.co.id).

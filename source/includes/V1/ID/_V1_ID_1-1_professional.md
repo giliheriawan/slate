@@ -1,93 +1,27 @@
 # NICEPay Professional
+Semua transaksi dengan NICEPAY API V1 Professional akan `redirect` ke **NICEPay Secure Payment Page** proses pembayaran.
 
-Semua Transaksi akan dialihkan ke NICEPay Secure Payment Page untuk proses transaksi.<br>
-Langkah-langkah untuk NICEPay Professional:
+Langkah-langkah:
 <ol type="1">
-  <li>Pendaftaran Transaksi.
-  <li>Redirect to NICEPay Secure Payment Page.
-  <li>Customer menyelesaikan pembayaran di NICEPay Secure Payment Page.
-  <li>NICEPay redirect ke Merchant callbackUrl untuk memberikan informasi pembayaran.
+  <li>Registrasi Transaksi.
+  <li>Redirect ke halaman NICEPay Secure Payment.
+  <li>Melakukan pembayaran di halaman NICEPay Secure Payment.
+  <li>Pembeli akan dialihkan ke halaman Callback Merchant untuk detail pembayaran.
 </ol>
 
-## Pendaftaran Transaksi
+## Registrasi Transaksi
+### Spesifikasi API Register
 
-API ini untuk **Pendaftaran Transaksi**:
-<ol type="1">
-  <li>Kartu Kredit (Credit Card)
-  <li>Virtual Account
-  <li>Convenience Store
-  <li>ClickPay
-  <li>E-Wallet
-</ol>
+|                                                           |                                                                                                               |
+|-----------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|
+| **API url**                                               | `/nicepay/api/orderRegist.do`                                                                                 |
+| **Request Method** **application/x-www-form-urlencoded**  | `POST`                                                                                                        |
+| **Deskripsi**                                             | Melakukan Registrasi Transaksi                                                                                |
+| **Merchant Token**                                        | SHA256(`iMid``referenceNo``amt``merchantKey`)                                                                 |
+| **Payment Methods**                                       | `01` Credit Card <br> `02` Virtual Account <br> `03` Convenience Store <br> `04` Click Pay <br> `05` E-Wallet |
 
-&nbsp; | Pendaftaran Transaksi
----------- | -------
-**API url** | **/nicepay/api/orderRegist.do**
-Metode | POST
-Deskripsi | API untuk melakukan registrasi transaksi Credit Card, Virtual Account, CVS, Clickpay, Ewallet
-Merchant Token | SHA256 (Merchant ID + Reference Number + Amount + Merchant Key)
-
-<br>**Request Json Object**
-
-Parameter | Mandatory | Tipe | Ukuran | Deskripsi | Contoh Data
----------- | ---------- | ---------- | ---------- | ---------- | ----------
-iMid | Y | AN | 10 | Merchant ID | IONPAYTEST
-merchantToken | Y | N | 255 | Merchant Token | 6cfccfc0046773c1b589d8e98f8b596c284f3c70a4ecf86eba14c18944b74bcd
-payMethod | Y | AN | 2 | Payment Method | 01: Credit Card<br>02: Virtual Account<br>03:Convenience Store<br>04: ClickPay<br>05: E-Wallet
-currency | Y | N | 3 | Currency | IDR
-amt | Y | N | 12 | Transaction Amount | 10000
-instmntType | CC Only | N | 2 | Installment Type, refer Code at [Here](#installment-type) | 1: Customer charge<br>2: Merchant charge
-instmntMon | CC Only | N | 2 | Installment Month | 1
-referenceNo | Y | ANS | 40 | Merchant Order Number | MerchantReferenceNumber1
-goodsNm | Y | AN | 100 | Goods Name | Merchant Goods 1
-billingNm | Y | A | 30 | Billing Name | Buyer Name
-billingPhone | Y | N | 15 | Billing phone number | 02123456789
-billingEmail | Y | AN | 40 | Billing email | buyer@merchant.com
-billingAddr  | N | AN | 100 | Billing address | Billing Address
-billingCity | Only CC | A | 50 | Billing city | Jakarta Utara
-billingState | Only CC | A | 50 | Billing state | DKI Jakarta
-billingPostCd | Only CC | A | 10 | Billing postcode | 10160
-billingCountry | Only CC | A | 10 | Billing country | Indonesia
-deliveryNm | N | A | 30 | Delivery name | Delivery name
-deliveryPhone | N | N | 15 | Delivery phone number | 02123456789
-deliveryAddr | N | AN | 100 | Delivery address | Delivery Address
-deliveryCity | N | A | 50 | Delivery city | Jakarta Utara
-deliveryState | N | A | 50 | Delivery state | DKI Jakarta
-deliveryPostCd | N | N | 10 | Delivery postcode | 10160
-deliveryCountry | N | A | 10 | Delivery Country | indonesia
-callBackUrl | Y | AN | 255 | Payment result forward url | https://merchant.com/callBackUrl
-dbProcessUrl | Y | AN | 255 | Payment notification | https://merchant.com/dbProcessUrl
-vat | N | N | 12 | Vat Number | 0
-fee | N | N | 12 | Service fee | 0
-notaxAmt | N | N | 12 | Tax free amount | 0
-description | Y | AN | 100 | Transaction description | this is test order
-reqDt  | N | N | 8 | Request date | 20180303
-reqTm | N | N | 6 | Request time | 135959
-reqDomain | N | AN | 100 | Request domain | merchant.com
-reqServerIP | N | AN | 15 | Request Server IP address | 127.0.0.1
-reqClientVer | N | AN | 50 | Request client version |  1.0
-userIP | N | AN | 15 | User IP address |  127.0.0.1
-userSessionID | N | AN | 100 | User session ID | userSessionID
-userAgent | N | AN | 100 | User agent information | Mozilla
-userLanguage | N | A | 2 | User language | en-US
-recurrOpt | N | N | 2 | Recurring option | 0: Automatic Cancel<br>1: Do not cancel<br>2: Do not make token
-cartData | N | JSON OBJECT | 4000 | JSON Format | (JSON Format)
-instmntType | N | N | 2 | Installment type, refer Code at [Here](#installment-type) | 1
-worker | N | AN | 10 | worker | worker
-merFixAcctId | N | N | 40 | Merchant fix virtual account sign value | 14015824
-vacctValidDt | N | N | 8 | Virtual account valid date | 20180404
-vacctValidTm | N | N | 6 | Virtual account valid time | 235959
-paymentExpDt | N | N | 8 | Permit time check date | 20180404
-paymentExpTm | N | N | 6 | Permit time check time | 235959
-payValidDt | N | N | 8 | CVS valid date | 20180404
-payValidTm | N | N | 6 | CVS valid time | 235959
-tXid | N | AN | 30 | Direct migs 3rd party add. |  BM...315
-mitraCd | N | AN | 4 | Mitra Code, refer Code at [Here](#mitra-code) |  ALMA
-mRefNo | N | N | 18 | Bank Reference No. | bankcd123456789
-timeStamp | N | N | 14 | Timestamp | 20180404165639
-version | N | AN | &nbsp; | &nbsp; | D2
-
-##- Credit Card
+### Parameter Lengkap API Register
+> Contoh API Request
 
 ```java
 // Payment Mandatory Field
@@ -305,1091 +239,152 @@ print("requestURL: " + result['data']['requestURL'] + "?tXid=" + result['data'][
 print("tXid : " + result['data']['tXid'])
 ```
 
-> Contoh API Response
+> Contoh API Response 
 
 ```json
 {
-  "apiType": "M0",
-  "tXid": "TESTIDTEST01201608291156552476",
-  "requestDate": "20160829115655",
-  "responseDate": "20160829115655",
-  "data": {
-    "tXid": "TESTIDTEST01201608291156552476",
-    "resultCd": "0000",
-    "resultMsg": "SUCCESS",
-    "requestURL": "https://www.nicepay.co.id/nicepay/api/orderInquiry.do"
-  }
+    "apiType": "M0",
+    "tXid": "IONPAYTEST01202002130920175001",
+    "requestDate": "20200213092017",
+    "responseDate": "20200213092017",
+    "data": {
+        "tXid": "IONPAYTEST01202002130920175001",
+        "resultCd": "0000",
+        "resultMsg": "SUCCESS",
+        "requestURL": "https://dev.nicepay.co.id/nicepay/api/orderInquiry.do"
+    }
 }
 ```
 
-Berikut contoh **Pendaftaran Transaksi** untuk **Credit Card**
+| **Parameter**                                   | **Type**          | **Size** | Description                           | Example Value                     |
+| ----------------------------------------------- | ----------------- | -------- | ------------------------------------- | --------------------------------- |
+| **`iMid`** **Required**                         | **AN**            | **10**   | Merchant ID                           | IONPAYTEST                        |
+| **`merchantToken`** **Required**                | **AN**            | **255**  | Merchant Token                        | 6cfccfc0046773c1b589d8e98f...     |
+| **`payMethod`** **Required**                    | **N**             | **2**    | [Payment Method](#payment-method)     | 01                                |
+| **`currency`** **Required**                     | **A**             | **3**    | Currency                              | IDR                               |
+| **`amt`** **Required**                          | **N**             | **12**   | Transaction Amount                    | 10000                             |
+| **`cartData`** **Required**                     | **`JSON OBJECT`** | **4000** | Transaction Cart Data                 | [cartData](#cart-data) JSON       |
+| **`referenceNo`** **Required**                  | **ANS**           | **40**   | Merchant Order Number                 | MerchantReferenceNumber1          |
+| **`goodsNm`** **Required**                      | **AN**            | **100**  | Goods Name                            | Merchant Goods 1                  |
+| **`callBackUrl`** **Required**                  | **ANS**           | **255**  | Payment Result Page URL               | https://merchant.com/callBackUrl  |
+| **`dbProcessUrl`** **Required**                 | **ANS**           | **255**  | Push Notification URL                 | https://merchant.com/dbProcessUrl |
+| **`userIP`** **Required**                       | **AN**            | **15**   | User IP address                       | 127.0.0.1                         |
+| **`description`** **Required**                  | **AN**            | **100**  | Transaction Description               | this is test order                |
+| **`billingNm`** **Required**                    | **A**             | **30**   | Billing Name                          | Buyer Name                        |
+| **`billingPhone`** **Required**                 | **N**             | **15**   | Billing Phone Number                  | 2123456789                        |
+| **`billingEmail`** **Required**                 | **ANS**           | **40**   | Billing Email                         | buyer@merchant.com                |
+| **`billingCity`** **Required**                  | **A**             | **50**   | Billing City                          | Jakarta Utara                     |
+| **`billingState`** **Required**                 | **A**             | **50**   | Billing State                         | DKI Jakarta                       |
+| **`billingPostCd`** **Required**                | **A**             | **10**   | Billing Postcode                      | 10160                             |
+| **`billingCountry`** **Required**               | **A**             | **10**   | Billing Country                       | Indonesia                         |
+| **`billingAddr`**                               | **AN**            | **100**  | Billing Address                       | Billing Address                   |
+| **`merFixAcctId`** **Required for Fix-Type VA** | **N**             | **40**   | Merchant Fix VA Number                | 14015824                          |
+| **`instmntType`** **Required for CC**           | **N**             | **2**    | [Installment Type](#installment-type) | 1                                 |
+| **`instmntMon`** **Required for CC**            | **N**             | **2**    | Installment Month                     | 1                                 |
+| **`deliveryNm`**                                | **A**             | **30**   | Delivery Name                         | Delivery name                     |
+| **`deliveryPhone`**                             | **N**             | **15**   | Delivery Phone Number                 | 2123456789                        |
+| **`deliveryAddr`**                              | **AN**            | **100**  | Delivery Address                      | Delivery Address                  |
+| **`deliveryCity`**                              | **A**             | **50**   | Delivery City                         | Jakarta Utara                     |
+| **`deliveryState`**                             | **A**             | **50**   | Delivery State                        | DKI Jakarta                       |
+| **`deliveryPostCd`**                            | **N**             | **10**   | Delivery Postcode                     | 10160                             |
+| **`deliveryCountry`**                           | **A**             | **10**   | Delivery Country                      | indonesia                         |
+| **`vat`**                                       | **N**             | **12**   | Vat Number                            | 0                                 |
+| **`fee`**                                       | **N**             | **12**   | Service Fee                           | 0                                 |
+| **`notaxAmt`**                                  | **N**             | **12**   | Tax Free Amount                       | 0                                 |
+| **`reqDt`**                                     | **N**             | **8**    | Request Date                          | 20180303                          |
+| **`reqTm`**                                     | **N**             | **6**    | Request Time                          | 135959                            |
+| **`reqDomain`**                                 | **ANS**           | **100**  | Request domain                        | merchant.com                      |
+| **`reqServerIP`**                               | **ANS**           | **15**   | Request Server IP Address             | 127.0.0.1                         |
+| **`reqClientVer`**                              | **AN**            | **50**   | Request Client Version                | 1                                 |
+| **`userSessionID`**                             | **AN**            | **100**  | User Session ID                       | userSessionID                     |
+| **`userAgent`**                                 | **ANS**           | **100**  | User Agent Information                | Mozilla                           |
+| **`userLanguage`**                              | **ANS**           |          | **User Language                       | en-US                             |
+| **`worker`**                                    | **AN**            | **10**   | Worker                                | worker                            |
+| **`vacctValidDt`**                              | **N**             | **8**    | Virtual Account Valid Date (YYYYMMDD) | 20180404                          |
+| **`vacctValidTm`**                              | **N**             | **6**    | Virtual Account Valid Time (HH24MISS) | 235959                            |
+| **`paymentExpDt`**                              | **N**             | **8**    | Payment Expired Date (YYYYMMDD)       | 20180404                          |
+| **`paymentExpTm`**                              | **N**             | **6**    | Payment Expired Time (HH24MISS)       | 235959                            |
+| **`payValidDt`**                                | **N**             | **8**    | CVS Valid Date (YYYYMMDD)             | 20180404                          |
+| **`payValidTm`**                                | **N**             | **6**    | CVS Valid Time (HH24MISS)             | 235959                            |
+| **`mRefNo`**                                    | **N**             | **18**   | Bank Reference No.                    | bankcd123456789                   |
+| **`timeStamp`**                                 | **N**             | **14**   | Timestamp (YYYYMMDDHH24MISS)          | 20180404165639                    |
+| **`version`**                                   | **AN**            |          | Version                               | Nicepay Lite                      |
+				
+### Cart Data API V1
+<h3 id="cart-data"></h3>
 
-Notice | &nbsp;
----------- | -------
-payMethod | 01
-Description | Credit Card
+| **Parameter**                 |  Deskripsi                     |
+|-------------------------------|--------------------------------|
+|**count**                      | Total jumlah item cartData     |
+|**item**                       |                                |
+|**item ->** **img_url**        | URL Gambar barang  (50x50 size)|
+|**item ->** **goods_name**     | Nama Barang                    |
+|**item ->** **goods_detail**   | Deskripsi Barang               |
+|**item ->** **goods_amt**      | Harga Barang                   |
 
-<br>**Mandatory Parameter untuk Credit Card**
+<div class="center-column"></div>
+```json
+{
+    "count": "2",  
+    "item": [  
+        {
+            "img_url": "http://img.aaa.com/ima1.jpg",  
+            "goods_name": "Item 1 Name",
+            "goods_detail": "Item 1 Detail",
+            "goods_amt": "700"
+        },  
+	    {
+            "img_url": "http://img.aaa.com/ima2.jpg",
+            "goods_name": "Item 2 Name",
+            "goods_detail": "Item 2 Detail",
+            "goods_amt": "300"
+        }  
+        ] 
+} 
+```
 
-Parameter | Tipe | Ukuran | Deskripsi | Contoh Data
----------- | ---------- | ---------- | ---------- | ----------
-iMid | AN | 10 | Merchant ID | IONPAYTEST
-payMethod | AN | 2 | Pay Method | 01
-currency | AN | 3 | Currency | IDR
-amt | N | 12 | Goods Amount | 1000
-instmntType | N | 2 | Installment Type, refer Code at [Here](#installment-type) | 1
-instmntMon | N | 2 | Installment Month | 1
-referenceNo | ANS | 40 | Merchant Order No | MerchantReferenceNumber001
-goodsNm | AN | 100 | Goods Name | Merchant Goods 1
-billingNm | A | 30 | Billing Name | Buyer Name
-billingPhone | N | 15 | Billing Phone Number | 02112345678
-billingEmail | AN | 40 | Billing Email | buyer@merchant.com
-billingCity | A | 50 | Billing City | Jakarta
-billingState | A | 50 | Billing State | Jakarta
-billingPostCd | N | 10 | Billing Post Number | 12345
-billingCountry | A | 10 | Billing Country | Indonesia
-callBackUrl | AN | 255 | Payment Result Forward Url (On Browser) | www.merchant.com/callback
-dbProcessUrl | AN | 255 | Payment Result Receive Url (Server Side) | www.merchant.com/dbprocess
-description | AN | 12 | Description | Description
-merchantToken | AN | 255 | Merchant Token | 6cfccfc0046773c1b589d8e98f8b596c284f3c70a4ecf86eba14c18944b74bcd
-userIP | AN | 15 | User IP (Customer) | 127.0.0.1
-cartData | AN | 4000 | Cart Data (Json Format) | {}
-recurrOpt | N | 2 | Recurring option<br> 0: Automatic Cancel<br>1: Do not cancel<br>2: Do not make token | null
+<aside class="success">
+Setelah transaksi berhasil terdaftar, segera alihkan pembeli ke halaman pembayaran Nicepay.
+</aside>
 
-<br>**Optional Parameter untuk Credit Card**
+## Pembayaran
+### Spesifikasi API Pembayaran
 
-Parameter | Tipe | Ukuran | Deskripsi | Contoh Data
----------- | ---------- | ---------- | ---------- | ----------
-billingAddr | AN | 100 | Billing Address | Billing Address
-deliveryNm | A | 30 | Delivery Name | Buyer Name
-deliveryPhone | N | 15 | Delivery Phone | 02112345678
-deliveryAddr | AN | 100 | Delivery Address | Billing Address
-deliveryEmail | AN | &nbsp; | Delivery Email | buyer@merchant.com
-deliveryCity | A | 50 | Delivery City | Jakarta
-deliveryState | A | 50 | Delivery State | Jakarta
-deliveryPostCd | N | 10 | Delivery Post Number | 12345
-deliveryCountry | A | 10 | Delivery Country | Indonesia
-vat | N | 12 | Vat | 0
-fee | N | 12 | Service Tax | 0
-notaxAmt | N | 12 | Tax Free Amount | 0
-reqDt | N | 8 | Request Date(YYYYMMDD) | 20160301
-reqTm | N | 6 | Request Time(HH24MISS) | 135959
-reqDomain | AN | 100 | Request Domain | merchant.com
-reqServerIP | AN | 15 | Request Server IP | 127.0.0.1
-reqClientVer | AN | 50 | equest Client Version | 1.0
-userSessionID | AN | 100 | User Session ID | userSessionID
-userAgent | AN | 100 | User Agent Information | Mozilla
-userLanguage | AN | 2 | User Language | en-US
+|                                                           |                                                                                                                           |
+|-----------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------|
+| **API url**                                               | `/nicepay/api/orderInquiry.do`                                                                                            |
+| **Request Method** **application/x-www-form-urlencoded**  | `REDIRECT`                                                                                                                |
+| **Deskripsi**                                             | Request Pembayaran untuk dialihkan ke halaman NICEPAY.                                                                    |
 
-
-##- Virtual Account
+### Parameter API Pembayaran
+> Sample API Request
+> `https://www.nicepay.co.id/nicepay/api/orderInquiry.do?tXid=IONPAYTEST01201608291733081257&optDisplayCB=0&optDisplayBL=0`
 
 ```java
-// Payment Mandatory Field
-nicePay.setPayMethod("02");
-nicePay.setCurrency("IDR");
-nicePay.setAmt("1000");
-nicePay.setReferenceNo("MerchantReferenceNumber001");
-nicePay.setGoodsNm("Merchant Goods 1");
-nicePay.setBillingNm("Buyer Name");
-nicePay.setBillingEmail("buyer@merchant.com");
-nicePay.setBillingPhone("02112345678");
-nicePay.setCallBackUrl("www.merchant.com/callback");
-nicePay.setDbProcessUrl("www.merchant.com/dbprocess");
-nicePay.setDescription("Description");
-nicePay.setMerchantToken(nicePay.makeToken(nicePay.getAmt(), nicePay.getReferenceNo()));
-nicePay.setCartData("{}");
-
-// Payment Optional Field
-nicePay.setBillingAddr("Billing Address");
-nicePay.setBillingCity("Jakarta");
-nicePay.setBillingState("Jakarta");
-nicePay.setBillingPostCd("12345");
-nicePay.setBillingCountry("Indonesia");
-nicePay.setDeliveryNm("Buyer Name");
-nicePay.setDeliveryPhone("02112345678");
-nicePay.setDeliveryAddr("Billing Address ");
-nicePay.setDeliveryCity("Jakarta");
-nicePay.setDeliveryState("Jakarta");
-nicePay.setDeliveryPostCd("12345");
-nicePay.setDeliveryCountry("Indonesia");
-nicePay.setVat("0");
-nicePay.setFee("0");
-nicePay.setNotaxAmt("0");
-nicePay.setReqDt("20160301");
-nicePay.setReqTm("135959");
-nicePay.setReqDomain("www.merchant.com");
-nicePay.setReqServerIP("127.0.0.1");
-nicePay.setReqClientVer("1.0");
-nicePay.setUserIP("127.0.0.1");
-nicePay.setUserSessionID("userSessionID");
-nicePay.setUserAgent("Mozilla");
-nicePay.setUserLanguage("en-US");
-
-// Payment Request
-nicePay.payPage();
-
-// Payment Response
-System.out.println("Response String : " + nicePay.getResponseString()); // JSON in String format
-
-String resultCd = nicePay.Get("resultCd");
-String resultMsg = nicePay.Get("resultMsg");
-String tXid= nicePay.Get("tXid");
-String requestURL= nicePay.Get("requestURL");
+if (nicePay.Get("resultCd").equals("0000")) {   
+    String site = nicePay.Get("requestURL") + "&optDisplayCB=0" + "&optDisplayBL=0"; 
+             response.setStatus(response.SC_MOVED_TEMPORARILY);   
+             response.setHeader("Location", site);   
+         } 
 ```
 
-```csharp
-```
+| **Parameter**           | **Type** | **Size** | Deskripsi             | Example Value                  |
+| ----------------------- | -------- | -------- | --------------------- | ------------------------------ |
+| **`tXid`** **Required** | **AN**   | **30**   | Transaction ID        | IONPAYTEST02201607291027025291 |
+| **`optDisplayCB`**      | **N**    | **2**    | Tombol "Change"       | `show = 0` `hide = 1`          |
+| **`optDisplayBL`**      | **N**    | **2**    | Link "Back"           | `show = 0` `hide = 1`          |
 
-```php
-<?php
-$nicepay = new NicepayLib();
+<aside class="notice">
+Untuk mencegah pembeli melakukan perubahan Metode Pembayaran, set <code>optDisplayCB = 1</code>
+</aside>
 
-//Ignore this function if you have invoice number.
-function generateReference()
-{
-  $micro_date = microtime();
-  $date_array = explode(" ",$microdate);
-  $date = date("YmdHis",$date_array[1]);
-  $date_array[0] = preg_replace('/[^\p{L}\p{N}\s]/u', '', $date_array[0]);
-  return "Ref".$date.$date_array[0].rand(100,999);
-}
+## NICEPAY Secure Payment Page
 
-if(isset($_POST['payMethod']) && $_POST['payMethod'] == '02'){
-  //Populate Mandatory parameters to send
-  $nicepay->set('payMethod', '02');
-  $nicepay->set('currency', 'IDR');
-  $nicepay->set('amt', 12000); //Total Gross Amount
-  $nicepay->set('referenceNo',generateReference()); //Invoice Number or Reference Number Generated by Merchant
-  $nicepay->set('description', 'Payment of Invoice No '.$nicepay->get('referenceNo'));//Transaction Description
+![alt text](/images/payment-page-with-options.jpg "Payment Page with Options")
 
-  $nicepay->set('billingNm', 'John Doe'); //Customer name
-  $nicepay->set('billingPhone', '02112345678'); //Customer phone number
-  $nicepay->set('billingEmail', 'john@example.com');
-  $nicepay->set('billingAddr', 'Jl. Jendral Sudirman No.28');
-  $nicepay->set('billingCity', 'Jakarta Pusat');
-  $nicepay->set('billingState', 'DKI Jakarta');
-  $nicepay->set('billingPostCd', '10210');
-  $nicepay->set('billingCountry', 'Indonesia');
+### Menu Pemilihan Metode Pembayaran
+Ketika pembeli menekan tombol `Change`, mereka akan dapat melihat halaman di bawah ini dan melakukan pemilihan metode pembayaran.
 
-  $nicepay->set('deliveryNm', 'John Doe'); //Delivery name
-  $nicepay->set('deliveryPhone', '02112345678');
-  $nicepay->set('deliveryEmail', 'john@example.com');
-  $nicepay->set('deliveryAddr', 'Jl. Jendral Sudirman No.28');
-  $nicepay->set('deliveryCity', 'Jakarta Pusat');
-  $nicepay->set('deliveryState', 'DKI Jakarta');
-  $nicepay->set('deliveryPostCd', '10210');
-  $nicepay->set('deliveryCountry', 'Indonesia');
+![alt text](/images/payment-page-change.png "Payment Page on Change Button Click")
 
-  //Send Data
-  $response = $nicepay->requestVA();
 
-  //Process response from NICEPAY
-  if(isset($response->data->resultCd) && $response->data->resultCd == "0000"){
-    header("Location: ".$response->data->requestURL."?tXid=".$response->tXid);
-    //Please save your tXid in your database
-  }elseif (isset($response->resultCd)) {
-    // In this sample, we echo error message
-    echo "<pre>";
-    echo "result code    : ".$response->resultCd."\n";
-    echo "result message : ".$response->resultMsg."\n";
-    echo "</pre>";
-  }else {
-    // In this sample, we echo error message
-    echo "<pre>Connection Timeout. Please Try Again.</pre>";
-  }
-}
-?>
-```
-
-```python
-#Set Mandatory Value
-NICEPay.payMethod = "02" #Set Payment Method
-NICEPay.amt = "1000" #Total Gross Amount
-NICEPay.referenceNo = str(random.randrange(111111, 999999)) #Invoice Number By Merchant
-NICEPay.goodsNm = NICEPay.referenceNo #Goods Name
-NICEPay.billingNm = "John Doe"
-NICEPay.billingPhone = "02112345678"
-NICEPay.billingEmail = "john@example.com"
-NICEPay.callBackUrl = "http://www.merchant.com/callback"
-NICEPay.dbProcessUrl = "https://www.merchant.com/notification"
-NICEPay.description = "Payment Of Ref No." + NICEPay.referenceNo
-NICEPay.merchantToken = NICEPay.getMerchantToken()
-NICEPay.userIP = NICEPay.getUserIp()
-NICEPay.cartData = "{}" #Json Array Value
-
-#Payment Request
-resultData = NICEPay.apiRequest()
-
-#Payment Result
-jsonResult = resultData[4:]
-result = json.loads(jsonResult)
-
-#Payment Response String Format
-print("resultCd : " + result['data']['resultCd'])
-print("resultMsg : " + result['data']['resultMsg'])
-print("requestURL: " + result['data']['requestURL'] + "?tXid=" + result['data']['tXid'])
-print("tXid : " + result['data']['tXid'])
-```
-
-> Contoh API Response
-
-```json
-{
-  "apiType": "M0",
-  "tXid": "TESTIDTEST02201705261652026146",
-  "requestDate": "20170526165202",
-  "responseDate": "20170526165202",
-  "data": {
-    "tXid": "TESTIDTEST02201705261652026146",
-    "resultCd": "0000",
-    "resultMsg": "SUCCESS",
-    "requestURL": "https://www.nicepay.co.id/nicepay/api/orderInquiry.do"
-  }
-}
-```
-
-Berikut contoh **Pendaftaran Transaksi** untuk **Virtual Account**
-
-Notice | &nbsp;
----------- | -------
-payMethod | 02
-Description | Virtual Account
-
-<br>**Mandatory Parameter untuk Virtual Account**
-
-Parameter | Tipe | Ukuran | Deskripsi | Contoh Data
----------- | ---------- | ---------- | ---------- | ----------
-iMid | AN | 10 | Merchant ID | IONPAYTEST
-payMethod | AN | 2 | Pay Method | 02
-currency | AN | 3 | Currency | IDR
-amt | N | 12 | Goods Amount | 1000
-referenceNo | ANS | 40 | Merchant Order No | MerchantReferenceNumber001
-goodsNm | AN | 100 | Goods Name | Merchant Goods 1
-billingNm | A | 30 | Billing Name | Buyer Name
-billingPhone | N | 15 | Billing Phone Number | 02112345678
-billingEmail | AN | 40 | Billing Email | buyer@merchant.com
-callBackUrl | AN | 255 | Payment Result Forward Url (On Browser) | www.merchant.com/callback
-dbProcessUrl | AN | 255 | Payment Result Receive Url (Server Side) | www.merchant.com/dbprocess
-description | AN | 12 | Description | Description
-merchantToken | AN | 255 | Merchant Token | 6cfccfc0046773c1b589d8e98f8b596c284f3c70a4ecf86eba14c18944b74bcd
-cartData | AN | 4000 | Cart Data (Json Format) | {}
-
-<br>**Optional Parameter untuk Virtual Account**
-
-Parameter | Tipe | Ukuran | Deskripsi | Contoh Data
----------- | ---------- | ---------- | ---------- | ----------
-billingAddr | AN | 100 | Billing Address | Billing Address
-billingCity | A | 50 | Billing City | Jakarta
-billingState | A | 50 | Billing State | Jakarta
-billingPostCd | N | 10 | Billing Post Number | 12345
-billingCountry | A | 10 | Billing Country | Indonesia
-deliveryNm | A | 30 | Delivery Name | Buyer Name
-deliveryPhone | N | 15 | Delivery Phone | 02112345678
-deliveryAddr | AN | 100 | Delivery Address | Billing Address
-deliveryEmail | AN | &nbsp; | Delivery Email | buyer@merchant.com
-deliveryCity | A | 50 | Delivery City | Jakarta
-deliveryState | A | 50 | Delivery State | Jakarta
-deliveryPostCd | N | 10 | Delivery Post Number | 12345
-deliveryCountry | A | 10 | Delivery Country | Indonesia
-vat | N | 12 | Vat | 0
-fee | N | 12 | Service Tax | 0
-notaxAmt | N | 12 | Tax Free Amount | 0
-reqDt | N | 8 | Request Date(YYYYMMDD) | 20160301
-reqTm | N | 6 | Request Time(HH24MISS) | 135959
-reqDomain | AN | 100 | Request Domain | merchant.com
-reqServerIP | AN | 15 | Request Server IP | 127.0.0.1
-reqClientVer | AN | 50 | equest Client Version | 1.0
-userIP | AN | 15 | User IP (Customer) | 127.0.0.1
-userSessionID | AN | 100 | User Session ID | userSessionID
-userAgent | AN | 100 | User Agent Information | Mozilla
-userLanguage | AN | 2 | User Language | en-US
-
-##- Convenience Store
-
-```java
-nicePay.setPayMethod("03");
-nicePay.setCurrency("IDR");
-nicePay.setAmt("1000");
-nicePay.setReferenceNo("MerchantReferenceNumber001");
-nicePay.setGoodsNm("Merchant Goods 1");
-nicePay.setBillingNm("Buyer Name");
-nicePay.setBillingEmail("buyer@merchant.com");
-nicePay.setBillingPhone("02112345678");
-nicePay.setCallBackUrl("www.merchant.com/callback");
-nicePay.setDbProcessUrl("www.merchant.com/dbprocess");
-nicePay.setDescription("Description");
-nicePay.setMerchantToken(nicePay.makeToken(nicePay.getAmt(), nicePay.getReferenceNo()));
-nicePay.setCartData("{}");
-
-// Payment Optional Field
-nicePay.setBillingAddr("Billing Address");
-nicePay.setBillingCity("Jakarta");
-nicePay.setBillingState("Jakarta");
-nicePay.setBillingPostCd("12345");
-nicePay.setBillingCountry("Indonesia");
-nicePay.setDeliveryNm("Buyer Name");
-nicePay.setDeliveryPhone("02112345678");
-nicePay.setDeliveryAddr("Billing Address ");
-nicePay.setDeliveryCity("Jakarta");
-nicePay.setDeliveryState("Jakarta");
-nicePay.setDeliveryPostCd("12345");
-nicePay.setDeliveryCountry("Indonesia");
-nicePay.setVat("0");
-nicePay.setFee("0");
-nicePay.setNotaxAmt("0");
-nicePay.setReqDt("20160301");
-nicePay.setReqTm("135959");
-nicePay.setReqDomain("www.merchant.com");
-nicePay.setReqServerIP("127.0.0.1");
-nicePay.setReqClientVer("1.0");
-nicePay.setUserIP("127.0.0.1");
-nicePay.setUserSessionID("userSessionID");
-nicePay.setUserAgent("Mozilla");
-nicePay.setUserLanguage("en-US");
-
-// Payment Request
-nicePay.payPage();
-
-// Payment Response
-System.out.println("Response String : " + nicePay.getResponseString()); // JSON in String format
-
-String resultCd = nicePay.Get("resultCd");
-String resultMsg = nicePay.Get("resultMsg");
-String tXid= nicePay.Get("tXid");
-String requestURL= nicePay.Get("requestURL");
-```
-
-```csharp
-```
-
-```php
-<?php
-$nicepay = new NicepayLib();
-
-//Ignore this function if you have invoice number.
-function generateReference()
-{
-  $micro_date = microtime();
-  $date_array = explode(" ",$microdate);
-  $date = date("YmdHis",$date_array[1]);
-  $date_array[0] = preg_replace('/[^\p{L}\p{N}\s]/u', '', $date_array[0]);
-  return "Ref".$date.$date_array[0].rand(100,999);
-}
-
-if(isset($_POST['payMethod']) && $_POST['payMethod'] == '03'){
-  //Populate Mandatory parameters to send
-  $nicepay->set('payMethod', '03');
-  $nicepay->set('currency', 'IDR');
-  $nicepay->set('amt', 12000); //Total Gross Amount
-  $nicepay->set('referenceNo',generateReference()); //Invoice Number or Reference Number Generated by Merchant
-  $nicepay->set('description', 'Payment of Invoice No '.$nicepay->get('referenceNo'));//Transaction Description
-
-  $nicepay->set('billingNm', 'John Doe'); //Customer name
-  $nicepay->set('billingPhone', '02112345678'); //Customer phone number
-  $nicepay->set('billingEmail', 'john@example.com');
-  $nicepay->set('billingAddr', 'Jl. Jendral Sudirman No.28');
-  $nicepay->set('billingCity', 'Jakarta Pusat');
-  $nicepay->set('billingState', 'DKI Jakarta');
-  $nicepay->set('billingPostCd', '10210');
-  $nicepay->set('billingCountry', 'Indonesia');
-
-  $nicepay->set('deliveryNm', 'John Doe'); //Delivery name
-  $nicepay->set('deliveryPhone', '02112345678');
-  $nicepay->set('deliveryEmail', 'john@example.com');
-  $nicepay->set('deliveryAddr', 'Jl. Jendral Sudirman No.28');
-  $nicepay->set('deliveryCity', 'Jakarta Pusat');
-  $nicepay->set('deliveryState', 'DKI Jakarta');
-  $nicepay->set('deliveryPostCd', '10210');
-  $nicepay->set('deliveryCountry', 'Indonesia');
-
-  //Send Data
-  $response = $nicepay->requestCVS();
-
-  //Process response from NICEPAY
-  if(isset($response->data->resultCd) && $response->data->resultCd == "0000"){
-    header("Location: ".$response->data->requestURL."?tXid=".$response->tXid);
-    //Please save your tXid in your database
-  }elseif (isset($response->resultCd)) {
-    // In this sample, we echo error message
-    echo "<pre>";
-    echo "result code    : ".$response->resultCd."\n";
-    echo "result message : ".$response->resultMsg."\n";
-    echo "</pre>";
-  }else {
-    // In this sample, we echo error message
-    echo "<pre>Connection Timeout. Please Try Again.</pre>";
-  }
-}
-?>
-```
-
-```python
-#Set Mandatory Value
-NICEPay.payMethod = "03" #Set Payment Method
-NICEPay.amt = "1000" #Total Gross Amount
-NICEPay.referenceNo = str(random.randrange(111111, 999999)) #Invoice Number By Merchant
-NICEPay.goodsNm = NICEPay.referenceNo #Goods Name
-NICEPay.billingNm = "John Doe"
-NICEPay.billingPhone = "02112345678"
-NICEPay.billingEmail = "john@example.com"
-NICEPay.callBackUrl = "http://www.merchant.com/callback"
-NICEPay.dbProcessUrl = "https://www.merchant.com/notification"
-NICEPay.description = "Payment Of Ref No." + NICEPay.referenceNo
-NICEPay.merchantToken = NICEPay.getMerchantToken()
-NICEPay.userIP = NICEPay.getUserIp()
-NICEPay.cartData = "{}" #Json Array Value
-
-#Payment Request
-resultData = NICEPay.apiRequest()
-
-#Payment Result
-jsonResult = resultData[4:]
-result = json.loads(jsonResult)
-
-#Payment Response String Format
-print("resultCd : " + result['data']['resultCd'])
-print("resultMsg : " + result['data']['resultMsg'])
-print("requestURL: " + result['data']['requestURL'] + "?tXid=" + result['data']['tXid'])
-print("tXid : " + result['data']['tXid'])
-```
-
-> Contoh API response :
-
-
-```json
-{
-  "apiType": "M0",
-  "tXid": "TESTIDTEST03201705291553243107",
-  "requestDate": "20170526165202",
-  "responseDate": "20170526165202",
-  "data": {
-    "tXid": "TESTIDTEST03201705291553243107",
-    "resultCd": "0000",
-    "resultMsg": "SUCCESS",
-    "requestURL": "https://www.nicepay.co.id/nicepay/api/orderInquiry.do"
-  }
-}
-```
-
-Berikut contoh **Pendaftaran Transaksi** untuk **Convenience Store (CVS)**
-
-Notice | &nbsp;
----------- | -------
-payMethod | 03
-Description | Convenience Store (CVS)
-
-<br>**Mandatory Parameter untuk Convenience Store (CVS)**
-
-Parameter | Tipe | Ukuran | Deskripsi | Contoh Data
----------- | ---------- | ---------- | ---------- | ----------
-iMid | AN | 10 | Merchant ID | IONPAYTEST
-payMethod | AN | 2 | Pay Method | 03
-currency | AN | 3 | Currency | IDR
-amt | N | 12 | Goods Amount | 1000
-referenceNo | ANS | 40 | Merchant Order No | MerchantReferenceNumber001
-goodsNm | AN | 100 | Goods Name | Merchant Goods 1
-billingNm | A | 30 | Billing Name | Buyer Name
-billingPhone | N | 15 | Billing Phone Number | 02112345678
-billingEmail | AN | 40 | Billing Email | buyer@merchant.com
-callBackUrl | AN | 255 | Payment Result Forward Url (On Browser) | www.merchant.com/callback
-dbProcessUrl | AN | 255 | Payment Result Receive Url (Server Side) | www.merchant.com/dbprocess
-description | AN | 12 | Description | Description
-merchantToken | AN | 255 | Merchant Token | 6cfccfc0046773c1b589d8e98f8b596c284f3c70a4ecf86eba14c18944b74bcd
-cartData | AN | 4000 | Cart Data (Json Format) | {}
-
-<br>**Optional Parameter untuk Convenience Store (CVS)**
-
-Parameter | Tipe | Ukuran | Deskripsi | Contoh Data
----------- | ---------- | ---------- | ---------- | ----------
-payValidDt | N | 8 | CVS valid date | 20180323
-payValidTm | N | 6 | CVS valid time | 205959
-billingAddr | AN | 100 | Billing Address | Billing Address
-billingCity | A | 50 | Billing City | Jakarta
-billingState | A | 50 | Billing State | Jakarta
-billingPostCd | N | 10 | Billing Post Number | 12345
-billingCountry | A | 10 | Billing Country | Indonesia
-deliveryNm | A | 30 | Delivery Name | Buyer Name
-deliveryPhone | N | 15 | Delivery Phone | 02112345678
-deliveryAddr | AN | 100 | Delivery Address | Billing Address
-deliveryEmail | AN | &nbsp; | Delivery Email | buyer@merchant.com
-deliveryCity | A | 50 | Delivery City | Jakarta
-deliveryState | A | 50 | Delivery State | Jakarta
-deliveryPostCd | N | 10 | Delivery Post Number | 12345
-deliveryCountry | A | 10 | Delivery Country | Indonesia
-vat | N | 12 | Vat | 0
-fee | N | 12 | Service Tax | 0
-notaxAmt | N | 12 | Tax Free Amount | 0
-reqDt | N | 8 | Request Date(YYYYMMDD) | 20160301
-reqTm | N | 6 | Request Time(HH24MISS) | 135959
-reqDomain | AN | 100 | Request Domain | merchant.com
-reqServerIP | AN | 15 | Request Server IP | 127.0.0.1
-reqClientVer | AN | 50 | equest Client Version | 1.0
-userIP | AN | 15 | User IP (Customer) | 127.0.0.1
-userSessionID | AN | 100 | User Session ID | userSessionID
-userAgent | AN | 100 | User Agent Information | Mozilla
-userLanguage | AN | 2 | User Language | en-US
-
-##- ClickPay
-
-```java
-// Payment Mandatory Field
-nicePay.setPayMethod("04");
-nicePay.setCurrency("IDR");
-nicePay.setAmt("1000");
-nicePay.setReferenceNo("MerchantReferenceNumber001");
-nicePay.setGoodsNm("Merchant Goods 1");
-nicePay.setBillingNm("Buyer Name");
-nicePay.setBillingEmail("buyer@merchant.com");
-nicePay.setBillingPhone("02112345678");
-nicePay.setCallBackUrl("www.merchant.com/callback");
-nicePay.setDbProcessUrl("www.merchant.com/dbprocess");
-nicePay.setDescription("Description");
-nicePay.setMerchantToken(nicePay.makeToken(nicePay.getAmt(), nicePay.getReferenceNo()));
-nicePay.setCartData("{}");
-nicePay.setUserIP("127.0.0.1");
-
-// Payment Optional Field
-nicePay.setBillingAddr("Billing Address");
-nicePay.setBillingCity("Jakarta");
-nicePay.setBillingState("Jakarta");
-nicePay.setBillingPostCd("12345");
-nicePay.setBillingCountry("Indonesia");
-nicePay.setDeliveryNm("Buyer Name");
-nicePay.setDeliveryPhone("02112345678");
-nicePay.setDeliveryAddr("Billing Address ");
-nicePay.setDeliveryCity("Jakarta");
-nicePay.setDeliveryState("Jakarta");
-nicePay.setDeliveryPostCd("12345");
-nicePay.setDeliveryCountry("Indonesia");
-nicePay.setVat("0");
-nicePay.setFee("0");
-nicePay.setNotaxAmt("0");
-nicePay.setReqDt("20160301");
-nicePay.setReqTm("135959");
-nicePay.setReqDomain("www.merchant.com");
-nicePay.setReqServerIP("127.0.0.1");
-nicePay.setReqClientVer("1.0");
-nicePay.setUserSessionID("userSessionID");
-nicePay.setUserAgent("Mozilla");
-nicePay.setUserLanguage("en-US");
-
-// Payment Request
-nicePay.payPage();
-
-// Payment Response
-System.out.println("Response String : " + nicePay.getResponseString()); // JSON in String format
-
-String resultCd = nicePay.Get("resultCd");
-String resultMsg = nicePay.Get("resultMsg");
-String tXid= nicePay.Get("tXid");
-String requestURL= nicePay.Get("requestURL");
-```
-
-```csharp
-```
-
-```php
-<?php
-$nicepay = new NicepayLib();
-
-//Ignore this function if you have invoice number.
-function generateReference()
-{
-  $micro_date = microtime();
-  $date_array = explode(" ",$microdate);
-  $date = date("YmdHis",$date_array[1]);
-  $date_array[0] = preg_replace('/[^\p{L}\p{N}\s]/u', '', $date_array[0]);
-  return "Ref".$date.$date_array[0].rand(100,999);
-}
-
-if(isset($_POST['payMethod']) && $_POST['payMethod'] == '04'){
-  //Populate Mandatory parameters to send
-  $nicepay->set('payMethod', '04');
-  $nicepay->set('currency', 'IDR');
-  $nicepay->set('amt', 12000); //Total Gross Amount
-  $nicepay->set('referenceNo',generateReference()); //Invoice Number or Reference Number Generated by Merchant
-  $nicepay->set('description', 'Payment of Invoice No '.$nicepay->get('referenceNo'));//Transaction Description
-
-  $nicepay->set('billingNm', 'John Doe'); //Customer name
-  $nicepay->set('billingPhone', '02112345678'); //Customer phone number
-  $nicepay->set('billingEmail', 'john@example.com');
-  $nicepay->set('billingAddr', 'Jl. Jendral Sudirman No.28');
-  $nicepay->set('billingCity', 'Jakarta Pusat');
-  $nicepay->set('billingState', 'DKI Jakarta');
-  $nicepay->set('billingPostCd', '10210');
-  $nicepay->set('billingCountry', 'Indonesia');
-
-  $nicepay->set('deliveryNm', 'John Doe'); //Delivery name
-  $nicepay->set('deliveryPhone', '02112345678');
-  $nicepay->set('deliveryEmail', 'john@example.com');
-  $nicepay->set('deliveryAddr', 'Jl. Jendral Sudirman No.28');
-  $nicepay->set('deliveryCity', 'Jakarta Pusat');
-  $nicepay->set('deliveryState', 'DKI Jakarta');
-  $nicepay->set('deliveryPostCd', '10210');
-  $nicepay->set('deliveryCountry', 'Indonesia');
-
-  //Send Data
-  $response = $nicepay->requestClickPay();
-
-  //Process response from NICEPAY
-  if(isset($response->data->resultCd) && $response->data->resultCd == "0000"){
-    header("Location: ".$response->data->requestURL."?tXid=".$response->tXid);
-    //Please save your tXid in your database
-  }elseif (isset($response->resultCd)) {
-    // In this sample, we echo error message
-    echo "<pre>";
-    echo "result code    : ".$response->resultCd."\n";
-    echo "result message : ".$response->resultMsg."\n";
-    echo "</pre>";
-  }else {
-    // In this sample, we echo error message
-    echo "<pre>Connection Timeout. Please Try Again.</pre>";
-  }
-}
-?>
-```
-
-```python
-#Set Mandatory Value
-NICEPay.payMethod = "04" #Set Payment Method
-NICEPay.amt = "1000" #Total Gross Amount
-NICEPay.referenceNo = str(random.randrange(111111, 999999)) #Invoice Number By Merchant
-NICEPay.goodsNm = NICEPay.referenceNo #Goods Name
-NICEPay.billingNm = "John Doe"
-NICEPay.billingPhone = "02112345678"
-NICEPay.billingEmail = "john@example.com"
-NICEPay.callBackUrl = "http://www.merchant.com/callback"
-NICEPay.dbProcessUrl = "https://www.merchant.com/notification"
-NICEPay.description = "Payment Of Ref No." + NICEPay.referenceNo
-NICEPay.merchantToken = NICEPay.getMerchantToken()
-NICEPay.userIP = NICEPay.getUserIp()
-NICEPay.cartData = "{}" #Json Array Value
-
-#Payment Request
-resultData = NICEPay.apiRequest()
-
-#Payment Result
-jsonResult = resultData[4:]
-result = json.loads(jsonResult)
-
-#Payment Response String Format
-print("resultCd : " + result['data']['resultCd'])
-print("resultMsg : " + result['data']['resultMsg'])
-print("requestURL: " + result['data']['requestURL'] + "?tXid=" + result['data']['tXid'])
-print("tXid : " + result['data']['tXid'])
-```
-
-> Contoh API Response
-
-```json
-{
-  "apiType": "M0",
-  "tXid": "TESTIDTEST02201705261652026146",
-  "requestDate": "20170526165202",
-  "responseDate": "20170526165202",
-  "data": {
-    "tXid": "TESTIDTEST02201705261652026146",
-    "resultCd": "0000",
-    "resultMsg": "SUCCESS",
-    "requestURL": "https://www.nicepay.co.id/nicepay/api/orderInquiry.do"
-  }
-}
-```
-
-Berikut contoh **Pendaftaran Transaksi** untuk **ClickPay**
-
-Notice | &nbsp;
----------- | -------
-payMethod | 04
-Description | ClickPay
-
-<br>**Mandatory Parameter untuk ClickPay**
-
-Parameter | Tipe | Ukuran | Deskripsi | Contoh Data
----------- | ---------- | ---------- | ---------- | ----------
-iMid | AN | 10 | Merchant ID | IONPAYTEST
-payMethod | AN | 2 | Pay Method | 04
-currency | AN | 3 | Currency | IDR
-amt | N | 12 | Goods Amount | 1000
-referenceNo | ANS | 40 | Merchant Order No | MerchantReferenceNumber001
-goodsNm | AN | 100 | Goods Name | Merchant Goods 1
-billingNm | A | 30 | Billing Name | Buyer Name
-billingPhone | N | 15 | Billing Phone Number | 02112345678
-billingEmail | AN | 40 | Billing Email | buyer@merchant.com
-callBackUrl | AN | 255 | Payment Result Forward Url (On Browser) | www.merchant.com/callback
-dbProcessUrl | AN | 255 | Payment Result Receive Url (Server Side) | www.merchant.com/dbprocess
-description | AN | 12 | Description | Description
-merchantToken | AN | 255 | Merchant Token | 6cfccfc0046773c1b589d8e98f8b596c284f3c70a4ecf86eba14c18944b74bcd
-cartData | AN | 4000 | Cart Data (Json Format) | {}
-userIP | AN | 15 | User IP (Customer) | 127.0.0.1
-
-<br>**Optional Parameter untuk ClickPay**
-
-Parameter | Tipe | Ukuran | Deskripsi | Contoh Data
----------- | ---------- | ---------- | ---------- | ----------
-paymentExpDt | N | 8 | Payment expiry date | 20180326
-paymentExpTm | N | 6 | Payment Expiry time | 205959
-billingAddr | AN | 100 | Billing Address | Billing Address
-billingCity | A | 50 | Billing City | Jakarta
-billingState | A | 50 | Billing State | Jakarta
-billingPostCd | N | 10 | Billing Post Number | 12345
-billingCountry | A | 10 | Billing Country | Indonesia
-deliveryNm | A | 30 | Delivery Name | Buyer Name
-deliveryPhone | N | 15 | Delivery Phone | 02112345678
-deliveryAddr | AN | 100 | Delivery Address | Billing Address
-deliveryEmail | AN | &nbsp; | Delivery Email | buyer@merchant.com
-deliveryCity | A | 50 | Delivery City | Jakarta
-deliveryState | A | 50 | Delivery State | Jakarta
-deliveryPostCd | N | 10 | Delivery Post Number | 12345
-deliveryCountry | A | 10 | Delivery Country | Indonesia
-vat | N | 12 | Vat | 0
-fee | N | 12 | Service Tax | 0
-notaxAmt | N | 12 | Tax Free Amount | 0
-reqDt | N | 8 | Request Date(YYYYMMDD) | 20160301
-reqTm | N | 6 | Request Time(HH24MISS) | 135959
-reqDomain | AN | 100 | Request Domain | merchant.com
-reqServerIP | AN | 15 | Request Server IP | 127.0.0.1
-reqClientVer | AN | 50 | equest Client Version | 1.0
-userSessionID | AN | 100 | User Session ID | userSessionID
-userAgent | AN | 100 | User Agent Information | Mozilla
-userLanguage | AN | 2 | User Language | en-US
-
-##- E-Wallet
-
-```java
-// Payment Mandatory Field
-nicePay.setPayMethod("05");
-nicePay.setCurrency("IDR");
-nicePay.setAmt("1000");
-nicePay.setReferenceNo("MerchantReferenceNumber001");
-nicePay.setGoodsNm("Merchant Goods 1");
-nicePay.setBillingNm("Buyer Name");
-nicePay.setBillingEmail("buyer@merchant.com");
-nicePay.setBillingPhone("02112345678");
-nicePay.setCallBackUrl("www.merchant.com/callback");
-nicePay.setDbProcessUrl("www.merchant.com/dbprocess");
-nicePay.setDescription("Description");
-nicePay.setMerchantToken(nicePay.makeToken(nicePay.getAmt(), nicePay.getReferenceNo()));
-nicePay.setCartData("{}");
-nicePay.setUserIP("127.0.0.1");
-
-// Payment Optional Field
-nicePay.setBillingAddr("Billing Address");
-nicePay.setBillingCity("Jakarta");
-nicePay.setBillingState("Jakarta");
-nicePay.setBillingPostCd("12345");
-nicePay.setBillingCountry("Indonesia");
-nicePay.setDeliveryNm("Buyer Name");
-nicePay.setDeliveryPhone("02112345678");
-nicePay.setDeliveryAddr("Billing Address ");
-nicePay.setDeliveryCity("Jakarta");
-nicePay.setDeliveryState("Jakarta");
-nicePay.setDeliveryPostCd("12345");
-nicePay.setDeliveryCountry("Indonesia");
-nicePay.setVat("0");
-nicePay.setFee("0");
-nicePay.setNotaxAmt("0");
-nicePay.setReqDt("20160301");
-nicePay.setReqTm("135959");
-nicePay.setReqDomain("www.merchant.com");
-nicePay.setReqServerIP("127.0.0.1");
-nicePay.setReqClientVer("1.0");
-nicePay.setUserSessionID("userSessionID");
-nicePay.setUserAgent("Mozilla");
-nicePay.setUserLanguage("en-US");
-
-// Payment Request
-nicePay.payPage();
-
-// Payment Response
-System.out.println("Response String : " + nicePay.getResponseString()); // JSON in String format
-
-String resultCd = nicePay.Get("resultCd");
-String resultMsg = nicePay.Get("resultMsg");
-String tXid= nicePay.Get("tXid");
-String requestURL= nicePay.Get("requestURL");
-```
-
-```csharp
-```
-
-```php
-<?php
-$nicepay = new NicepayLib();
-
-//Ignore this function if you have invoice number.
-function generateReference()
-{
-  $micro_date = microtime();
-  $date_array = explode(" ",$microdate);
-  $date = date("YmdHis",$date_array[1]);
-  $date_array[0] = preg_replace('/[^\p{L}\p{N}\s]/u', '', $date_array[0]);
-  return "Ref".$date.$date_array[0].rand(100,999);
-}
-
-if(isset($_POST['payMethod']) && $_POST['payMethod'] == '04'){
-  //Populate Mandatory parameters to send
-  $nicepay->set('payMethod', '05');
-  $nicepay->set('currency', 'IDR');
-  $nicepay->set('amt', 12000); //Total Gross Amount
-  $nicepay->set('referenceNo',generateReference()); //Invoice Number or Reference Number Generated by Merchant
-  $nicepay->set('description', 'Payment of Invoice No '.$nicepay->get('referenceNo'));//Transaction Description
-
-  $nicepay->set('billingNm', 'John Doe'); //Customer name
-  $nicepay->set('billingPhone', '02112345678'); //Customer phone number
-  $nicepay->set('billingEmail', 'john@example.com');
-  $nicepay->set('billingAddr', 'Jl. Jendral Sudirman No.28');
-  $nicepay->set('billingCity', 'Jakarta Pusat');
-  $nicepay->set('billingState', 'DKI Jakarta');
-  $nicepay->set('billingPostCd', '10210');
-  $nicepay->set('billingCountry', 'Indonesia');
-
-  $nicepay->set('deliveryNm', 'John Doe'); //Delivery name
-  $nicepay->set('deliveryPhone', '02112345678');
-  $nicepay->set('deliveryEmail', 'john@example.com');
-  $nicepay->set('deliveryAddr', 'Jl. Jendral Sudirman No.28');
-  $nicepay->set('deliveryCity', 'Jakarta Pusat');
-  $nicepay->set('deliveryState', 'DKI Jakarta');
-  $nicepay->set('deliveryPostCd', '10210');
-  $nicepay->set('deliveryCountry', 'Indonesia');
-
-  //Send Data
-  $response = $nicepay->requestClickPay();
-
-  //Process response from NICEPAY
-  if(isset($response->data->resultCd) && $response->data->resultCd == "0000"){
-    header("Location: ".$response->data->requestURL."?tXid=".$response->tXid);
-    //Please save your tXid in your database
-  }elseif (isset($response->resultCd)) {
-    // In this sample, we echo error message
-    echo "<pre>";
-    echo "result code    : ".$response->resultCd."\n";
-    echo "result message : ".$response->resultMsg."\n";
-    echo "</pre>";
-  }else {
-    // In this sample, we echo error message
-    echo "<pre>Connection Timeout. Please Try Again.</pre>";
-  }
-}
-?>
-```
-
-```python
-#Set Mandatory Value
-NICEPay.payMethod = "05" #Set Payment Method
-NICEPay.amt = "1000" #Total Gross Amount
-NICEPay.referenceNo = str(random.randrange(111111, 999999)) #Invoice Number By Merchant
-NICEPay.goodsNm = NICEPay.referenceNo #Goods Name
-NICEPay.billingNm = "John Doe"
-NICEPay.billingPhone = "02112345678"
-NICEPay.billingEmail = "john@example.com"
-NICEPay.callBackUrl = "http://www.merchant.com/callback"
-NICEPay.dbProcessUrl = "https://www.merchant.com/notification"
-NICEPay.description = "Payment Of Ref No." + NICEPay.referenceNo
-NICEPay.merchantToken = NICEPay.getMerchantToken()
-NICEPay.userIP = NICEPay.getUserIp()
-NICEPay.cartData = "{}" #Json Array Value
-
-#Payment Request
-resultData = NICEPay.apiRequest()
-
-#Payment Result
-jsonResult = resultData[4:]
-result = json.loads(jsonResult)
-
-#Payment Response String Format
-print("resultCd : " + result['data']['resultCd'])
-print("resultMsg : " + result['data']['resultMsg'])
-print("requestURL: " + result['data']['requestURL'] + "?tXid=" + result['data']['tXid'])
-print("tXid : " + result['data']['tXid'])
-```
-
-> Contoh API Response
-
-```json
-{
-  "apiType": "M0",
-  "tXid": "TESTIDTEST02201705261652026146",
-  "requestDate": "20170526165202",
-  "responseDate": "20170526165202",
-  "data": {
-    "tXid": "TESTIDTEST02201705261652026146",
-    "resultCd": "0000",
-    "resultMsg": "SUCCESS",
-    "requestURL": "https://www.nicepay.co.id/nicepay/api/orderInquiry.do"
-  }
-}
-```
-
-Berikut contoh **Pendaftaran Transaksi** untuk **E-Wallet**
-
-Notice | &nbsp;
----------- | -------
-payMethod | 05
-Description | E-Wallet
-
-<br>**Mandatory Parameter untuk E-Wallet**
-
-Parameter | Tipe | Ukuran | Deskripsi | Contoh Data
----------- | ---------- | ---------- | ---------- | ----------
-iMid | AN | 10 | Merchant ID | IONPAYTEST
-payMethod | AN | 2 | Pay Method | 05
-currency | AN | 3 | Currency | IDR
-amt | N | 12 | Goods Amount | 1000
-referenceNo | ANS | 40 | Merchant Order No | MerchantReferenceNumber001
-goodsNm | AN | 100 | Goods Name | Merchant Goods 1
-billingNm | A | 30 | Billing Name | Buyer Name
-billingPhone | N | 15 | Billing Phone Number | 02112345678
-billingEmail | AN | 40 | Billing Email | buyer@merchant.com
-callBackUrl | AN | 255 | Payment Result Forward Url (On Browser) | www.merchant.com/callback
-dbProcessUrl | AN | 255 | Payment Result Receive Url (Server Side) | www.merchant.com/dbprocess
-description | AN | 12 | Description | Description
-merchantToken | AN | 255 | Merchant Token | 6cfccfc0046773c1b589d8e98f8b596c284f3c70a4ecf86eba14c18944b74bcd
-cartData | AN | 4000 | Cart Data (Json Format) | {}
-userIP | AN | 15 | User IP (Customer) | 127.0.0.1
-
-<br>**Optional Parameter untuk E-Wallet**
-
-Parameter | Tipe | Ukuran | Deskripsi | Contoh Data
----------- | ---------- | ---------- | ---------- | ----------
-paymentExpDt | N | 8 | Payment expiry date | 20180326
-paymentExpTm | N | 6 | Payment Expiry time | 205959
-billingAddr | AN | 100 | Billing Address | Billing Address
-billingCity | A | 50 | Billing City | Jakarta
-billingState | A | 50 | Billing State | Jakarta
-billingPostCd | N | 10 | Billing Post Number | 12345
-billingCountry | A | 10 | Billing Country | Indonesia
-deliveryNm | A | 30 | Delivery Name | Buyer Name
-deliveryPhone | N | 15 | Delivery Phone | 02112345678
-deliveryAddr | AN | 100 | Delivery Address | Billing Address
-deliveryEmail | AN | &nbsp; | Delivery Email | buyer@merchant.com
-deliveryCity | A | 50 | Delivery City | Jakarta
-deliveryState | A | 50 | Delivery State | Jakarta
-deliveryPostCd | N | 10 | Delivery Post Number | 12345
-deliveryCountry | A | 10 | Delivery Country | Indonesia
-vat | N | 12 | Vat | 0
-fee | N | 12 | Service Tax | 0
-notaxAmt | N | 12 | Tax Free Amount | 0
-reqDt | N | 8 | Request Date(YYYYMMDD) | 20160301
-reqTm | N | 6 | Request Time(HH24MISS) | 135959
-reqDomain | AN | 100 | Request Domain | merchant.com
-reqServerIP | AN | 15 | Request Server IP | 127.0.0.1
-reqClientVer | AN | 50 | equest Client Version | 1.0
-userSessionID | AN | 100 | User Session ID | userSessionID
-userAgent | AN | 100 | User Agent Information | Mozilla
-userLanguage | AN | 2 | User Language | en-US
-
-## Halaman Pembayaran NICEPay
-Setelah Registrasi Transaksi, silakan redirect ke halaman pembayaran NICEPay.
-
-
-&nbsp; | &nbsp;
----------- | -------
-**API url** | **/nicepay/api/orderInquiry.do**
-Metode | URL POST
-Description | Menampilkan Halaman Pembayaran untuk memproses transaksi.
-
-<br>**Request Parameter**
-
-Parameter | Mandatory | Tipe | Ukuran | Deskripsi | Contoh Data
----------- | ---------- | ---------- | ---------- | ---------- | ----------
-tXid | Y | AN | 30 | Transaction ID | IONPAYTEST02201607291027025291
-optDisplayCB | N | N | 2 | Option display change button | 0
-optDisplayBL | N | N | 2 | Option display back URL link | 0
-mitraCd | N | AN | 4 | Mitra Code, refer Code at [Here](#mitra-code) | ALMA
-isCheckPaymentExptDt | N | N | &nbsp; | Check Payment Expiry Date | 1
-
-## - Credit Card
-Berikut contoh **Credit Card** untuk **NICEPay Payment Page**<br><br>
-<img src="/images/credit-card.png">
-
-### Callback URL
-Response Parameter :
-
-Parameter | Tipe | Ukuran | Deskripsi
----------- | ---------- | ---------- | ----------
-resultCd | N | 4 | Result Code
-resultMsg | AN | 255 | Result Message
-tXid | AN | 30 | Transaction ID
-referenceNo | ANS | 40 | Merchant Order No
-authNo | N | 10 | Authorization Number
-amount | N | 12 | Transaction Amount
-transDt | N | 8 | Registration date
-transTm | N | 6 | Registration time
-description | AN | 100 | Transaction Description
-
-
-## - Virtual Account
-Berikut contoh **Virtual Account** untuk **NICEPay Payment Page**<br><br>
-<img src="/images/virtual-account.png">
-
-### Callback URL
-Response Parameter :
-
-Parameter | Tipe | Ukuran | Deskripsi
----------- | ---------- | ---------- | ----------
-resultCd | N | 4 | Result Code
-resultMsg | AN | 255 | Result Message
-tXid | AN | 30 | Transaction ID
-bankVacctNo | N | 20 | Bank Virtual Account Number
-referenceNo | ANS | 40 | Merchant Order No
-amount | N | 12 | Transaction Amount
-transDt | N | 8 | Registration date
-transTm | N | 6 | Registration time
-bankCd | A | 4 | Bank Code, refer Code at [Here](#bank-code)
-description | AN | 100 | Transaction Description
-
-## - Convenience Store
-Berikut contoh **Convenience Store** untuk **NICEPay Payment Page**<br><br>
-<img src="/images/cvs.png">
-
-### Callback URL
-Response Parameter :
-
-Parameter | Tipe | Ukuran | Deskripsi
----------- | ---------- | ---------- | ----------
-resultCd | N | 4 | Result Code
-resultMsg | AN | 255 | Result Message
-tXid | AN | 30 | Transaction ID
-referenceNo | ANS | 40 | Merchant Order No
-amount | N | 12 | Transaction Amount
-transDt | N | 8 | Registration date
-transTm | N | 6 | Registration time
-payNo | A | 16 | Payment Number
-mitraCd | A | 4 | Mitra Code, refer Code at [Here](#mitra-code)
-
-## - ClickPay
-Berikut contoh **ClickPay** untuk **NICEPay Payment Page**<br><br>
-<img src="/images/clickpay.png">
-
-### Callback URL
-Response Parameter :
-
-Parameter | Tipe | Ukuran | Deskripsi
----------- | ---------- | ---------- | ----------
-resultCd | N | 4 | Result Code
-resultMsg | AN | 255 | Result Message
-tXid | AN | 30 | Transaction ID
-referenceNo | ANS | 40 | Merchant Order No
-amount | N | 12 | Transaction Amount
-transDt | N | 8 | Registration date
-transTm | N | 6 | Registration time
-receiptCode | ANS | 20 | Authorization Number
-
-## - E-Wallet
-Berikut contoh **E-Wallet** untuk **NICEPay Payment Page**<br><br>
-<img src="/images/ewallet.png">
-
-### Callback URL
-Response Parameter :
-
-Parameter | Tipe | Ukuran | Deskripsi
----------- | ---------- | ---------- | ----------
-resultCd | N | 4 | Result Code
-resultMsg | AN | 255 | Result Message
-tXid | AN | 30 | Transaction ID
-referenceNo | ANS | 40 | Merchant Order No
-amount | N | 12 | Transaction Amount
-transDt | N | 8 | Registration date
-transTm | N | 6 | Registration time

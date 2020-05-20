@@ -1,6 +1,10 @@
-# Enterprise - Virtual Account
-NICEPay menawarkan **Virtual Account** sebagai metode pembayaran. Dengan menggunakan metode ini, nasabah akan memiliki pilihan untuk melakukan pembayaran melalui ATM, SMS Banking, Internet Banking, atau Mobile Banking. Pemberitahuan Real Time akan dikirim saat pelanggan menyelesaikan pembayaran.<br>
-Bank yang Didukung oleh NICEPay:
+# Virtual Account
+
+NICEPay menawarkan Virtual Account sebagai metode pembayaran. Dengan ini Pembeli dapat melakukan pembayaran melalui ATM, SMS Banking, Internet Banking, atau Mobile Banking. 
+Real time Notification akan dikirimkan ketika pembeli berhasil melakukan pembayaran.
+
+**Virtual Account Bank yang Didukung NICEPay:**
+
 <ol type="1">
   <li>Bank Mandiri
   <li>Bank International Indonesia Maybank
@@ -13,23 +17,43 @@ Bank yang Didukung oleh NICEPay:
   <li>Bank DANAMON
 </ol>
 
-NICEPay juga mendukung Virtual Account (VA) untuk bank lain melalui ATM BERSAMA, ALTO, LINK, and PRIMA.
+Kami juga mendukung pembayaran Virtual Account dari Bank lain melalui ATM BERSAMA, ALTO, LINK, and PRIMA.
 
-Integration Step :
+**Alur Transaksi**
+
 <ol type="1">
-  <li>Merchant meminta registrasi VA ke NICEPay.
-  <li>Merchant menampilkan detail VA dan customer journey, kemudian mengirimkan detail VA melalui email / sms / riwayat transaksi nasabah.
-  <li>Pelanggan membayarkan VA di saluran pembayaran yang diinginkan.
-  <li>NICEPay kirim notifikasi.
-  <li>Merchant handle notifikasi.
+  <li>Merchant melakukan Request untuk Registrasi VA.
+  <li>Merchant menampilkan detail dan cara pembayaran.
+  <li>Pembeli melakukan pembayaran dengan channel yang diinginkan (m-Banking, Atm, dll).
+  <li>NICEPay mengirimkan Notifikasi ke Merchant.
 </ol>
 
-## VA Flow
-Flow untuk Enterprise - Virtual Account<br>
+<div class="wrapper">
+<ul>
+  <li>
+    <input type="checkbox" id="list-item-vav1">
+    <label for="list-item-vav1" class="first">Virtual Account Flow</label>
+    <ul>
+      <img src="/images/ent-va-flow.png">
+    </ul>
+  </li>
+</ul>
+</div>
 
-<img src="/images/ent-va-flow.png">
+## Registrasi Virtual Account
+### Spesifikasi - VA Registration 
 
-## Registrasi VA
+|                                                           |                                                                                                               |
+|-----------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|
+| **API url**                                               | `/nicepay/api/onePass.do`                                                                                     |
+| **Request Method** **application/json**                   | `POST`                                                                                                        |
+| **Deskripsi**                                             | Request `vacctNo` untuk pembayaran Virtual Account                                                            |
+| **Merchant Token**                                        | SHA256(`iMid`+`referenceNo`+`amt`+`merchantKey`)                                                              |
+| **Payment Methods**                                       | `02` Virtual Account                                                                                          |
+
+### Parameter Request - VA Registration 
+
+> Contoh API Request
 
 ```java
 // Payment Mandatory Field
@@ -323,6 +347,53 @@ else:
         print("resultMsg : " + result['resultMsg'])
 ```
 
+| **Parameter**                     | **Type**          | **Size**           | **Description**               | Example Value                                                |
+| --------------------------------- | ----------------- | ------------------ | ----------------------------- | ------------------------------------------------------------ |
+| **`iMid`** **Required**           | **AN**            | **10**             | Merchant ID                   | IONPAYTEST                                                   |
+| **`payMethod`** **Required**      | **N**             | **2**              | [Pay Method](#payment-method) | 02                                                           |
+| **`currency`** **Required**       | **A**             | **3**              | Currency                      | IDR                                                          |
+| **`amt`** **Required**            | **N**             | **12**             | Goods Amount                  | 15000                                                        |
+| **`referenceNo`** **Required**    | **ANS**           | **40**             | Merchant Order No             | ordNo123124                                                  |
+| **`goodsNm`** **Required**        | **AN**            | **100**            | Goods Name                    | Test Goods                                                   |
+| **`billingNm`** **Required**      | **A**             | **30**             | Billing Name                  | John Doe                                                     |
+| **`billingPhone`** **Required**   | **N**             | **15**             | Billing Phone Number          | 081249195                                                    |
+| **`billingEmail`** **Required**   | **ANS**           | **40**             | Billing Email                 | test@merchant.com                                            |
+| **`billingCity`** **Required**    | **A**             | **50**             | Billing City                  | Jakarta                                                      |
+| **`billingState`** **Required**   | **A**             | **50**             | Billing State                 | DKI Jakarta                                                  |
+| **`billingPostCd`** **Required**  | **N**             | **10**             | Billing Post Number           | 14350                                                        |
+| **`billingCountry`** **Required** | **A**             | **10**             | Billing Country               | Indonesia                                                    |
+| **`callBackUrl`** **Required**    | **ANS**           | **255**            | Payment Result Url            | https://merchant.com/callBackUrl                             |
+| **`dbProcessUrl`** **Required**   | **ANS**           | **255**            | Payment Notif Url             | https://merchant.com/dbProcessUrl                            |
+| **`description`** **Required**    | **AN**            | **100**            | Description                   | test item                                                    |
+| **`merchantToken`** **Required**  | **AN**            | **255**            | Merchant Token                | 6cfccfc0046773c1b589d8e 98f8b596c284f3c70a4ecf8 6eba14c18944b74bcd |
+| **`userIP`** **Required**         | **ANS**           | **15**             | User IP (Customer)            | 127.0.0.1                                                    |
+| **`cartData`** **Required**       | **`JSON OBJECT`** | **4000**           | Cart Data (Json Format)       | {}                                                           |
+| **`bankCd`** **Required**         | **A**             | **4**              | [Bank Code](#bank-code)       | CENA                                                         |
+| **`billingAddr`**                 | **AN**            | **AN**             | Billing Address               | Jln Cendrawasih                                              |
+| **`deliveryNm`**                  | **A**             | **30**             | Delivery Name                 | JohnDoe                                                      |
+| **`deliveryPhone`**               | **N**             | **15**             | Delivery Phone                | 08125912342                                                  |
+| **`deliveryAddr`**                | **AN**            | **100**            | Delivery Address              | Jln Merak                                                    |
+| **`deliveryEmail`**               | **ANS**           | **Delivery Email** | buyer@merhcant.com            | test@merchant.com                                            |
+| **`deliveryCity`**                | **A**             | **50**             | Delivery City                 | Jakarta                                                      |
+| **`deliveryState`**               | **A**             | **50**             | Delivery State                | DKI Jakarta                                                  |
+| **`deliveryPostCd`**              | **N**             | **10**             | Delivery Post Code            | 14350                                                        |
+| **`deliveryCountry`**             | **A**             | **10**             | Delivery Country              | Indonesia                                                    |
+| **`vat`**                         | **N**             | **12**             | Vat                           | 0                                                            |
+| **`fee`**                         | **N**             | **12**             | Service Tax                   | 0                                                            |
+| **`notaxAmt`**                    | **N**             | **12**             | Tax Free Amount               | 0                                                            |
+| **`reqDt`**                       | **N**             | **8**              | Request Date (YYYYMMDD)       | 20160301                                                     |
+| **`reqTm`**                       | **N**             | **6**              | Request Time (HH24MISS)       | 135959                                                       |
+| **`reqDomain`**                   | **ANS**           | **100**            | Request Domain                | merchant.com                                                 |
+| **`reqServerIP`**                 | **ANS**           | **15**             | Request Server IP             | 127.0.0.1                                                    |
+| **`reqClientVer`**                | **ANS**           | **50**             | Request Client Version        | 1.0                                                          |
+| **`userSessionID`**               | **AN**            | **100**            | User Session ID               | userSessionID                                                |
+| **`userAgent`**                   | **ANS**           | **100**            | User Agent                    | Mozilla                                                      |
+| **`userLanguage`**                | **ANS**           |                    | User Language                 | en-US                                                        |
+| **`vacctValidDt`**                | **N**             | **8**              | VA expiry date (YYYYMMDD)     | 20200303                                                     |
+| **`vacctValidTm`**                | **N**             | **6**              | VA expiry time (HH24MISS)     | 135959                                                       |
+
+### Parameter Response - VA Registration 
+
 > Contoh JSON Response
 
 ```json
@@ -347,79 +418,22 @@ else:
 }
 ```
 
-&nbsp; | &nbsp;
----------- | -------
-**API url** | **/nicepay/api/onePass.do**
-Metode | POST
-Deskripsi | Virtual Account Transaction
-Merchant Token | SHA256 (Merchant ID + Reference Number + Amount + Merchant Key)
-
-**Request POST Parameter**<br>
-for bankCd, please refer to [Bank Code](#bank-code)
-
-Parameter | Mandatory | Tipe | Deskripsi | Contoh Data
----------- | ---------- | ---------- | ---------- | ----------
-iMid | Y | AN | 10 | Merchant ID | IONPAYTEST
-payMethod | Y | AN | 2 | Pay Method. Refer Code at [Here](#payment-method) | 02
-currency | Y | AN | 3 | Currency | IDR
-amt | Y | N | 12 | Goods Amount | 1000
-referenceNo | Y | AN | 40 | Merchant Order No | Refe12345
-goodsNm | Y | AN | 100 | Goods Name | product tiket
-billingNm | Y | A | 30 | Billing Name | Buyer Name
-billingPhone | Y | N | 15 | Billing Phone Number | 02112345678
-billingEmail | Y | AN | 40 | Billing Email | buyer@merchant.com
-billingCity | Y | A | 50 | Billing City | jakarta
-billingState | Y | A | 50 | Billing State | Jakarta
-billingPostCd | Y | N | 10 | Billing Post Number | 12345
-billingCountry | Y | A | 10 | Billing Country | Indonesia
-callBackUrl | Y | AN | 255 | Payment Result Forward Url (On Browser) | http://merchant.com/callback
-dbProcessUrl | Y | AN | 255 | Payment Result Receive Url (Server Side) | http://merchant.com/dbprocess
-description | Y | AN | 100 | Description | order again
-merchantToken | Y | AN | 255 | Merchant Token | 6cfccfc0046773c1b589d8e98f8b596c284f3c70a4ecf86eba14c18944b74bcd
-userIP | Y | AN | 15 | User IP (Customer) | 127.0.0.1
-cartData | Y | AN | 4000 | Cart Data (Json Format) | {}
-bankCd | Y | AN | 4 | Bank Code, refer to [Link](#bank-code) | CENA
-billingAddr | N | AN | AN | Billing Address | billing address
-deliveryNm | N | A | 30 | Delivery Name | Delivery Name
-deliveryPhone | N | N | 15 | Delivery Phone | 02112345678
-deliveryAddr | N | AN | 100 | Delivery Address | Delivery address
-deliveryEmail | N | AN  &nbsp; | Delivery Email | buyer@merhcant.com
-deliveryCity | N | A | 50 | Delivery City | Jakarta
-deliveryState | N | A | 50 | Delivery State | Jakarta
-deliveryPostCd | N | N | 10 | Delivery Post Number | 12345
-deliveryCountry | N | A | 10 | Delivery Country | Indonesia
-vat | N | N | 12 | Vat | 0
-fee | N | N | 12 | Service Tax | 0
-notaxAmt | N | N | 12 | Tax Free Amount | 0
-reqDt | N | N | 8 | Request Date(YYYYMMDD) | 20180423
-reqTm | N | N | 6 | Request Time(HH24MISS) | 235959
-reqDomain | N | AN | 100 | Request Domain | merchant.com
-reqServerIP | N | AN | 15 | Request Server IP | 127.0.0.1
-reqClientVer | N | AN | 50 | Request Client Version | 1.0
-userSessionID | N | AN | 100 | User Session ID | SessionUser1234
-userAgent | N | AN | 100 | User Agent Information | Mozilla
-userLanguage | N | AN | 2 | User Language | en-US
-vacctValidDt | N | N | 8 | VA expiry date (YYYYMMDD) | 20180429
-vacctValidTm | N | N | 6 | VA expiry time (HH24MISS) | 225959
-
-<br>**Response JSON Object**
-
-Parameter | Tipe | Ukuran | Deskripsi
----------- | ---------- | ---------- | ----------
-resultCd | N | 4 | Result Code
-resultMsg | AN | 255 | Result Message
-tXid | AN | 30 | Transaction ID
-referenceNo | ANS | 40 | Merchant Order No
-payMethod | N | 2 | Payment Method. Refer Code at [Here](#payment-method)
-amount | N | 12 | Transaction Amount
-currency | AN | 3 | Currency
-goodsNm | N | 100 | Goods Name
-billingNm | N | 30 | Buyer Name
-transDt | N | 8 | Transaction date (YYYYMMDD)
-transTm | N | 6 | Transaction time (HH24MISS)
-description | N | 100 | Transaction description
-callbackUrl | N | 100 | Callback Url
-bankCd | AN | 4 | Bank Code, refer to [Link](#bank-code)
-bankVacctNo | N | 20 | Bank Virtual Account Number
-vacctValidDt | N | 8 | VA expiry date
-vacctValidTm | N | 6 | Va expiry time
+| **Parameter**      | **Type** | **Size** | Deskripsi                         |
+| ------------------ | -------- | -------- | --------------------------------- |
+| **`resultCd`**     | **N**    | **4**    | [Result Code](#error-code)        |
+| **`resultMsg`**    | **AN**   | **255**  | [Result Message](#error-code)     |
+| **`tXid`**         | **AN**   | **30**   | Transaction ID                    |
+| **`referenceNo`**  | **ANS**  | **40**   | Merchant Order No                 |
+| **`payMethod`**    | **N**    | **2**    | [Payment Method](#payment-method) |
+| **`amount`**       | **N**    | **12**   | Nominal Transaksi                 |
+| **`currency`**     | **A**    | **3**    | Currency                          |
+| **`goodsNm`**      | **N**    | **100**  | Nama Barang                       |
+| **`billingNm`**    | **N**    | **30**   | Nama Pembeli                      |
+| **`transDt`**      | **N**    | **8**    | Tgl Transaksi (YYYYMMDD)          |
+| **`transTm`**      | **N**    | **6**    | Waktu Transaksu (HH24MISS)        |
+| **`description`**  | **ANS**  | **100**  | Deskripsi                         |
+| **`callbackUrl`**  | **ANS**  | **100**  | Callback Url                      |
+| **`bankCd`**       | **A**    | **4**    | [Bank Code](#bank-code)           |
+| **`bankVacctNo`**  | **N**    | **20**   | Nomor Virtual Account             |
+| **`vacctValidDt`** | **N**    | **8**    | VA expiry date                    |
+| **`vacctValidTm`** | **N**    | **6**    | VA expiry time                    |

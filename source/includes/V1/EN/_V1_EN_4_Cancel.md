@@ -164,6 +164,7 @@ print("amount : " + result['amount'])
 | **`cancelUserInfo`**             | **AN**   | **100**  | User Information                  | New customer                                                 |
 | **`cancelRetryCnt`**             | **N**    | **2**    | Retry count for cancel            | 2                                                            |
 | **`worker`**                     | **N**    | **10**   | Worker                            | Worker                                                       |
+
 ## Response Parameter - Cancel Order
 
 > Sample Response

@@ -393,7 +393,7 @@ else:
 | **`userAgent`**                   | **ANS**           | **100**  | User Agent                    | Mozilla                                                      |
 | **`userLanguage`**                | **ANS**           | **2**    | User Language                 | en-US                                                        |
 
-### Response - ClickPay Registration
+### Response Parameter - ClickPay Registration
 
 > Sample JSON Response
 
