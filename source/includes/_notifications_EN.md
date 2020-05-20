@@ -28,7 +28,7 @@ To Allow Push Notifications from NICEPAY Server, please add these details to you
 
 | **Method**                                      | Merchant Token                            | IP                                     | User-Agent                                                   |
 | ----------------------------------------------- | ----------------------------------------- | -------------------------------------- | ------------------------------------------------------------ |
-| **POST** **application/x-www-form-urlencoded*** | SHA256(`iMid`+`tXid`+`amt`+`merchantKey`) | `103.20.51.0/24` <br> `103.117.8.0/24` | `User-Agent: Jakarta Commons-HttpClient/3.1`                 |
+| **POST** **application/x-www-form-urlencoded** | SHA256(`iMid`+`tXid`+`amt`+`merchantKey`) | `103.20.51.0/24` <br> `103.117.8.0/24` | `User-Agent: Jakarta Commons-HttpClient/3.1`                 |
 
 ## Notification Parameter
 

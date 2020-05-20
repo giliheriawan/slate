@@ -28,7 +28,7 @@ Untuk menghindari terjadinya Notifikasi yang terblokir oleh firewall Merchant, s
 
 | **Method**                                      | Merchant Token                            | IP                                     | User-Agent                                                   |
 | ----------------------------------------------- | ----------------------------------------- | -------------------------------------- | ------------------------------------------------------------ |
-| **POST** **application/x-www-form-urlencoded*** | SHA256(`iMid`+`tXid`+`amt`+`merchantKey`) | `103.20.51.0/24` <br> `103.117.8.0/24` |  `Jakarta Commons-HttpClient/3.1`                            |
+| **POST** **application/x-www-form-urlencoded** | SHA256(`iMid`+`tXid`+`amt`+`merchantKey`) | `103.20.51.0/24` <br> `103.117.8.0/24` |  `Jakarta Commons-HttpClient/3.1`                            |
 
 ## Parameter Notifikasi
 
