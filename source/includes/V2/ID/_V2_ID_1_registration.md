@@ -10,14 +10,14 @@
 
 **Payment Methods:**
 
-| **Code** | **PayMethod**         | Description                                 |
+| **Code** | **PayMethod**         | Deskripsi                                   |
 | -------- | --------------------- | ------------------------------------------- |
-| **`01`** | **Credit Card**       | Order will be created                       |
-| **`02`** | **Virtual Account**   | Virtual Account (`vacctNo`) will be created |
-| **`03`** | **Convenience Store** | Pay Number (`payNo`) will be created        |
-| **`04`** | **ClickPay**          | Order will be created                       |
-| **`05`** | **E-Wallet**          | Order will be created                       |
-| **`06`** | **Payloan**           | Order will be created                       |
+| **`01`** | **Credit Card**       | Membuat Transaksi Baru                      |
+| **`02`** | **Virtual Account**   | Generate Nomor Virtual Account (`vacctNo`)  |
+| **`03`** | **Convenience Store** | Generate Nomor Pembayaran CVS (`payNo`)     |
+| **`04`** | **ClickPay**          | Membuat Transaksi Baru                      |
+| **`05`** | **E-Wallet**          | Membuat Transaksi Baru                      |
+| **`06`** | **Payloan**           | Membuat Transaksi Baru                      |
 
 ## Request Parameters - Register
 
