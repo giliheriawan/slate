@@ -102,15 +102,22 @@ Alur Transaksi :
 
 <aside class="notice">Mohon merujuk kepada <a href="#registration">Register API</a> untuk Parameter yang lengkap, Parameter di bawah merupakah tambahan yang dibutuhkan untuk Registrasi Payloan.</aside>
 
-| **Parameters**                         | **Type**            | **Size** | Description                            | Example   |
-| -------------------------------------- | ------------------- | -------- | -------------------------------------- | --------- |
-| **`payMethod`** **Required**           | **N**               | **2**    | Pay Loan                               | 06        |
-| **`userIp`** **Required**              | **ANS**             | **15**   | Buyer's IP Address                     | 127.0.0.1 |
-| **`instmntType`** **Required**         | **N**               | **2**    | [Installment Type](#installment-type)  | 1         |
-| **`instmntMon`** **Required**          | **N**               | **2**    | Installment Month                      | 1         |
-| **`mitraCd`** **Required**             | **A**               | **4**    | [Mitra Code](#mitra-code)              | KDVI      |
-| **`cartData`** **Required**            | **`JSON Object`**   | **4000** | [Cart Data](#payloan-cart-data)        | `JSON`    |
-| **`sellers`** **Required for Akulaku** | **`JSON Object`**   | **4000** | [Sellers Data ](#payloan-sellers-data) | `JSON`    |
+| **Parameters**                         | **Type**            | **Size** | Description                            | Example       |
+| -------------------------------------- | ------------------- | -------- | -------------------------------------- | ---------     |
+| **`payMethod`** **Required**           | **N**               | **2**    | Pay Loan                               | 06            |
+| **`userIp`** **Required**              | **ANS**             | **15**   | Buyer's IP Address                     | 127.0.0.1     |
+| **`deliveryNm`** **Required**          | **A**               | **30**   | Delivery Name                          | John Doe      |
+| **`deliveryPhone`** **Required**       | **N**               | **15**   | Delivery Phone                         | 08211xxxx     |
+| **`deliveryAddr`** **Required**        | **AN**              | **100**  | Delviery Address                       | Jln. Merdeka  |
+| **`deliveryCity`** **Required**        | **A**               | **50**   | Delivery City                          | Jakarta Pusat |
+| **`deliveryState`** **Required**       | **A**               | **50**   | Delivery State                         | DKI Jakarta   |
+| **`deliveryPostCd`** **Required**      | **N**               | **10**   | Delivery Post Code                     | 14350         |
+| **`deliveryCountry`** **Required**     | **A**               | **10**   | Delivery Country                       | Indonesia     |
+| **`instmntType`** **Required**         | **N**               | **2**    | [Installment Type](#installment-type)  | 1             |
+| **`instmntMon`** **Required**          | **N**               | **2**    | Installment Month                      | 1             |
+| **`mitraCd`** **Required**             | **A**               | **4**    | [Mitra Code](#mitra-code)              | KDVI          |
+| **`cartData`** **Required**            | **`JSON Object`**   | **4000** | [Cart Data](#payloan-cart-data)        | `JSON`        |
+| **`sellers`** **Required for Akulaku** | **`JSON Object`**   | **4000** | [Sellers Data ](#payloan-sellers-data) | `JSON`        |
 
 ### Payloan Cart Data
 <h3 id="payloan-cart-data"></h3>
