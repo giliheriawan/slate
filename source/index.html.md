@@ -45,6 +45,22 @@ Have any inquiry ?<br>Feel free contact us : [it@nicepay.co.id](mailto:it@nicepa
   <li>Go Live
 </ol>
 
+You can also download our SDK and Plugins from our [GitHub](https://github.com/nicepay-dev/plugs-libs).
+Or you can directly hit our APIs If the SDK for your preferred Programming Language is not available.
+
+Currently, We Provide Plugins and SDKs for:
+<ol type="1">
+  <li>Java
+  <li>C#
+  <li>PHP
+  <li>Python
+  <li>CodeIgniter
+  <li>Laravel
+  <li>Magento
+  <li>Opencart
+  <li>Wordpress WooCommerce
+</ol>
+
 # Authentication and Credentials
 
 To connect to our APIs, `merchantToken` is **required** to be sent along with other parameters.
